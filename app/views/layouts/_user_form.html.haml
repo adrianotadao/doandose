@@ -1,0 +1,29 @@
+#user
+  = simple_form_for User.new do |f|
+    .inputs
+      = f.input :donor, :as => :boolean
+      = f.input :name
+      = f.input :surname
+      = f.input :sex
+      = f.input :weight
+      = f.input :height
+      = f.input :age
+      = f.input :email
+      = f.input :public_email, :as => :boolean
+      = f.input :phone
+      = f.input :public_phone, :as => :boolean
+      = f.input :cellphone
+      = f.input :public_cellphone
+      = f.input :observations
+      = f.input :number
+      = f.input :postal_code
+      = f.input :neighborhood
+      = f.input :city
+    .actions
+      = f.submit "Salvar"
+      
+  #user_map
+  
+- content_for :javascript do
+  :javascript
+    //new Gmap('user_map')
