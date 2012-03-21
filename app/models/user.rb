@@ -1,38 +1,38 @@
 class User
-  include MongoMapper::Document
+  include Mongoid::Document
   
-  key :active, Boolean
-  key :donor, Boolean
-  key :name, String
-  key :surname, String
-  key :sex, String
-  key :weight, String
-  key :height, String
-  key :age, Integer
-  key :blood_type, String
+  field :active, :type => Boolean
+  field :donor, :type => Boolean
+  field :name, :type => String
+  field :surname, :type => String
+  field :sex, :type => String
+  field :weight, :type => String
+  field :height, :type => String
+  field :age, :type => Integer
+  field :blood_type, :type => String
 
-  key :email, String
-  key :phone, String
-  key :cellphone, String
-  key :public_email, Boolean
-  key :public_phone, Boolean
-  key :public_cellphone, Boolean
+  field :email, :type => String
+  field :phone, :type => String
+  field :cellphone, :type => String
+  field :public_email, :type => Boolean
+  field :public_phone, :type => Boolean
+  field :public_cellphone, :type => Boolean
   
-  key :observations, String
-      
-  key :number, String
-  key :address, String
-  key :neighborhood, String
-  key :city, String
-  key :postal_code, String
+  field :observations, :type => String
 
-  key :created_at, Time
-  key :updated_at, Time
+  field :number, :type => String
+  field :address, :type => String
+  field :neighborhood, :type => String
+  field :city, :type => String
+  field :postal_code, :type => String
+
+  field :created_at, :type => Time
+  field :updated_at, :type => Time
   
-  key :lat, String
-  key :lng, String
+  field :lat, :type => String
+  field :lng, :type => String
   
   #validations
-  validates_presence_of :name, :surname, :sex, :weight, :height, :age, :blood_type, :email, :cep
+  validates_presence_of :name, :surname, :sex, :weight, :height, :age, :blood_type, :email, :postal_code
   
 end

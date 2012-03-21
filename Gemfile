@@ -2,8 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 gem 'mongo'
-gem 'mongo_mapper'
-gem 'bson_ext'
+gem "mongoid", "~> 2.4"
+gem "bson_ext", "~> 1.5"
 
 gem 'jquery-rails'
 gem 'haml', '~> 3.1.4'
