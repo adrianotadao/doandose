@@ -10,3 +10,4 @@ web_app/.bundle
 # Ignore all logfiles and tempfiles.
 web_app/log/*.log
 web_app/tmp
+.DS_Store
