@@ -1,5 +1,6 @@
 class Contact
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :email, :type => String
   field :phone, :type => String
