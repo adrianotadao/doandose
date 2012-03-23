@@ -1,5 +1,6 @@
-class User
+class Person
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :active, :type => Boolean
   field :donor, :type => Boolean
@@ -19,8 +20,8 @@ class User
   field :lng, :type => String
   
   #relationship
-  embeds_one :address
-  embeds_one :contact
+  has_one :address
+  has_one :contact
   
   #validations
   validates_presence_of :name, :surname, :sex, :weight, :height, :age, :blood_type
