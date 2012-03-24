@@ -1,0 +1,26 @@
+#user
+  = simple_form_for Person.new.build, :html => { :multipart => true } do |f|
+    .inputs
+      = f.input :donor, :as => :boolean
+      = f.input :name
+      = f.input :surname
+      = f.input :sex
+      = f.input :birthday
+
+      = f.simple_fields_for :address do |address_form|
+        = render :partial => '/addresses/form', :locals => { :f => address_form }
+
+      = f.simple_fields_for :user do |user_form|
+        = render :partial => '/users/form', :locals => { :f => user_form }
+
+      = f.simple_fields_for :contact do |contact_form|
+        = render :partial => '/contacts/form', :locals => { :f => contact_form }
+
+    .actions
+      = f.submit "Salvar"
+      
+  #user_map
+  
+- content_for :javascript do
+  :javascript
+    //new Gmap('user_map')
