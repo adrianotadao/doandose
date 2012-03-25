@@ -6,9 +6,4 @@ class PagesController < ApplicationController
     @person.build_contact if @person.contact blank?
   end 
 
-  def new
-    @person = Person.new
-    @person.build_address
-  end
-    
 end
