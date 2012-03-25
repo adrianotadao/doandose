@@ -1,5 +1,5 @@
 class Authentication
-  include Mondoid::Document
+  include Mongoid::Document
   include Mongoid::Timestamps
 
   #attributes

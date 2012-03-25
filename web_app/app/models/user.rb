@@ -8,7 +8,6 @@ class User
   field :reset_password_sent_at, :type => String
 
   #relationship
-  belongs_to :address
   has_one :person
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: :true
 
