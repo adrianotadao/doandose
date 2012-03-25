@@ -28,5 +28,6 @@ class Person
   validates_presence_of :name, :surname, :sex, :birthday, :blood
   validates_associated :contact, :address, :user
 
-  accepts_nested_attributes_for :address, :contact, :allow_destoy => true
+  accepts_nested_attributes_for :addresses, :contacts, :allow_destoy => true
+
 end

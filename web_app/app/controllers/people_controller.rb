@@ -1,4 +1,5 @@
-class PersonsController < ApplicationController
+class PeopleController < ApplicationController
+
   def new
     @person = Person.new
   end 
