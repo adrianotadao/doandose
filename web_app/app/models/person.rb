@@ -7,8 +7,8 @@ class Person
   field :name, :type => String
   field :surname, :type => String
   field :sex, :type => String
-  field :weight, :type => String
-  field :height, :type => String
+  field :weight, :type => Float
+  field :height, :type => Float
   field :birthday, :type => Date  
   field :observations, :type => String
 
