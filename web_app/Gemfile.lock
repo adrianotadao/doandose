@@ -31,6 +31,8 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.2)
     arel (2.2.3)
+    awesome_nested_fields (0.5.3)
+      rails (>= 3.0.0)
     bson (1.6.0)
     bson_ext (1.6.0)
       bson (= 1.6.0)
@@ -130,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_nested_fields (= 0.5.3)
   bson_ext (~> 1.5)
   coffee-rails (~> 3.1.1)
   compass-rails
