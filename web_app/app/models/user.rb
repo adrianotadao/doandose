@@ -2,6 +2,7 @@ class User
 
   include Mongoid::Document
   include Mongoid::Timestamps
+  include OmniAuth::Identity::Model
 
   field :name, :type => String
   field :email, :type => String
@@ -19,6 +20,7 @@ class User
   #validations
   validates_presence_of :email
   validates_presence_of :password, :if => :password_is_required?
+  validates_confirmation_of :password, :if => :password?
   
   #others
   def password_is_required?
