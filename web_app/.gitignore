@@ -2,3 +2,7 @@ tmp/*
 log/*.log
 .bundle/
 .DS_Store
+public/stylesheets/compiled
+public/javascripts/compiled
+log/
+tmp/
