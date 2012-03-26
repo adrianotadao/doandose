@@ -18,9 +18,9 @@ class Person
 
   #relationship
   belongs_to :blood
-  has_one :address, dependent: :destroy
-  has_one :contact, dependent: :destroy
-  has_one :user, dependent: :destroy
+  has_one :address, :as => :addressable, dependent: :destroy
+  has_one :contact, :as => :contactable, dependent: :destroy
+  has_one :user, :as => :authenticatable, dependent: :destroy
   has_many :person_notifications
 
   #validations

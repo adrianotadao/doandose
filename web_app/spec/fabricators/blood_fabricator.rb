@@ -1,3 +1,3 @@
 Fabricator(:blood) do
-  name "aaa"
+  name { sequence(:name){|sn| "#{Faker::Lorem.words.first}#{sn.to_s}" }}
 end

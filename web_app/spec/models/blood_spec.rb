@@ -2,11 +2,17 @@ require 'spec_helper'
 
 describe 'Blood' do
   it 'Should make a valid blood' do
-    #p Blood.new
-    p Fabricate(:blood)
+    Fabricate(:blood).should be_valid
   end
-
-  it 'Should have a name' do
-    
+  
+  context 'Name' do
+    it 'should not be null' do
+      Fabricate.build(:blood, :name => nil).should_not be_valid
+    end
+  
+    it 'should have a uniqueness' do
+      blood = Fabricate(:blood)
+      Fabricate.build(:blood, :name => blood.name).should_not be_valid
+    end
   end
 end

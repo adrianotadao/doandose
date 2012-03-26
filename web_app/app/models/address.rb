@@ -11,6 +11,7 @@ class Address
   field :state, :type => String
 
   #relationship
+  belongs_to :addressable, polymorphic: true
   has_many :user
 
 end

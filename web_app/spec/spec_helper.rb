@@ -15,12 +15,13 @@ Spork.prefork do
   # in spec/support/ and its subdirectories.
   Mongoid.load! File.expand_path('../support/mongoid.yml',  __FILE__)
   Dir[File.expand_path '../support/**/*.rb',  __FILE__].each { |f| require f }
+  Dir[File.expand_path '../../app/models/**/*.rb',  __FILE__].each { |f| load f }
+  Dir[File.expand_path '../fabricators/**/*.rb',  __FILE__].each { |f| require f }
 
   RSpec.configure do |config|
     config.mock_with :rspec
 
     config.before(:suite) do
-      Dir[File.expand_path '../../app/models/**/*.rb',  __FILE__].each { |f| load f }
       DatabaseCleaner[:mongoid].strategy = :truncation
       DatabaseCleaner[:mongoid].clean_with(:truncation)
     end

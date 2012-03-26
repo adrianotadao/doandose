@@ -12,4 +12,7 @@ class Contact
   validates_presence_of :phone, :unless => :cellphone?
   validates_presence_of :cellphone, :unless => :phone?
   
+  #relationship
+  belongs_to :contactable, polymorphic: true
+  
 end
