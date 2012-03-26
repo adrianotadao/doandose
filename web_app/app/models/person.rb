@@ -12,20 +12,18 @@ class Person
   field :birthday, :type => Date  
   field :observations, :type => String
 
-  field :created_at, :type => Time
-  field :updated_at, :type => Time
-  
   field :lat, :type => String
   field :lng, :type => String
 
   #relationship
-  has_one :address, dependent: :destroy
   belongs_to :blood
+  has_one :address, dependent: :destroy
   has_one :contact, dependent: :destroy
-  has_one :user, dependent: :destroy  
+  has_one :user, dependent: :destroy
+  has_many :person_notifications
 
   #validations
-  validates_presence_of :name, :surname, :sex, :birthday, :blood
+  validates_presence_of :name, :surname, :sex, :birthday, :blood, :contact, :address, :user
   validates_associated :contact, :address, :user
 
   accepts_nested_attributes_for :addresses, :contacts, :allow_destoy => true

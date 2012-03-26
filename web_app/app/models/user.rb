@@ -5,7 +5,7 @@ class User
   field :email, :type => String
   field :password_digest, :type => String
   field :reset_password_token, :type => String
-  field :reset_password_sent_at, :type => String
+  field :reset_password_sent_at, :type => Date
 
   #relationship
   has_one :person
