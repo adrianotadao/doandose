@@ -1,4 +1,5 @@
 class User
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -14,5 +15,3 @@ class User
   accepts_nested_attributes_for :authentications, :allow_destroy => true    
 
 end
-
-

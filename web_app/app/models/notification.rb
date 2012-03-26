@@ -1,6 +1,7 @@
 class Notification
+
   include Mongoid::Document
-  include Mongoid::TimesTamps
+  include Mongoid::Timestamps
   
   field :active, :type => Boolean
   field :quantity, :type => Integer

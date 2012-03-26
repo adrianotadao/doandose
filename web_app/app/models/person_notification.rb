@@ -1,4 +1,5 @@
 class PersonNotification
+
   include Mongoid::Document
   
   field :confirmed_at, :type => Time

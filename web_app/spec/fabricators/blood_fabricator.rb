@@ -1,3 +1,3 @@
 Fabricator(:blood) do
-  name { "aaa" }
+  name "aaa"
 end

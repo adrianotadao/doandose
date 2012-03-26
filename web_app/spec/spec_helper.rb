@@ -20,6 +20,7 @@ Spork.prefork do
     config.mock_with :rspec
 
     config.before(:suite) do
+      Dir[File.expand_path '../../app/models/**/*.rb',  __FILE__].each { |f| load f }
       DatabaseCleaner[:mongoid].strategy = :truncation
       DatabaseCleaner[:mongoid].clean_with(:truncation)
     end

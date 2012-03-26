@@ -1,4 +1,5 @@
 class Company
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -14,4 +15,5 @@ class Company
   has_many :users
   
   accepts_nested_attributes_for :address, :contact, :users, :allow_destoy => true
+
 end
