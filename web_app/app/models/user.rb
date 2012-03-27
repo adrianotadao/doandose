@@ -51,5 +51,6 @@ class User
         user.authentications.new(:provider => auth.provider, :uid => auth.uid)
       end
     end
+  end
 
 end
