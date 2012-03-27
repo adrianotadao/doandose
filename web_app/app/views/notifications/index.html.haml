@@ -1,0 +1,19 @@
+#notifications
+  Notificacoes
+  -unless @notifications.blank?
+    %table
+      %thead
+        %tr
+          %th Situacao
+          %th Quantidade de bolsas
+          %th Data
+          %th.actions 
+      %tbody
+        - for notification in @notifications
+          %tr
+            %td= notification.situation
+            %td= notification.quantity
+            %td= notification.alerted_at
+            %td= link_to 'Ver detalhes', notification_path(notification)
+  - else
+    .empty_list Não existem alertas no momento.
