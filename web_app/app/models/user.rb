@@ -41,22 +41,26 @@ class User
   #     end
   end
   
-  # Add new authentication when users have other authentication
   def add_authentication(auth)
     self.tap do |user|
       user.authentications.new(:provider => auth.provider, :uid => auth.uid)
       user.save
     end
   end
-  
-  #static
-  class << self
-    def new_with_omniauth(auth)
-      User.new.tap do |user|
-        user.email = auth.info.email
-        user.authentications.new(:provider => auth.provider, :uid => auth.uid)
-      end
+
+  def has_identity?
+    self.authentications.map(&:provider).include?('identity') || self.authentications.blank?
+  end
+
+  def add_authentication(auth)
+    self.tap do |user|
+      user.authentications.new(:provider => auth.provider, :uid => auth.uid)
+      user.save
     end
+  end
+
+  def authentications?
+    authentications.to_a.present?
   end
 
 end

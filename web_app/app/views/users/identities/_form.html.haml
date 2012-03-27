@@ -1,0 +1,32 @@
+-if @user.errors.size > 0
+  .errors
+    %h2 Os seguintes erros foram encontrados:
+
+    - for error in @user.errors.full_messages
+      %ul
+        %li= error
+
+.form
+  .group
+    .social.clearfix
+      = link_to 'Twitter', '/auth/twitter', :class => 'twitter', :title => 'Twitter'
+      = link_to 'Facebook', '/auth/facebook', :class => 'facebook', :title => 'Facebook'
+      = link_to 'Google', '/auth/google', :class => 'google', :title => 'Conta do Google, gmail, orkut, etc.'
+    .authentication
+      = f.fields_for :authentications do |auth|
+        = auth.hidden_field :provider
+        = auth.hidden_field :uid
+
+    %b Email
+    .email= f.text_field :email
+
+    -if @user.has_identity? || !@user.new_record?
+      %b Senha
+      = f.password_field :password, :class => 'confirmation'
+      %b Confirmar Senha
+      = f.password_field :password_confirmation, :class => 'password_confirmation'
+            
+= submit_tag 'salvar', :class => 'submit'
+    
+- content_for :javascript do
+  = javascript_tag ""
