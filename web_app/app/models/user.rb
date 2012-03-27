@@ -26,5 +26,30 @@ class User
   def password_is_required?
     true
   end
+  
+  # Encrypts the password into the password_digest attribute.
+  def password=(unencrypted_password)
+    @password = unencrypted_password
+    unless unencrypted_password.blank?
+      self.password_digest = BCrypt::Password.create(unencrypted_password)
+    end
+  end
+  
+  # Add new authentication when users have other authentication
+  def add_authentication(auth)
+    self.tap do |user|
+      user.authentications.new(:provider => auth.provider, :uid => auth.uid)
+      user.save
+    end
+  end
+  
+  #static
+  class << self
+    def new_with_omniauth(auth)
+      User.new.tap do |user|
+        user.email = auth.info.email
+        user.authentications.new(:provider => auth.provider, :uid => auth.uid)
+      end
+    end
 
 end
