@@ -3,6 +3,6 @@ Fabricator(:address) do
   street { Faker::Address.street_name }
   neighborhood { Faker::Address.city }
   city { Faker::Address.city }
-  postal_code { Faker::Address.zip_code }
-  state { Faker::Address.state }
+  zip_code { Faker::Address.zip_code }
+  state { Faker::Address.city }
 end
