@@ -4,5 +4,6 @@ Doandose::Application.routes.draw do
   resources :users
   resources :people
   resources :page  
+  resources :notifications
   
 end

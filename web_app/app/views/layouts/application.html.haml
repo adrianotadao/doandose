@@ -12,21 +12,12 @@
     #root
       Doando.se
       #container
-        #top          
-          #new_user
-            = render :partial => "people/minimal_form"
-          #filters
-            = render :partial => "layouts/filters_form"
+        #top
+          #menu
+            = render :partial => "layouts/top_menu"            
         #center
           #header
           #content= yield
-        
-        #bottom
-          %p
-            aaa
-          %p
-            aaa
-
 
       #root_footer
 

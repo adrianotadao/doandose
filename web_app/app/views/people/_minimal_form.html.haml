@@ -1,5 +1,5 @@
 #user
-  = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
+  = simple_form_for @person, :html => { :multipart => true } do |f|
     .inputs
       = f.input :donor, :as => :boolean
       = f.input :name
