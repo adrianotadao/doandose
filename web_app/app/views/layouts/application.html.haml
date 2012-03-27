@@ -12,7 +12,9 @@
     #root
       Doando.se
       #container
-        #top          
+        #top
+          #menu
+            = render :partial => "layouts/top_menu"            
           #new_user
             = render :partial => "people/minimal_form"
           #filters
