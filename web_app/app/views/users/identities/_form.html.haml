@@ -11,7 +11,7 @@
     .social.clearfix
       = link_to 'Twitter', '/auth/twitter', :class => 'twitter', :title => 'Twitter'
       = link_to 'Facebook', '/auth/facebook', :class => 'facebook', :title => 'Facebook'
-      = link_to 'Google', '/auth/google', :class => 'google', :title => 'Conta do Google, gmail, orkut, etc.'
+      = link_to 'Google', '/users/auth/google', :class => 'google', :title => 'Conta do Google, gmail, orkut, etc.'
     .authentication
       = f.fields_for :authentications do |auth|
         = auth.hidden_field :provider
