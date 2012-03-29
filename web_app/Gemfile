@@ -11,6 +11,9 @@ gem 'simple_form', '1.5.2'
 gem 'settingslogic', '2.0.6'
 gem 'awesome_nested_fields', '0.5.3'
 
+gem 'paperclip', '2.7.0'
+gem 'mongoid-paperclip', :require => "mongoid_paperclip"
+
 gem 'bcrypt-ruby', '~> 3.0.0'  
 
 gem 'omniauth', '1.0.3'

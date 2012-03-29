@@ -39,6 +39,7 @@ GEM
       bson (= 1.6.0)
     builder (3.0.0)
     chunky_png (1.2.5)
+    cocaine (0.2.1)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -96,6 +97,8 @@ GEM
       activemodel (~> 3.1)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
+    mongoid-paperclip (0.0.7)
+      paperclip (>= 2.3.6)
     multi_json (1.1.0)
     multipart-post (1.1.5)
     oauth (0.4.5)
@@ -120,6 +123,11 @@ GEM
       omniauth (~> 1.0)
     omniauth-twitter (0.0.8)
       omniauth-oauth (~> 1.0)
+    paperclip (2.7.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.2)
@@ -202,11 +210,13 @@ DEPENDENCIES
   jquery-rails
   mongo
   mongoid (~> 2.4)
+  mongoid-paperclip
   omniauth (= 1.0.3)
   omniauth-facebook (= 1.2.0)
   omniauth-google-oauth2
   omniauth-identity
   omniauth-twitter (= 0.0.8)
+  paperclip (= 2.7.0)
   rails (= 3.1.3)
   rb-fsevent (= 0.9.0)
   rspec (= 2.8)

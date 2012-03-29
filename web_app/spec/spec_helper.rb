@@ -10,6 +10,8 @@ Spork.prefork do
   require 'bundler/setup'
   Bundler.require
   require 'fabrication'
+  require 'paperclip'
+  require 'bcrypt'
       
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -36,6 +38,8 @@ Spork.prefork do
     end
   end
 end
+
+Paperclip.options[:log] = false
 
 Spork.each_run do |config|
   Fabrication.clear_definitions

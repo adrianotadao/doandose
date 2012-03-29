@@ -4,7 +4,7 @@ Fabricator(:user) do
   end
   
   name { Faker::Name.name }
-  email { sequence(:email){|sn| "#{ Faker::Internet.email }#{ sn.to_s }" }}
+  email { sequence(:email){|sn| "#{ sn.to_s }#{ Faker::Internet.email }" }}
   password { '123' }
   password_confirmation {|user| user.password }
 end
