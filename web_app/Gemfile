@@ -15,12 +15,11 @@ gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 
 gem 'bcrypt-ruby', '~> 3.0.0'  
-
-gem 'omniauth', '1.0.3'
-gem 'omniauth-facebook', '1.2.0'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter', '0.0.8'
-gem 'omniauth-identity'
+gem 'omniauth-twitter'  
+gem 'omniauth-facebook'  
+gem 'omniauth-google-oauth2'  
+gem 'omniauth-identity'    
+gem "omniauth"  
 
 gem 'rspec', '2.8', :group => [:test, :development]
 
