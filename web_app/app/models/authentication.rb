@@ -11,7 +11,6 @@ class Authentication
   index [:provider, :uid]
 
   #relationship
-  belongs_to :user
 
   #validations
   validates_presence_of :uid, :provider, :user

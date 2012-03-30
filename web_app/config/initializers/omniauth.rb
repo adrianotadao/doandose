@@ -1,8 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do  
-  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']  
-  provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']  
-  provider :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']  
-  provider :identity, on_failed_registration: lambda { |env|      
-    IdentitiesController.action(:new).call(env)  
-  }  
+    provider :twitter, '7w827boomv26RP0rOleoQ', 'MsOi2yzJYXqLOsQs5bs72ZOzPOCgTPSAsRKrbClaE'  
+    provider :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']  
+    provider :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET']  
+    provider :identity  
 end  
