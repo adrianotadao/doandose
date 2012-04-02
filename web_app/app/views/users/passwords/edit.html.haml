@@ -1,0 +1,17 @@
+-if @user && @user.errors.size > 0
+  .validation
+    %h2 Os seguintes erros foram encontrados:
+
+    - for error in @user.errors.full_messages
+      %ul
+        %li= error
+
+= form_for @user, :url => "/usuario/esqueci-minha-senha/#{@user.reset_password_token}", :html => {:class => 'forgot_password_edit'} do |f|
+  %dl.form
+    %dt Nova senha:
+    %dd= f.password_field :password
+  
+    %dt Comfirmação da nova senha
+    %dd= f.password_field :password_confirmation
+  
+  = submit_tag 'alterar senha', :class => 'submit'
