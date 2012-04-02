@@ -1,0 +1,74 @@
+-if @user.errors.size > 0
+  .validation
+    %h2 Os seguintes erros foram encontrados:
+
+    - for error in @user.errors.full_messages
+      %ul
+        %li= error
+
+%dl.form.info
+  %dl
+    %dt
+    %dd.social.clearfix
+      = link_to 'Twitter', '/auth/twitter', :class => 'twitter', :title => 'Twitter'
+      = link_to 'Facebook', '/auth/facebook', :class => 'facebook', :title => 'Facebook'
+      = link_to 'Google', '/auth/google', :class => 'google', :title => 'Conta do Google, gmail, orkut, etc.'
+
+    %dt
+    %dd
+      = f.fields_for :authentications do |auth|
+        = auth.hidden_field :provider
+        = auth.hidden_field :uid
+        
+  %dt *Email:
+  %dd= f.text_field :email
+
+  %dl
+    %dt *Apelido:
+    %dd= f.text_field :username
+
+    -if @user.has_identity? || !@user.new_record?
+      %dt Senha:
+      %dd= f.password_field :password
+
+      %dt Confirmação de senha:
+      %dd= f.password_field :password_confirmation
+
+  %dt Sexo:
+  %dd
+    = f.radio_button :gender, 1, :checked => true
+    Masculino
+    
+    = f.radio_button :gender, 0
+    Feminino
+
+  %dt Data de nascimento:
+  %dd= f.text_field :birthdate
+
+  %dt Cidade:
+  %dd= f.text_field :city
+  
+  %dl.form.avatar
+    %dd.avatar
+      %dl
+        %dt Avatar
+        %dd
+          - if @user.new_record?
+            = f.file_field :avatar
+          - else
+            - if @user.avatar?
+              = image_tag @user.avatar.url, :id => 'avatar_img'
+            
+              = f.hidden_field :crop_h
+              = f.hidden_field :crop_w
+              = f.hidden_field :crop_x
+              = f.hidden_field :crop_y
+            
+            - else
+              = f.file_field :avatar
+  
+            
+= submit_tag 'salvar', :class => 'submit'
+    
+- content_for :javascript do
+  = javascript_tag "new UserForm()"

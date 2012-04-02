@@ -13,8 +13,8 @@
       Doando.se
       #container
         #top
-          - if current_user
-            = current_user.name
+          -# if current_user
+            =# current_user.name
             = link_to "Sair", users_destroy_session_path
           #menu
             = render :partial => "layouts/top_menu"            

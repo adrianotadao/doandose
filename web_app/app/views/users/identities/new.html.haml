@@ -1,2 +1,2 @@
-= link_to "Logar com Twitter", "/auth/twitter"
-= link_to "Logar com Facebook", "/auth/facebook"
+= form_for @user, :url => users_new_user_path, :html => { :multipart => true } do |f|
+  = render :partial => '/users/identities/form', :locals => { :f => f }
