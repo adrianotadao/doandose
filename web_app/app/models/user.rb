@@ -4,6 +4,7 @@ class User
   include OmniAuth::Identity::Model
 
   #associations
+  belongs_to :authenticatable, polymorphic: true
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true 
 
   #attributes
