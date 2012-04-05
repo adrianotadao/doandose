@@ -5,6 +5,7 @@ class User
 
   #associations
   belongs_to :authenticatable, polymorphic: true
+  belongs_to :anddressable, polymorphic: true
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true 
 
   #attributes
@@ -19,6 +20,7 @@ class User
   index :email
 
   accepts_nested_attributes_for :authentications, :allow_destroy => true
+  accepts_nested_attributes_for :anddresses, :allow_destroy => true
 
   # callbacks
   after_save :build_identity

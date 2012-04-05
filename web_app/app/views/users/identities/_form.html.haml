@@ -48,25 +48,9 @@
   %dt Cidade:
   %dd= f.text_field :city
   
-  %dl.form.avatar
-    %dd.avatar
-      %dl
-        %dt Avatar
-        %dd
-          - if @user.new_record?
-            = f.file_field :avatar
-          - else
-            - if @user.avatar?
-              = image_tag @user.avatar.url, :id => 'avatar_img'
-            
-              = f.hidden_field :crop_h
-              = f.hidden_field :crop_w
-              = f.hidden_field :crop_x
-              = f.hidden_field :crop_y
-            
-            - else
-              = f.file_field :avatar
-  
+  =# render :partial => 'anddresses/form'
+    
+
             
 = submit_tag 'salvar', :class => 'submit'
     
