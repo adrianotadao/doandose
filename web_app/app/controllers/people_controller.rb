@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    @user = User.new
   end 
 
   def show

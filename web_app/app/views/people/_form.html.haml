@@ -1,5 +1,5 @@
-#user
-  = simple_form_for User.new do |f|
+#person
+  = simple_form_for @person, url => [:create, @person] do |f|
     .inputs
       = f.input :donor, :as => :boolean
       = f.input :name
@@ -8,15 +8,18 @@
       = f.input :weight
       = f.input :height
       = f.input :age
-      = f.input :email
-      = f.input :public_email, :as => :boolean
       = f.input :phone
       = f.input :public_phone, :as => :boolean
       = f.input :cellphone
       = f.input :public_cellphone
       = f.input :observations
+      = f.input :public_email, :as => :boolean
+
       = f.simple_fields_for :address do |address_form|
         = render :partial => '/addresses/form', :locals => { :f => address_form }
+
+      = f.simple_fields_for :user do |user|
+        = render :partial => '/users/identities/form', :locals => { :f => user }
     .actions
       = f.submit "Salvar"
       
