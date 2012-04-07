@@ -45,7 +45,6 @@ class User
       User.new.tap do |user|
         user.email = auth.info.email
         user.username = auth.info.nickname
-        user.city = auth.info.location
         
         user.authentications.new(:provider => auth.provider, :uid => auth.uid)
       end
