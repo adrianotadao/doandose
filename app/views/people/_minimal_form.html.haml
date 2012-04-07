@@ -10,7 +10,7 @@
       = f.fields_for :address do |address|
         = render :partial => '/addresses/form', :locals => { :f => address }
 
-      = f.simple_fields_for :user do |user_form|
+      = f.simple_fields_for @user, :user do |user_form|
         = render :partial => '/users/identities/form', :locals => { :f => user_form }
 
       = f.fields_for :contact do |contact_form|

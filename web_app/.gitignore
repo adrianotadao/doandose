@@ -1,9 +1,0 @@
-tmp/*
-log/*.log
-.bundle/
-.DS_Store
-public/stylesheets/compiled
-public/javascripts/compiled
-public/system/
-../log
-../tmp

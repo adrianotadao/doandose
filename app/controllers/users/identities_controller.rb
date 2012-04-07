@@ -6,7 +6,6 @@ class Users::IdentitiesController < ApplicationController
       redirect_to edit_user_path 
     else
       @user = User.new
-      redirect_to new_person_path 
     end
   end
 
