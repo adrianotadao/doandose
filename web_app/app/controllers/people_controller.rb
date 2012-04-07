@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   end
 
   def create
+    @user = User.new
     @person = Person.new
     if @person.save
       redirect_to root_path
