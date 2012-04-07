@@ -1,0 +1,9 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333334578.4796531:@value{	I"length:EFi~I"digest;
+F"%18cb7a883a3f3a61d972dacacf033352I"source;
+FI"~/* line 2, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/user.sass */
+#user form {
+  width: 300px;
+}
+;
+FI"_version;
+F"%4fef0ad11675c11db58cf8ee5d5d1f81

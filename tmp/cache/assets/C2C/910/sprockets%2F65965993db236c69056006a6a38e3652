@@ -1,0 +1,32 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333334578.476254:@value{	I"length:EFiOI"digest;
+F"%fc31e7227bfec1bcee566669158f3f27I"source;
+FI"O/* line 1, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root {
+  height: 100%;
+}
+/* line 3, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root #container {
+  width: 1000px;
+  margin: 0 auto;
+  background: #f2f2f2;
+}
+/* line 8, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root #container #top {
+  width: 99%;
+}
+/* line 11, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root #container #center {
+  width: 99%;
+}
+/* line 14, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root #container #center #content {
+  width: 99%;
+}
+/* line 17, /Volumes/data/university/doando.se/web_app/app/assets/stylesheets/site.sass */
+#root #container #bottom {
+  width: 99%;
+  background: white;
+}
+;
+FI"_version;
+F"%0c4fa71bfa8f0781edd7b28644c4cf26
