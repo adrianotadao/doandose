@@ -1,5 +1,12 @@
-%ul{ 'data-role' => 'listview' }
-	%li= link_to "Item 1", "#"
-	%li= link_to "Item 2", "#"
-	%li= link_to "Item 3", "#"
-	%li= link_to "Item 4", "#"
+%div{'data-role' => 'page'}
+	%div{'data-role' => 'header'}
+		= link_to 'Cadastre-se', mobile_signup_path
+		%h1 Doando.se
+		%a{ 'href' => 'index.html', 'data-icon' => 'gear', 'class'=> 'ui-btn-right'} Options
+
+	%div{'data-role' => 'content'}
+		#map_canvas{:style => "width: 100%; height: 600px; padding: 0px;"}
+
+- content_for :javascript do
+	:javascript
+		new Gmap('map_canvas')

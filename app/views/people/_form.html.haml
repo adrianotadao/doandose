@@ -1,5 +1,5 @@
 #person
-  = simple_form_for @person, url => people_path do |f|
+  = simple_form_for @person do |f|
     .inputs
       = f.input :donor, :as => :boolean
       = f.input :name

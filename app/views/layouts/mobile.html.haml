@@ -9,12 +9,8 @@
 		%title= page_title
 	
 	%body
-		%div{'data-role' => 'page'}
-			%div{'data-role' => 'header'}
-				%h1= page_title
-
-			%div{'data-role' => 'content'}
-				= yield
+		= yield
 
 		= javascript_include_tag "mobile"
+		%script{ :src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false", :type => "text/javascript" }
 		= yield :javascript
