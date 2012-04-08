@@ -1,8 +1,8 @@
--if @user.errors.size > 0
+-if @person.user.errors.size > 0
   .validation
     %h2 Os seguintes erros foram encontrados:
 
-    - for error in @user.errors.full_messages
+    - for error in @person.user.errors.full_messages
       %ul
         %li= error
 
@@ -27,7 +27,7 @@
     %dt *Apelido:
     %dd= f.text_field :username
 
-    -if @user.has_identity? || !@user.new_record?
+    -if @person.user.has_identity? || !@person.user.new_record?
       %dt Senha:
       %dd= f.password_field :password
 

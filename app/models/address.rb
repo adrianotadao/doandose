@@ -12,7 +12,6 @@ class Address
 
   #relationship
   belongs_to :addressable, polymorphic: true
-  has_many :user
   
   #validations
   validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state

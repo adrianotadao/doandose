@@ -18,15 +18,17 @@ class Person
 
   #relationship
   belongs_to :blood
-  has_one :address, :as => :addressable, dependent: :destroy
-  has_one :contact, :as => :contactable, dependent: :destroy
-  has_one :user, :as => :authenticatable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
+  has_one :contact, as: :contactable, dependent: :destroy
+  has_one :user, as: :authenticatable, dependent: :destroy
   has_many :person_notifications
 
   #validations
   validates_presence_of :name, :surname, :sex, :birthday, :blood, :contact, :address, :user, :lat, :lng
   validates_associated :contact, :address, :user
 
-  accepts_nested_attributes_for :addres, :contact, :allow_destoy => true
+  accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
+
+  attr_accessible :address, :contact, :user
 
 end

@@ -1,5 +1,5 @@
 #person
-  = simple_form_for @person, url => [:create, @person] do |f|
+  = simple_form_for @person, url => people_path do |f|
     .inputs
       = f.input :donor, :as => :boolean
       = f.input :name
@@ -8,12 +8,6 @@
       = f.input :weight
       = f.input :height
       = f.input :age
-      = f.input :phone
-      = f.input :public_phone, :as => :boolean
-      = f.input :cellphone
-      = f.input :public_cellphone
-      = f.input :observations
-      = f.input :public_email, :as => :boolean
 
       = f.simple_fields_for :address do |address_form|
         = render :partial => '/addresses/form', :locals => { :f => address_form }

@@ -6,7 +6,7 @@ class User
   #associations
   belongs_to :authenticatable, polymorphic: true
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true 
-  has_many :persons
+  has_many :people
 
   #attributes
   field :username, type: String, case_sensitive: false

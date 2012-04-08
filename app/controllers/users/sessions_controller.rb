@@ -3,7 +3,7 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    
+    @person = Person.new
     case
     when request.env['omniauth.auth']['info']['nickname'].present? then @user = User.first(:conditions => { :username => request.env['omniauth.auth']['info']['nickname'] })
     when request.env['omniauth.auth']['info']['email'].present? then @user = User.first(:conditions => { :email => request.env['omniauth.auth']['info']['email'] })
@@ -42,6 +42,6 @@ class Users::SessionsController < ApplicationController
     
     def sign_up
       @user = User.new_with_omniauth(auth_hash)
-      render '/users/identities/new'
+      render 'people/new'
     end
 end

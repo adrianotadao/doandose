@@ -1,0 +1,9 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825598.8502023:@value{	I"length:EFizI"digest;
+F"%04739eaae9cfdc942706cbb8180002faI"source;
+FI"z/* line 2, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/user.sass */
+#user form {
+  width: 300px;
+}
+;
+FI"_version;
+F"%578e1f43d11d090a9ac3667faef00f2a

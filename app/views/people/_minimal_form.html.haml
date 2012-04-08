@@ -1,5 +1,5 @@
 #user
-  = simple_form_for @person, :html => { :multipart => true } do |f|
+  = simple_form_for setup_person(@person), :url => people_path, :html => { :multipart => true } do |f|
     .inputs
       = f.input :donor, :as => :boolean
       = f.input :name
@@ -7,14 +7,17 @@
       = f.input :sex
       = f.input :birthday
 
+      %h2 Contato
+      = f.fields_for :contact do |contact_form|
+        = render :partial => '/contacts/form', :locals => { :f => contact_form }
+
+      %h2 Endereco
       = f.fields_for :address do |address|
         = render :partial => '/addresses/form', :locals => { :f => address }
 
-      = f.simple_fields_for @user, :user do |user_form|
+      %h2 Usuarios
+      = f.simple_fields_for :user do |user_form|
         = render :partial => '/users/identities/form', :locals => { :f => user_form }
-
-      = f.fields_for :contact do |contact_form|
-        = render :partial => '/contacts/form', :locals => { :f => contact_form }
 
     .actions
       = f.submit "Salvar"
