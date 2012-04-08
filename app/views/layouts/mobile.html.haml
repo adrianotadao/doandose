@@ -1,0 +1,20 @@
+!!! XML
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml", :lang => "pt-br"}
+	%head
+		= stylesheet_link_tag "mobile"
+		= yield :stylesheet
+		= csrf_meta_tag
+
+		%title= page_title
+	
+	%body
+		%div{'data-role' => 'page'}
+			%div{'data-role' => 'header'}
+				%h1= page_title
+
+			%div{'data-role' => 'content'}
+				= yield
+
+		= javascript_include_tag "mobile"
+		= yield :javascript

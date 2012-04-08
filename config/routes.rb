@@ -27,5 +27,10 @@ Doandose::Application.routes.draw do
   namespace :admin do
     resource :partners, :path => 'parceiros'
   end
+  
+  namespace :mobile do
+    root :to => 'pages#index'
+    resources :partners, :path => 'parceiros'
+  end
 
 end
