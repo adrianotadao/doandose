@@ -1,30 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825597.206651:@value{I"
-class:EFI"BundledAsset;
-FI"id;
-F"%578e1f43d11d090a9ac3667faef00f2aI"logical_path;
-F"user.cssI"pathname;
-FI"+$root/app/assets/stylesheets/user.sass;
-FI"content_type;
-FI"text/css;
-FI"
-mtime;
-FI"2012-03-23T00:34:49-03:00;
-FI"	body;
-FI"z/* line 2, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/user.sass */
-#user form {
-  width: 300px;
-}
-;
-FI"asset_paths;
-F[I"+$root/app/assets/stylesheets/user.sass;
-FI"dependency_paths;
-F[{I"	path;
-FI"+$root/app/assets/stylesheets/user.sass;
-FI"
-mtime;
-FIu:	Timeã
-€,a‹
-:@_zoneI"BRT;
-T:nano_numiF:nano_deni:submicro"ƒ€:offsetiþÐÕI"hexdigest;
-F"%cd64830d10d43cf504736b0247bf9e23I"_version;
-F"%46dde6621c301f4928e3b34efee9e3b5

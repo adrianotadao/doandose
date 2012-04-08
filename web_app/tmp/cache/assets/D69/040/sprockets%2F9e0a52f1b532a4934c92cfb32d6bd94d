@@ -1,37 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825599.552524:@value{	I"length:EFiI"digest;
-F"%11e4c305b89042dba0fd32cd7578da9bI"source;
-FI"(function() {
-
-  window.Gmap = (function() {
-
-    Gmap.prototype.map = "";
-
-    Gmap.prototype.userPoint = "";
-
-    function Gmap(componentName) {
-      $(document).ready(function() {
-        var marker, myOptions;
-        this.userPoint = new google.maps.LatLng(-21.293853, -50.338669);
-        myOptions = {
-          center: this.userPoint,
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.map = new google.maps.Map(document.getElementById(componentName), myOptions);
-        return marker = new google.maps.Marker({
-          map: this.map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          position: this.userPoint
-        });
-      });
-    }
-
-    return Gmap;
-
-  })();
-
-}).call(this);
-;
-FI"_version;
-F"%528f68062a4bcd14917782f3e14fc1e8

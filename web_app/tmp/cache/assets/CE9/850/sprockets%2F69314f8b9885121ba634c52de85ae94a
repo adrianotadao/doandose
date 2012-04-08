@@ -1,18 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825599.554911:@value{	I"length:EFi–I"digest;
-F"%1ea59a85e25302ee62fb376df17597cfI"source;
-FI"–(function() {
-
-  window.Site = (function() {
-
-    function Site() {
-      $(".fancybox").fancybox();
-    }
-
-    return Site;
-
-  })();
-
-}).call(this);
-;
-FI"_version;
-F"%edc32f538b4ec1c85849420562deb00d

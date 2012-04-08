@@ -1,58 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825599.410536:@value{I"
-class:EFI"BundledAsset;
-FI"id;
-F"%528f68062a4bcd14917782f3e14fc1e8I"logical_path;
-F"gmap.jsI"pathname;
-FI"-$root/app/assets/javascripts/gmap.coffee;
-FI"content_type;
-FI"application/javascript;
-FI"
-mtime;
-FI"2012-03-23T00:34:49-03:00;
-FI"	body;
-FI"(function() {
-
-  window.Gmap = (function() {
-
-    Gmap.prototype.map = "";
-
-    Gmap.prototype.userPoint = "";
-
-    function Gmap(componentName) {
-      $(document).ready(function() {
-        var marker, myOptions;
-        this.userPoint = new google.maps.LatLng(-21.293853, -50.338669);
-        myOptions = {
-          center: this.userPoint,
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        this.map = new google.maps.Map(document.getElementById(componentName), myOptions);
-        return marker = new google.maps.Marker({
-          map: this.map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          position: this.userPoint
-        });
-      });
-    }
-
-    return Gmap;
-
-  })();
-
-}).call(this);
-;
-TI"asset_paths;
-F[I"-$root/app/assets/javascripts/gmap.coffee;
-FI"dependency_paths;
-F[{I"	path;
-FI"-$root/app/assets/javascripts/gmap.coffee;
-FI"
-mtime;
-FIu:	Timeã
-€,a‹
-:@_zoneI"BRT;
-T:nano_numiF:nano_deni:submicro"ƒ€:offsetiþÐÕI"hexdigest;
-F"%63f7bd7302d975a4effa2eb91404092aI"_version;
-F"%46dde6621c301f4928e3b34efee9e3b5

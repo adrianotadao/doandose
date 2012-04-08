@@ -1,39 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825599.53964:@value{I"
-class:EFI"BundledAsset;
-FI"id;
-F"%edc32f538b4ec1c85849420562deb00dI"logical_path;
-F"site.jsI"pathname;
-FI"-$root/app/assets/javascripts/site.coffee;
-FI"content_type;
-FI"application/javascript;
-FI"
-mtime;
-FI"2012-03-23T00:34:49-03:00;
-FI"	body;
-FI"–(function() {
-
-  window.Site = (function() {
-
-    function Site() {
-      $(".fancybox").fancybox();
-    }
-
-    return Site;
-
-  })();
-
-}).call(this);
-;
-TI"asset_paths;
-F[I"-$root/app/assets/javascripts/site.coffee;
-FI"dependency_paths;
-F[{I"	path;
-FI"-$root/app/assets/javascripts/site.coffee;
-FI"
-mtime;
-FIu:	Timeã
-€,a‹
-:@_zoneI"BRT;
-T:nano_numiF:nano_deni:submicro"ƒ€:offsetiþÐÕI"hexdigest;
-F"%0c712d9a76ec94ee248156c53f2c9c70I"_version;
-F"%46dde6621c301f4928e3b34efee9e3b5

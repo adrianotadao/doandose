@@ -1,28 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1333825598.8806076:@value{	I"length:EFiçI"digest;
-F"%b8ed08a5218907b181f63ea180266048I"source;
-FI"ç/* line 3, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/simple_form.sass */
-form.simple_form {
-  font-size: 12px;
-}
-/* line 7, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/simple_form.sass */
-form.simple_form .inputs .input {
-  padding: 5px;
-}
-/* line 9, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/simple_form.sass */
-form.simple_form .inputs .input label {
-  width: 100%;
-}
-/* line 11, /home/saulo/trabalho/doando.se/web_app/app/assets/stylesheets/simple_form.sass */
-form.simple_form .inputs .input input {
-  font-size: 13px;
-  padding: 3px;
-  width: 96%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-;
-FI"_version;
-F"%86174d457b9228636ee546dcbe4e68fd
