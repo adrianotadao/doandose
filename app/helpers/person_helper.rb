@@ -1,7 +1,5 @@
 module PersonHelper
   def setup_person(person)
-    p person
-    p '==========='
     person.tap do |c|
       c.build_user if c.user.blank?
       c.build_address if c.address.blank?

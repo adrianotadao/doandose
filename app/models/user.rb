@@ -38,6 +38,13 @@ class User
   def has_identity?
     self.authentications.map(&:provider).include?('identity') || self.authentications.blank?
   end
+  
+  def add_authentication(auth)
+    self.tap do |user|
+      user.authentications.new(:provider => auth.provider, :uid => auth.uid)
+      user.save
+    end
+  end
 
   # static
   class << self

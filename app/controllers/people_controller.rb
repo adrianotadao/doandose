@@ -2,17 +2,16 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
-    p @person
-    p '============'
   end 
 
   def show
-    @person = Person.find params[:id]
+    @person = Person.find(params[:id])
   end
 
   def create
-    @user = User.new
-    @person = Person.new
+    @person = Person.new(params[:person])
+    @person.blood_id = 1
+    
     if @person.save
       redirect_to root_path
     else
