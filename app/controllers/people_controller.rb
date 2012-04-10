@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(params[:person])
     @person.blood_id = 1    
-
+    
     if @person.save
       redirect_to root_path
     else

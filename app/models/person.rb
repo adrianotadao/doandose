@@ -20,7 +20,7 @@ class Person
   belongs_to :blood
   has_one :address, as: :addressable, dependent: :destroy, autosave: true
   has_one :contact, as: :contactable, dependent: :destroy, autosave: true
-  has_one :user, as: :authenticatable, dependent: :destroy, autosave: true
+  has_one :user, as: :usable, dependent: :destroy
   has_many :person_notifications
 
   #validations
