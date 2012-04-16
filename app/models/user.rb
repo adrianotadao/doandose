@@ -6,8 +6,8 @@ class User
   include OmniAuth::Identity::Model
 
   #associations
-  belongs_to :usable, polymorphic: true
-  has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true 
+  belongs_to :authenticable, polymorphic: true
+  has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true
   has_many :people
 
   #attributes
@@ -22,22 +22,22 @@ class User
   index :username
   index :email
 
-  accepts_nested_attributes_for :usable, :allow_destroy => true
+  accepts_nested_attributes_for :authentications, :authenticable, :allow_destroy => true
 
   #validates
-  #validates_presence_of :email, :username
-  #validates_uniqueness_of :email, :username, :case_sensitive => false
-  #validates_associated :authentications, :if => :authentications?
-  #validates_presence_of :authentications, :unless => :password?
-  #validates_presence_of :password, :if => :password_is_required?
-  #validates_confirmation_of :password, :if => :password?
-  #validates_presence_of :password_digest, :if => :password?
-  #validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/  
+  validates_presence_of :email
+  validates_uniqueness_of :email, :case_sensitive => false
+  validates_associated :authentications, :if => :authentications?
+  validates_presence_of :authentications, :unless => :password?
+  validates_presence_of :password, :if => :password_is_required?
+  validates_confirmation_of :password, :if => :password?
+  validates_presence_of :password_digest, :if => :password?
+  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/  
 
   # callbacks
   after_save :build_identity
 
-  attr_accessible :email, :password, :password_confirmation  
+  #attr_accessible :username, :email, :password, :password_confirmation  
 
   def build_identity
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s) unless password.blank?

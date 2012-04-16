@@ -17,15 +17,15 @@ class Person
   field :lng, :type => String
 
   #relationship
-  belongs_to :blood
-  has_one :address, as: :addressable, dependent: :destroy, autosave: true
-  has_one :contact, as: :contactable, dependent: :destroy, autosave: true
-  has_one :user, as: :usable, dependent: :destroy
-  has_many :person_notifications
+  belongs_to  :blood
+  has_one     :address, as: :addressable,   dependent: :destroy, autosave: true
+  has_one     :contact, as: :contactable,   dependent: :destroy, autosave: true
+  has_one     :user,    as: :authenticable, dependent: :destroy, autosave: true
+  has_many    :person_notifications
 
   #validations
-  #validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :user#, :lat, :lng
-  #validates_associated :contact, :address, :user
+  validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :user#, :lat, :lng
+  validates_associated :contact, :address, :user
 
   accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
   attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :email, :phone, :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email, :username
