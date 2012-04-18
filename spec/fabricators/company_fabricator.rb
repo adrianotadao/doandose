@@ -5,7 +5,10 @@ Fabricator(:company) do
   cnpj { rand(9999) +1 }
   responsible { Faker::Name.name }
   
-  address
-  contact
+  address!
+  contact!
+  users!(:count => 2) do |parent, i|
+    Fabricate(:user, :authenticable => parent)
+  end
   
 end

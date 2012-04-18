@@ -10,5 +10,5 @@ class Testimonial
   #relationship
   belongs_to :person
   belongs_to :company
-  
+
 end
