@@ -40,7 +40,7 @@ class Users::SessionsController < ApplicationController
     
     def add_new_authentication_logged
       current_user.add_authentication(auth_hash)
-      redirect_to edit_user_path
+      redirect_to users_edit_user_path
     end
   
     def auth_hash
