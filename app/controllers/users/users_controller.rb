@@ -1,3 +1,3 @@
-class Users::UsersController < UserSession::BaseController
+class Users::UsersController < ApplicationController
 
 end

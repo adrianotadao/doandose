@@ -1,6 +1,7 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
-  protected
+  helper_method :user_signed_in?, :current_user
+  protect_from_forgery
 
   def login(user)
     session[:user_id] = user.id
@@ -23,6 +24,6 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     current_user.present?
+    p current_user
   end
-  
 end

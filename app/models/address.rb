@@ -9,6 +9,8 @@ class Address
   field :city, :type => String
   field :zip_code, :type => String
   field :state, :type => String
+  field :state, :type => String
+  field :complement, :type => String
 
   #relationship
   belongs_to :addressable, polymorphic: true
