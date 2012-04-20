@@ -12,12 +12,12 @@ class Company
   #relationship
   has_one :address, :as => :addressable, dependent: :destroy
   has_one :contact, :as => :contactable, dependent: :destroy
-  has_many :users, :as => :authenticatable, dependent: :destroy
+  has_many :users, :as => :authenticable, dependent: :destroy
   
   accepts_nested_attributes_for :address, :contact, :users, :allow_destoy => true
 
   #validations
-  validates_presence_of :name, :fancy_name, :responsible, :address, :contact
+  validates_presence_of :name, :fancy_name, :responsible, :address, :contact#, :users
   validates_uniqueness_of :name, :fancy_name
 
 end

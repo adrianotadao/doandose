@@ -24,9 +24,12 @@ class Person
   has_many    :person_notifications
 
   #validations
-  validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :user#, :lat, :lng
+  validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :user, :blood, :lat, :lng
   validates_associated :contact, :address, :user
 
   accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
-  attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :email, :phone, :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email, :username
+  attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, 
+                  :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :email, :phone, 
+                  :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email, 
+                  :username
 end

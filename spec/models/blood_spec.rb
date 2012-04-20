@@ -15,4 +15,8 @@ describe 'Blood' do
       Fabricate.build(:blood, :name => blood.name).should_not be_valid
     end
   end
+  
+  it 'people is not required' do
+    Fabricate.build(:blood, :peolpe => nil).should be_valid
+  end
 end
