@@ -42,5 +42,5 @@ describe 'Company' do
   it 'Should have a responsible' do
     Fabricate.build(:company, :responsible => nil).should_not be_valid
   end
-  
+
 end
