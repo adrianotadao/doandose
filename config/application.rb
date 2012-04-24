@@ -50,6 +50,10 @@ module Doandose
       g.template_engine :haml
     end
 
+    initializer :images_all, :group => :all, :after => :append_assets_path do
+       config.assets.paths.unshift Rails.root.join('vendor', 'images').to_s
+    end
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

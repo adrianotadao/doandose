@@ -1,5 +1,13 @@
 = link_to 'Home', root_path
-= link_to 'Perfil', people_path
-= link_to 'Notificacoes', notifications_path
-= link_to 'Cadastre-se', new_person_path
-= link_to 'Login', users_new_session_path
+
+- if user_signed_in?
+  = link_to 'Perfil', people_path
+  = link_to 'Notificacoes', notifications_path
+
+  .welcome
+    Bem vindo! #{current_user.username}
+    = link_to 'Sair', users_destroy_session_path, :confirm => 'Deseja sair?'
+
+- else
+  = link_to 'Cadastre-se', new_person_path
+  = link_to 'Login', users_new_session_path
