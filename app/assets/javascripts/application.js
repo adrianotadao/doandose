@@ -6,3 +6,4 @@
 //= require gmap
 //= require site
 //=require postal_codes
+//=require person
