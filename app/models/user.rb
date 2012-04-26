@@ -37,16 +37,8 @@ class User
   # callbacks
   after_save :build_identity
 
-  #attr_accessible :username, :email, :password, :password_confirmation  
-
   def build_identity
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s) unless password.blank?
-  end
-
-  def add_url_protocol
-    if self.site and !self.site[/^(http|https):\/\//]
-      self.site = 'http://' + self.site
-    end
   end
 
   def prepare_to_reset_password!

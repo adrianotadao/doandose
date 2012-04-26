@@ -4,6 +4,13 @@
   = link_to 'Google', '/auth/google_oauth2', :class => 'google', :title => 'Conta Google'
 
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
+    - if @person.errors.size > 0
+      .validation
+        %h2 The following errors were found:
+
+        - for error in @person.errors.full_messages
+          %ul
+            %li= error
     #user
       #alert
       %h2 Usuarios
