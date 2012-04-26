@@ -11,6 +11,7 @@ class window.Person
   buttonSave: $('.button.save')
   buttonNext: $('.button.next')
   alert: $('#alert')
+  birthday: $('#person_birthday').mask('99/99/9999')
 
   constructor: ->
     @showForms()
