@@ -13,27 +13,40 @@ class PeopleController < ApplicationController
     session[:person_params].deep_merge!(params[:person]) if params[:person]
     restore_session
 
-    if params[:back_button]
-      @person.previous_step
-    elsif @person.last_step?
-      @person.blood_id = 1 
-      @person.save 
-    else
-      @person.next_step
+    if @person.valid?
+      case
+        when params[:back_button] then @person.previous_step
+        when @person.last_step? then save_person
+        else @person.next_step
+      end
     end
-    session[:person_step] = @person.current_step
 
-    if @person.new_record?
-      render 'new'
-    else
-      flash[:notice] = 'cadastro efetuado com sucesso'
-      redirect_to root_path
-    end  
+    session[:person_step] = @person.current_step
+    new_record
   end
     
   private
     def restore_session
       @person = Person.new(session[:person_params])
       @person.current_step = session[:person_step]
+    end
+    
+    def reset_sessions
+      session[:person_params] = session[:person_step] = nil
+    end
+
+    def save_person
+      @person.blood_id = 1 
+      @person.save if @person.all_valid?
+      reset_sessions
+    end
+
+    def new_record
+      if @person.new_record?
+        render 'new'
+      else
+        flash[:notice] = 'cadastro efetuado com sucesso'
+        redirect_to root_path
+      end 
     end
 end

@@ -10,4 +10,8 @@ module PersonHelper
   def type_sex
     %w(Masculino Feminino)
   end
+  
+  def label_button
+    @person.last_step? ? 'concluir' : 'proximo'
+  end
 end

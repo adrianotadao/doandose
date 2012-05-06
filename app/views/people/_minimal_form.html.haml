@@ -11,8 +11,9 @@
     = render "people/#{@person.current_step}_step", :f => f
 
     .actions
-      = f.submit "continuar", :class => 'button save'
       = f.submit "back", :name => 'back_button' unless @person.first_step?
+      = f.submit label_button, :class => 'button save' 
+      
       
   #user_map
   

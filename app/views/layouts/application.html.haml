@@ -13,9 +13,6 @@
       Doando.se
       #container
         #top
-          - if user_signed_in?
-            = current_user.name
-            = link_to "Sair", users_destroy_session_path
           #menu
             = render :partial => "layouts/top_menu"            
         #center

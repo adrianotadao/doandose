@@ -1,0 +1,52 @@
+%h1 Dados Pessoais
+
+%p
+  %b E doador?
+  = @person.donor
+%p
+  %b Nome
+  = @person.name
+  = @person.surname
+%p
+  %b Sexo
+  = @person.sex
+%p
+  %b Data Nascimento
+  = @person.birthday
+%p
+  %b Peso
+  = @person.weight
+%p
+  %b Altura
+  = @person.height
+
+%h1 Contatos
+%p
+  %b Telefone
+  = @person.contact.phone
+%p
+  %b Celular
+  = @person.contact.cellphone
+
+%h1 Endereco
+%p
+  %b CEP
+  = @person.address.zip_code
+%p
+  %b Rua
+  = @person.address.street
+%p
+  %b Numero
+  = @person.address.number
+%p
+  %b Bairro
+  = @person.address.neighborhood
+%p
+  %b Cidade
+  = @person.address.city
+%p
+  %b Estado
+  = @person.address.state
+%p
+  %b Complemento
+  = @person.address.complement
