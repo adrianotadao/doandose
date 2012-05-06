@@ -1,0 +1,9 @@
+= link_to 'Twitter', '/auth/twitter', :class => 'twitter', :title => 'Twitter'
+= link_to 'Facebook', '/auth/facebook', :class => 'facebook', :title => 'Facebook'
+= link_to 'Google', '/auth/google_oauth2', :class => 'google', :title => 'Conta Google'
+
+#user
+  #alert
+  %h2 Usuarios
+  = f.simple_fields_for :user do |user_form|
+    = render :partial => '/users/identities/form', :locals => { :f => user_form }

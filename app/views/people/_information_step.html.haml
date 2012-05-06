@@ -1,0 +1,17 @@
+#information_form
+  .inputs
+    = f.input :donor, :as => :boolean
+    = f.input :name
+    = f.input :surname
+    = f.input :sex, :collection => type_sex, :prompt => false
+    = f.input :birthday
+
+#contact
+  %h2 Contato
+  = f.fields_for :contact do |contact_form|
+    = render :partial => '/contacts/form', :locals => { :f => contact_form }
+
+#address    
+  %h2 Endereco
+  = f.fields_for :address do |address|
+    = render :partial => '/addresses/form', :locals => { :f => address }

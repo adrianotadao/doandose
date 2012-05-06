@@ -1,8 +1,4 @@
 #user
-  = link_to 'Twitter', '/auth/twitter', :class => 'twitter', :title => 'Twitter'
-  = link_to 'Facebook', '/auth/facebook', :class => 'facebook', :title => 'Facebook'
-  = link_to 'Google', '/auth/google_oauth2', :class => 'google', :title => 'Conta Google'
-
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
     - if @person.errors.size > 0
       .validation
@@ -11,35 +7,14 @@
         - for error in @person.errors.full_messages
           %ul
             %li= error
-    #user
-      #alert
-      %h2 Usuarios
-      = f.simple_fields_for :user do |user_form|
-        = render :partial => '/users/identities/form', :locals => { :f => user_form }
-      = link_to_function 'Proximo Passo', 'person.verifyInputs()', :class => 'button next'
 
-    #minimal_form
-      .inputs
-        = f.input :donor, :as => :boolean
-        = f.input :name
-        = f.input :surname
-        = f.input :sex, :collection => type_sex, :prompt => false
-        = f.input :birthday
-
-    #contact
-      %h2 Contato
-      = f.fields_for :contact do |contact_form|
-        = render :partial => '/contacts/form', :locals => { :f => contact_form }
-
-    #address    
-      %h2 Endereco
-      = f.fields_for :address do |address|
-        = render :partial => '/addresses/form', :locals => { :f => address }
+    = render "people/#{@person.current_step}_step", :f => f
 
     .actions
-      = f.submit "Salvar", :class => 'button save'
+      = f.submit "continuar", :class => 'button save'
+      = f.submit "back", :name => 'back_button' unless @person.first_step?
       
   #user_map
   
 - content_for :javascript do
-  = javascript_tag 'var person = new Person()'
+  = javascript_tag ''
