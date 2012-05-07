@@ -1,0 +1,9 @@
+pt-BR:
+  nav:
+    root: 'Home'
+    people: 'Perfil'
+    new_person: 'Cadastre-se'
+    users_new_session: 'Login'
+    users_destroy_session: 'Sair'
+    notifications: 'Notificacoes'
+

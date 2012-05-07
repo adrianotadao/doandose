@@ -1,0 +1,13 @@
+= link_to t('nav.root'), root_path
+
+- if user_signed_in?
+  = link_to t('nav.people'), people_path
+  = link_to t('nav.notifications'), notifications_path
+
+  .welcome
+    Bem vindo! #{current_user.username}
+    = link_to t('nav.users_destroy_session'), users_destroy_session_path, :confirm => 'Deseja sair?'
+
+- else
+  = link_to t('nav.new_person'), new_person_path
+  = link_to t('nav.users_new_session'), users_new_session_path

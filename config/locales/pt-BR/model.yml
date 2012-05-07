@@ -1,0 +1,13 @@
+pt-BR:
+  errors:
+    models:
+      person: 'Doador'
+      user: 'Usuario'
+  mongoid:
+    attributes:
+      person:
+      user:
+        email: 'Email'
+        username: 'Usuario'
+        password: 'Senha'
+        password_confirmation: 'Confirmar Senha'

@@ -14,7 +14,8 @@
       #container
         #top
           #menu
-            = render :partial => "layouts/top_menu"            
+            = render :partial => 'layouts/nav'   
+            = render 'shared/flash_messages'        
         #center
           #header
           %h1= notice

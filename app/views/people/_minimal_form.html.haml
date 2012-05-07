@@ -1,12 +1,6 @@
 #user
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
-    - if @person.errors.size > 0
-      .validation
-        %h2 The following errors were found:
-
-        - for error in @person.errors.full_messages
-          %ul
-            %li= error
+    = render 'shared/error_messages', :record => @person
 
     = render "people/#{@person.current_step}_step", :f => f
 

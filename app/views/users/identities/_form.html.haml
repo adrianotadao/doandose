@@ -1,10 +1,4 @@
--if @person.user.errors.size > 0
-  .validation
-    %h2 Os seguintes erros foram encontrados:
-
-    - for error in @person.user.errors.full_messages
-      %ul
-        %li= error
+= render 'shared/error_messages', :record => @person
 
 %dl.form.info
   %dl.people
@@ -19,10 +13,12 @@
         
   %dt *Email:
   %dd= f.text_field :email
+  %dt= error_for @person, :email
 
   %dl
     %dt *Apelido:
     %dd= f.text_field :username
+    %dt= error_for @person, :username
 
     -if @person.user.has_identity? || !@person.user.new_record?
       %dt Senha:
@@ -30,6 +26,7 @@
 
       %dt Confirmação de senha:
       %dd= f.password_field :password_confirmation
+      %dt= error_for @person, :password_confirmation
   
 - content_for :javascript do
   = javascript_tag 
