@@ -25,7 +25,7 @@ class Person
 
   #validations
   validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
-  validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :if => lambda { |c| c.current_step == 'information' }
+  validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :if => lambda { |c| c.current_step == 'information' }
 
 
   accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
