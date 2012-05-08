@@ -1,11 +1,18 @@
 pt-BR:
+  user: 'Usuario'
   errors:
     models:
       person: 'Doador'
       user: 'Usuario'
   mongoid:
+    models:
+      user: 'Usuario'
     attributes:
       person:
+        email: 'Email'
+        username: 'Usuario'
+        password: 'Senha'
+        password_confirmation: 'Confirmar Senha'
       user:
         email: 'Email'
         username: 'Usuario'

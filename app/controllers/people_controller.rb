@@ -12,7 +12,6 @@ class PeopleController < ApplicationController
   def create
     session[:person_params].deep_merge!(params[:person]) if params[:person]
     restore_session
-
     if @person.valid?
       case
         when params[:back_button] then @person.previous_step

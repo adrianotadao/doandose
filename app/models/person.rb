@@ -23,7 +23,7 @@ class Person
   has_one     :user,    as: :authenticable, dependent: :destroy, autosave: true
   has_many    :person_notifications
 
-  #validations :user
+  #validations
   validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
   validates_presence_of :name, :surname, :sex, :birthday, :contact, :address, :if => lambda { |c| c.current_step == 'information' }
 

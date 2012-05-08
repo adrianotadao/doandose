@@ -1,7 +1,7 @@
 #user
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
     = render 'shared/error_messages', :record => @person
-
+    
     = render "people/#{@person.current_step}_step", :f => f
 
     .actions

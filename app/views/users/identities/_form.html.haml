@@ -1,5 +1,3 @@
-= render 'shared/error_messages', :record => @person
-
 %dl.form.info
   %dl.people
     %dt
@@ -13,20 +11,21 @@
         
   %dt *Email:
   %dd= f.text_field :email
-  %dt= error_for @person, :email
+  %dt= error_for @person.user, :email
 
   %dl
     %dt *Apelido:
     %dd= f.text_field :username
-    %dt= error_for @person, :username
+    %dt= error_for @person.user, :username
 
     -if @person.user.has_identity? || !@person.user.new_record?
       %dt Senha:
       %dd= f.password_field :password
+      %dt= error_for @person.user, :password
 
       %dt Confirmação de senha:
       %dd= f.password_field :password_confirmation
-      %dt= error_for @person, :password_confirmation
+      %dt= error_for @person.user, :password_confirmation
   
 - content_for :javascript do
   = javascript_tag 
