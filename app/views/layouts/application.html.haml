@@ -13,12 +13,11 @@
       Doando.se
       #container
         #top
+          = render 'shared/flash_messages' 
           #menu
-            = render :partial => 'layouts/nav'   
-            = render 'shared/flash_messages'        
+            = render :partial => 'layouts/nav'           
         #center
           #header
-          %h1= notice
           #content= yield
 
       #root_footer

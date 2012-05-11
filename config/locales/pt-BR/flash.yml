@@ -7,6 +7,10 @@ pt-BR:
       create:
         notice: "Seu cadastro foi realizado com sucesso!"
 
+    people:
+      create:
+        notice: "Cadastro efetuado com sucesso!"
+
     sessions:
       create:
         notice: "Que bom que você voltou!"

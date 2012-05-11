@@ -19,13 +19,18 @@
     %dt= error_for @person.user, :username
 
     -if @person.user.has_identity? || !@person.user.new_record?
-      %dt Senha:
-      %dd= f.password_field :password
-      %dt= error_for @person.user, :password
+      %dt{:for => "regpwd"} Senha:
+      %div.pwdwidgetdiv#thepwddiv'
+      %noscript
+        #regpwd%dd= f.password_field :password, :class => 'regpwd'
+        %dt= error_for @person.user, :password
 
-      %dt Confirmação de senha:
+      %dt{:for => "regpwd"} Confirmação de senha:
       %dd= f.password_field :password_confirmation
       %dt= error_for @person.user, :password_confirmation
-  
+
+
+		 
+ 
 - content_for :javascript do
-  = javascript_tag 
+  = javascript_tag "var pwdwidget = new PasswordWidget('thepwddiv','regpwd'); pwdwidget.MakePWDWidget();"

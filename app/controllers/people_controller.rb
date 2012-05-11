@@ -19,7 +19,7 @@ class PeopleController < ApplicationController
         else @person.next_step
       end
     end
-
+    
     session[:person_step] = @person.current_step
     new_record
   end
@@ -31,21 +31,20 @@ class PeopleController < ApplicationController
     end
     
     def reset_sessions
-      session[:person_params] = session[:person_step] = nil
+      session[:person_step] = session[:person_params] = nil
     end
 
     def save_person
       @person.blood_id = 1 
       @person.save if @person.all_valid?
-      reset_sessions
     end
 
     def new_record
       if @person.new_record?
         render 'new'
       else
-        flash[:notice] = 'cadastro efetuado com sucesso'
-        redirect_to root_path
+        reset_sessions
+        redirect_to root_path, :notice => t('flash.people.create.notice')
       end 
     end
 end

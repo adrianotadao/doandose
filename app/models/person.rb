@@ -60,6 +60,10 @@ class Person
     current_step == steps.last  
   end
 
+  def first_step
+    steps.first
+  end
+
   def all_valid?
     steps.all? do |step|
       self.current_step = step

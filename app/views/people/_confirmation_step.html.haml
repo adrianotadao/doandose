@@ -1,52 +1,52 @@
-%h1 Dados Pessoais
+%h1= path_locale('confirmation_title')
 
 %p
-  %b E doador?
+  %b= path_locale('is_donor')
   = @person.donor
 %p
-  %b Nome
+  %b= path_locale('name')
   = @person.name
   = @person.surname
 %p
-  %b Sexo
+  %b= path_locale('sex')
   = @person.sex
 %p
-  %b Data Nascimento
+  %b= path_locale('birthday')
   = @person.birthday
 %p
-  %b Peso
+  %b= path_locale('weight')
   = @person.weight
 %p
-  %b Altura
+  %b= path_locale('height')
   = @person.height
 
-%h1 Contatos
+%h1= path_locale('confirmation_contact')
 %p
-  %b Telefone
+  %b= path_locale('phone')
   = @person.contact.phone
 %p
-  %b Celular
+  %b= path_locale('cellphone')
   = @person.contact.cellphone
 
-%h1 Endereco
+%h1= path_locale('confirmation_address')
 %p
-  %b CEP
+  %b= path_locale('zip_code')
   = @person.address.zip_code
 %p
-  %b Rua
+  %b= path_locale('street')
   = @person.address.street
 %p
-  %b Numero
+  %b= path_locale('number')
   = @person.address.number
 %p
-  %b Bairro
+  %b= path_locale('neighborhood')
   = @person.address.neighborhood
 %p
-  %b Cidade
+  %b= path_locale('city')
   = @person.address.city
 %p
-  %b Estado
+  %b= path_locale('state')
   = @person.address.state
 %p
-  %b Complemento
+  %b= path_locale('complement')
   = @person.address.complement
