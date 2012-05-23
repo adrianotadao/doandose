@@ -7,9 +7,10 @@ class User
 
   #associations
   belongs_to :authenticable, polymorphic: true
+  belongs_to :company
+  belongs_to :people
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true
-  has_many :people
-
+  
   #attributes
   attr_reader :password
 
@@ -26,12 +27,12 @@ class User
 
   #validates
   validates_presence_of :email
-  validates_uniqueness_of :email, :case_sensitive => false
-  validates_associated :authentications, :if => :authentications?
   validates_presence_of :authentications, :unless => :password?
   validates_presence_of :password, :if => :password_is_required?
-  validates_confirmation_of :password, :if => :password?
   validates_presence_of :password_digest, :if => :password?
+  validates_uniqueness_of :email, :case_sensitive => false
+  validates_associated :authentications, :if => :authentications?
+  validates_confirmation_of :password, :if => :password?
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/  
 
   # callbacks

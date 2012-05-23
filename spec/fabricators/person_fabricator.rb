@@ -12,7 +12,7 @@ Fabricator(:person) do
   lng { rand(99999) + 1 }
   
   blood!
-  contact
-  address
-  user
+  contact!
+  address!
+  user!
 end

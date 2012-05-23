@@ -7,8 +7,5 @@ Fabricator(:company) do
   
   address!
   contact!
-  users!(:count => 2) do |parent, i|
-    Fabricate(:user, :authenticable => parent)
-  end
-  
+  user!  
 end
