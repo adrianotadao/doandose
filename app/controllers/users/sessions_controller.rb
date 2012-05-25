@@ -53,7 +53,9 @@ class Users::SessionsController < ApplicationController
     end
     
     def sign_up
-      @person = Person.new
+      session[:person_params] ||= {}
+      @person = Person.new(session[:person_params])
+      @person.current_step = session[:person_step]
       @person.user = User.new_with_omniauth(auth_hash)
       render '/people/new'
     end

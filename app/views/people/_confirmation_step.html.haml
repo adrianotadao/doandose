@@ -1,0 +1,52 @@
+%h1= path_locale('confirmation_title')
+
+%p
+  %b= path_locale('is_donor')
+  = @person.donor
+%p
+  %b= path_locale('name')
+  = @person.name
+  = @person.surname
+%p
+  %b= path_locale('sex')
+  = @person.sex
+%p
+  %b= path_locale('birthday')
+  = @person.birthday
+%p
+  %b= path_locale('weight')
+  = @person.weight
+%p
+  %b= path_locale('height')
+  = @person.height
+
+%h1= path_locale('confirmation_contact')
+%p
+  %b= path_locale('phone')
+  = @person.contact.phone
+%p
+  %b= path_locale('cellphone')
+  = @person.contact.cellphone
+
+%h1= path_locale('confirmation_address')
+%p
+  %b= path_locale('zip_code')
+  = @person.address.zip_code
+%p
+  %b= path_locale('street')
+  = @person.address.street
+%p
+  %b= path_locale('number')
+  = @person.address.number
+%p
+  %b= path_locale('neighborhood')
+  = @person.address.neighborhood
+%p
+  %b= path_locale('city')
+  = @person.address.city
+%p
+  %b= path_locale('state')
+  = @person.address.state
+%p
+  %b= path_locale('complement')
+  = @person.address.complement

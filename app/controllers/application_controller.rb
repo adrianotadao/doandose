@@ -24,6 +24,5 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     current_user.present?
-    p current_user
   end
 end

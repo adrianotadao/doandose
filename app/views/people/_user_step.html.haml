@@ -1,0 +1,7 @@
+= render 'shared/social'
+
+#user
+  #alert
+  %h2= t('label.user.user_step.title')
+  = f.simple_fields_for :user do |user_form|
+    = render :partial => '/users/identities/form', :locals => { :f => user_form }

@@ -13,11 +13,9 @@
       Doando.se
       #container
         #top
-          -# if current_user
-            =# current_user.name
-            = link_to "Sair", users_destroy_session_path
+          = render 'shared/flash_messages' 
           #menu
-            = render :partial => "layouts/top_menu"            
+            = render :partial => 'layouts/nav'           
         #center
           #header
           #content= yield

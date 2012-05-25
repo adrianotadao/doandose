@@ -1,0 +1,19 @@
+#information_form
+  .inputs
+    = f.input :donor, :as => :boolean
+    = f.input :name
+    = f.input :surname
+    = f.input :sex, :collection => type_sex, :prompt => false
+    = f.input :birthday
+    = f.input :weight
+    = f.input :height
+
+#contact
+  %h2= t('label.user.information_step.contact_title')
+  = f.fields_for :contact do |contact_form|
+    = render :partial => '/contacts/form', :locals => { :f => contact_form }
+
+#address    
+  %h2= t('label.user.information_step.address_title')
+  = f.fields_for :address do |address|
+    = render :partial => '/addresses/form', :locals => { :f => address }

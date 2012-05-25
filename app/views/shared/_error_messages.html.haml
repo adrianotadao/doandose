@@ -1,0 +1,6 @@
+- unless record.errors.empty?
+  %dl.error-messages
+    %dt= t('form.error_messages')
+    - record.errors.full_messages.each do |message|
+      %dd= message
+

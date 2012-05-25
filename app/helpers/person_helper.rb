@@ -6,4 +6,12 @@ module PersonHelper
       c.build_contact if c.contact.blank?
     end
   end
+
+  def type_sex
+    %w(Masculino Feminino)
+  end
+  
+  def label_button
+    @person.last_step? ? 'concluir' : 'proximo'
+  end
 end

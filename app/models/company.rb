@@ -10,14 +10,13 @@ class Company
   field :responsible, :type => String
 
   #relationship
-  has_one :address, :as => :addressable, dependent: :destroy
-  has_one :contact, :as => :contactable, dependent: :destroy
-  has_many :users, :as => :authenticable, dependent: :destroy
+  has_one :address, :as => :addressable, dependent: :destroy, autosave: true
+  has_one :contact, :as => :contactable, dependent: :destroy, autosave: true
+  has_many :users, :as => :authenticable, dependent: :destroy, autosave: true
   
-  accepts_nested_attributes_for :address, :contact, :users, :allow_destoy => true
+  accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
 
   #validations
   validates_presence_of :name, :fancy_name, :responsible, :address, :contact, :users
   validates_uniqueness_of :name, :fancy_name
-
 end

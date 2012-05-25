@@ -1,0 +1,17 @@
+pt-BR:
+  flash:
+    auth:
+      alert: "Você precisar fazer o login para acessar esta página."
+
+    users:
+      create:
+        notice: "Seu cadastro foi realizado com sucesso!"
+
+    people:
+      create:
+        notice: "Cadastro efetuado com sucesso!"
+
+    sessions:
+      create:
+        notice: "Que bom que você voltou!"
+        alert: "E-mail/senha inválidos."

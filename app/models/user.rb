@@ -7,9 +7,10 @@ class User
 
   #associations
   belongs_to :authenticable, polymorphic: true
+  belongs_to :company
+  belongs_to :people
   has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true
-  has_many :people
-
+  
   #attributes
   attr_reader :password
 
@@ -26,27 +27,19 @@ class User
 
   #validates
   validates_presence_of :email
-  validates_uniqueness_of :email, :case_sensitive => false
-  validates_associated :authentications, :if => :authentications?
   validates_presence_of :authentications, :unless => :password?
   validates_presence_of :password, :if => :password_is_required?
-  validates_confirmation_of :password, :if => :password?
   validates_presence_of :password_digest, :if => :password?
+  validates_uniqueness_of :email, :case_sensitive => false
+  validates_associated :authentications, :if => :authentications?
+  validates_confirmation_of :password, :if => :password?
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/  
 
   # callbacks
   after_save :build_identity
 
-  #attr_accessible :username, :email, :password, :password_confirmation  
-
   def build_identity
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s) unless password.blank?
-  end
-
-  def add_url_protocol
-    if self.site and !self.site[/^(http|https):\/\//]
-      self.site = 'http://' + self.site
-    end
   end
 
   def prepare_to_reset_password!

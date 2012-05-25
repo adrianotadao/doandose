@@ -1,0 +1,38 @@
+pt-BR:
+  errors:
+    models:
+      address: 'Endereco'
+      contact: 'Contato'
+      person: 'Doador'
+      user: 'Usuario'
+  mongoid:
+    attributes:
+      address:
+        zip_code: 'CEP'
+        street: 'Rua'
+        number: 'N.'
+        neighborhood: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        complement: 'Complemento'
+      contact:
+        phone: 'Telefone'
+        cellphone: 'Celular'
+      person:
+        donor: 'Doador?'
+        name: 'Nome'
+        surname: 'Sobrenome'
+        sex: 'Sexo'
+        birthday: 'Data de Nascimento'
+        weight: 'Peso'
+        height: 'Altura'
+        email: 'Email'
+        username: 'Usuario'
+        password: 'Senha'
+        password_confirmation: 'Confirmar Senha'
+        user: 'Usuario'
+      user:
+        email: 'Email'
+        username: 'Usuario'
+        password: 'Senha'
+        password_confirmation: 'Confirmar Senha'
