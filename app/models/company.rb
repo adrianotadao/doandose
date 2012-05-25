@@ -17,7 +17,7 @@ class Company
   accepts_nested_attributes_for :address, :contact, :users, :allow_destoy => true
 
   #validations
-  validates_presence_of :name, :fancy_name, :responsible, :address, :contact#, :users
+  validates_presence_of :name, :fancy_name, :responsible, :address, :contact, :users
   validates_uniqueness_of :name, :fancy_name
 
 end
