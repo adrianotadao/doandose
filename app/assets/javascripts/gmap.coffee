@@ -1,5 +1,4 @@
 class window.Gmap
-
   numberInput: $('.number')
   street: $('#person_address_attributes_street') 
   number: $('#person_address_attributes_number')
@@ -9,40 +8,44 @@ class window.Gmap
   lng: $('#person_address_attributes_lng')    
 
   constructor: ->
-    @numberInput.focusout =>
-      @geoCoder()
-
+    @numberInput.focusout => @geoCoder()
+    $('input.save').click => @geoCoder()
+      
   geoCoder: ->
     geo = new google.maps.Geocoder()
     geo.geocode {
       address: @getAddress()
     }, 
     (result, status) =>
-        @setMap(status)
+      @setMap(status, result)
+      @mark(result)
+      @setCoordenation(result)
 
-  setMap: (status) ->
+  setMap: (status, result) ->
     if status == 'OK'
       mapDom = document.getElementById('map')
-      map = new google.maps.Map(mapDom, @options())
+      @map = new google.maps.Map(mapDom, @options(result))
 
-  options: ->
+  options: (result) ->
     zoom: 18
-    center: @coodenation()
+    center: @coordenation(result)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   coordenation: (result) ->
     coords = result[0].geometry.location
-    @latitude = coords.$a
-    @longitude = coords.ab 
+    return coords
 
-  setCoordenation: ->
-    @lat.val(@coordenation.latitude)
-    @lng.val(@coordenation.longitude)
+  setCoordenation: (result) ->
+    value = @coordenation(result)
+    latitude = value.$a
+    longitude = value.ab 
+    @lat.val(latitude)
+    @lng.val(longitude)
   
-  mark: ->
+  mark: (result) ->
     mark = new google.maps.Marker
-      position: @coordenation.coords
-      map: map
+      position: @coordenation(result)
+      map: @map
       draggable: true
 
   getAddress: ->

@@ -20,8 +20,8 @@
   #complement
     = f.input :complement, :input_html => {:class => 'complement'}
 
-    = f.input :lat
-    = f.input :lng
+    = f.hidden_field :lat
+    = f.hidden_field :lng
 
 - content_for(:javascript) do
   :javascript
