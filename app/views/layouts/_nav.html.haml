@@ -1,11 +1,11 @@
 = link_to t('nav.root'), root_path
 
 - if user_signed_in?
-  = link_to t('nav.people'), people_path
+  = link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id).name)
   = link_to t('nav.notifications'), notifications_path
 
   .welcome
-    Bem vindo! #{current_user.username}
+    Bem vindo! #{Person.find(current_user.authenticable_id).name}
     = link_to t('nav.users_destroy_session'), users_destroy_session_path, :confirm => 'Deseja sair?'
 
 - else

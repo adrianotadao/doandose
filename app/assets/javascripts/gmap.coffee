@@ -35,40 +35,51 @@ class window.Coordinates
     @lng.val(longitude)
 
 class window.Gmap
+  lat: $('#person_address_attributes_lat')
+  lng: $('#person_address_attributes_lng') 
+
   constructor: (lat, lng) ->
-    coordinate = @getCoordinate(lat, lng)
+    @coordinate = @getCoordinate(lat, lng)
 
-    @setMap(coordinate) 
-    @mark(coordinate) 
-
-    marker = new google.maps.Marker
-      position: coordinate
-      map: @map
-      draggable: true
-
-    google.maps.event.addListener marker, "drag", =>
-      @updateMarkerPosition(marker.getPosition())
+    @setMap() 
+    @mark() 
+    @addListener()
 
   updateMarkerPosition: (marker) ->
-    console.log marker
+    latitude = marker.$a
+    longitude = marker.ab
+
+    @lat.val(latitude)
+    @lng.val(longitude)
+
+  addListener: ->
+    currentMark = @currentMark()
+    google.maps.event.addListener currentMark, "drag", =>
+      @updateMarkerPosition(currentMark.getPosition())
+
+  currentMark: ->
+    marker = new google.maps.Marker
+      position: @coordinate
+      map: @map
+      draggable: true
   
   getCoordinate: (lat, lng) ->
     directionsDisplay = new google.maps.DirectionsRenderer()
     latLng = new google.maps.LatLng(lat, lng)
     return latLng
 
-  setMap: (coordinate) ->
+  setMap: ->
     mapDom = document.getElementById('map')
-    @map = new google.maps.Map(mapDom, @options(coordinate))
+    @map = new google.maps.Map mapDom, @options()
 
-  options: (coordinate) ->
+  options: ->
     zoom: 18
-    center: coordinate
+    center: @coordinate
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  mark: (coordinate) ->
+  mark: ->
     mark = new google.maps.Marker
-      position: coordinate
+      position: @coordinate
       map: @map
       draggable: true
 

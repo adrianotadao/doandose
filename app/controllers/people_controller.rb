@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PeopleController < ApplicationController
 
   def new
@@ -6,7 +7,7 @@ class PeopleController < ApplicationController
   end 
 
   def show
-    @person = Person.find(params[:id])
+    @person = Person.all(conditions: {:name => params[:id]}).first
   end
 
   def create
@@ -22,6 +23,10 @@ class PeopleController < ApplicationController
     
     session[:person_step] = @person.current_step
     new_record
+  end
+
+  def edit
+    @person = Person.all(conditions: {:name => params[:id]}).first
   end
     
   private
