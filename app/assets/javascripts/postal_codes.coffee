@@ -13,7 +13,7 @@ class window.PostalCodes
   constructor: ->
     @postal_code.focusout =>
       if $.trim(@postal_code.val()) != '' && $.trim(@postal_code.val()) != '__.___-___'
-        @progress()
+        @progress() 
         $.getScript "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{$('.postal_code').val()}", =>
           if resultadoCEP['resultado'] && resultadoCEP['bairro'] != ''
             @setAddress()
@@ -23,7 +23,7 @@ class window.PostalCodes
       else
         @principle()
         
-    @number.focusout ->
+    @number.focusout =>
         @complement.focus()
 
   progress: ->

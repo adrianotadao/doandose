@@ -17,3 +17,9 @@
   %h2= t('label.user.information_step.address_title')
   = f.fields_for :address do |address|
     = render :partial => '/addresses/form', :locals => { :f => address }
+
+#map{:style => "width: 100%; height: 500px; padding: 0px"}
+
+- content_for(:javascript) do
+  :javascript
+    new Gmap()

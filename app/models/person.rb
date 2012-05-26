@@ -13,9 +13,6 @@ class Person
   field :birthday, :type => String  
   field :observations, :type => String
 
-  field :lat, :type => String
-  field :lng, :type => String
-
   #relationship
   belongs_to  :blood
   belongs_to :company

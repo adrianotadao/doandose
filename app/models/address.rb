@@ -12,6 +12,9 @@ class Address
   field :state, :type => String
   field :complement, :type => String
 
+  field :lat, :type => Float
+  field :lng, :type => Float
+
   #relationship
   belongs_to :addressable, polymorphic: true
   

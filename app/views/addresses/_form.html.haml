@@ -20,6 +20,9 @@
   #complement
     = f.input :complement, :input_html => {:class => 'complement'}
 
+    = f.input :lat
+    = f.input :lng
+
 - content_for(:javascript) do
   :javascript
     new PostalCodes()
