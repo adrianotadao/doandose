@@ -36,12 +36,21 @@ class window.Coordinates
 
 class window.Gmap
   constructor: (lat, lng) ->
-    console.log lat
-    console.log lng
     coordinate = @getCoordinate(lat, lng)
 
     @setMap(coordinate) 
-    @mark(coordinate)    
+    @mark(coordinate) 
+
+    marker = new google.maps.Marker
+      position: coordinate
+      map: @map
+      draggable: true
+
+    google.maps.event.addListener marker, "drag", =>
+      @updateMarkerPosition(marker.getPosition())
+
+  updateMarkerPosition: (marker) ->
+    console.log marker
   
   getCoordinate: (lat, lng) ->
     directionsDisplay = new google.maps.DirectionsRenderer()
@@ -62,3 +71,4 @@ class window.Gmap
       position: coordinate
       map: @map
       draggable: true
+
