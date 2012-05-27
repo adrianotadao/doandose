@@ -1,5 +1,8 @@
 # encoding: utf-8
 class PeopleController < ApplicationController
+  before_filter :only => :update do |c|
+    c.send(:update_user_password_with_nested_fields, :person)
+  end
 
   def new
     session[:person_params] ||= {}
@@ -27,6 +30,16 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.all(conditions: {:name => params[:id]}).first
+  end
+
+  def update
+    @person = Person.all(conditions: {:name =>  params[:person][:name]}).first
+
+    if @person.update_attributes(params[:person])
+      redirect_to person_path(@person.name), :notice => t('flash.people.update.notice')
+    else
+      render :action => 'edit'
+    end
   end
     
   private

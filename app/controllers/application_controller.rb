@@ -25,4 +25,18 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
     current_user.present?
   end
+
+  protected
+    def update_user_password_with_nested_fields(type)
+      unless params[type][:users_attributes].blank?
+        for user in params[type][:users_attributes]
+          if user[1][:password].blank?
+            p user[1][:password]
+            p '------------------------'
+            user[1].delete(:password)
+            user[1].delete(:password_confirmation)
+          end
+        end
+      end
+    end
 end

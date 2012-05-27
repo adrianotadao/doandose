@@ -18,7 +18,7 @@
     %dd= f.text_field :username
     %dt= error_for @person.user, :username
 
-    -if @person.user.has_identity? || !@person.user.new_record?
+    - if @person.user.has_identity? || !@person.user.new_record?
       %dt Senha:
       %dd= f.password_field :password
       %dt= error_for @person.user, :password

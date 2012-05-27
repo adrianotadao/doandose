@@ -2,7 +2,7 @@ class window.PostalCodes
   alert: $('.alert')
   input_clear: $('.clear_input')
   preloader: $('.preloader')
-  postal_code: $('.postal_code').mask('99.999-999')
+  postal_code: $('.postal_code')
   street: $('.street')
   neighborhood: $('.neighborhood')
   city: $('.city')
@@ -11,6 +11,7 @@ class window.PostalCodes
   complement: $('#customer_address_attributes_complement')
   
   constructor: ->
+    new Mask()
     @postal_code.focusout =>
       if $.trim(@postal_code.val()) != '' && $.trim(@postal_code.val()) != '__.___-___'
         @progress() 

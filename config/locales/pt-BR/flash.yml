@@ -1,17 +1,19 @@
 pt-BR:
   flash:
     auth:
-      alert: "Você precisar fazer o login para acessar esta página."
+      alert: 'Você precisar fazer o login para acessar esta página.'
 
     users:
       create:
-        notice: "Seu cadastro foi realizado com sucesso!"
+        notice: 'Seu cadastro foi realizado com sucesso!'
 
     people:
       create:
-        notice: "Cadastro efetuado com sucesso!"
+        notice: 'Cadastro efetuado com sucesso!'
+      update:
+        notice: 'Editado com sucesso'
 
     sessions:
       create:
-        notice: "Que bom que você voltou!"
-        alert: "E-mail/senha inválidos."
+        notice: 'Que bom que você voltou!'
+        alert: 'E-mail/senha inválidos.'

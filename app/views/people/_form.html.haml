@@ -1,0 +1,10 @@
+= simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
+  = render "shared/error_messages", :record => @person
+
+  = f.simple_fields_for :user do |user_form|
+    = render :partial => '/users/identities/form', :locals => { :f => user_form }
+
+  = render "people/information_step", :f => f
+
+  .actions
+    = f.submit 'Salvar', :class => 'button save' 

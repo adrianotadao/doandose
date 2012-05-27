@@ -82,4 +82,3 @@ class window.Gmap
       position: @coordinate
       map: @map
       draggable: true
-
