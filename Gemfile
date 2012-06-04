@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-gem 'mongo'
+gem 'mongo', '1.6.2'
 gem 'mongoid', '~> 2.4'
 gem 'bson_ext', '~> 1.5'
 
@@ -12,19 +12,20 @@ gem 'settingslogic', '2.0.6'
 gem 'awesome_nested_fields', '0.5.3'
 
 gem 'paperclip', '2.7.0'
-gem 'mongoid-paperclip', :require => "mongoid_paperclip"
+gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
 
 gem 'bcrypt-ruby', '~> 3.0.0'  
-gem 'omniauth-twitter'  
-gem 'omniauth-facebook'  
-gem 'omniauth-google-oauth2'  
-gem 'omniauth-identity'    
-gem "omniauth"  
+gem 'omniauth-twitter', '0.0.9'
+gem 'omniauth-facebook', '1.2.0'
+gem 'omniauth-google-oauth2', '0.1.9'
+gem 'omniauth-identity', '1.0.0'
+gem 'omniauth-windowslive', '0.0.8.1'
+gem 'omniauth', '1.0.3'
 
 gem 'rspec', '2.8', :group => [:test, :development]
 
 group :assets do
-  gem 'compass-rails'
+  gem 'compass-rails', '1.0.1'
   gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
@@ -46,7 +47,6 @@ group :test do
 
   if RUBY_PLATFORM.downcase.include?("linux")
     gem 'rb-inotify', '0.8.6'
-    #gem 'libnotify', '0.5.2'
     gem 'libnotify', '0.7.2'
   end
 end
