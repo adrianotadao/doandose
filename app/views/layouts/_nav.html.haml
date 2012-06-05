@@ -1,7 +1,7 @@
 = link_to t('nav.root'), root_path
 
 - if user_signed_in?
-  = link_to t('nav.people'), person_path(current_user.authenticable_id)
+  = link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id))
   = link_to t('nav.notifications'), notifications_path
 
   .welcome
