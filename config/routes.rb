@@ -1,11 +1,13 @@
 Doandose::Application.routes.draw do
+
   root :to => "pages#index"
-  match "/auth/:provider/callback" => "users/sessions#create"
-  match '/auth/failure' => 'users/sessions#failure'
-  
+
   resources :people
   resources :page  
   resources :notifications
+
+  match "/auth/:provider/callback" => "users/sessions#create"
+  match '/auth/failure' => 'users/sessions#failure'
 
   namespace :users, :path => 'usuario' do 
     match '/login' => 'sessions#new', :as => :new_session
@@ -23,7 +25,10 @@ Doandose::Application.routes.draw do
   end
 
   namespace :admin do
-    resource :partners, :path => 'parceiros'
+    root :to => 'pages#index'
+
+    resources :pages, :only => :index
+    resources :partners, :path => 'parceiros'
   end
   
   namespace :mobile do
@@ -33,4 +38,8 @@ Doandose::Application.routes.draw do
     get '/cadastro/' => 'people#new', :as => :signup
   end
 
+  namespace :institution, :path => 'instituicao' do
+    root :to => 'pages#index'
+    resources :pages, :only => :index
+  end
 end

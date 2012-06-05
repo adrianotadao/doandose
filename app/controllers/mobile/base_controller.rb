@@ -1,3 +1,3 @@
 class Mobile::BaseController < ApplicationController
-  layout "/layouts/mobile"
+  layout '/layouts/mobile'
 end
