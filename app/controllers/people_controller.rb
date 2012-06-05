@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
   end 
 
   def show
-    @person = Person.find_by_slug params[:person_id]
+    @person = Person.find_by_slug params[:id]
   end
 
   def create
@@ -29,11 +29,11 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = Person.all(conditions: {:name => params[:id]}).first
+    @person = Person.find_by_slug params[:id]
   end
 
   def update
-    @person = Person.all(conditions: {:name =>  params[:person][:name]}).first
+    @person = Person.find_by_slug params[:id]
 
     if @person.update_attributes(params[:person])
       redirect_to person_path(@person.name), :notice => t('flash.people.update.notice')

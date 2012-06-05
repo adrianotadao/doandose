@@ -55,7 +55,7 @@
   %b= path_locale('complement')
   = @person.address.complement
 
-= link_to 'Editar', edit_person_path(Person.find(current_user.authenticable_id).name)
+= link_to 'Editar', edit_person_path(Person.find(current_user.authenticable_id))
 
 - content_for(:javascript) do
   :javascript

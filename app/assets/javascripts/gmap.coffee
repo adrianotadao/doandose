@@ -4,13 +4,11 @@ class window.Gmap
 
   constructor: (lat, lng) ->
     @coordinate = @getCoordinate(lat, lng)
-
     @setMap() 
     @mark() 
     @addListener()
     @bubble()
 
-   
   bubble: ->            
     contentString = "Testando o bubble"
     infowindow = new google.maps.InfoWindow(content: contentString)
