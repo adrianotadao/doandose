@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
   end 
 
   def show
-    @person = Person.all(conditions: {:name => params[:id]}).first
+    @person = Person.find_by_slug params[:person_id]
   end
 
   def create

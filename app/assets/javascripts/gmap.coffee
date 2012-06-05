@@ -44,6 +44,17 @@ class window.Gmap
     @setMap() 
     @mark() 
     @addListener()
+    @bubble()
+
+   
+  bubble: ->            
+    contentString = "Testando o bubble"
+    infowindow = new google.maps.InfoWindow(content: contentString)
+
+    google.maps.event.addListener @mark(), "click", =>
+      infowindow.open @map, @mark()
+
+    infowindow.open @map, @mark()
 
   updateMarkerPosition: (marker) ->
     latitude = marker.$a
