@@ -4,38 +4,26 @@ class window.Gmap
 
   constructor: (lat, lng) ->
     @coordinate = @getCoordinate(lat, lng)
-    @setMap() 
-    @mark() 
+    @setMap()
     @addListener()
-    @bubble()
-
-  bubble: ->            
-    contentString = "Testando o bubble"
-    infowindow = new google.maps.InfoWindow(content: contentString)
-
-    google.maps.event.addListener @mark(), "click", =>
-      infowindow.open @map, @mark()
-
-    infowindow.open @map, @mark()
 
   updateMarkerPosition: (marker) ->
     latitude = marker.$a
     longitude = marker.ab
-
     @lat.val(latitude)
     @lng.val(longitude)
 
   addListener: ->
-    currentMark = @currentMark()
+    currentMark = @mark()
+    contentString = "Testando o bubble"
+    infowindow = new google.maps.InfoWindow(content: contentString)
+  
     google.maps.event.addListener currentMark, "drag", =>
       @updateMarkerPosition(currentMark.getPosition())
+      infowindow.open @map, currentMark
+    google.maps.event.addListener currentMark, "click", =>
+      infowindow.open @map, currentMark
 
-  currentMark: ->
-    marker = new google.maps.Marker
-      position: @coordinate
-      map: @map
-      draggable: true
-  
   getCoordinate: (lat, lng) ->
     directionsDisplay = new google.maps.DirectionsRenderer()
     latLng = new google.maps.LatLng(lat, lng)
