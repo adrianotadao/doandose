@@ -2,4 +2,4 @@
 
 - content_for :javascript do
   :javascript
-    new Gmap(-21.059670, -50.2396250)
+    new SearchMap(#{coordenations(@addresses.to_a)})

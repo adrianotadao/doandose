@@ -21,4 +21,7 @@ class Address
   #validations
   validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state
 
+  def full_coordenation
+    "#{self.lat}, #{self.lng}" if self.lat && self.lng
+  end
 end
