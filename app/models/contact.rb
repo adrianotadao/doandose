@@ -5,6 +5,7 @@ class Contact
   
   field :phone, :type => String
   field :cellphone, :type => String
+  field :email, :type => String
 
   #validations
   validates_presence_of :phone, :unless => :cellphone?

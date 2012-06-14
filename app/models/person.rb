@@ -2,7 +2,7 @@ class Person
 
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug  
+  include Mongoid::Slug
 
   field :active, :type => Boolean
   field :donor, :type => Boolean
@@ -13,6 +13,7 @@ class Person
   field :height, :type => Float
   field :birthday, :type => String  
   field :observations, :type => String
+
   slug :name
 
   #relationship

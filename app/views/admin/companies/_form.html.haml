@@ -1,0 +1,60 @@
+= simple_form_for [:admin, setup_company(@company)] do |f|
+  - if @company.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@company.errors.count, "erro")
+        foram encontrados:
+
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :radio
+    = f.input :name
+    = f.input :fancy_name
+    = f.input :cnpj
+    = f.input :responsible
+    
+    = f.nested_fields_for :address do |address|
+      .inputs
+        = address.input :number
+        = address.input :street
+        = address.input :neighborhood
+        = address.input :city
+        = address.input :zip_code
+        = address.input :state
+        = address.input :complement
+        = address.input :lat
+        = address.input :lng
+
+    = f.nested_fields_for :contact do |contact|
+      .inputs
+        = contact.input :phone
+        = contact.input :cellphone
+        = contact.input :email
+        
+    .input.string.users
+      %label Usuários
+      %a.add Adicionar novo usuário
+      .container
+        = f.nested_fields_for :users do |user|
+          %fieldset.item
+            = user.input :id, :as => :hidden
+            = user.input :_destroy, :as => :hidden
+            = user.input :username
+            = user.input :email
+            = user.input :password
+            = user.input :password_confirmation
+            %a.remove Remover usuário
+
+  .actions
+    = link_to '', [:admin, :companies], :class => 'button back'
+    -unless @company.new_record?
+      = link_to '', [:admin, @company], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => "button delete"
+
+    = f.button :submit, "Salvar", :class => 'button save'
+
+- content_for :javascript do
+  :javascript
+    $('.users').nestedFields();
