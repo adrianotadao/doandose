@@ -1,0 +1,29 @@
+= simple_form_for [:admin, setup_partner(@partner)] do |f|
+  - if @partner.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@partner.errors.count, "erro")
+        foram encontrados:
+
+      %ul
+        - @partner.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :radio
+    = f.input :name
+    = f.input :site
+    
+    = f.simple_fields_for :logo do |logo|
+      = logo.input :data, :hint => 'O tamanho da imagem deve ser no minimo 300X126'
+      - unless @partner.new_record?
+        .logo
+          %p Logo:
+          = image_tag logo.object.data.url(:thumb)
+
+  .actions
+    = link_to '', [:admin, :partners], :class => 'button back'
+    -unless @partner.new_record?
+      = link_to '', [:admin, @partner], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => "button delete"
+
+    = f.button :submit, "Salvar", :class => 'button save'

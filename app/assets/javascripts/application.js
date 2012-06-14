@@ -7,3 +7,4 @@
 //= require site
 //= require postal_codes
 //= require mask
+//= require jquery.nested-fields

@@ -1,1 +1,21 @@
-%h1 Parceiros
+#partners
+  %h1 Parceiros
+  .actions
+    = link_to 'Novo parceiro', new_admin_partner_path
+
+  - unless @partners.blank?
+    %table.list
+      %thead
+        %tr
+          %th Nome
+          %th Logo
+          %th.actions
+
+      %tbody
+        - @partners.each do |partner|
+          %tr
+            %td= partner.name
+            %td= image_tag partner.logo.data.url(:thumb)
+            %td
+              = link_to 'Detalhes', [:admin, partner], :class => "show"
+              = link_to 'Editar', edit_admin_partner_path(partner), :class => "edit"
