@@ -6,7 +6,6 @@ class Users::SessionsController < ApplicationController
 
   def create
     @authentication = Authentication.first(:conditions => { :provider => auth_hash.provider, :uid => auth_hash.uid })
-
     case
       when @authentication then sign_in
       when @user then add_new_authentication_non_logged

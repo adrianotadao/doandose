@@ -28,8 +28,7 @@ class window.Coordinates
 
   setCoordinates: (result) ->
     value = @coord(result)
-    latitude = value.$a
-    longitude = value.ab 
-
+    latitude = value.ab
+    longitude = value.cb 
     @lat.val(latitude)
     @lng.val(longitude)

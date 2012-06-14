@@ -1,6 +1,7 @@
 class window.Gmap
   lat: $('#person_address_attributes_lat')
   lng: $('#person_address_attributes_lng') 
+  street: document.getElementById('address').innerHTML
 
   constructor: (lat, lng) ->
     @coordinate = @getCoordinate(lat, lng)
@@ -8,15 +9,15 @@ class window.Gmap
     @addListener()
 
   updateMarkerPosition: (marker) ->
-    latitude = marker.$a
-    longitude = marker.ab
+    latitude = marker.ab
+    longitude = marker.cb
     @lat.val(latitude)
     @lng.val(longitude)
 
   addListener: ->
     currentMark = @mark()
-    contentString = "Testando o bubble"
-    infowindow = new google.maps.InfoWindow(content: contentString)
+    contentString = @street
+    infowindow = new google.maps.InfoWindow({content: contentString}) 
   
     google.maps.event.addListener currentMark, "drag", =>
       @updateMarkerPosition(currentMark.getPosition())
