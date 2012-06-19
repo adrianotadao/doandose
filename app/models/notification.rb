@@ -15,5 +15,5 @@ class Notification
   
   #validations
   validates_presence_of :company, :blood, :situation, :quantity, :alerted_at
-  
+  validates_associated :company, :blood, :person_notifications
 end

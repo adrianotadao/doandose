@@ -10,5 +10,6 @@ class PersonNotification
   
   #validations
   validates_presence_of :person, :notification
+  validates_associated :person, :notification
 
 end
