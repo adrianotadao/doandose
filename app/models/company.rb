@@ -22,5 +22,6 @@ class Company
   #validations
   validates_presence_of :name, :fancy_name, :responsible, :address, :contact, :users
   validates_uniqueness_of :name, :fancy_name, :cnpj
+  validates_associated :users, :address, :contact
 
 end

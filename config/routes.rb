@@ -30,6 +30,7 @@ Doandose::Application.routes.draw do
     resources :pages, :only => :index
     resources :partners
     resources :companies
+    resources :bloods, :only => [:index, :show]
   end
   
   namespace :institution, :path => 'instituicao' do
