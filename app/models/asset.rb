@@ -5,5 +5,5 @@ class Asset
   has_mongoid_attached_file :data
   
   belongs_to :assetable, polymorphic: true
-  
+
 end

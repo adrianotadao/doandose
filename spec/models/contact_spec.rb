@@ -5,8 +5,8 @@ describe 'Contact' do
     Fabricate(:contact).should be_valid
   end
   
-  it 'Should have a email' do
-    Fabricate.build(:contact, :email => nil).should_not be_valid
+  it 'Should not have a email' do
+    Fabricate.build(:contact, :email => nil).should be_valid
   end
   
   it 'Should have phone or cellphone' do

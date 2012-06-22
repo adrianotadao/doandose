@@ -7,5 +7,5 @@ Fabricator(:company) do
   
   address!
   contact!
-  user!  
+  user!( :authentications => nil )
 end

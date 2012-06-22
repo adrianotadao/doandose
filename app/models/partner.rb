@@ -6,7 +6,11 @@ class Partner
   field :active, :type => Boolean, :default => false
   field :name, :type => String
   field :site, :type => String
+
   slug :name
+
+  #access control
+  attr_accessible :name, :site
   
   #relationship
   has_one :logo, :class_name => "PartnerLogo", :as => :assetable, dependent: :destroy, autosave: true
@@ -15,5 +19,4 @@ class Partner
   #validations
   validates_presence_of :name, :logo
   validates_format_of :site, :with => URI::regexp, :if => :site?
-  validates_associated :logo
 end

@@ -8,6 +8,9 @@ class Notification
   field :situation, :type => String
   field :alerted_at, :type => Time
 
+  #access control
+  attr_accessible :quantity, :situation, :alerted_at
+
   #relationship
   belongs_to :company
   belongs_to :blood
@@ -15,5 +18,4 @@ class Notification
   
   #validations
   validates_presence_of :company, :blood, :situation, :quantity, :alerted_at
-  validates_associated :company, :blood, :person_notifications
 end

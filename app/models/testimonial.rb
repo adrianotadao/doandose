@@ -7,6 +7,9 @@ class Testimonial
   field :name, :type => String
   field :body, :type => String
   
+  #access control
+  attr_accessible :name, :body
+  
   #relationship
   belongs_to :person
   belongs_to :company
@@ -15,5 +18,4 @@ class Testimonial
   validates_presence_of :person, :unless => :company
   validates_presence_of :company, :unless => :person
   validates_presence_of :name, :body
-  validates_associated :person, :company
 end
