@@ -1,1 +1,6 @@
 = render :partial => '/people/minimal_form'
+#map{:style => "width: 100%; height: 500px; padding: 0px"}
+
+- content_for :javascript do
+  :javascript
+    new SearchMap(#{coordenations(@addresses.to_a)})

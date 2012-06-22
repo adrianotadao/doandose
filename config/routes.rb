@@ -1,6 +1,6 @@
 Doandose::Application.routes.draw do
 
-  root :to => "pages#index"
+  root :to => "people#new"
 
   resources :people
   resources :page  
