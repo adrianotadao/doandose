@@ -1,29 +1,23 @@
 %dl.form.info
   %dl.people
-    %dt
     %dd.social.clearfix
-
-    %dt
     %dd
       = f.fields_for :authentications do |auth|
         = auth.hidden_field :provider
         = auth.hidden_field :uid
-        
-  %dt *Email:
+  %dt= f.label :email, t('form.label.email')
   %dd= f.text_field :email
   %dt= error_for @person.user, :email
-
   %dl
-    %dt *Apelido:
+    %dt= f.label :username, t('form.label.username')
     %dd= f.text_field :username
     %dt= error_for @person.user, :username
-
     - if @person.user.has_identity? || !@person.user.new_record?
-      %dt Senha:
+      %dt= f.label :password, t('form.label.password')
       %dd= f.password_field :password
       %dt= error_for @person.user, :password
 
-      %dt Confirmação de senha:
+      %dt= f.label :password_confirmation, t('form.label.password_confirmation')
       %dd= f.password_field :password_confirmation
       %dt= error_for @person.user, :password_confirmation
 
