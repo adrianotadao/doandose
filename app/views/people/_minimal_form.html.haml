@@ -1,4 +1,4 @@
-#new.user
+#new
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
     
     = render "people/#{@person.current_step}_step", :f => f
