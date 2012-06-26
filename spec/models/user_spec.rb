@@ -19,7 +19,5 @@ describe 'User' do
       Fabricate.build(:user, :password => '123', :password_confirmation => '123').should be_valid
       Fabricate.build(:user, :password => '123', :password_confirmation => '123456').should_not be_valid
     end
-    
   end
-  
 end

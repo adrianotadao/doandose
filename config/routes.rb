@@ -37,11 +37,4 @@ Doandose::Application.routes.draw do
     root :to => 'pages#index'
     resources :pages, :only => :index
   end
-  
-  namespace :mobile do
-    root :to => 'pages#index'
-    resources :partners, :path => 'parceiros'
-    
-    get '/cadastro/' => 'people#new', :as => :signup
-  end
 end

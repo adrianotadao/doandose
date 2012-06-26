@@ -27,7 +27,6 @@ pt-BR:
         weight: 'Peso'
         height: 'Altura'
         email: 'Email'
-        username: 'Usuario'
         password: 'Senha'
         password_confirmation: 'Confirmar Senha'
         user: 'Usuario'

@@ -5,25 +5,23 @@ class User
   include Mongoid::Timestamps
   include OmniAuth::Identity::Model
 
-  #associations
-  belongs_to :authenticable, polymorphic: true
-  belongs_to :company
-  belongs_to :people
-  has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true
-  
-  #attributes
-  attr_reader :password
-
-  field :username, type: String, case_sensitive: false
-  field :email, type: String, case_sensitive: false
-  field :password_digest, type: String
+  field :email, :type => String, :case_sensitive => false
+  field :password_digest, :type => String
   field :reset_password_token, :type => String
   field :reset_password_sent_at, :type => Time
 
-  index :username
   index :email
 
+  #associations
+  belongs_to :authenticable, :polymorphic => true
+  belongs_to :company
+  belongs_to :people
+  has_many :authentications, :dependent => :destroy, :inverse_of => :user, :autosave => true
+  
   accepts_nested_attributes_for :authentications, :authenticable, :allow_destroy => true
+  
+  #attributes
+  attr_reader :password
 
   #validates
   validates_presence_of :email
@@ -31,7 +29,6 @@ class User
   validates_presence_of :password, :if => :password_is_required?
   validates_presence_of :password_digest, :if => :password?
   validates_uniqueness_of :email, :case_sensitive => false
-  validates_associated :authentications, :if => :authentications?
   validates_confirmation_of :password, :if => :password?
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/  
 
@@ -43,7 +40,7 @@ class User
   end
 
   def prepare_to_reset_password!
-    self.update_attributes(:reset_password_token => Digest::MD5.hexdigest("#{TOKEN}-#{username}-#{DateTime.now.to_s}-#{Date.today.to_s}"))
+    self.update_attributes(:reset_password_token => Digest::MD5.hexdigest("#{TOKEN}-#{email}-#{DateTime.now.to_s}-#{Date.today.to_s}"))
   end
   
   def password_is_reseted!

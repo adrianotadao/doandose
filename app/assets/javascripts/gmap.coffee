@@ -1,7 +1,7 @@
 class window.Gmap
   lat: $('#person_address_attributes_lat')
   lng: $('#person_address_attributes_lng') 
-  street: document.getElementById('address').innerHTML
+  #street: document.getElementById('address').innerHTML
 
   constructor: (lat, lng) ->
     @coordinate = @getCoordinate(lat, lng)

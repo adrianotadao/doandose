@@ -16,6 +16,11 @@ class Person
 
   slug :name
 
+  #access control
+  attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, 
+                  :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :blood_id, :email, :phone, 
+                  :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email
+
   #relationship
   belongs_to :blood
   belongs_to :company
@@ -23,17 +28,12 @@ class Person
   has_one :contact, :as => :contactable, :dependent => :destroy, :autosave => true
   has_one :user, :as => :authenticable, :dependent => :destroy, :autosave => true
   has_many :person_notifications
+  
+  accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
 
   #validations
-  validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :if => lambda { |c| c.current_step == 'information' }
+  validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :blood, :if => lambda { |c| c.current_step == 'information' }
   validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
-  validates_associated :blood, :company, :address, :contact, :user, :person_notifications
-
-  accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
-  attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, 
-                  :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :email, :phone, 
-                  :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email, 
-                  :username
 
   attr_writer :current_step
 

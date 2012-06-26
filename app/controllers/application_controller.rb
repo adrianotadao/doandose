@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def login(user)
     session[:user_id] = user.id
-    cookies[:user] = user.username
   end
 
   def logout
@@ -31,8 +30,6 @@ class ApplicationController < ActionController::Base
       unless params[type][:users_attributes].blank?
         for user in params[type][:users_attributes]
           if user[1][:password].blank?
-            p user[1][:password]
-            p '------------------------'
             user[1].delete(:password)
             user[1].delete(:password_confirmation)
           end

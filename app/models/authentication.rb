@@ -3,13 +3,14 @@ class Authentication
   include Mongoid::Timestamps
 
   # attributes
-  belongs_to :user
   field :provider
   field :uid
 
   index :provider
   index :uid
   index [:provider, :uid]
+  
+  belongs_to :user
   
   # validations
   validates_presence_of :uid, :provider, :user

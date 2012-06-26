@@ -38,15 +38,14 @@
       %label Usuários
       %a.add Adicionar novo usuário
       .container
-        = f.nested_fields_for :users do |user|
-          %fieldset.item
-            = user.input :id, :as => :hidden
-            = user.input :_destroy, :as => :hidden
-            = user.input :username
-            = user.input :email
-            = user.input :password
-            = user.input :password_confirmation
-            %a.remove Remover usuário
+        / = f.nested_fields_for :users do |user|
+        /   %fieldset.item
+        /     = user.input :id, :as => :hidden
+        /     = user.input :_destroy, :as => :hidden
+        /     = user.input :email
+        /     = user.input :password
+        /     = user.input :password_confirmation
+        /     %a.remove Remover usuário
 
   .actions
     = link_to '', [:admin, :companies], :class => 'button back'

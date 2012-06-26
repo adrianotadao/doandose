@@ -26,7 +26,6 @@ class Users::SessionsController < ApplicationController
   private
     def check_user_existence
       case
-        when auth_hash['info']['nickname'].present? then @user = User.first(:conditions => { :username => auth_hash['info']['nickname'] })
         when auth_hash['info']['email'].present? then @user = User.first(:conditions => { :email => auth_hash['info']['email'] })
       end
     end

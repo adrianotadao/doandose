@@ -9,9 +9,6 @@
   %dd= f.text_field :email
   %dt= error_for @person.user, :email
   %dl
-    %dt= f.label :username, t('form.label.username')
-    %dd= f.text_field :username
-    %dt= error_for @person.user, :username
     - if @person.user.has_identity? || !@person.user.new_record?
       %dt= f.label :password, t('form.label.password')
       %dd= f.password_field :password

@@ -24,6 +24,8 @@ gem 'omniauth-identity'#, '1.0.0'
 gem 'omniauth-windowslive', '0.0.8.1'
 gem 'omniauth', '1.0.3'
 
+gem 'geokit', '1.6.5'
+
 gem 'rspec', '2.8', :group => [:test, :development]
 
 group :assets do
