@@ -1,1 +1,9 @@
-= render :partial => '/people/minimal_form'
+.title
+  %h1= t('label.user.user_step.title')
+
+.people= render :partial => '/people/minimal_form'
+#map
+
+- content_for :javascript do
+  :javascript
+    new SearchMap(#{coordenations(@addresses.to_a)})

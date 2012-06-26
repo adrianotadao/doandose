@@ -1,6 +1,6 @@
 Doandose::Application.routes.draw do
 
-  root :to => "pages#index"
+  root :to => "people#new"
 
   resources :people
   resources :page  
@@ -36,12 +36,5 @@ Doandose::Application.routes.draw do
   namespace :institution, :path => 'instituicao' do
     root :to => 'pages#index'
     resources :pages, :only => :index
-  end
-  
-  namespace :mobile do
-    root :to => 'pages#index'
-    resources :partners, :path => 'parceiros'
-    
-    get '/cadastro/' => 'people#new', :as => :signup
   end
 end

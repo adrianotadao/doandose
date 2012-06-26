@@ -1,7 +1,12 @@
 pt-BR:
   form:
+    label:
+      email: '*Email'
+      username: '*Apelido'
+      password: '*Senha'
+      password_confirmation: '*Confirmacao de Senha'
     buttons:
-      login: "Entrar"
-      search: "OK"
+      login: 'Entrar'
+      search: 'Ok'
 
-    error_messages: "Verifique o formulário antes de continuar."
+    error_messages: 'Verifique o formulário antes de continuar.'

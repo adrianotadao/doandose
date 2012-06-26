@@ -1,8 +1,15 @@
-@import "compass"
-@import "compass/utilities/general/reset"
-@import "compass/css3/inline-block"
+@import compass, compass/utilities/general/reset, compass/css3/inline-block
+
 +global-reset
 
 body
   font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif
-  background: #eeeeee
+  background: url('background.jpg')
+
+div:after, ol:after, form:after, ul:after, dl:after, a:after
+  content: '.'
+  display: block
+  clear: both
+  visibility: hidden
+  height: 0
+  overflow: hidden

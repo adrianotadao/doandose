@@ -12,6 +12,6 @@ module PersonHelper
   end
   
   def label_button
-    @person.last_step? ? 'concluir' : 'proximo'
+    @person.last_step? ? 'Concluir' : 'Proximo'
   end
 end

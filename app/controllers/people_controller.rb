@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
   end
 
   def new
+    @addresses = Address.scoped
     session[:person_params] ||= {}
     restore_session
   end 
