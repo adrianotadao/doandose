@@ -10,9 +10,14 @@
 
   %body
     #root
-      Doando.se
       #container
         #top
+          #search_location
+            %select 
+              - for state in states_collection
+                %option{:value => state} #{state}
+
+          = link_to image_tag('logo.jpg'), root_path, :title => 'Doando.se', :class => 'logo'          
           #menu
             = render :partial => 'layouts/nav'
         #center
@@ -20,12 +25,7 @@
           #content= yield
 
       #root_footer  
-        #cicle
-          .one
-        #cicle
-          .two
-        #cicle
-          .three
+        = render :partial => 'shared/cicles_footer'
     #footer
     = javascript_include_tag "application"
     %script{ :src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false", :type => "text/javascript" }

@@ -1,13 +1,41 @@
+@import compass/css3
+
 #root
   height: 100%
   #container
     width: 1000px
-    margin: 0 auto
-    
-    
+    margin: 0 auto 
     #top
       width: 99%
-    
+      .logo
+        position: absolute
+        top: 12px
+        left: 173px
+        z-index: 2
+        padding: 10px
+        background: url('background.jpg')
+      #menu
+        height: 64px
+        background: url('background-menu.jpg') repeat-x
+        position: relative
+        top: 0
+        left: 0
+        .links
+          width: 594px
+          padding-left: 394px
+          a
+            color: #fff
+            font-size: 18pt
+            text-decoration: none
+            float: left
+            padding: 8px
+            margin: 12px
+          a:hover, a.selected
+            background-color: #5a0201
+            padding: 8px
+            +border-radius(8px)
+            +box-shadow(#b8201b 0px 0px 15px)
+                  
     #center
       width: 99%
       
@@ -19,16 +47,22 @@
       background: #fff
 
   #root_footer  
-    border: 1px solid
-  #cicle
-    width: 400px
-    height: 400px
-    background: url('cicle_bg.png') no-repeat
+    height: 236px
+    width: 1112px
+    margin: 0 auto
     position: relative
-    top: 34px
-    float: left
-    .one
-
+    top: 0
+    left: 0  
+    #cicle_one, #cicle_two, #cicle_three 
+      width: 400px
+      height: 400px
+      background: url('cicle_bg.png') no-repeat
+      position: absolute
+      top: 36px
+    #cicle_two
+      left: 356px
+    #cicle_three
+      left: 712px
 #footer
   background: url('background-footer.jpg')
   height: 510px
