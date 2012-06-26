@@ -25,4 +25,16 @@ class Address
   def full_coordenation
     "#{self.lat}, #{self.lng}" if self.lat && self.lng
   end
+
+  def set_lat_lng
+    geocode = Geokit::Geocoders::GoogleGeocoder.geocode(address_for_geokit)
+    self.lat = geocode.lat
+    self.lng = geocode.lng
+  end
+
+  private  
+  def address_for_geokit
+    "#{number} #{street}, #{city}, #{state}"
+  end
+  
 end

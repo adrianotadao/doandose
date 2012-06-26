@@ -17,6 +17,8 @@ class PeopleController < ApplicationController
     session[:person_params].deep_merge!(params[:person]) if params[:person]
     restore_session
 
+    @person.address.set_lat_lng unless @person.address.blank?
+
     if @person.valid?
       case
         when params[:back_button] then @person.previous_step
@@ -54,7 +56,7 @@ class PeopleController < ApplicationController
     end
 
     def save_person
-      @person.save if @person.all_valid?
+      #@person.save if @person.all_valid?
     end
 
     def new_record
