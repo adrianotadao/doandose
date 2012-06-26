@@ -34,7 +34,6 @@ class Person
   #validations
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :blood, :if => lambda { |c| c.current_step == 'information' }
   validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
-  validates_presence_of :lat, :lng, :if => lambda { |c| c.current_step == 'confirmation' }
 
   attr_writer :current_step
 

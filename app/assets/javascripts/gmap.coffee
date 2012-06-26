@@ -4,7 +4,6 @@ class window.Gmap
   #street: document.getElementById('address').innerHTML
 
   constructor: (lat, lng) ->
-    console.log lat, lng
     @coordinate = @getCoordinate(lat, lng)
     @setMap()
     @addListener()

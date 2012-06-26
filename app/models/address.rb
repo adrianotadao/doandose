@@ -34,7 +34,7 @@ class Address
 
   private  
   def address_for_geokit
-    "#{number} #{street}, #{city}, #{state}"
+    "#{number} #{street}, #{city}, #{state}".mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
   end
   
 end

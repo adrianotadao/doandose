@@ -56,7 +56,7 @@ class PeopleController < ApplicationController
     end
 
     def save_person
-      #@person.save if @person.all_valid?
+      @person.save if @person.all_valid?
     end
 
     def new_record
