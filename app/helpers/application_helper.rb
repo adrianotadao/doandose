@@ -1,9 +1,5 @@
 module ApplicationHelper
   
-  def blood_types
-    
-  end
-  
   def title(title)
     content_for(:title){ title }
   end

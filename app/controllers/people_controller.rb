@@ -16,6 +16,7 @@ class PeopleController < ApplicationController
   def create
     session[:person_params].deep_merge!(params[:person]) if params[:person]
     restore_session
+
     if @person.valid?
       case
         when params[:back_button] then @person.previous_step
@@ -53,7 +54,6 @@ class PeopleController < ApplicationController
     end
 
     def save_person
-      @person.blood_id = 1 
       @person.save if @person.all_valid?
     end
 

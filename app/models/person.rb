@@ -18,9 +18,8 @@ class Person
 
   #access control
   attr_accessible :address, :address_attributes, :contact, :contact_attributes, :user, :user_attributes, :name, 
-                  :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :email, :phone, 
-                  :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email, 
-                  :username
+                  :donor, :surname, :sex, :weight, :height, :birthday, :observations, :blood, :blood_id, :email, :phone, 
+                  :cellphone, :zip_code, :street, :number, :neighborhood, :city, :state, :provider, :uid, :email
 
   #relationship
   belongs_to :blood

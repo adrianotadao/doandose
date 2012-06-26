@@ -12,7 +12,6 @@ class Users::IdentitiesController < ApplicationController
   def create
     case
     when params[:user][:email].present? then @user = User.first(:conditions => {:email => params[:user][:email]})
-    when params[:user][:username].present? then @user = User.first(:conditions => {:username => params[:user][:username]})
     end
      
     if @user

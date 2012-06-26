@@ -14,10 +14,6 @@
   %dt= error_for @person.user, :email
 
   %dl
-    %dt *Apelido:
-    %dd= f.text_field :username
-    %dt= error_for @person.user, :username
-
     - if @person.user.has_identity? || !@person.user.new_record?
       %dt Senha:
       %dd= f.password_field :password

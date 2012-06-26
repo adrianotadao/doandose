@@ -5,13 +5,11 @@ class User
   include Mongoid::Timestamps
   include OmniAuth::Identity::Model
 
-  field :username, :type => String, :case_sensitive => false
   field :email, :type => String, :case_sensitive => false
   field :password_digest, :type => String
   field :reset_password_token, :type => String
   field :reset_password_sent_at, :type => Time
 
-  index :username
   index :email
 
   #associations
@@ -42,7 +40,7 @@ class User
   end
 
   def prepare_to_reset_password!
-    self.update_attributes(:reset_password_token => Digest::MD5.hexdigest("#{TOKEN}-#{username}-#{DateTime.now.to_s}-#{Date.today.to_s}"))
+    self.update_attributes(:reset_password_token => Digest::MD5.hexdigest("#{TOKEN}-#{email}-#{DateTime.now.to_s}-#{Date.today.to_s}"))
   end
   
   def password_is_reseted!
