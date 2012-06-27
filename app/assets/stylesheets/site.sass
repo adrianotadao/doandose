@@ -1,4 +1,4 @@
-@import compass/css3
+@import compass/css3, compass/css3/appearance, compass/utilities
 
 #root
   height: 100%
@@ -9,11 +9,34 @@
       width: 99%
       .logo
         position: absolute
-        top: 12px
-        left: 173px
+        top: -6px
+        left: 42px
         z-index: 2
         padding: 10px
         background: url('background.jpg')
+      #search_location
+        width: 200px
+        padding: 16px
+        margin-left: 756px
+        .state, .city
+          width: 80px 
+          overflow: hidden
+          background: url('down_arrow_select.jpg') no-repeat right #ddd       
+          margin-left: 14px  
+          +border-radius(6px) 
+          border: 1px solid #ccc
+          float: left
+          select
+            width: 96px 
+            border: 0px   
+            height: 36px
+            padding: 4px
+            background: transparent
+            +appearance(none) 
+            +appearance(listbox)
+            +border-radius(6px)
+
+
       #menu
         height: 64px
         background: url('background-menu.jpg') repeat-x
