@@ -22,14 +22,16 @@ class Address
   #validations
   validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state#, :lat, :lng
 
-  def full_coordenation
-    "#{self.lat}, #{self.lng}" if self.lat && self.lng
+  def full_coordinate
+    return if lat.blank? || lng.blank?
+    "#{self.lat}, #{self.lng}"
   end
 
   def set_lat_lng
+    return unless lat.blank? && lng.blank?
     geocode = Geokit::Geocoders::GoogleGeocoder.geocode(address_for_geokit)
-    self.lat = geocode.lat
-    self.lng = geocode.lng
+    lat = geocode.lat
+    lng = geocode.lng
   end
 
   private  

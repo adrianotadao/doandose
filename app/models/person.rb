@@ -4,7 +4,7 @@ class Person
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :active, :type => Boolean
+  field :active, :type => Boolean, :default => false
   field :donor, :type => Boolean
   field :name, :type => String
   field :surname, :type => String
@@ -36,6 +36,9 @@ class Person
   validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
 
   attr_writer :current_step
+
+  #scopes
+  scope :actives, :where => { :active => true }
 
   #others
   def current_step

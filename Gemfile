@@ -28,6 +28,12 @@ gem 'geokit', '1.6.5'
 
 gem 'rspec', '2.8', :group => [:test, :development]
 
+group :development do
+  gem 'capistrano', '2.12.0'
+  gem 'capistrano-ext', '1.2.1'
+  gem 'rvm-capistrano', '1.2.2'
+end
+
 group :assets do
   gem 'compass-rails', '1.0.1'
   gem 'sass-rails',   '~> 3.1.5'

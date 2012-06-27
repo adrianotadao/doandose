@@ -11,14 +11,39 @@
 
 #contact
   %h2= t('label.user.information_step.contact_title')
-  = f.fields_for :contact do |contact_form|
-    = render :partial => '/contacts/form', :locals => { :f => contact_form }
+  = f.simple_fields_for :contact do |contact_form|
+    = contact_form.input :phone
+    = contact_form.input :cellphone
 
 #address    
   %h2= t('label.user.information_step.address_title')
-  = f.fields_for :address do |address|
-    = render :partial => '/addresses/form', :locals => { :f => address }
+  = f.simple_fields_for :address do |address|
+    #address
+      #postal_code
+        = address.input :zip_code, :input_html => {:class => 'postal_code'} 
+        = error_for @person.address, :zip_code
+      #street
+        = address.input :street, :input_html => {:class => 'street'}
+        = error_for @person.address, :street
+      #number
+        = address.input :number, :input_html => {:class => 'number'}
+        = error_for @person.address, :number
+      #neighborhood
+        = address.input :neighborhood, :input_html => {:class => 'neighborhood'}
+        = error_for @person.address, :neighborhood
+      #city
+        = address.input :city, :input_html => {:class => 'city'}
+        = error_for @person.address, :city
+      #state
+        = address.input :state, :input_html => {:class => 'state'}, :collection => states_collection, :prompt => false
+        = error_for @person.address, :state
+      #complement
+        = address.input :complement, :input_html => {:class => 'complement'}
+
+        = address.input :lat, :as => :hidden
+        = address.input :lng, :as => :hidden
 
 - content_for(:javascript) do
   :javascript
     new Coordinates()
+    new PostalCodes()
