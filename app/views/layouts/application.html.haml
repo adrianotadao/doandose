@@ -13,12 +13,9 @@
       #container
         #top
           #search_location
-            %select 
-              - for state in states_collection
-                %option{:value => state} #{state}
-
-          = link_to image_tag('logo.jpg'), root_path, :title => 'Doando.se', :class => 'logo'          
+            = render :partial => 'shared/home_location'
           #menu
+            = link_to image_tag('logo.jpg'), root_path, :title => 'Doando.se', :class => 'logo'          
             = render :partial => 'layouts/nav'
         #center
           #header
