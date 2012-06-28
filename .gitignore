@@ -5,4 +5,3 @@ log/*.log
 public/stylesheets/compiled
 public/javascripts/compiled
 public/system/
-config/deploy/*
