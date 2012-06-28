@@ -1,6 +1,8 @@
 pt-BR:
   form:
     label:
+      name: '*Nome'
+      body: '*Conteudo'
       email: '*Email'
       username: '*Apelido'
       password: '*Senha'
