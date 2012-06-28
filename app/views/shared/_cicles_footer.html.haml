@@ -1,3 +1,35 @@
 #cicle_one
+  #body
+    %h1 Quem Somos
+    %p 
+      É um fato conhecido de todos que um leitor 
+      se distrairá com o conteúdo de texto legível 
+      de uma página quando estiver examinando sua diagramação. 
+      A vantagem de usar Lorem Ipsum é que ele tem uma distribuição 
+      normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui".
+    .more
+      Mais...
+
 #cicle_two
+  #body
+    %h1 Depoimentos
+    %p 
+      É um fato conhecido de todos que um leitor 
+      se distrairá com o conteúdo de texto legível 
+      de uma página quando...
+    .more
+      Mais...
+
 #cicle_three
+  #body
+    %h1 Contatos
+    = simple_form_for '#' do |f|
+      %dl.contact_form
+        %dt= f.label :name, t('form.label.name')
+        %dd= f.text_field :name
+        %dt= f.label :email, t('form.label.email')
+        %dd= f.text_field :email
+        %dt= f.label :body, t('form.label.body')
+        %dd= f.text_field :body
+        .actions
+          = f.submit 'Enviar', :class => 'button save'
