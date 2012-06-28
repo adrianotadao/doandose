@@ -1,0 +1,12 @@
+staging:
+  social:
+    twitter:
+      key: Raryta0iwaVCB7e5NALlDQ
+      secret: BOppikiaNxJfcdhaZVPm9lFcZbmhEi2QAuENvspek
+    google:
+      key: 419731615326.apps.googleusercontent.com
+      secret: TYqSi86OuJqMmVVJpmIFvM4v
+    facebook:
+      key: 396084903744192
+      secret: cc93b21b9712bf746f9309e17f8fe86b
+    identity:
