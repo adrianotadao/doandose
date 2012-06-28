@@ -1,5 +1,5 @@
 # stages
-set :stages, %w(staging)
+set :stages, %w(staging production)
 require 'capistrano/ext/multistage'
 
 # General
