@@ -20,7 +20,7 @@ class Address
   belongs_to :addressable, polymorphic: true
   
   #validations
-  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state#, :lat, :lng
+  #validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state#, :lat, :lng
 
   def full_coordinate
     return if lat.blank? || lng.blank?
@@ -28,10 +28,10 @@ class Address
   end
 
   def set_lat_lng
-    return unless lat.blank? && lng.blank?
+    return if !self.lat.blank? && !self.lng.blank?
     geocode = Geokit::Geocoders::GoogleGeocoder.geocode(address_for_geokit)
-    lat = geocode.lat
-    lng = geocode.lng
+    self.lat = geocode.lat
+    self.lng = geocode.lng
   end
 
   private  

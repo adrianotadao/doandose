@@ -5,41 +5,41 @@ describe 'Person' do
     Fabricate(:person).should be_valid
   end
   
-  context 'Current step is information' do
+  context 'Current step is personal' do
     it 'Should have a name' do
-      Fabricate.build(:person, :name => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :name => nil, :current_step => 'personal').should_not be_valid
     end    
 
     it 'Should have a surname' do
-      Fabricate.build(:person, :surname => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :surname => nil, :current_step => 'personal').should_not be_valid
     end
 
     it 'Should have a sex' do    
-      Fabricate.build(:person, :sex => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :sex => nil, :current_step => 'personal').should_not be_valid
     end
 
     it 'Should have a blood' do
-      Fabricate.build(:person, :blood => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :blood => nil, :current_step => 'personal').should_not be_valid
     end  
 
     it 'Should have a birthday' do
-      Fabricate.build(:person, :birthday => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :birthday => nil, :current_step => 'personal').should_not be_valid
     end 
     
     it 'Should have a contact' do
-      Fabricate.build(:person, :contact => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :contact => nil, :current_step => 'personal').should_not be_valid
     end
 
     it 'Should have a address' do
-      Fabricate.build(:person, :address => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :address => nil, :current_step => 'personal').should_not be_valid
     end
 
     it 'Should have a weight' do
-      Fabricate.build(:person, :weight => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :weight => nil, :current_step => 'personal').should_not be_valid
     end
 
     it 'Should have a height' do
-      Fabricate.build(:person, :height => nil, :current_step => 'information').should_not be_valid
+      Fabricate.build(:person, :height => nil, :current_step => 'personal').should_not be_valid
     end
 
 

@@ -9,4 +9,12 @@ development:
     facebook:
       key: 396084903744192
       secret: cc93b21b9712bf746f9309e17f8fe86b
-    identity:
+  
+  mail:
+    delivery_method: smtp
+    address: smtp.gmail.com
+    port: 587
+    authentication: plain
+    username: dev@doando.se
+    password: pedraroxa
+    enable_starttls_auto: true

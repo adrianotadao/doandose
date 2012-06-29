@@ -9,4 +9,3 @@ production:
     facebook:
       key: 197324647062694
       secret: 2691848d75f50949d8fce873cc6261d8
-    identity:

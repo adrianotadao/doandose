@@ -9,8 +9,8 @@ class window.Gmap
     @addListener()
 
   updateMarkerPosition: (marker) ->
-    latitude = marker.ab
-    longitude = marker.cb
+    latitude = marker.$a
+    longitude = marker.ab
     @lat.val(latitude)
     @lng.val(longitude)
 

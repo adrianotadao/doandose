@@ -1,7 +1,8 @@
 .title
   %h1= t('label.user.user_step.title')
 
-.people= render :partial => '/people/minimal_form'
+.people= render :partial => 'form_by_steps'
+
 #map
 
 - content_for :javascript do

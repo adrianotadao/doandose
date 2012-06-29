@@ -4,11 +4,11 @@ class Person
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :active, :type => Boolean, :default => false
+  field :active, :type => Boolean, :default => true
   field :donor, :type => Boolean
   field :name, :type => String
   field :surname, :type => String
-  field :sex, :type => String
+  field :sex, :type => Boolean
   field :weight, :type => Float
   field :height, :type => Float
   field :birthday, :type => String  
@@ -32,8 +32,8 @@ class Person
   accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
 
   #validations
-  validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :blood, :if => lambda { |c| c.current_step == 'information' }
-  validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
+  #validates_presence_of :name, :weight, :height, :surname, :sex, :birthday, :contact, :address, :blood, :if => lambda { |c| c.current_step == 'personal' }
+  #validates_presence_of :user, :if => lambda { |c| c.current_step == 'user' }
 
   attr_writer :current_step
 
@@ -46,7 +46,7 @@ class Person
   end
   
   def steps
-    %w[user information confirmation]  
+    %w[user personal confirmation]  
   end
 
   def next_step

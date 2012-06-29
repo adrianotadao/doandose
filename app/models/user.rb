@@ -94,7 +94,6 @@ class User
     def new_with_omniauth(auth)
       User.new.tap do |user|
         user.email = auth.info.email
-        user.username = auth.info.nickname
         user.authentications.new(:provider => auth.provider, :uid => auth.uid)
       end
     end

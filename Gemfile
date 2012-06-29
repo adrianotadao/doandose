@@ -21,7 +21,6 @@ gem 'omniauth-twitter', '0.0.9'
 gem 'omniauth-facebook', '1.2.0'
 gem 'omniauth-google-oauth2', '0.1.9'
 gem 'omniauth-identity'#, '1.0.0'
-gem 'omniauth-windowslive', '0.0.8.1'
 gem 'omniauth', '1.0.3'
 
 gem 'geokit', '1.6.5'

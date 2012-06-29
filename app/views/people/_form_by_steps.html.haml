@@ -1,10 +1,8 @@
 #new
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
-    
-    = render "people/#{@person.current_step}_step", :f => f
 
+    = render :partial => "people/steps/#{@person.current_step}", :locals => { :f => f }
+    
     .actions
       = f.submit "back", :name => 'back_button', :class => 'button back' unless @person.first_step?
-      = f.submit label_button, :class => 'button save' 
-
-
+      = f.submit label_button, :class => 'button save'
