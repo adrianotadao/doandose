@@ -9,3 +9,4 @@
 //= require postal_codes
 //= require mask
 //= require jquery.nested-fields
+//= require social_buttons

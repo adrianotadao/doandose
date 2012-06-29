@@ -1,4 +1,4 @@
-development:
+development: &defaults
   social:
     twitter:
       key: Raryta0iwaVCB7e5NALlDQ
@@ -18,3 +18,12 @@ development:
     username: dev@doando.se
     password: pedraroxa
     enable_starttls_auto: true
+
+staging:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
