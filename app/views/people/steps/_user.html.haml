@@ -1,4 +1,4 @@
 = render 'shared/social'
-#user
-  = f.simple_fields_for :user do |user_form|
-    = render :partial => '/users/identities/form', :locals => { :f => user_form }
+
+= f.simple_fields_for :user do |user_form|
+  = render :partial => '/users/identities/form', :locals => { :f => user_form }
