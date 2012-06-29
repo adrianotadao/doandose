@@ -4,5 +4,5 @@
     = render :partial => "people/steps/#{@person.current_step}", :locals => { :f => f }
     
     .actions
-      = f.submit "back", :name => 'back_button', :class => 'button back' unless @person.first_step?
+      = f.submit "Voltar", :name => 'back_button', :class => 'button back' unless @person.first_step?
       = f.submit label_button, :class => 'button save'
