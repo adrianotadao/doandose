@@ -5,13 +5,14 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    @authentication = Authentication.first(:conditions => { :provider => auth_hash.provider, :uid => auth_hash.uid })
-    case
-      when @authentication then sign_in
-      when @user then add_new_authentication_non_logged
-      when current_user then add_new_authentication_logged
-      else sign_up 
-    end
+    render '/users/sessions/callback'
+    # @authentication = Authentication.first(:conditions => { :provider => auth_hash.provider, :uid => auth_hash.uid })
+    # case
+    #   when @authentication then sign_in
+    #   when @user then add_new_authentication_non_logged
+    #   when current_user then add_new_authentication_logged
+    #   else sign_up 
+    # end
   end
 
   def failure
