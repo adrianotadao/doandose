@@ -25,11 +25,7 @@ class window.SocialButtons
     window.open(url, 'authPopup', "menubar=no,toolbar=no,status=no,width=#{width},height=#{height},toolbar=no,left=#{left},top=#{top}")
 
   fill: (attr) ->
-    $('#users_user_username').val attr.username
-    $('#users_user_email').val attr.email
+    $('#person_user_attributes_email').val attr.email
     
-    if attr.gender
-      $('#users_user_gender').find("option")[$("#users_user_gender").find("option[value='#{attr.gender}']").index()].selected = true
-    
-    $('form.sign-up').append("<input type='hidden' name='users_user[authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
+    $('form#new_person').append("<input type='hidden' name='users_user[authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
                               <input type='hidden' name='users_user[authentications_attributes][0][uid]' value='#{attr.authentication.uid}'>")

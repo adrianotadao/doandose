@@ -98,6 +98,16 @@ class User
       end
     end
     
+    def parse_omniauth(oauth)
+      {
+        :email => oauth.info.email,
+        :authentication => {
+          :provider => oauth.provider,
+          :uid => oauth.uid
+        }
+      }
+    end
+    
     def locate(key)
       self.any_of({ :username => key }, { :email => key }).first
     end
