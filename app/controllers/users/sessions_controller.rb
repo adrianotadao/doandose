@@ -1,6 +1,4 @@
 class Users::SessionsController < ApplicationController  
-  before_filter :check_user_existence, :only => :create
-
   def new
   end
 
@@ -8,9 +6,8 @@ class Users::SessionsController < ApplicationController
     @authentication = Authentication.first(:conditions => { :provider => auth_hash.provider, :uid => auth_hash.uid })
     case
       when @authentication then sign_in
-      when @user then add_new_authentication_non_logged
-      when current_user then add_new_authentication_logged
-      else sign_up 
+      when current_user then add_new_authentication
+      else sign_up
     end
   end
 
@@ -19,42 +16,42 @@ class Users::SessionsController < ApplicationController
   end
   
   def destroy  
-    session[:user_id] = nil  
+    session[:user_id] = nil
+    logout
     redirect_to root_url, :notice => "Signed out!"  
   end 
   
   private
-    def check_user_existence
-      case
-        when auth_hash['info']['email'].present? then @user = User.first(:conditions => { :email => auth_hash['info']['email'] })
-      end
-    end
-
-    def add_new_authentication_non_logged
-      @user.add_authentication(auth_hash)
-      login @user
-      redirect_to Users.after_login_path
-    end
-    
-    def add_new_authentication_logged
-      current_user.add_authentication(auth_hash)
-      redirect_to users_edit_user_path
-    end
-  
     def auth_hash
       request.env['omniauth.auth']
     end
 
     def sign_in
       login @authentication.user
-      redirect_to Users.after_login_path, :status => 200
+      
+      unless @authentication.provider.eql?('identity')
+        render 'callback_sign'
+      else
+        render 'callback_sign_popup'
+      end
     end
     
     def sign_up
       session[:person_params] ||= {}
       @person = Person.new(session[:person_params])
       @person.current_step = session[:person_step]
-      @person.user = User.new_with_omniauth(auth_hash)
-      render '/people/new'
+      #@person.user = User.new_with_omniauth(auth_hash)
+      @user = User.parse_omniauth(auth_hash)
+      unless auth_hash.provider.eql?('identity')
+        render 'callback_signup_popup'
+      else
+        render 'callback_change_step'
+      end
     end
+      
+    def add_new_authentication
+      current_user.add_authentication(auth_hash)
+      redirect_to edit_user_path
+    end
+    
 end
