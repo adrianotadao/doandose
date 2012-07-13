@@ -1,47 +1,69 @@
 #information_form
-  .inputs
-    = f.input :blood, :collection => Blood.all
-    = f.input :donor, :as => :boolean
-    = f.input :name
-    = f.input :surname
-    = f.input :sex, :collection => people_sexes, :prompt => false
-    = f.input :birthday
-    = f.input :weight
-    = f.input :height
+  %dl
+    %dt= f.label :blood
+    %dd= f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
+    
+    %dt= f.label :donor
+    %dd= f.check_box :donor
+
+    %dt= f.label :name
+    %dd= f.text_field :name
+
+    %dt= f.label :surname
+    %dd= f.text_field :surname
+
+    %dt= f.label :sex
+    %dd= f.select :sex, people_sexes
+
+    %dt= f.label :birthday
+    %dd= f.text_field :birthday
+
+    %dt= f.label :weight
+    %dd= f.text_field :weight
+
+    %dt= f.label :height
+    %dd= f.text_field :height
 
 #contact
   %h2= t('label.user.information_step.contact_title')
-  = f.simple_fields_for :contact do |contact_form|
-    = contact_form.input :phone
-    = contact_form.input :cellphone
+  %dl
+    = f.fields_for :contact do |contact_form|
+      %dt= contact_form.label :phone
+      %dd= contact_form.text_field :phone
+
+      %dt= contact_form.label :cellphone
+      %dd= contact_form.text_field :cellphone
 
 #address    
   %h2= t('label.user.information_step.address_title')
-  = f.simple_fields_for :address do |address|
-    #address
-      #postal_code
-        = address.input :zip_code, :input_html => {:class => 'postal_code'} 
-        = error_for @person.address, :zip_code
-      #street
-        = address.input :street, :input_html => {:class => 'street'}
-        = error_for @person.address, :street
-      #number
-        = address.input :number, :input_html => {:class => 'number'}
-        = error_for @person.address, :number
-      #neighborhood
-        = address.input :neighborhood, :input_html => {:class => 'neighborhood'}
-        = error_for @person.address, :neighborhood
-      #city
-        = address.input :city, :input_html => {:class => 'city'}
-        = error_for @person.address, :city
-      #state
-        = address.input :state, :input_html => {:class => 'state'}, :collection => states_collection, :prompt => false
-        = error_for @person.address, :state
-      #complement
-        = address.input :complement, :input_html => {:class => 'complement'}
+  %dl
+    = f.fields_for :address do |address_form|
+      %dt= address_form.label :zip_code
+      %dd= address_form.text_field :zip_code
 
-        = address.input :lat, :as => :hidden
-        = address.input :lng, :as => :hidden
+      %dt= address_form.label :street
+      %dd= address_form.text_field :street
+
+      %dt= address_form.label :number
+      %dd= address_form.text_field :number
+
+      %dt= address_form.label :neighborhood
+      %dd= address_form.text_field :neighborhood
+
+      %dt= address_form.label :city
+      %dd= address_form.text_field :city
+
+      %dt= address_form.label :state
+      %dd= address_form.select :collection, states_collection
+
+      %dt= address_form.label :complement
+      %dd= address_form.text_field :complement
+
+      %dt= address_form.label :lat
+      %dd= address_form.text_field :lat
+
+      %dt= address_form.label :lng
+      %dd= address_form.text_field :lng
 
 - content_for(:javascript) do
   :javascript
