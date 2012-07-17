@@ -10,15 +10,6 @@
     background: url('background.jpg')
     padding: 8px
 
-.people
-  width: 342px
-  float: left
-  padding-left: 30px
-  +clearfix
-  #new form#new_person.simple_form 
-    .actions
-      margin: 8px
-      width: 310px
 #map
   width: 574px 
   height: 430px 
@@ -29,15 +20,18 @@
 #people.new 
   form
     #steps
+      float: left
+      div.step
+        width: 324px
+        float: left
       #user
-        width: 337px
         border: 1px solid
-        float: left
       #personal
-        width: 337px
         border: 1px solid
-        float: left
+        display: none
+      #address
+        border: 1px solid
+        display: none
       #confirmation
-        width: 337px
         border: 1px solid
-        float: left
+        display: none
