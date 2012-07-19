@@ -2,10 +2,16 @@
   = simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
 
     #steps
-      #user= render :partial => "people/steps/user", :locals => { :f => f }
-      #personal= render :partial => "people/steps/personal", :locals => { :f => f }
-      #confirmation= render :partial => "people/steps/confirmation", :locals => { :f => f }
+      #user.step= render :partial => "people/steps/user", :locals => { :f => f }
+      #personal.step= render :partial => "people/steps/personal", :locals => { :f => f }
+      #address.step= render :partial => "people/steps/address", :locals => { :f => f }
+      #confirmation.step= render :partial => "people/steps/confirmation", :locals => { :f => f }
+      .actions
+        = f.submit "Voltar", :name => 'back_button', :class => 'button back' unless @person.first_step?
+        = f.submit label_button, :class => 'button save'
+    #map
     
-    .actions
-      = f.submit "Voltar", :name => 'back_button', :class => 'button back' unless @person.first_step?
-      = f.submit label_button, :class => 'button save'
+
+- content_for :javascript do
+  :javascript
+    new SearchMap(#{people_markers})
