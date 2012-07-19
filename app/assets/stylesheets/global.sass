@@ -1,9 +1,7 @@
 @import compass, compass/utilities/general/reset, compass/css3/inline-block
+@import compass/css3, compass/css3/appearance, compass/utilities
 
 +global-reset
-
-body
-  background: url('background.jpg')
 
 div:after, ol:after, form:after, ul:after, dl:after, a:after
   content: '.'
@@ -12,3 +10,59 @@ div:after, ol:after, form:after, ul:after, dl:after, a:after
   visibility: hidden
   height: 0
   overflow: hidden
+
+body
+  background: url('background.jpg')
+  font-family: 'helvetica neue', helvetica, arial, sans-serif
+
+h1
+  color: #5d5c5c
+  font-family: 'SteelfishEbRegular'
+  font-size: 32pt
+
+h2
+  color: #590101
+  font-family: 'SteelfishEbRegular'
+  font-size: 26pt
+
+h3
+  color: #630000
+  font-family: 'DroidSansRegular'
+  font-size: 20pt
+
+h4
+  color: #616160
+  font-family: 'geosanslight'
+  font-size: 12pt
+  font-weight: bold
+  text-decoration: underline
+
+h5
+  color: #890800
+  font-family: 'NillandRegular'
+  font-size: 11pt
+
+h6
+  color: #ffffff
+  font-family: 'NillandRegular'
+  font-size: 8pt
+
+p
+  color: #5a5a5a
+  font-family: 'NillandRegular'
+  font-size: 12pt 
+  letter-spacing: 2px
+  line-height: 118%
+
+a.menu
+  color: #ffffff
+  font-family: 'SteelfishEbRegular'
+  font-size: 18pt
+  text-decoration: none
+  padding: 8px
+  margin-top: 12px
+  float: left
+  &:hover, &.selected
+    background-color: #5a0201
+    +border-radius(4px)
+    +box-shadow(#b8201b 0px 0px 15px)

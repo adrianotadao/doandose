@@ -1,5 +1,5 @@
 #notifications
-  Notificacoes
+  %h1 Notificacoes
   -unless @notifications.blank?
     %table
       %thead
@@ -16,4 +16,4 @@
             %td= notification.alerted_at
             %td= link_to 'Ver detalhes', notification_path(notification)
   - else
-    .empty_list Não existem alertas no momento.
+    %h4.empty_list Não existem alertas no momento.

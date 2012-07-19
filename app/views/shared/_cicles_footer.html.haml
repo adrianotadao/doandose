@@ -1,28 +1,28 @@
 #cicle_one
   #body
-    %h1= t('footer.cicle.title.about_us')
+    %h2= t('footer.cicle.title.about_us')
     %p 
       É um fato conhecido de todos que um leitor 
       se distrairá com o conteúdo de texto legível 
       de uma página quando estiver examinando sua diagramação. 
       A vantagem de usar Lorem Ipsum é que ele tem uma distribuição 
       normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui".
-    .more= t('footer.cicle.more')
+    %h4= t('footer.cicle.more')
 
 #cicle_two
   #body
-    %h1= t('footer.cicle.title.testimony')
+    %h2= t('footer.cicle.title.testimony')
     .quotes_rigth
     .quotes_left
     %p 
       É um fato conhecido de todos que um leitor 
       se distrairá com o conteúdo de texto legível 
       de uma página quando...
-    .more= t('footer.cicle.more')
+    %h4= t('footer.cicle.more')
 
 #cicle_three
   #body
-    %h1 Contatos
+    %h2 Contatos
     = simple_form_for '#' do |f|
       %dl.contact_form
         %dt= f.label :name, t('form.label.name')
