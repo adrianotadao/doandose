@@ -1,0 +1,75 @@
+cores padrao
+
+#590101 -> vermelho
+#5d5c5c -> cinza
+#6f6f6f -> cinza mais claro
+
+#d0cece -> cinza um pouco escuro input
+#a9a9a9 -> cinza borda input
+#f3dcdc -> vermelho erro input
+#a22020 -> vermelho borda input
+#dce7de -> verde sucesso
+#546c48 -> verde borda sucesso
+
+button
+  background-color: #555454
+  border: 1px solid #343333
+  font-face: Droid Sans
+  font-size: 14pt
+  padding: 8px
+  border-radius: 3px
+  font-weight: bold
+
+button-icon
+  background-color: #850404
+  border: 1px solid #343333
+  font-face: Droid Sans
+  font-size: 12pt
+  padding: 8px
+  border-radius: 3px
+
+h1
+  color: #5d5c5c
+  font-family: Steelfish
+  font-size: 32pt
+
+h2
+  color: #590101
+  font-family: Steelfish
+  font-size: 26pt
+
+h3
+  color: #630000
+  font-family: DroidSans
+  font-size: 20pt
+
+h4
+  color: #616160
+  font-family: Ebrima
+  font-size: 12pt
+  font-weight: bold
+
+h5
+  color: #890800
+  font-family: Nilland
+  font-size: 11pt
+
+h6
+  color: #ffffff
+  font-family: Nilland
+  font-size: 8pt
+
+p
+  color: #5a5a5a
+  font-family: Nilland
+  font-size: 12pt  
+
+menu
+  color: #ffffff
+  font-family: Steelfish
+  font-size: 18pt
+
+label
+  color: #767676
+  font-family: GeosansLight
+  font-size: 12pt
