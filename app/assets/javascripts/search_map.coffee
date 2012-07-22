@@ -1,5 +1,6 @@
 class window.SearchMap
   constructor: (coordinates) ->
+    $('label').infield()
     locations = coordinates
 
     map = new google.maps.Map(document.getElementById("map"),

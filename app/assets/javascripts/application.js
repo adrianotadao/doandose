@@ -10,3 +10,4 @@
 //= require mask
 //= require jquery.nested-fields
 //= require social_buttons
+//= require infields
