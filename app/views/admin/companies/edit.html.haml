@@ -1,6 +1,6 @@
-#edit_partners
-  %h2 Edicao Parceiro #{@company.name}
+#edit_company
+  %h2= t('views.company.title_edit')  #{@company.name}
 
   = render 'form'
-  
-  = link_to 'Voltar', admin_companies_path, :class => 'button back'
+
+  = link_to t('views.company.back') , admin_companies_path, :class => 'button back'

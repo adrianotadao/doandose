@@ -3,7 +3,10 @@ pt-BR:
     root: 'Home'
     people: 'Perfil'
     new_person: 'Cadastre-se'
+    blood: 'tipo-sanguineo'
+    company: 'Compania'
     users_new_session: 'Login'
     users_destroy_session: 'Sair'
     notifications: 'Notificacoes'
+    exit: 'Sair'
 

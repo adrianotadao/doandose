@@ -1,14 +1,14 @@
-#partners
-  %h1 Company
+#companies
+  %h1= t('views.company.title')
   .actions
-    = link_to 'Novo company', new_admin_company_path
+    = link_to t('views.company.new'), new_admin_company_path
 
   - unless @companies.blank?
     %table.list
       %thead
         %tr
-          %th Nome
-          %th Logo
+          %th= t('views.company.name')
+          %th= t('views.company.logo')
           %th.actions
 
       %tbody
@@ -16,5 +16,5 @@
           %tr
             %td= company.name
             %td
-              = link_to 'Detalhes', [:admin, company], :class => "show"
-              = link_to 'Editar', edit_admin_company_path(company), :class => "edit"
+              = link_to t('views.company.show'), [:admin, company], :class => "show"
+              = link_to t('views.company.edit'), edit_admin_company_path(company), :class => "edit"

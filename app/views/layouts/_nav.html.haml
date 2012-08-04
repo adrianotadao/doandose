@@ -1,18 +1,21 @@
-%dl
+- unless admin_signed_in?
+  %dl
+    %dd= link_to t('nav.root'), root_path, :class => "menu #{menu_item_class root_path}"
 
-  %dd= link_to t('nav.root'), root_path, :class => "menu #{menu_item_class root_path}"
+    - if user_signed_in?
+      %dd= link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id)), :class => "menu #{menu_item_class people_path}"
+      %dd= link_to t('nav.notifications'), notifications_path, :class => "menu #{menu_item_class notifications_path}"
 
-  - if user_signed_in?
-    %dd= link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id)), :class => "menu #{menu_item_class people_path}"
-    %dd= link_to t('nav.notifications'), notifications_path, :class => "menu #{menu_item_class notifications_path}"
+      %dt.saludation Bem vindo! #{Person.find(current_user.authenticable_id).name}
+      %dd.saludation= link_to t('nav.users_destroy_session'), users_destroy_session_path, :confirm => 'Deseja sair?'
 
-    %dt.saludation Bem vindo! #{Person.find(current_user.authenticable_id).name}
-    %dd.saludation= link_to t('nav.users_destroy_session'), users_destroy_session_path, :confirm => 'Deseja sair?'
+    - else
+      %dd= link_to t('nav.new_person'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
+      %dd= link_to t('nav.users_new_session'), users_new_session_path, :class => "menu #{menu_item_class users_new_session_path}"
+- else
+  %dl
+    %dd= link_to t('nav.blood'), admin_bloods_path, :class => "menu #{menu_item_class admin_bloods_path}"
 
-  - else
-    %dd= link_to t('nav.new_person'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
-    %dd= link_to t('nav.users_new_session'), users_new_session_path, :class => "menu #{menu_item_class users_new_session_path}"
+    %dd= link_to t('nav.company'), admin_companies_path, :class => "menu #{menu_item_class admin_companies_path}"
 
-%dl
-  %dd= link_to t('nav.blood'), admin_bloods_path
-  %dd= link_to t('nav.exit'), admin_destroy_session_path
+    %dd= link_to t('nav.exit'), admin_destroy_session_path, :class => "menu #{menu_item_class admin_destroy_session_path}"

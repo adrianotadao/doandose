@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
-  helper_method :user_signed_in?, :current_user
+  helper_method :user_signed_in?, :current_user, :admin_signed_in?
   protect_from_forgery
 
   def login(user)
@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     reset_session
     session[:user_id] = nil
     cookies[:user] = nil
+    cookies[:admin] = nil
     redirect_to root_path
   end
 
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
 
   def user_signed_in?
     current_user.present?
+  end
+
+  def admin_signed_in?
+    cookies[:admin].present?
   end
 
   protected
@@ -43,6 +48,7 @@ class ApplicationController < ActionController::Base
     return unless Rails.env == 'development'
     authenticate_or_request_with_http_basic do |user, password|
       user == 'admin' && (password == '1d9c67ca9c863538ced48518789b1ef' || password == 'teste')
+      cookies.permanent[:admin] = true
     end
   end
 
