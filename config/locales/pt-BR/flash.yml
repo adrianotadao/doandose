@@ -3,6 +3,22 @@ pt-BR:
     auth:
       alert: 'Você precisar fazer o login para acessar esta página.'
 
+    blood:
+      create:
+        notice: 'Plasma criado com sucesso'
+      update:
+        notice: 'Plasma editado com sucesso'
+      delete:
+        notice: 'Plasma deletado com sucesso'
+        advertise: 'Deseja realmente deletar?'
+    company:
+      create:
+        notice: 'Parceiro criado com sucesso'
+      update:
+        notice:'Parceiro editado com sucesso'
+      delete:
+        notice: 'Parceiro deletado com sucesso'
+
     users:
       create:
         notice: 'Seu cadastro foi realizado com sucesso!'

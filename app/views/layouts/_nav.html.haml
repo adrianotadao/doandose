@@ -1,5 +1,5 @@
 %dl
-  
+
   %dd= link_to t('nav.root'), root_path, :class => "menu #{menu_item_class root_path}"
 
   - if user_signed_in?
@@ -12,3 +12,7 @@
   - else
     %dd= link_to t('nav.new_person'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
     %dd= link_to t('nav.users_new_session'), users_new_session_path, :class => "menu #{menu_item_class users_new_session_path}"
+
+%dl
+  %dd= link_to t('nav.blood'), admin_bloods_path
+  %dd= link_to t('nav.exit'), admin_destroy_session_path

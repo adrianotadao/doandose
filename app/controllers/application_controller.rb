@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def logout
+    reset_session
     session[:user_id] = nil
     cookies[:user] = nil
+    redirect_to root_path
   end
 
   def authenticate_user!
@@ -36,4 +38,12 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+
+  def authenticate_admin
+    return unless Rails.env == 'development'
+    authenticate_or_request_with_http_basic do |user, password|
+      user == 'admin' && (password == '1d9c67ca9c863538ced48518789b1ef' || password == 'teste')
+    end
+  end
+
 end

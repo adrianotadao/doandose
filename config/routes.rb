@@ -3,13 +3,13 @@ Doandose::Application.routes.draw do
   root :to => "pages#index"
 
   resources :people
-  resources :page  
+  resources :page
   resources :notifications
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure' => 'users/sessions#failure'
 
-  namespace :users, :path => 'usuario' do 
+  namespace :users, :path => 'usuario' do
     match '/login' => 'sessions#new', :as => :new_session
     match '/sair' => 'sessions#destroy', :as => :destroy_session
 
@@ -26,13 +26,13 @@ Doandose::Application.routes.draw do
 
   namespace :admin do
     root :to => 'pages#index'
-
+    get  '/sair/' => 'application#logout', :as => :destroy_session
     resources :pages, :only => :index
     resources :partners
     resources :companies
-    resources :bloods, :only => [:index, :show]
+    resources :bloods, :only => [:index, :new, :create, :edit, :update, :destroy]
   end
-  
+
   namespace :institution, :path => 'instituicao' do
     root :to => 'pages#index'
     resources :pages, :only => :index

@@ -1,0 +1,8 @@
+pt-BR:
+  views:
+    blood:
+      title: 'Listagem dos tipos de plasma'
+      new: 'Inserir plasma'
+      edit: 'Editar'
+      delete: 'Deletar'
+      name: 'Tipos'
