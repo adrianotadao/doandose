@@ -12,10 +12,13 @@
     - else
       %dd= link_to t('nav.new_person'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
       %dd= link_to t('nav.users_new_session'), users_new_session_path, :class => "menu #{menu_item_class users_new_session_path}"
+    %dd= link_to t('nav.partner'), partners_path, :class => "menu #{menu_item_class partners_path}"
 - else
   %dl
     %dd= link_to t('nav.blood'), admin_bloods_path, :class => "menu #{menu_item_class admin_bloods_path}"
 
     %dd= link_to t('nav.company'), admin_companies_path, :class => "menu #{menu_item_class admin_companies_path}"
+
+    %dd= link_to t('nav.partner'), admin_partners_path, :class => "menu #{menu_item_class admin_partners_path}"
 
     %dd= link_to t('nav.exit'), admin_destroy_session_path, :class => "menu #{menu_item_class admin_destroy_session_path}"

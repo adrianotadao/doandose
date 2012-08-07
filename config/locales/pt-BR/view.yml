@@ -2,17 +2,16 @@ pt-BR:
   views:
     blood:
       title: 'Listagem dos tipos de plasma'
-      new: 'Inserir plasma'
-      edit: 'Editar'
-      delete: 'Deletar'
       name: 'Tipos'
     company:
       title: 'Compania'
-      new: 'Nova Compania'
-      edit: 'Editar'
-      show: 'Detalhes'
       name: 'Nome'
       logo: 'Identidade Visual'
       title_edit: 'Edicao Parceiro'
-      back: 'Voltar'
       title_new: 'Adicionar novo parceiro'
+    partner:
+      title: 'Parceiros'
+      name: 'Nome'
+      logo: 'Logo'
+      title_edit: 'Editar parceiro'
+      title_new: 'Adicionar novo parceiro.'

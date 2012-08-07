@@ -1,0 +1,9 @@
+%h1= @partner.name
+%p
+  %b= t('views.partner.logo')
+  = image_tag @partner.logo.data.url(:thumb)
+%p
+  %b= t('views.partner.site')
+  = @partner.site
+
+= link_to t('form.buttons.back'), '#', :class => 'button back'

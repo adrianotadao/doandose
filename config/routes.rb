@@ -6,6 +6,9 @@ Doandose::Application.routes.draw do
   resources :page
   resources :notifications
 
+  get '/parceiros' => 'partners#index', :as => :partners
+  get '/parceiros/:id' => 'partners#show', :as => :show_partners
+
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure' => 'users/sessions#failure'
 

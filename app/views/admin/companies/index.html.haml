@@ -1,7 +1,7 @@
 #companies
   %h1= t('views.company.title')
   .actions
-    = link_to t('views.company.new'), new_admin_company_path
+    = link_to t('form.buttons.new'), new_admin_company_path
 
   - unless @companies.blank?
     %table.list
@@ -16,5 +16,5 @@
           %tr
             %td= company.name
             %td
-              = link_to t('views.company.show'), [:admin, company], :class => "show"
-              = link_to t('views.company.edit'), edit_admin_company_path(company), :class => "edit"
+              = link_to t('form.buttons.show'), [:admin, company], :class => "show"
+              = link_to t('form.buttons.edit'), edit_admin_company_path(company), :class => "edit"

@@ -1,14 +1,14 @@
 #partners
-  %h1 Parceiros
+  %h1= t('views.partner.title')
   .actions
-    = link_to 'Novo parceiro', new_admin_partner_path
+    = link_to t('form.buttons.new'), new_admin_partner_path
 
   - unless @partners.blank?
     %table.list
       %thead
         %tr
-          %th Nome
-          %th Logo
+          %th= t('views.partner.name')
+          %th= t('views.partner.logo')
           %th.actions
 
       %tbody
@@ -17,5 +17,5 @@
             %td= partner.name
             %td= image_tag partner.logo.data.url(:thumb)
             %td
-              = link_to 'Detalhes', [:admin, partner], :class => "show"
-              = link_to 'Editar', edit_admin_partner_path(partner), :class => "edit"
+              = link_to t('form.buttons.show'), [:admin, partner], :class => "show"
+              = link_to t('form.buttons.edit'), edit_admin_partner_path(partner), :class => "edit"

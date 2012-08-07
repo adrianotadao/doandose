@@ -18,7 +18,13 @@ pt-BR:
         notice:'Parceiro editado com sucesso'
       delete:
         notice: 'Parceiro deletado com sucesso'
+        advertise: 'Deseja realmente deletar?'
 
+    partner:
+      create:
+      update:
+      delete:
+        advertise: 'Deseja realmente deletar?'
     users:
       create:
         notice: 'Seu cadastro foi realizado com sucesso!'

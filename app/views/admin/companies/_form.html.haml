@@ -15,7 +15,7 @@
     = f.input :fancy_name
     = f.input :cnpj
     = f.input :responsible
-    
+
     = f.nested_fields_for :address do |address|
       .inputs
         = address.input :number
@@ -33,26 +33,17 @@
         = contact.input :phone
         = contact.input :cellphone
         = contact.input :email
-        
+
     .input.string.users
       %label Usuários
       %a.add Adicionar novo usuário
       .container
-        / = f.nested_fields_for :users do |user|
-        /   %fieldset.item
-        /     = user.input :id, :as => :hidden
-        /     = user.input :_destroy, :as => :hidden
-        /     = user.input :email
-        /     = user.input :password
-        /     = user.input :password_confirmation
-        /     %a.remove Remover usuário
-
   .actions
-    = link_to '', [:admin, :companies], :class => 'button back'
+    = link_to t('form.buttons.back'), [:admin, :companies], :class => 'button back'
     -unless @company.new_record?
-      = link_to '', [:admin, @company], :confirm => 'Deseja realmente deletar?', :method => :delete, :class => "button delete"
+      = link_to t('form.buttons.delete'), [:admin, @company], :confirm => t('flash.company.delete.advertise'), :method => :delete, :class => "button delete"
 
-    = f.button :submit, "Salvar", :class => 'button save'
+    = f.button :submit, t('form.buttons.save'), :class => 'button save'
 
 - content_for :javascript do
   :javascript

@@ -5,6 +5,7 @@ pt-BR:
     new_person: 'Cadastre-se'
     blood: 'tipo-sanguineo'
     company: 'Compania'
+    partner: 'Parceiros'
     users_new_session: 'Login'
     users_destroy_session: 'Sair'
     notifications: 'Notificacoes'
