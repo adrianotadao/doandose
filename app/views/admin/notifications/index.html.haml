@@ -1,0 +1,25 @@
+#notifications
+  %h1= t('views.notifications.title')
+  .actions
+    = link_to t('form.buttons.new'), new_admin_notification_path
+
+  - unless @notifications.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('views.notifications.active')
+          %th= t('views.notifications.quantity')
+          %th= t('views.notifications.situation')
+          %th= t('views.notifications.alerted_at')
+          %th.actions
+
+      %tbody
+        - @notifications.each do |notification|
+          %tr
+            %td= notification.active
+            %td= notification.quantity
+            %td= notification.situation
+            %td= notification.alerted_at
+            %td
+              = link_to t('form.buttons.show'), [:admin, notification], :class => "show"
+              = link_to t('form.buttons.edit'), edit_admin_notification_path(notification), :class => "edit"

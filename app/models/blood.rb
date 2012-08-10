@@ -8,6 +8,7 @@ class Blood
 
   #relationship
   has_many :people
+  has_many :notifications
 
   #validations
   validates_presence_of :name

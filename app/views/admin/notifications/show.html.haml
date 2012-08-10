@@ -1,0 +1,10 @@
+= link_to t('form.buttons.back'), admin_notifications_path, :class => 'button back'
+
+%p
+	%b= @notifications.active
+%p
+	%b= @notifications.quantity
+%p
+	%b= @notifications.situation
+%p
+	%b= @notifications.alerted_at

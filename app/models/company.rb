@@ -9,7 +9,7 @@ class Company
   field :fancy_name, :type => String
   field :cnpj, :type => String
   field :responsible, :type => String
-  
+
   slug :name
 
   #access control
@@ -19,7 +19,8 @@ class Company
   has_one :address, :as => :addressable, :dependent => :destroy, :autosave => true
   has_one :contact, :as => :contactable, :dependent => :destroy, :autosave => true
   has_one :user, :as => :authenticable, :dependent => :destroy, :autosave => true
-  
+  has_many :notifications
+
   accepts_nested_attributes_for :address, :contact, :user, :allow_destoy => true
 
   #validations

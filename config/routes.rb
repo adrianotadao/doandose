@@ -34,6 +34,7 @@ Doandose::Application.routes.draw do
     resources :partners
     resources :companies
     resources :bloods, :only => [:index, :new, :create, :edit, :update, :destroy]
+    resources :notifications
   end
 
   namespace :institution, :path => 'instituicao' do

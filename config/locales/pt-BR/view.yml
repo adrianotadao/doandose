@@ -15,3 +15,9 @@ pt-BR:
       logo: 'Logo'
       title_edit: 'Editar parceiro'
       title_new: 'Adicionar novo parceiro.'
+    notifications:
+      title: 'Notificacoes'
+      title_new: 'Nova Notificacao'
+      title_edit: 'Editar Notificacao'
+      associated_blood: 'tipo de sangue'
+      associated_company: 'Hemocentro responsavel'

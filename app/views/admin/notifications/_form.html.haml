@@ -1,0 +1,25 @@
+= simple_form_for [:admin, @notification] do |f|
+  - if @notification.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@notification.errors.count, "erro")
+        foram encontrados:
+
+      %ul
+        - @notification.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :radio
+    = f.input :blood, :collection => Blood.all.each{|r| r.id}
+    = f.input :company, :collection => Company.all, :prompt => t('views.notifications.associated_company')
+    = f.input :quantity
+    = f.input :situation, :input_html => { :rows => 10 }
+    = f.input :alerted_at
+
+  .actions
+    = link_to t('form.buttons.back'), [:admin, :notifications], :class => 'button back'
+    -#unless @partner.new_record?
+      = link_to t('form.buttons.delete'), [:admin, @notification], :confirm => t('flash.partner.delete.advertise'), :method => :delete, :class => "button delete"
+
+    = f.button :submit, t('form.buttons.save'), :class => 'button save'
