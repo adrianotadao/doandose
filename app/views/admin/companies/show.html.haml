@@ -1,1 +1,37 @@
+%h2= @company.name
+%dl
+  %dt
+    %dd= @company.active
+    %dd= @company.name
+    %dd= @company.fancy_name
+    %dd= @company.cnpj
+    %dd= @company.responsible
+
+%h2= t('views.company.address')
+%dl
+  %dt
+    %dd= @company.address.number
+    %dd= @company.address.street
+    %dd= @company.address.neighborhood
+    %dd= @company.address.city
+    %dd= @company.address.zip_code
+    %dd= @company.address.state
+    %dd= @company.address.complement
+    %dd= @company.address.lat
+    %dd= @company.address.lng
+
+%h2= t('views.company.contact')
+%dl
+  %dt
+    %dd= @company.contact.phone
+    %dd= @company.contact.cellphone
+    %dd= @company.contact.email
+
+%h2= t('views.company.user')
+%dl
+  %dt
+    %dd= @company.user.email
+
 = link_to t('form.buttons.back'), admin_companies_path, :class => 'button back'
+= link_to t('form.buttons.delete'), [:admin, @company], :confirm => t('flash.blood.delete.advertise'), :method => :delete, :class => "button delete"
+= link_to t('form.buttons.edit'), edit_admin_company_path(@company), :class => "edit"

@@ -8,6 +8,7 @@
       %thead
         %tr
           %th= t('views.company.name')
+          %th= t('views.company.fancyname')
           %th= t('views.company.logo')
           %th.actions
 
@@ -15,6 +16,7 @@
         - @companies.each do |company|
           %tr
             %td= company.name
+            %td= company.fancy_name
             %td
               = link_to t('form.buttons.show'), [:admin, company], :class => "show"
               = link_to t('form.buttons.edit'), edit_admin_company_path(company), :class => "edit"

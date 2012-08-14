@@ -16,6 +16,7 @@
     = f.input :cnpj
     = f.input :responsible
 
+    %h2= t('views.company.address')
     = f.nested_fields_for :address do |address|
       .inputs
         = address.input :number
@@ -25,19 +26,24 @@
         = address.input :zip_code
         = address.input :state
         = address.input :complement
-        = address.input :lat
-        = address.input :lng
+        = address.hidden_field :lat
+        = address.hidden_field :lng
+        .map
 
+    %h2= t('views.company.contact')
     = f.nested_fields_for :contact do |contact|
       .inputs
         = contact.input :phone
         = contact.input :cellphone
         = contact.input :email
 
-    .input.string.users
-      %label Usuários
-      %a.add Adicionar novo usuário
-      .container
+    %h2= t('views.company.user')
+    = f.nested_fields_for :user do |user|
+      .inputs
+        = user.input :email
+        = user.input :password
+        = user.input :password_confirmation
+
   .actions
     = link_to t('form.buttons.back'), [:admin, :companies], :class => 'button back'
     -unless @company.new_record?

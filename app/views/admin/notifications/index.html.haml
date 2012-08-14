@@ -21,5 +21,5 @@
             %td= notification.situation
             %td= notification.alerted_at
             %td
-              = link_to t('form.buttons.show'), [:admin, notification], :class => "show"
+              = link_to t('form.buttons.show'), admin_notification_path(notification), :class => "show"
               = link_to t('form.buttons.edit'), edit_admin_notification_path(notification), :class => "edit"

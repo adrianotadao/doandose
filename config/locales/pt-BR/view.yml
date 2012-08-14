@@ -6,9 +6,13 @@ pt-BR:
     company:
       title: 'Compania'
       name: 'Nome'
+      fancyname: 'Nome Fantasia'
       logo: 'Identidade Visual'
       title_edit: 'Edicao Parceiro'
       title_new: 'Adicionar novo parceiro'
+      contact: 'Contatos'
+      address: 'Endereco'
+      user: 'Usuario'
     partner:
       title: 'Parceiros'
       name: 'Nome'

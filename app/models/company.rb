@@ -13,7 +13,7 @@ class Company
   slug :name
 
   #access control
-  attr_accessible :name, :fancy_name, :cnpj, :responsible
+  attr_accessible :name, :fancy_name, :cnpj, :responsible, :active, :address_attributes, :contact_attributes, :user_attributes
 
   #relationship
   has_one :address, :as => :addressable, :dependent => :destroy, :autosave => true

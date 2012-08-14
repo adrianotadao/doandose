@@ -1,1 +1,10 @@
+%dl
+  %dt
+    %dd= @partner.active
+    %dd= @partner.name
+    %dd= @partner.site
+    %dd= image_tag @partner.logo.data.url(:thumb)
+
 = link_to t('form.buttons.back'), admin_partners_path, :class => 'button back'
+= link_to t('form.buttons.edit'), edit_admin_partner_path(@partner), :class => 'button edit'
+= link_to t('form.buttons.delete'), [:admin, @partner], :confirm => t('flash.blood.delete.advertise'), :method => :delete, :class => "button delete"

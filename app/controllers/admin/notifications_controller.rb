@@ -19,7 +19,7 @@ class Admin::NotificationsController < Admin::BaseController
     @notification = Notification.new(params[:notification])
 
     if @notification.save
-      redirect_to([:admin, @notification], :notice => 'Partner criada com sucesso.')
+      redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
     else
       render :action => "new"
     end
@@ -29,15 +29,17 @@ class Admin::NotificationsController < Admin::BaseController
     @notification = Notification.find_by_slug(params[:id])
 
     if @notification.update_attributes(params[:notification])
-      redirect_to([:admin, @notification], :notice => 'Partner editada com sucesso.')
+      redirect_to([:admin, @notification], :notice => t('flash.notification.update.notice'))
     else
       render :action => "edit"
     end
   end
 
   def destroy
-    if @partner.destroy
-      redirect_to [:admin, :categories], :notice => "Partner deletada com sucesso!"
+    @notification = Notification.find_by_slug(params[:id])
+
+    if @notification.destroy
+      redirect_to [:admin, :notifications], :notice => t('flash.notification.delete.notice')
     else
       redirect_to :action => 'edit'
     end
