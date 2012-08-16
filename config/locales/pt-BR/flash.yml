@@ -24,6 +24,14 @@ pt-BR:
       update:
       delete:
         advertise: 'Deseja realmente deletar?'
+    Person:
+      create:
+        notice: 'Doador criado com sucesso'
+      update:
+        notice:'Doador editado com sucesso'
+      delete:
+        notice: 'Doador deletado com sucesso'
+        advertise: 'Deseja realmente deletar?'
     users:
       create:
         notice: 'Seu cadastro foi realizado com sucesso!'

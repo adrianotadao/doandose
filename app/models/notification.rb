@@ -7,11 +7,11 @@ class Notification
   field :active, :type => Boolean
   field :quantity, :type => Integer
   field :situation, :type => String
-  field :title, :type => String
+  field :naoun, :type => String
   field :observation, :type => String
   field :alerted_at, :type => Time
 
-  slug :title
+  slug :situation
 
   #relationship
   belongs_to :company
