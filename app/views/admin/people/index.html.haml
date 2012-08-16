@@ -1,0 +1,25 @@
+#people
+  %h1= t('views.people.title')
+  .actions
+    = link_to t('form.buttons.new'), new_admin_person_path
+
+  - unless @people.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('views.people.active')
+          %th= t('views.people.donor')
+          %th= t('views.people.name')
+          %th= t('views.people.sex')
+          %th.actions
+
+      %tbody
+        - @people.each do |person|
+          %tr
+            %td= person.active
+            %td= person.donor
+            %td= person.name
+            %td= person.sex
+            %td
+              = link_to t('form.buttons.show'), admin_person_path(person), :class => "show"
+              = link_to t('form.buttons.edit'), edit_admin_person_path(person), :class => "edit"

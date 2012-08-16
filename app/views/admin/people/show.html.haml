@@ -1,0 +1,42 @@
+= link_to t('form.buttons.back'), admin_people_path, :class => 'button back'
+
+%p
+	%b= @person.active
+%p
+	%b= @person.donor
+%p
+	%b= @person.name
+%p
+	%b= @person.surname
+%p
+	%b= @person.sex
+%p
+	%b= @person.weight
+%p
+	%b= @person.height
+
+- if @person.address
+	%p
+		%b= @person.address.street
+	%p
+		%b= @person.address.number
+	%p
+		%b= @person.address.neighborhood
+	%p
+		%b= @person.address.city
+	%p
+		%b= @person.address.state
+	%p
+		%b= @person.address.zip_code
+
+- if @person.contact
+	%p
+		%b= @person.contact.phone
+	%p
+		%b= @person.contact.cellphone
+	%p
+		%b= @person.contact.email
+
+- if @person.user
+	%p
+		%b= @person.user.email

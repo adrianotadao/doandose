@@ -1,0 +1,53 @@
+= simple_form_for [:admin, setup_person(@person)] do |f|
+  - if @person.errors.any?
+    #error_explanation
+      .errors
+        = pluralize(@person.errors.count, "erro")
+        foram encontrados:
+
+      %ul
+        - @person.errors.full_messages.each do |msg|
+          %li= msg
+
+  .inputs
+    = f.input :active, :as => :radio
+    = f.input :donor, :as => :radio
+    = f.input :name
+    = f.input :surname
+    = f.input :sex
+    = f.input :weight
+    = f.input :height
+    = f.input :birthday
+    = f.input :observations
+
+  #address
+    %h2= t('label.user.information_step.address_title')
+    = f.fields_for :address do |address|
+      = address.input :zip_code
+      = address.input :street
+      = address.input :number
+      = address.input :neighborhood
+      = address.input :city
+      = address.select :collection, states_collection
+      = address.input :complement
+      = address.input :lat
+      = address.input :lng
+
+  #contact
+    %h2= t('label.user.information_step.contact_title')
+    = f.fields_for :contact do |contact|
+      = contact.input :phone
+      = contact.input :cellphone
+      = contact.input :email
+
+  #user
+    %h2= t('label.user.information_step.user_title')
+    = f.fields_for :user do |user|
+      = user.input :email
+      = user.input :password
+      = user.input :password_confirmation
+
+  .actions
+    = link_to t('form.buttons.back'), [:admin, :people], :class => 'button back'
+
+    = f.button :submit, t('form.buttons.save'), :class => 'button save'

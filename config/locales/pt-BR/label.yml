@@ -4,6 +4,7 @@ pt-BR:
       user_step:
         title: 'Cadastre-se'
       information_step:
+        user_title: 'Usuario'
         contact_title: 'Contato'
         address_title: 'Endereco'
       confirmation_step:
