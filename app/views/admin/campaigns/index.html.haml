@@ -1,0 +1,23 @@
+#campaigns
+  %h1= t('views.campaign.title')
+  .actions
+    = link_to t('form.buttons.new'), new_admin_campaign_path
+
+  - unless @campaigns.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('views.campaign.active')
+          %th= t('views.campaign.title')
+          %th= t('views.campaign.expired_at')
+          %th.actions
+
+      %tbody
+        - @campaigns.each do |campaign|
+          %tr
+            %td= campaign.active
+            %td= campaign.title
+            %td= campaign.expired_at
+            %td
+              = link_to t('form.buttons.show'), [:admin, campaign], :class => "show"
+              = link_to t('form.buttons.edit'), [:edit, :admin, campaign], :class => "edit"

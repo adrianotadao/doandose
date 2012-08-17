@@ -19,9 +19,11 @@
     %dd= link_to t('nav.partner'), partners_path, :class => "menu #{menu_item_class partners_path}"
 - else
   %dl
+    %dd= link_to t('nav.campaign'), admin_campaigns_path, :class => "menu #{menu_item_class admin_campaigns_path}"
+
     %dd= link_to t('nav.blood'), admin_bloods_path, :class => "menu #{menu_item_class admin_bloods_path}"
 
-    %dd= link_to t('nav.company'), admin_companies_path, :class => "menu #{menu_item_class admin_companies_path}"
+    %dd= link_to t('nav.companies'), admin_companies_path, :class => "menu #{menu_item_class admin_companies_path}"
 
     %dd= link_to t('nav.partner'), admin_partners_path, :class => "menu #{menu_item_class admin_partners_path}"
 

@@ -3,19 +3,12 @@ Doandose::Application.routes.draw do
   root :to => "pages#index"
 
   resources :people
-  resources :page
+  resources :page, only: [:index, :show]
   resources :notifications
-
-  get '/parceiros/' => 'partners#index', :as => :partners
-  get '/parceiros/:id' => 'partners#show', :as => :show_partner
-
-  get '/hemocentros/' => 'compnies#index', :as => :companies
-  get '/hemocentros/:id' => 'compnies#show', :as => :show_company
-
-  get '/campanhas/' => 'campaigns#index', :as => :campaigns
-  get '/campanhas/:id' => 'campaigns#show', :as => :show_campaign
-
-  get '/saiba-mais/:id' => 'informations#show', :as => :show_information
+  resources :partners, only: [:index, :show]
+  resources :companies, only: [:index, :show]
+  resources :informations, only: [:show]
+  resources :campaigns, only: [:index, :show]
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure' => 'users/sessions#failure'
@@ -44,6 +37,8 @@ Doandose::Application.routes.draw do
     resources :bloods
     resources :notifications
     resources :people
+    resources :informations
+    resources :campaigns
   end
 
   namespace :institution, :path => 'instituicao' do
