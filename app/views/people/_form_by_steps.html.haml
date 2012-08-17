@@ -7,8 +7,9 @@
       #address.step= render :partial => "people/steps/address", :locals => { :f => f }
       #confirmation.step= render :partial => "people/steps/confirmation", :locals => { :f => f }
       .actions
-        = f.submit "Voltar", :name => 'back_button', :class => 'button back' unless @person.first_step?
-        = f.submit label_button, :class => 'button save'
+        = link_to 'Próximo', '#', :id => 'next-step'
+        =# f.submit "Voltar", :name => 'back_button', :class => 'button back' unless @person.first_step?
+        =# f.submit label_button, :class => 'button save'
     #map
 
 - content_for :javascript do
