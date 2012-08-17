@@ -1,6 +1,6 @@
 class window.Steps
   constructor: ->
-    $('#next_step').click (e) => @chagenStep(e)
+    $('#next-step').click (e) => @changeStep(e)
 
-  changeStep: (e) ->
+  changeStep: (e) =>
     console.log e
