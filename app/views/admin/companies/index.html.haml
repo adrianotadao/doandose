@@ -3,7 +3,7 @@
   .actions
     = link_to t('form.buttons.new'), new_admin_company_path
 
-  - unless @companies.blank?
+  - if @companies
     %table.list
       %thead
         %tr
@@ -18,5 +18,10 @@
             %td= company.name
             %td= company.fancy_name
             %td
+            %td
               = link_to t('form.buttons.show'), [:admin, company], :class => "show"
               = link_to t('form.buttons.edit'), edit_admin_company_path(company), :class => "edit"
+
+- content_for :javascript do
+  :javascript
+    new Tables()

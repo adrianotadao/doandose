@@ -3,7 +3,7 @@
   = link_to t('form.buttons.new'), new_admin_blood_path
 
   - if @bloods
-    %table
+    %table.list
       %thead
         %tr
           %th= t('views.blood.name')
@@ -15,3 +15,7 @@
             %td
               = link_to t('form.buttons.edit'), edit_admin_blood_path(blood)
               = link_to t('form.buttons.delete'), [:admin, blood], :confirm => t('flash.blood.delete.advertise'), :method => :delete, :class => "button delete"
+
+- content_for :javascript do
+  :javascript
+    new Tables()

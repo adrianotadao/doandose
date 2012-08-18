@@ -3,7 +3,7 @@
   .actions
     = link_to t('form.buttons.new'), new_admin_person_path
 
-  - unless @people.blank?
+  - if @people
     %table.list
       %thead
         %tr
@@ -23,3 +23,7 @@
             %td
               = link_to t('form.buttons.show'), admin_person_path(person), :class => "show"
               = link_to t('form.buttons.edit'), edit_admin_person_path(person), :class => "edit"
+
+- content_for :javascript do
+  :javascript
+    new Tables()

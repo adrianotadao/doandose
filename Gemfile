@@ -35,8 +35,8 @@ end
 
 group :assets do
   gem 'compass-rails', '1.0.1'
-  gem 'sass-rails', '3.1.4'
-  gem 'coffee-rails', '3.1.1'
+  gem 'sass-rails', '3.2.5'
+  gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.6'
 end
 

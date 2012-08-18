@@ -3,7 +3,7 @@
   .actions
     = link_to t('form.buttons.new'), new_admin_notification_path
 
-  - unless @notifications.blank?
+  - if @notifications
     %table.list
       %thead
         %tr
@@ -23,3 +23,7 @@
             %td
               = link_to t('form.buttons.show'), admin_notification_path(notification), :class => "show"
               = link_to t('form.buttons.edit'), edit_admin_notification_path(notification), :class => "edit"
+
+- content_for :javascript do
+  :javascript
+    new Tables()
