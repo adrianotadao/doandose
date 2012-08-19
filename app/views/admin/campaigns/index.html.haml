@@ -1,7 +1,6 @@
 #campaigns
   %h1= t('views.campaign.title')
-  .actions
-    = link_to t('form.buttons.new'), new_admin_campaign_path
+  = link_to t('form.buttons.new'), new_admin_campaign_path, class: 'button new'
 
   - if @campaigns
     %table.list
@@ -13,14 +12,14 @@
           %th.actions
 
       %tbody
-        - @campaigns.each do |campaign|
+        - for campaign in @campaigns
           %tr
             %td= campaign.active
             %td= campaign.title
             %td= campaign.expired_at
             %td
-              = link_to t('form.buttons.show'), [:admin, campaign], :class => "show"
-              = link_to t('form.buttons.edit'), [:edit, :admin, campaign], :class => "edit"
+              = link_to t('form.buttons.show'), [:admin, campaign], class: 'button show'
+              = link_to t('form.buttons.edit'), [:edit, :admin, campaign], :class => "button edit"
 
 - content_for :javascript do
   :javascript

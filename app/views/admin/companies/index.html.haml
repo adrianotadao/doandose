@@ -1,7 +1,7 @@
 #companies
   %h1= t('views.company.title')
   .actions
-    = link_to t('form.buttons.new'), new_admin_company_path
+    = link_to t('form.buttons.new'), new_admin_company_path, class: 'button new'
 
   - if @companies
     %table.list
@@ -19,8 +19,8 @@
             %td= company.fancy_name
             %td
             %td
-              = link_to t('form.buttons.show'), [:admin, company], :class => "show"
-              = link_to t('form.buttons.edit'), edit_admin_company_path(company), :class => "edit"
+              = link_to t('form.buttons.show'), [:admin, company], class: 'button show'
+              = link_to t('form.buttons.edit'), edit_admin_company_path(company), class: 'button edit'
 
 - content_for :javascript do
   :javascript

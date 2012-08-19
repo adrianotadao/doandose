@@ -1,0 +1,30 @@
+@import compass/css3/inline-block
+
+.button
+  font-family: 'DroidSansRegular'
+  font-size: 12pt
+  color: #292828
+  text-decoration: none
+  font-weight: bold
+  &.new
+    background: url('add.jpg') no-repeat
+    padding: 3px 0 0 23px
+    +inline-block
+    margin: 18px 0
+  &.edit
+    background: url('edit.png') no-repeat
+    padding: 7px 0 0 23px
+    +inline-block
+    margin: 18px 0
+  &.delete
+    background: url('del.png') no-repeat
+    padding: 3px 0 0 23px
+    +inline-block
+    margin: 18px 10px
+  &.show
+    background: url('show.png') no-repeat
+    padding: 7px 0 0 23px
+    +inline-block
+    margin: 18px 10px
+  &:hover
+    text-decoration: underline

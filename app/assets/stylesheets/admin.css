@@ -1,10 +1,9 @@
-//= require global
+//= require admin/global
 //= require typography
 
-//= require ../../../vendor/assets/stylesheets/jquery-ui/jquery-ui-1.8.23.custom
-
 //= require jquery.dataTables
+//= require ../../../vendor/assets/stylesheets/jquery-ui/jquery-ui-1.8.23.custom
 //= require jquery.dataTables_themeroller
 
-
-//= require menu
+//= require admin/menu
+//= require admin/button

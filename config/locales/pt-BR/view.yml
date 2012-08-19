@@ -13,12 +13,26 @@ pt-BR:
       contact: 'Contatos'
       address: 'Endereco'
       user: 'Usuario'
+    campaign:
+      active: 'Ativo'
+      title: 'Titulo'
+      expired_at: 'Ate a data'
+    notification:
+      active: 'Ativo'
+      quantity: 'Quantidade de bolsas'
+      situation: 'Situacao'
+      alerted_at: 'Alerta em'
     partner:
       title: 'Parceiros'
       name: 'Nome'
       logo: 'Logo'
       title_edit: 'Editar parceiro'
       title_new: 'Adicionar novo parceiro.'
+    people:
+      active: 'Ativo'
+      donor: 'Doador'
+      name: 'Nome'
+      sex: 'Sexo'
     notifications:
       title: 'Notificacoes'
       title_new: 'Nova Notificacao'
