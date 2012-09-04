@@ -9,21 +9,32 @@ class window.PostalCodes
   state: $('.state')
   number: $('.number')
   complement: $('#customer_address_attributes_complement')
-  
+
   constructor: ->
     new Mask()
-    @postal_code.focusout =>
-      if $.trim(@postal_code.val()) != '' && $.trim(@postal_code.val()) != '__.___-___'
-        @progress() 
-        $.getScript "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{$('.postal_code').val()}", =>
-          if resultadoCEP['resultado'] && resultadoCEP['bairro'] != ''
-            @setAddress()
-            @sucess()
-          else
-            @fail()
-      else
-        @principle()
-        
+    $.ajax
+      type: 'get'
+      dataType: "jsonp"
+      url: "http://cep.republicavirtual.com.br/web_cep.php"
+      data: "cep=" + $('.postal_code') + "&formato=javascript"
+      beforeSend: (data) ->
+        console.log 'aguarde ...', data
+      success: (data) ->
+        console.log xml
+      complete: (data) ->
+        console.log 'tudo certo', XMLHttpRequest
+    # @postal_code.focusout =>
+    #   if $.trim(@postal_code.val()) != '' && $.trim(@postal_code.val()) != '__.___-___'
+    #     @progress()
+    #     $.getScript "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{$('.postal_code').val()}", =>
+    #       if resultadoCEP['resultado'] && resultadoCEP['bairro'] != ''
+    #         @setAddress()
+    #         @sucess()
+    #       else
+    #         @fail()
+    #   else
+    #     @principle()
+
     @number.focusout =>
         @complement.focus()
 
