@@ -1,5 +1,4 @@
 class CampaignsController < ApplicationController
-
 	def index
 		@campaigns = Campaign.all
 	end
@@ -7,5 +6,4 @@ class CampaignsController < ApplicationController
 	def show
 		@campaign = Campaign.find_by_slug params[:id]
 	end
-
 end
