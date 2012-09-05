@@ -1,5 +1,4 @@
 class Company
-
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
@@ -26,5 +25,4 @@ class Company
   #validations
   validates_presence_of :name, :fancy_name, :responsible, :address, :contact, :user
   validates_uniqueness_of :name, :fancy_name, :cnpj
-
 end

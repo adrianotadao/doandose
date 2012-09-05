@@ -17,5 +17,4 @@ class Campaign
 	attr_accessible :active, :title, :content, :quantity, :expired_at, :company_id, :blood_id
 
 	validates_presence_of :title, :content, :quantity, :expired_at
-
 end
