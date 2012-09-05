@@ -10,24 +10,23 @@ module PeopleHelper
   def path_locale(attribute)
     t("label.user.confirmation_step.#{attribute}")
   end
-  
+
   def people_markers
     markers = []
     Person.actives.all.map(&:address).each do |address|
       markers << address.full_coordinate if address.full_coordinate
     end
-    markers   
+    markers
   end
-  
+
   def people_sexes
     [
       ['Masculino', 1],
-      ['Feminino', 0],      
+      ['Feminino', 0],
     ]
   end
-  
+
   def label_button
     @person.last_step? ? 'Concluir' : 'Proximo'
   end
-  
 end
