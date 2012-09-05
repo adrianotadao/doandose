@@ -15,18 +15,18 @@
           #search_location
             = render :partial => 'shared/home_location'
           #menu
-            = link_to image_tag('logo.jpg'), root_path, :title => 'Doando.se', :class => 'logo'          
+            = link_to image_tag('logo.jpg'), root_path, :title => 'Doando.se', :class => 'logo'
             = render :partial => 'layouts/nav'
         #center
           #header
           #content= yield
 
-      #root_footer  
-        = render :partial => 'shared/cicles_footer'
+      #root_footer
+        = render :partial => 'shared/circles_footer'
 
     #footer
     = javascript_include_tag 'application'
 
     %script{ :src => 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false', :type => 'text/javascript' }
-      
+
     = yield :javascript

@@ -1,9 +1,9 @@
-@import compass/css3, compass/utilities/general/clearfix
+@import compass/css3/box-shadow
 
 .line
   background: url('line.png') repeat-x
   text-align: center
-  margin: 30px  
+  margin: 30px
   width: 100%
   height: 3px
 h1
@@ -13,29 +13,10 @@ h1
   padding: 0 20px
   background: url('background.jpg')
   width: 132px
-  
+
 #map
-  width: 574px 
-  height: 430px 
+  width: 574px
+  height: 430px
   padding: 0px
   border: 10px solid #a9a9a9
   +box-shadow(#c9c9c9 0px 0px 20px)
-
-#people.new 
-  form
-    #steps
-      float: left
-      div.step
-        width: 324px
-        float: left
-      #user
-        border: 1px solid
-      #personal
-        border: 1px solid
-        display: none
-      #address
-        border: 1px solid
-        display: none
-      #confirmation
-        border: 1px solid
-        display: none

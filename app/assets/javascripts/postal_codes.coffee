@@ -33,7 +33,7 @@ class window.PostalCodes
 
   addLoading: =>
     @removeLoading()
-    @postalCode.after("<div class='loading' style='width: 32px; height: 32px; display: inline-block; margin: 6px'></div>")
+    @postalCode.after("<div class='loading' style='width: 32px; height: 32px; display: inline-block; margin: 6px; background: url('loading.gif')'></div>")
 
   removeLoading: ->
     $('.loading').remove()

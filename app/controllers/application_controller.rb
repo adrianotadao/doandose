@@ -51,5 +51,4 @@ class ApplicationController < ActionController::Base
       cookies.permanent[:admin] = true
     end
   end
-
 end

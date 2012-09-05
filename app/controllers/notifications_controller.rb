@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-
   def index
     @notifications = Notification.all
   end
@@ -7,5 +6,4 @@ class NotificationsController < ApplicationController
   def show
     @notification = Notification.find_by_slug params[:id]
   end
-
 end
