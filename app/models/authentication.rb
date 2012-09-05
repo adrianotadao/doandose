@@ -9,9 +9,9 @@ class Authentication
   index :provider
   index :uid
   index [:provider, :uid]
-  
+
   belongs_to :user
-  
+
   # validations
   validates_presence_of :uid, :provider, :user
   validates_uniqueness_of :provider, :scope => :user

@@ -1,8 +1,7 @@
 class Address
-
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   field :number, :type => String
   field :street, :type => String
   field :neighborhood, :type => String
@@ -18,7 +17,7 @@ class Address
 
   #relationship
   belongs_to :addressable, polymorphic: true
-  
+
   #validations
   #validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state#, :lat, :lng
 
@@ -34,9 +33,9 @@ class Address
     self.lng = geocode.lng
   end
 
-  private  
+  private
   def address_for_geokit
     "#{number} #{street}, #{city}, #{state}".mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
   end
-  
+
 end
