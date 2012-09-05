@@ -1,78 +1,50 @@
 class window.PostalCodes
-  alert: $('.alert')
-  input_clear: $('.clear_input')
-  preloader: $('.preloader')
-  postal_code: $('.postal_code')
-  street: $('.street')
-  neighborhood: $('.neighborhood')
-  city: $('.city')
-  state: $('.state')
-  number: $('.number')
-  complement: $('#customer_address_attributes_complement')
-
   constructor: ->
-    new Mask()
+    @postalCode = $('.postal_code')
+    @street = $('.street')
+    @neighborhood = $('.neighborhood')
+    @city = $('.city')
+    @state = $('.state')
+    @number = $('.number')
+    @error = false
+
+    @postalCode.focusout =>
+      @run()
+      @number.focus()
+
+  run: ->
     $.ajax
-      type: 'get'
-      dataType: "jsonp"
-      url: "http://cep.republicavirtual.com.br/web_cep.php"
-      data: "cep=" + $('.postal_code') + "&formato=javascript"
-      beforeSend: (data) ->
-        console.log 'aguarde ...', data
-      success: (data) ->
-        console.log xml
-      complete: (data) ->
-        console.log 'tudo certo', XMLHttpRequest
-    # @postal_code.focusout =>
-    #   if $.trim(@postal_code.val()) != '' && $.trim(@postal_code.val()) != '__.___-___'
-    #     @progress()
-    #     $.getScript "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{$('.postal_code').val()}", =>
-    #       if resultadoCEP['resultado'] && resultadoCEP['bairro'] != ''
-    #         @setAddress()
-    #         @sucess()
-    #       else
-    #         @fail()
-    #   else
-    #     @principle()
+      dataType: "script"
+      url: "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{@postalCode.val()}"
+      beforeSend: => @addLoading()
+      success: =>
+        if resultadoCEP['resultado'] == '1'
+          @setAddress(resultadoCEP)
+        else
+          @insertError()
+      complete: => @removeLoading()
 
-    @number.focusout =>
-        @complement.focus()
+  setAddress: (string) ->
+    @removeError()
+    @street.val("#{ unescape(string['tipo_logradouro']) }: #{ unescape(string['logradouro']) }")
+    @neighborhood.val(unescape(string['bairro']))
+    @city.val(unescape(string['cidade']))
+    @state.val(unescape(string['uf']))
 
-  progress: ->
-    @preloader.show()
-    @input_clear.hide()
-    @alert.hide()
+  addLoading: =>
+    @removeLoading()
+    @postalCode.after("<div class='loading' style='width: 32px; height: 32px; display: inline-block; margin: 6px'></div>")
 
-  fail: ->
-    @preloader.hide()
-    @input_clear.hide()
-    @postal_code.focus()
-    @clear()
-    @alert.show()
+  removeLoading: ->
+    $('.loading').remove()
 
-  sucess: ->
-    @preloader.hide()
-    @input_clear.show()
-    @alert.hide()
-    @number.focus()
+  insertError: =>
+    @removeError()
+    @postalCode.after("<div class='error_postal_code'>Cep incorreto.</div>")
+    @postalCode.focus()
+    @error = true
 
-  principle: ->
-    @preloader.hide()
-    @input_clear.hide()
-    @alert.hide()
-    @clear()
-
-  clear: ->
-    @postal_code.val('')
-    @street.val('')
-    @neighborhood.val('')
-    @city.val('')
-    @state.val('')
-    @alert.hide()
-    @input_clear.hide()
-
-  setAddress: ->
-    @street.val(unescape(resultadoCEP['tipo_logradouro'])+': '+unescape(resultadoCEP['logradouro']))
-    @neighborhood.val(unescape(resultadoCEP['bairro']))
-    @city.val(unescape(resultadoCEP['cidade']))
-    @state.val(unescape(resultadoCEP['uf']))
+  removeError: =>
+    if @error
+      $('.error_postal_code').remove()
+      @error = false
