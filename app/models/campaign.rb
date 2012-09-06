@@ -2,11 +2,11 @@ class Campaign
 	include Mongoid::Document
 	include Mongoid::Slug
 
-	field :active, :type => Boolean, :default => true
-	field :title, :type => String
-	field :content, :type => String
-	field :quantity, :type => Integer
-	field :expired_at, :type => Date
+	field :active, type: Boolean, default: true
+	field :title, type: String
+	field :content, type: String
+	field :quantity, type: Integer
+	field :expired_at, type: Date
 
 	slug :title
 

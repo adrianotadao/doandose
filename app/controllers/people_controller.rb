@@ -1,12 +1,11 @@
 # encoding: utf-8
 class PeopleController < ApplicationController
-  before_filter :only => :update do |c|
+  before_filter only: :update do |c|
     c.send(:update_user_password_with_nested_fields, :person)
   end
 
   def new
-    @addresses = Address.scoped
-    session[:person_params] ||= {}
+    @person = Person.new
   end
 
   def show
@@ -14,7 +13,12 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person.address.set_lat_lng unless @person.address.blank?
+    @person = Person.new(params[:person])
+    if @person.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
   end
 
   def edit
@@ -25,9 +29,9 @@ class PeopleController < ApplicationController
     @person = Person.find_by_slug params[:id]
 
     if @person.update_attributes(params[:person])
-      redirect_to person_path(@person.name), :notice => t('flash.people.update.notice')
+      redirect_to person_path(@person.name), notice: t('flash.people.update.notice')
     else
-      render :action => 'edit'
+      render action: :edit
     end
   end
 end

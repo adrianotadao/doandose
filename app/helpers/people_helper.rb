@@ -25,8 +25,4 @@ module PeopleHelper
       ['Feminino', 0],
     ]
   end
-
-  def label_button
-    @person.last_step? ? 'Concluir' : 'Proximo'
-  end
 end

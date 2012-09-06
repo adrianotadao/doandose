@@ -14,6 +14,6 @@ class Authentication
 
   # validations
   validates_presence_of :uid, :provider, :user
-  validates_uniqueness_of :provider, :scope => :user
-  validates_uniqueness_of :uid, :scope => :provider
+  validates_uniqueness_of :provider, scope: :user
+  validates_uniqueness_of :uid, scope: :provider
 end
