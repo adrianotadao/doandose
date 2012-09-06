@@ -1,13 +1,32 @@
 %h2= @campaign.title
-%dl
-  %dt
-    %dd= @campaign.active
-    %dd= @campaign.blood
-    %dd= @campaign.company
-    %dd= @campaign.content
-    %dd= @campaign.quantity
-    %dd= @campaign.expired_at
 
-= link_to t('form.buttons.back'), admin_campaigns_path, :class => 'button back'
-= link_to t('form.buttons.delete'), [:admin, @campaign], :confirm => t('flash.blood.delete.advertise'), :method => :delete, :class => "button delete"
-= link_to t('form.buttons.edit'), edit_admin_campaign_path(@campaign), :class => "edit"
+%p
+  = @campaign.active
+  %b= t('label.active')
+
+%p
+  = @campaign.blood
+  %b= t('label.blood')
+
+%p
+  = @campaign.company
+  %b= t('label.company')
+
+%p
+  = @campaign.content
+  %b= t('label.content')
+
+%p
+  = @campaign.quantity
+  %b= t('label.quantity')
+
+%p
+  = @campaign.expired_at
+  %b= t('label.expired_at')
+
+.actions
+  = link_to t('buttons.back'), admin_campaigns_path, class: 'button back'
+
+  = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+
+  = link_to t('buttons.edit'), edit_admin_campaign_path(@campaign), class: "edit"

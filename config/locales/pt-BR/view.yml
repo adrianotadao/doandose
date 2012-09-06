@@ -1,5 +1,7 @@
 pt-BR:
   views:
+    address:
+      title: 'Endereco'
     blood:
       title: 'Listagem dos tipos de plasma'
       name: 'Tipos'
@@ -11,7 +13,6 @@ pt-BR:
       title_edit: 'Edicao Parceiro'
       title_new: 'Adicionar novo parceiro'
       contact: 'Contatos'
-      address: 'Endereco'
       user: 'Usuario'
     campaign:
       active: 'Ativo'

@@ -1,56 +1,34 @@
 = simple_form_for [:admin, setup_company(@company)] do |f|
-  - if @company.errors.any?
-    #error_explanation
-      .errors
-        = pluralize(@company.errors.count, "erro")
-        foram encontrados:
+  %dl.form
+    %dt= f.label :active, t('label.active')
+    %dd= f.text_field :active
 
-      %ul
-        - @company.errors.full_messages.each do |msg|
-          %li= msg
+    %dt= f.label :name, t('label.name')
+    %dd= f.text_field :name
 
-  .inputs
-    = f.input :active, :as => :radio
-    = f.input :name
-    = f.input :fancy_name
-    = f.input :cnpj
-    = f.input :responsible
+    %dt= f.label :fancy_name, t('label.fancy_name')
+    %dd= f.text_field :fancy_name
 
-    %h2= t('views.company.address')
-    = f.nested_fields_for :address do |address|
-      .inputs
-        = address.input :number
-        = address.input :street
-        = address.input :neighborhood
-        = address.input :city
-        = address.input :zip_code
-        = address.input :state
-        = address.input :complement
-        = address.hidden_field :lat
-        = address.hidden_field :lng
-        .map
+    %dt= f.label :cnpj, t('label.cnpj')
+    %dd= f.text_field :cnpj
 
-    %h2= t('views.company.contact')
-    = f.nested_fields_for :contact do |contact|
-      .inputs
-        = contact.input :phone
-        = contact.input :cellphone
-        = contact.input :email
+    %dt= f.label :responsible, t('label.responsible')
+    %dd= f.text_field :responsible
 
-    %h2= t('views.company.user')
-    = f.nested_fields_for :user do |user|
-      .inputs
-        = user.input :email
-        = user.input :password
-        = user.input :password_confirmation
+  = render partial: '/addresses/form', locals: { f: f }
+  = render partial: '/contacts/form', locals: { f: f }
+
+  %h2= t('views.company.user')
+  = f.nested_fields_for :user do |u|
+    = render partial: '/users/identities/form', locals: { f: u }
 
   .actions
-    = link_to t('form.buttons.back'), [:admin, :companies], :class => 'button back'
+    = link_to t('buttons.back'), [:admin, :companies], class: 'button back'
     -unless @company.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @company], :confirm => t('flash.company.delete.advertise'), :method => :delete, :class => "button delete"
+      = link_to t('form.buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), class: "button delete"
 
-    = f.button :submit, t('form.buttons.save'), :class => 'button save'
+    = f.button :submit, t('buttons.save'), :class => 'button save'
 
-- content_for :javascript do
-  :javascript
-    $('.users').nestedFields();
+  - content_for :javascript do
+    :javascript
+      $('.users').nestedFields();

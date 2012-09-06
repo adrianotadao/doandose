@@ -1,0 +1,11 @@
+%h2= t('views.company.contact')
+= f.nested_fields_for :contact do |contact|
+  %dl.form
+    %dt= contact.label :phone, t('label.phone')
+    %dd= contact.text_field :phone
+
+    %dt= contact.label :cellphone, t('label.cellphone')
+    %dd= contact.text_field :cellphone
+
+    %dt= contact.label :email, t('label.email')
+    %dd= contact.text_field :email

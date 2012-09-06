@@ -1,29 +1,44 @@
 = simple_form_for [:admin, @campaign] do |f|
-  - if @campaign.errors.any?
-    #error_explanation
-      .errors
-        = pluralize(@campaign.errors.count, "erro")
-        foram encontrados:
 
-      %ul
-        - @campaign.errors.full_messages.each do |msg|
-          %li= msg
+  %dl.form
+    %dt= f.label :active, t('label.active')
+    %dd= f.check_box :active
 
-  .inputs
-    = f.input :active, :as => :radio
-    = f.input :blood, :collection => Blood.all.each{|r| r.id}
-    = f.input :company, :collection => Company.all.each{|r| r.id}
-    = f.input :title
-    = f.input :content
-    = f.input :quantity
-    = f.input :expired_at
+    %dt= f.label :blood, t('label.blood')
+    %dd
+      =# f.select :blood, Blood.all.each{|r| r.name}
+
+      =# f.select 'post', 'blood_id', Blood.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}
+      =# error_for @campaign.blood,
+      =# f.collection_select(:post, :blood_id, Blood.all, :id, :name), label: false
+
+      =# f.select 'post', 'blood_id', Blood.all.collect {|p| [p.name, p.id] }
+
+    =# f.input :blood, :collection => Blood.all.each{|r| r.id}
+    =# f.input :company, :collection => Company.all.each{|r| r.id}
+
+    %dt= f.label :title, t('label.title')
+    %dd= f.text_field :title
+
+    %dt= f.label :content, t('label.content')
+    %dd= f.text_field :content
+
+    %dt= f.label :content, t('label.content')
+    %dd= f.text_field :content
+
+    %dt= f.label :quantity, t('label.quantity')
+    %dd= f.text_field :quantity
+
+    %dt= f.label :expired_at, t('label.expired_at')
+    %dd= f.text_field :expired_at
 
   .actions
-    = link_to t('form.buttons.back'), [:admin, :companies], :class => 'button back'
-    -unless @campaign.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @campaign], :confirm => t('flash.campaign.delete.advertise'), :method => :delete, :class => "button delete"
+    = link_to t('buttons.back'), [:admin, :campaigns], class: 'button back'
 
-    = f.button :submit, t('form.buttons.save'), :class => 'button save'
+    -unless @campaign.new_record?
+      = link_to t('buttons.delete'), [:admin, campaigns], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+
+    = f.button :submit, t('buttons.save'), :class => 'button save'
 
 - content_for :javascript do
   :javascript

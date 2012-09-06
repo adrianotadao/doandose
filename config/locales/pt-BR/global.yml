@@ -1,0 +1,10 @@
+pt-BR:
+  buttons:
+    login: 'Entrar'
+    search: 'Ok'
+    save: 'Salvar'
+    edit: 'Editar'
+    delete: 'Deletar?'
+    new: 'Inserir'
+    show: 'Detalhes'
+    back: 'Voltar'

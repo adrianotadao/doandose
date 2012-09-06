@@ -1,4 +1,4 @@
-#edit-blood
-  %h1
-  = simple_form_for @blood, :url => [:admin, @blood] do |f|
-    = render :partial => 'form', :locals => { :f => f }
+%h2= t('views.blood.title')
+
+= simple_form_for @blood, :url => [:admin, @blood] do |f|
+  = render :partial => 'form', :locals => { :f => f }

@@ -18,8 +18,10 @@ module ApplicationHelper
   end
 
   def error_for(record, attribute)
-    message = record.errors[attribute].first
-    content_tag :span, message, :class => "error" if message
+    unless record
+      message = record.errors[attribute].first
+      content_tag :span, message, :class => "error" if message
+    end
   end
 
   def menu_item_class(path)

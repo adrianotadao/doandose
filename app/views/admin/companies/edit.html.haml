@@ -1,6 +1,3 @@
-#edit_company
-  %h2= t('views.company.title_edit')  #{@company.name}
+%h2= t('views.company.title_edit')  #{@company.name}
 
-  = render 'form'
-
-  = link_to t('form.buttons.back') , admin_companies_path, :class => 'button back'
+= render 'form'

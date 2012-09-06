@@ -1,6 +1,3 @@
-#edit_campaign
-  %h2= t('views.campaign.title_edit')  #{@company.name}
+%h2= t('views.campaign.title_edit')  #{@company.name}
 
-  = render 'form'
-
-  = link_to t('form.buttons.back') , admin_campaigns_path, :class => 'button back'
+= render 'form'

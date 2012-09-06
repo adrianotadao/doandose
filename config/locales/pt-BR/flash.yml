@@ -1,5 +1,7 @@
 pt-BR:
   flash:
+    advertise: 'Deseja realmente deletar?'
+
     auth:
       alert: 'Você precisar fazer o login para acessar esta página.'
 
@@ -10,7 +12,7 @@ pt-BR:
         notice: 'Plasma editado com sucesso'
       delete:
         notice: 'Plasma deletado com sucesso'
-        advertise: 'Deseja realmente deletar?'
+
     company:
       create:
         notice: 'Hemocentro criado com sucesso'
@@ -18,12 +20,12 @@ pt-BR:
         notice:'Hemocentro editado com sucesso'
       delete:
         notice: 'Hemocentro deletado com sucesso'
-        advertise: 'Deseja realmente deletar?'
+
     partner:
       create:
       update:
       delete:
-        advertise: 'Deseja realmente deletar?'
+
     Person:
       create:
         notice: 'Doador criado com sucesso'
@@ -31,7 +33,7 @@ pt-BR:
         notice:'Doador editado com sucesso'
       delete:
         notice: 'Doador deletado com sucesso'
-        advertise: 'Deseja realmente deletar?'
+
     users:
       create:
         notice: 'Seu cadastro foi realizado com sucesso!'
@@ -43,7 +45,6 @@ pt-BR:
         notice:'Parceiro editado com sucesso'
       delete:
         notice: 'Parceiro deletado com sucesso'
-        advertise: 'Deseja realmente deletar?'
 
     notification:
       create:
@@ -52,7 +53,6 @@ pt-BR:
         notice:'Notificacao editado com sucesso'
       delete:
         notice: 'Notificacao deletado com sucesso'
-        advertise: 'Deseja realmente deletar?'
 
     people:
       create:

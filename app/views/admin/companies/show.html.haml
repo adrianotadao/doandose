@@ -1,37 +1,75 @@
 %h2= @company.name
-%dl
-  %dt
-    %dd= @company.active
-    %dd= @company.name
-    %dd= @company.fancy_name
-    %dd= @company.cnpj
-    %dd= @company.responsible
+
+%p
+  = @company.active
+  %b= t('label.active')
+
+%p
+  = @company.name
+  %b= t('label.name')
+
+%p
+  = @company.fancy_name
+  %b= t('label.fancy_name')
+
+%p
+  = @company.cnpj
+  %b= t('label.cnpj')
+
+%p
+  = @company.responsible
+  %b= t('label.responsible')
+
 
 %h2= t('views.company.address')
-%dl
-  %dt
-    %dd= @company.address.number
-    %dd= @company.address.street
-    %dd= @company.address.neighborhood
-    %dd= @company.address.city
-    %dd= @company.address.zip_code
-    %dd= @company.address.state
-    %dd= @company.address.complement
-    %dd= @company.address.lat
-    %dd= @company.address.lng
+%p
+  = @company.address.number
+  %b= t('label.number')
+
+%p
+  = @company.address.street
+  %b= t('label.street')
+%p
+  = @company.address.neighborhood
+  %b= t('label.neighborhood')
+
+%p
+  = @company.address.city
+  %b= t('label.city')
+
+%p
+  = @company.address.zip_code
+  %b= t('label.zip_code')
+
+%p
+  = @company.address.state
+  %b= t('label.state')
+
+%p
+  = @company.address.complement
+  %b= t('label.complement')
 
 %h2= t('views.company.contact')
-%dl
-  %dt
-    %dd= @company.contact.phone
-    %dd= @company.contact.cellphone
-    %dd= @company.contact.email
+
+%p
+  = @company.contact.phone
+  %b= t('label.phone')
+
+%p
+  = @company.contact.cellphone
+  %b= t('label.cellphone')
+
+%p
+  = @company.contact.email
+  %b= t('label.email')
 
 %h2= t('views.company.user')
-%dl
-  %dt
-    %dd= @company.user.email
 
-= link_to t('form.buttons.back'), admin_companies_path, :class => 'button back'
-= link_to t('form.buttons.delete'), [:admin, @company], :confirm => t('flash.blood.delete.advertise'), :method => :delete, :class => "button delete"
-= link_to t('form.buttons.edit'), edit_admin_company_path(@company), :class => "edit"
+%p
+  = @company.user.email
+  %b= t('label.email')
+
+.actions
+  = link_to t('buttons.back'), admin_companies_path, class: 'button back'
+  = link_to t('buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), :class => "button delete"
+  = link_to t('buttons.edit'), edit_admin_company_path(@company), :class => "edit"
