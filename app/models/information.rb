@@ -2,8 +2,8 @@ class Information
 	include Mongoid::Document
 	include Mongoid::Slug
 
-	field :title, :type => String
-	field :content, :type => String
+	field :title, type: String
+	field :content, type: String
 
 	slug :title
 

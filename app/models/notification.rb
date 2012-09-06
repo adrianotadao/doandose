@@ -3,12 +3,12 @@ class Notification
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :active, :type => Boolean
-  field :quantity, :type => Integer
-  field :situation, :type => String
-  field :naoun, :type => String
-  field :observation, :type => String
-  field :alerted_at, :type => Time
+  field :active, type: Boolean
+  field :quantity, type: Integer
+  field :situation, type: String
+  field :naoun, type: String
+  field :observation, type: String
+  field :alerted_at, type: Time
 
   slug :situation
 

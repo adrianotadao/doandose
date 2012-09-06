@@ -2,7 +2,7 @@ class Blood
   include Mongoid::Document
   include Mongoid::Slug
 
-  field :name, :type => String
+  field :name, type: String
 
   slug :name
 

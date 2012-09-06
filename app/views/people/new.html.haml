@@ -1,75 +1,10 @@
 .line
 %h1= t('label.user.user_step.title')
 
-= simple_form_for setup_person(@person), :html => { :multipart => true } do |f|
+= render 'shared/social'
 
-  = render 'shared/social'
-
-  = f.fields_for :user do |user_form|
-    = render :partial => '/users/identities/form', :locals => { :f => user_form }
-  %dl
-    %dt= f.label :blood
-    %dd= f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
-
-    %dt= f.label :donor
-    %dd= f.check_box :donor
-
-    %dt= f.label :name
-    %dd= f.text_field :name
-
-    %dt= f.label :surname
-    %dd= f.text_field :surname
-
-    %dt= f.label :sex
-    %dd= f.select :sex, people_sexes
-
-    %dt= f.label :birthday
-    %dd= f.text_field :birthday
-
-    %dt= f.label :weight
-    %dd= f.text_field :weight
-
-    %dt= f.label :height
-    %dd= f.text_field :height
-
-  %h2= t('label.user.information_step.contact_title')
-  %dl
-    = f.fields_for :contact do |contact_form|
-      %dt= contact_form.label :phone
-      %dd= contact_form.text_field :phone
-
-      %dt= contact_form.label :cellphone
-      %dd= contact_form.text_field :cellphone
-
-  %h2= t('label.user.information_step.address_title')
-  %dl
-    = f.fields_for :address do |address_form|
-      %dt= address_form.label :zip_code
-      %dd= address_form.text_field :zip_code
-
-      %dt= address_form.label :street
-      %dd= address_form.text_field :street
-
-      %dt= address_form.label :number
-      %dd= address_form.text_field :number
-
-      %dt= address_form.label :neighborhood
-      %dd= address_form.text_field :neighborhood
-
-      %dt= address_form.label :city
-      %dd= address_form.text_field :city
-
-      %dt= address_form.label :state
-      %dd= address_form.select :collection, states_collection
-
-      %dt= address_form.label :complement
-      %dd= address_form.text_field :complement
-
-      %dt= address_form.label :lat
-      %dd= address_form.text_field :lat
-
-      %dt= address_form.label :lng
-      %dd= address_form.text_field :lng
+= form_for setup_person(@person), :html => { multipart: true } do |f|
+  = render partial: 'form', locals: { f: f }
 
   -#map
 
