@@ -29,13 +29,13 @@ class Address
 
   def set_lat_lng
     return if !self.lat.blank? && !self.lng.blank?
-    geocode = Geokit::Geocoders::GoogleGeocoder.geocode(address_for_geokit)
-    self.lat = geocode.lat
-    self.lng = geocode.lng
+    coodinates = GMap.coordinates(address_for_geokit)
+    self.lat = coodinates.lat
+    self.lng = coodinates.lng
   end
 
   private
   def address_for_geokit
-    "#{number} #{street}, #{city}, #{state}".mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
+    "#{number} #{street}, #{neighborhood}, #{city} - #{state}".mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
   end
 end
