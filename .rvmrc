@@ -44,4 +44,3 @@ fi
 #   printf "Bundling your gems this may take a few minutes on a fresh clone.\n"
 #   bundle | grep -v 'Using' | grep -v 'complete' | sed '/^$/d'
 #
-

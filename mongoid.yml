@@ -1,0 +1,4 @@
+staging:
+  host: 127.0.0.1
+  database: doandose_staging
+  raise_not_found_error: false
