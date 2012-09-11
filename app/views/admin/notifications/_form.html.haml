@@ -1,16 +1,8 @@
 = simple_form_for [:admin, @notification] do |f|
-  - if @notification.errors.any?
-    #error_explanation
-      .errors
-        = pluralize(@notification.errors.count, "erro")
-        foram encontrados:
+  .form
+    = f.label :active, t('label.active')
+    = f.check_box :active
 
-      %ul
-        - @notification.errors.full_messages.each do |msg|
-          %li= msg
-
-  .inputs
-    = f.input :active, :as => :radio
     = f.input :blood, :collection => Blood.all.each{|r| r.id}
     = f.input :company, :collection => Company.all, :prompt => t('views.notifications.associated_company')
     = f.input :naoun

@@ -6,17 +6,6 @@
 
     = f.label :blood, t('label.blood')
 
-    =# f.select :blood, Blood.all.each{|r| r.name}
-
-    =# f.select 'post', 'blood_id', Blood.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}
-    =# error_for @campaign.blood,
-    =# f.collection_select(:post, :blood_id, Blood.all, :id, :name), label: false
-
-    =# f.select 'post', 'blood_id', Blood.all.collect {|p| [p.name, p.id] }
-
-    =# f.input :blood, :collection => Blood.all.each{|r| r.id}
-    =# f.input :company, :collection => Company.all.each{|r| r.id}
-
     = f.label :title, t('label.title')
     = f.text_field :title
 
