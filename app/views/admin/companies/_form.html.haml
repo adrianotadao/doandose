@@ -1,7 +1,7 @@
 = simple_form_for [:admin, setup_company(@company)] do |f|
   %dl.form
     %dt= f.label :active, t('label.active')
-    %dd= f.text_field :active
+    %dd= f.check_box :active
 
     %dt= f.label :name, t('label.name')
     %dd= f.text_field :name

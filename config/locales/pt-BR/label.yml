@@ -1,5 +1,6 @@
 pt-BR:
   label:
+    active: 'Ativo?'
     title: 'Cadastre-se'
     user_title: 'Usuario'
     contact_title: 'Contato'
@@ -23,3 +24,11 @@ pt-BR:
     city: 'Cidade'
     state: 'Estado'
     complement: 'Complemento'
+    expired_at: 'Acaba em'
+    blood: 'Tipo sanguineo'
+    content: 'Conteudo'
+    quantity: 'Quantidade'
+    fancy_name: 'Nome fantasia'
+    responsible: 'Responsabilidade'
+    password: 'Senha'
+    password_confirmation: 'Confirme senha'

@@ -1,36 +1,33 @@
 = simple_form_for [:admin, @campaign] do |f|
 
-  %dl.form
-    %dt= f.label :active, t('label.active')
-    %dd= f.check_box :active
+  .form
+    = f.label :active, t('label.active')
+    = f.check_box :active
 
-    %dt= f.label :blood, t('label.blood')
-    %dd
-      =# f.select :blood, Blood.all.each{|r| r.name}
+    = f.label :blood, t('label.blood')
 
-      =# f.select 'post', 'blood_id', Blood.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}
-      =# error_for @campaign.blood,
-      =# f.collection_select(:post, :blood_id, Blood.all, :id, :name), label: false
+    =# f.select :blood, Blood.all.each{|r| r.name}
 
-      =# f.select 'post', 'blood_id', Blood.all.collect {|p| [p.name, p.id] }
+    =# f.select 'post', 'blood_id', Blood.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}
+    =# error_for @campaign.blood,
+    =# f.collection_select(:post, :blood_id, Blood.all, :id, :name), label: false
+
+    =# f.select 'post', 'blood_id', Blood.all.collect {|p| [p.name, p.id] }
 
     =# f.input :blood, :collection => Blood.all.each{|r| r.id}
     =# f.input :company, :collection => Company.all.each{|r| r.id}
 
-    %dt= f.label :title, t('label.title')
-    %dd= f.text_field :title
+    = f.label :title, t('label.title')
+    = f.text_field :title
 
-    %dt= f.label :content, t('label.content')
-    %dd= f.text_field :content
+    = f.label :content, t('label.content')
+    = f.text_field :content
 
-    %dt= f.label :content, t('label.content')
-    %dd= f.text_field :content
+    = f.label :quantity, t('label.quantity')
+    = f.text_field :quantity
 
-    %dt= f.label :quantity, t('label.quantity')
-    %dd= f.text_field :quantity
-
-    %dt= f.label :expired_at, t('label.expired_at')
-    %dd= f.text_field :expired_at
+    = f.label :expired_at, t('label.expired_at')
+    = f.text_field :expired_at
 
   .actions
     = link_to t('buttons.back'), [:admin, :campaigns], class: 'button back'
@@ -39,6 +36,3 @@
       = link_to t('buttons.delete'), [:admin, campaigns], method: :delete, confirm: t('flash.advertise'), class: "button delete"
 
     = f.button :submit, t('buttons.save'), :class => 'button save'
-
-- content_for :javascript do
-  :javascript

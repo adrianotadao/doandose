@@ -23,6 +23,6 @@
     %dt= address.label :complement, t('label.complement')
     %dd= address.text_field :complement
 
-    %dd= address.text_field :lat
-    %dd= address.text_field :lng
+    %dd= address.hidden_field :lat
+    %dd= address.hidden_field :lng
     .map
