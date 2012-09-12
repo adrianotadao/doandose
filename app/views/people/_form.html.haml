@@ -26,40 +26,5 @@
   %dt= f.label :height
   %dd= f.text_field :height
 
-%h2= t('label.user.information_step.contact_title')
-%dl
-  = f.fields_for :contact do |contact|
-    %dt= contact.label :phone
-    %dd= contact.text_field :phone
-
-    %dt= contact.label :cellphone
-    %dd= contact.text_field :cellphone
-
-%h2= t('label.user.information_step.address_title')
-= f.fields_for :address do |address|
-  %dt= address.label :zip_code
-  %dd= address.text_field :zip_code
-
-  %dt= address.label :street
-  %dd= address.text_field :street
-
-  %dt= address.label :number
-  %dd= address.text_field :number
-
-  %dt= address.label :neighborhood
-  %dd= address.text_field :neighborhood
-
-  %dt= address.label :city
-  %dd= address.text_field :city
-
-  %dt= address.label :state
-  %dd= address.select :collection, states_collection
-
-  %dt= address.label :complement
-  %dd= address.text_field :complement
-
-  %dt= address.label :lat
-  %dd= address.text_field :lat
-
-  %dt= address.label :lng
-  %dd= address.text_field :lng
+  = render partial: '/contactable/form', locals: { f: f }
+  = render partial: '/addressable/form', locals: { f: f}
