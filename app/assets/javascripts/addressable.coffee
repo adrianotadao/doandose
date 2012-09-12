@@ -1,4 +1,4 @@
-class window.PostalCodes
+class window.Addressable
   constructor: ->
     @postalCode = $('.postal_code')
     @street = $('.street')
