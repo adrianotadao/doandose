@@ -8,6 +8,8 @@ class window.Addressable
     @city = $('.city')
     @state = $('.state')
     @number = $('.number')
+    @lat = $('.lat')
+    @lng = $('.lng')
     @error = false
 
     @postalCode.focusout =>
@@ -23,6 +25,7 @@ class window.Addressable
         if resultadoCEP['resultado'] == '1'
           @setAddress(resultadoCEP)
           @coordinates.getCoordinates()
+          @gmap = new Gmap(@lat.val(), @lng.val())
         else
           @insertError()
       complete: => @removeLoading()
