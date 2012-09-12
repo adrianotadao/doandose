@@ -32,3 +32,5 @@ pt-BR:
     responsible: 'Responsabilidade'
     password: 'Senha'
     password_confirmation: 'Confirme senha'
+    empty: 'Nao existem nada cadastrado'
+    title: 'Titulo'

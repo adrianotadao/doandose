@@ -1,0 +1,78 @@
+.dataTables_wrapper
+  clear: both
+  margin: 10px auto 0
+  position: relative
+  width: 100%
+
+table.list
+  background-color: #CDCDCD
+  width: 100%
+  clear: both
+  border-collapse: collapse
+  margin: 0
+  text-align: center
+  thead tr th
+    width: 180px
+    background-color: #e6eeee
+    border: 1px solid #ccc
+    cursor: pointer
+    padding: 3px 0 3px 10px
+    color: #555
+    font-weight: normal
+    vertical-align: middle
+    text-align: left
+    line-height: 11px
+
+  tbody
+    tr.odd:hover
+      td, td.sorting_1
+        background: #DDD
+
+    tr.even:hover
+      td, td.sorting_1
+        background: #DDD
+
+    tr
+      &.odd td.sorting_1
+        background-color: #F9F9F9
+
+      &.even td.sorting_1
+        background-color: #FFF
+
+      td
+        color: #3D3D3D
+        padding: 6px
+        background-color: #FFF
+        vertical-align: top
+        a
+          text-decoration: none
+          color: #000
+          &:hover
+            text-decoration: underline
+            background: none
+            color: #000
+        &.center
+          text-align: center
+        &.right
+          text-align: right
+        &.left
+          text-align: left
+        &.path
+          a
+            display: block
+            float: left
+          a.link
+            width: 20px
+            height: 13px
+            text-indent: -9999px
+            margin-left: 5px
+        &:hover
+          cursor: pointer
+
+  thead tr th, tfoot tr th
+    background-color: #e6EEEE
+    font-size: 8pt
+
+  td, th
+    border: 1px solid #CCC
+    padding: 1px 3px 1px 3px

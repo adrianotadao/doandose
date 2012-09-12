@@ -1,18 +1,20 @@
 class Admin::CampaignsController < Admin::BaseController
 
-	def index
-		@campaigns = Campaign.all
-	end
+  def index
+    @campaigns = Campaign.all
+  end
 
-	def show
-		@campaign = Campaign.find_by_slug params[:id]
-	end
+  def show
+    @campaign = Campaign.find_by_slug params[:id]
+  end
 
-	def new
-		@campaign = Campaign.new
-	end
+  def new
+      @campaign = Campaign.new
+      @bloods = Blood.scoped.to_a.map(&:id)
+  end
 
   def create
+    @bloods = Blood.scoped.to_a.map(&:id)
     @campaign = Campaign.new params[:campaign]
     if @campaign.save
       redirect_to admin_campaigns_path
@@ -22,21 +24,28 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def edit
-  	@campaign = Campaign.find_by_slug params[:id]
+    @bloods = Blood.scoped.to_a.map(&:name)
+    @campaign = Campaign.find_by_slug params[:id]
   end
 
   def update
-  	@campaign = Campaign.find_by_slug params[:id]
+    @bloods = Blood.scoped.to_a.map(&:name)
+    @campaign = Campaign.find_by_slug params[:id]
 
-  	if @campaign.update_attributes params[:campaign]
-  		redirect_to edit_admin_campaigns_path
-  	else
-  		render 'edit'
-  	end
+    if @campaign.update_attributes params[:campaign]
+      redirect_to edit_admin_campaigns_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-  	@campaign = Campaign.find_by_slug params[:campaign]
- 		@campaign.destroy
+    	p params[:campaign]
+      @campaign = Campaign.find_by_slug params[:campaign]
+
+ 	p @campaign
+      if @campaign.destroy
+        redirect_to admin_campaigns_path
+      end
   end
 end

@@ -1,30 +1,24 @@
-@import compass/css3/inline-block
+@import compass/css3/box-shadow, compass/css3/appearance, compass/utilities, compass/css3/border-radius
 
 .button
+  +border-radius(5px)
+  +box-shadow(#ccc 1px 1px 5px)
   font-family: 'DroidSansRegular'
   font-size: 12pt
-  color: #292828
+  color: #fff
   text-decoration: none
   font-weight: bold
-  &.new
-    background: url('add.jpg') no-repeat
-    padding: 3px 0 0 23px
-    +inline-block
-    margin: 18px 0
-  &.edit
-    background: url('edit.png') no-repeat
-    padding: 7px 0 0 23px
-    +inline-block
-    margin: 18px 0
-  &.delete
-    background: url('del.png') no-repeat
-    padding: 3px 0 0 23px
-    +inline-block
-    margin: 18px 10px
-  &.show
-    background: url('show.png') no-repeat
-    padding: 7px 0 0 23px
-    +inline-block
-    margin: 18px 10px
+  background: #aa2d2d
+  border: 1px solid rgba(0, 0, 0, 0.17)
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6)
+  padding: 9px 22px
+  cursor: pointer
+  text-align: center
+  clear: both
+  &.back
+    background: #9E9E9E
+    &:hover
+      background: #747474
   &:hover
-    text-decoration: underline
+    text-decoration: none
+    background-color: #721B1B

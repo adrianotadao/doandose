@@ -1,27 +1,31 @@
-%h2= t('views.campaign.title')
-= link_to t('buttons.new'), new_admin_campaign_path, class: 'button new'
+#index
+  %h2= t('views.campaign.title_index')
+  = link_to t('buttons.new'), new_admin_campaign_path, class: 'button new'
 
-- if @campaigns
-  %table.list
-    %thead
-      %tr
-        %th= t('label.active')
-        %th= t('label.title')
-        %th= t('label.expired_at')
-        %th.actions
-
-    %tbody
-      - for campaign in @campaigns
+  - unless @campaigns.blank?
+    %table.list
+      %thead
         %tr
-          %td= campaign.active
-          %td= campaign.title
-          %td= campaign.expired_at
-          %td
-            = link_to t('buttons.show'), [:admin, campaign], class: 'button show'
+          %th= t('label.active')
+          %th= t('label.title')
+          %th= t('label.expired_at')
+          %th.actions
 
-            = link_to t('buttons.edit'), [:edit, :admin, campaign], :class => "button edit"
+      %tbody
+        - for campaign in @campaigns
+          %tr
+            %td= campaign.active
+            %td= campaign.title
+            %td= campaign.expired_at
+            %td
+              = link_to t('buttons.show'), [:admin, campaign], class: 'show'
 
-            = link_to t('buttons.delete'), [:admin, campaign], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+              = link_to t('buttons.edit'), [:edit, :admin, campaign], :class => "edit"
+
+              = link_to t('buttons.delete'), [:admin, campaign], method: :delete, confirm: t('flash.advertise'), class: "delete"
+
+  - else
+    .empty= t('label.empty')
 
 - content_for :javascript do
   :javascript

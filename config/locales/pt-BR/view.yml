@@ -16,7 +16,7 @@ pt-BR:
       user: 'Usuario'
     campaign:
       active: 'Ativo'
-      title: 'Titulo'
+      title_index: 'Listagem de campanhas'
       expired_at: 'Ate a data'
     notification:
       active: 'Ativo'

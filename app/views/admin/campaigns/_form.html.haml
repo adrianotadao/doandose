@@ -5,6 +5,7 @@
     = f.check_box :active
 
     = f.label :blood, t('label.blood')
+    = f.select :blood, @bloods
 
     = f.label :title, t('label.title')
     = f.text_field :title
@@ -22,6 +23,6 @@
     = link_to t('buttons.back'), [:admin, :campaigns], class: 'button back'
 
     -unless @campaign.new_record?
-      = link_to t('buttons.delete'), [:admin, campaigns], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+      = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "button delete"
 
-    = f.button :submit, t('buttons.save'), :class => 'button save'
+    = f.button :submit, t('buttons.save'), class: 'button save'

@@ -1,18 +1,19 @@
-@import compass/css3, compass/css3/appearance, compass/utilities
+@import compass/css3/box-shadow, compass/css3/appearance, compass/utilities
 
 #menu
   margin: 20px 0
   background: #505050
-  padding: 10px
+  +box-shadow(#bcbcbc 1px 1px 10px)
   dl dd
     a.menu
       color: #ffffff
       font-family: 'SteelfishEbRegular'
       font-size: 18pt
       text-decoration: none
-      padding: 4px 12px
+      text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6)
+      padding: 12px
       float: left
       border-left: 1px solid
       &:hover, &.selected
         background-color: #9a9a9a
-        +box-shadow(#bcbcbc 0px 0px 1px)
+        +box-shadow(#bcbcbc 10px 10px 10px inside)
