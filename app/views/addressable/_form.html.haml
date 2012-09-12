@@ -1,0 +1,33 @@
+%h2= t('views.address.title')
+= f.nested_fields_for :address do |address|
+
+  %dl.form
+    %dt= address.label :zip_code, t('label.zip_code')
+    %dd= address.text_field :zip_code, class: 'postal_code'
+
+    %dt= address.label :number, t('label.number')
+    %dd= address.text_field :number, class: 'number'
+
+    %dt= address.label :street, t('label.street')
+    %dd= address.text_field :street, class: 'street'
+
+    %dt= address.label :neighborhood, t('label.neighborhood')
+    %dd= address.text_field :neighborhood, class: 'neighborhood'
+
+    %dt= address.label :city, t('label.city')
+    %dd= address.text_field :city, class: 'city'
+
+    %dt= address.label :state, t('label.state')
+    %dd= address.text_field :state, class: 'state'
+
+    %dt= address.label :complement, t('label.complement')
+    %dd= address.text_field :complement, class: 'complement'
+
+    %dd= address.text_field :lat, class: 'lat'
+    %dd= address.text_field :lng, class: 'lng'
+
+    #gmap
+
+- content_for :javascript do
+  :javascript
+    new Addressable()

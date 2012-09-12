@@ -1,6 +1,5 @@
 class window.SearchMap
   constructor: (coordinates) ->
-    console.log "aaaa"
     # $('label').infield()
     # locations = coordinates
 

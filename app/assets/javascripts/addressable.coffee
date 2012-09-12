@@ -1,25 +1,31 @@
-class window.PostalCodes
+class window.Addressable
   constructor: ->
+    @coordinates = new Coordinates()
+
     @postalCode = $('.postal_code')
     @street = $('.street')
     @neighborhood = $('.neighborhood')
     @city = $('.city')
     @state = $('.state')
     @number = $('.number')
+    @lat = $('.lat')
+    @lng = $('.lng')
     @error = false
 
     @postalCode.focusout =>
-      @run()
+      @getAddress()
       @number.focus()
 
-  run: ->
+  getAddress: ->
     $.ajax
-      dataType: "script"
+      dataType: 'script'
       url: "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=#{@postalCode.val()}"
       beforeSend: => @addLoading()
       success: =>
         if resultadoCEP['resultado'] == '1'
           @setAddress(resultadoCEP)
+          @coordinates.getCoordinates()
+          @gmap = new Gmap(@lat.val(), @lng.val())
         else
           @insertError()
       complete: => @removeLoading()
