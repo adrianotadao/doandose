@@ -1,6 +1,6 @@
 class window.Addressable
   constructor: ->
-    @coordinates = new Coordinates()
+    @gmap = new UserGmap()
 
     @postalCode = $('.postal_code')
     @street = $('.street')
@@ -16,6 +16,8 @@ class window.Addressable
       @getAddress()
       @number.focus()
 
+    @number.focusout => @searchMapCoordinates()
+
   getAddress: ->
     $.ajax
       dataType: 'script'
@@ -24,11 +26,13 @@ class window.Addressable
       success: =>
         if resultadoCEP['resultado'] == '1'
           @setAddress(resultadoCEP)
-          @coordinates.getCoordinates()
-          @gmap = new Gmap(@lat.val(), @lng.val())
+          @searchMapCoordinates()
         else
           @insertError()
       complete: => @removeLoading()
+
+  searchMapCoordinates: ->
+    @gmap.searchMapCoordinates("#{@number.val()}, #{@street.val()}, #{@city.val().replace('Rua: ', '')}, #{@state.val()}")
 
   setAddress: (string) ->
     @removeError()
