@@ -4,16 +4,19 @@ class window.UserGmap
 
   constructor: ->
     @marker = undefined
+    @infoWindow = undefined
     @map = new google.maps.Map document.getElementById('gmap'), @options()
+    @coordinates = new Coordinates()
     @addMapListeners()
 
   searchMapCoordinates: (address) ->
-    @coordinates = new Coordinates()
-    @coordinates.getCoordinates(address)
     $(@coordinates).bind 'searchCoordinatesComplete', (event, coordinates) =>
       @createMarker(@parseLatLng(coordinates))
       @lat.val(coordinates.lat)
       @lng.val(coordinates.lng)
+
+    @coordinates.getCoordinatesByAddress(address)
+    @openMarkerInfoWindow(coodinates, "Latitude: #{coordinates.lat} <br/> Longitude: #{coordinates.lng}")
 
   createMarker: (coordinates) ->
     @marker.setMap(null) unless @marker == undefined
@@ -24,6 +27,7 @@ class window.UserGmap
 
     @addMarkerListeners()
     @updateMarkerPosition()
+    @map.setCenter(coordinates)
 
   parseLatLng: (coodinates) ->
     return new google.maps.LatLng(coodinates.lat, coodinates.lng)
@@ -42,12 +46,17 @@ class window.UserGmap
 
   addMapListeners: ->
     google.maps.event.addListener @map, 'click', (event) =>
+      @coordinates.getAddressByCoordinates(event.latLng)
       @createMarker(event.latLng)
 
-  openMarkerInfoWindow: (coordinates) ->
-    infoWindow = new google.maps.InfoWindow
-      content: "Latitude: #{coordinates.Xa} <br/> Longitude: #{coordinates.Ya}"
-    infoWindow.open(@map, @marker)
+      $(@coordinates).bind 'searchAddressComplete', (event, result) =>
+        @openMarkerInfoWindow(result.address)
+
+  openMarkerInfoWindow: (content) ->
+    @infoWindow.close() unless @infoWindow == undefined
+    @infoWindow = new google.maps.InfoWindow
+      content: content
+    @infoWindow.open(@map, @marker)
 
   updateMarkerPosition: (coordinates=@marker.getPosition()) ->
     @lat.val(coordinates.Xa)

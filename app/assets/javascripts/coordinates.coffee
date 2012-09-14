@@ -1,6 +1,16 @@
 class window.Coordinates
-  getCoordinates: (address) ->
-    new google.maps.Geocoder().geocode {
+  constructor: ->
+    @geocode = new google.maps.Geocoder()
+
+  getAddressByCoordinates: (coordinates) ->
+    @geocode.geocode {
+      'latLng': coordinates
+    },
+    (result, status) =>
+      @setAddress(result) if status == 'OK'
+
+  getCoordinatesByAddress: (address) ->
+    @geocode.geocode {
       address: address
     },
     (result, status) =>
@@ -11,3 +21,6 @@ class window.Coordinates
 
   setCoordinates: (result) =>
     $(this).trigger('searchCoordinatesComplete', { lat: @parseCoordinates(result).Xa, lng: @parseCoordinates(result).Ya})
+
+  setAddress: (result) =>
+    $(this).trigger('searchAddressComplete', { address: result[0].formatted_address })
