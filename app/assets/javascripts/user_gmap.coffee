@@ -1,46 +1,54 @@
 class window.UserGmap
+  lat: $('.lat')
+  lng: $('.lng')
+
   constructor: ->
     @marker = undefined
     @map = new google.maps.Map document.getElementById('gmap'), @options()
-    #@addListener()
+    @addMapListeners()
 
   searchMapCoordinates: (address) ->
     @coordinates = new Coordinates()
     @coordinates.getCoordinates(address)
     $(@coordinates).bind 'searchCoordinatesComplete', (event, coordinates) =>
-      @createMarker(coordinates)
+      @createMarker(@parseLatLng(coordinates))
+      @lat.val(coordinates.lat)
+      @lng.val(coordinates.lng)
 
   createMarker: (coordinates) ->
     @marker.setMap(null) unless @marker == undefined
     @marker = new google.maps.Marker
-       position: @parseLatLng(coordinates.lat, coordinates.lng)
+       position: coordinates
        map: @map
        draggable: true
 
-  parseLatLng: (lat, lng) ->
-    directionsDisplay = new google.maps.DirectionsRenderer()
-    latLng = new google.maps.LatLng(lat, lng)
-    return latLng
+    @addMarkerListeners()
+    @updateMarkerPosition()
+
+  parseLatLng: (coodinates) ->
+    return new google.maps.LatLng(coodinates.lat, coodinates.lng)
 
   options: ->
     zoom: 15
-    center: new google.maps.LatLng(-21.2783943, -50.32854309999999)
+    center: new google.maps.LatLng(-21.289211122989194, -50.33786645853576)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  updateMarkerPosition: (marker) ->
-    latitude = marker.$a
-    longitude = marker.ab
-    @lat.val(latitude)
-    @lng.val(longitude)
+  addMarkerListeners: ->
+    google.maps.event.addListener @marker, 'drag', =>
+      @updateMarkerPosition()
 
-  addListener: ->
-    currentMark = @mark()
-    contentString = @street
-    infowindow = new google.maps.InfoWindow({content: contentString})
+    google.maps.event.addListener @marker, 'click', (event) =>
+      @openMarkerInfoWindow(event.latLng)
 
-    google.maps.event.addListener currentMark, "drag", =>
-      @updateMarkerPosition(currentMark.getPosition())
-      infowindow.open @map, currentMark
-    google.maps.event.addListener currentMark, "click", =>
-      infowindow.open @map, currentMark
+  addMapListeners: ->
+    google.maps.event.addListener @map, 'click', (event) =>
+      @createMarker(event.latLng)
 
+  openMarkerInfoWindow: (coordinates) ->
+    infoWindow = new google.maps.InfoWindow
+      content: "Latitude: #{coordinates.Xa} <br/> Longitude: #{coordinates.Ya}"
+    infoWindow.open(@map, @marker)
+
+  updateMarkerPosition: (coordinates=@marker.getPosition()) ->
+    @lat.val(coordinates.Xa)
+    @lng.val(coordinates.Ya)
