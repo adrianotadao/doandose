@@ -4,7 +4,7 @@
 
 //= require addressable
 //= require coordinates
-//= require gmap
+//= require user_gmap
 
 //=# require search_map
 //=# require person_form
