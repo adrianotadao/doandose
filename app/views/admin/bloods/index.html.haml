@@ -1,20 +1,21 @@
-%h2= t('views.blood.title')
-= link_to t('buttons.new'), new_admin_blood_path, class: 'button new'
+#index
+  %h2= t('views.blood.title_index')
+  = link_to t('buttons.new'), new_admin_blood_path, class: 'button new'
 
-- if @bloods
-  %table.list
-    %thead
-      %tr
-        %th= t('label.name')
-        %th.actions
-    %tbody
-      - for blood in @bloods
+  - unless @bloods.blank?
+    %table.list
+      %thead
         %tr
-          %td= blood.name
-          %td
-            = link_to t('buttons.edit'), edit_admin_blood_path(blood), class: 'button edit'
+          %th= t('label.name')
+          %th.actions
+      %tbody
+        - for blood in @bloods
+          %tr
+            %td= blood.name
+            %td
+              = link_to t('buttons.edit'), edit_admin_blood_path(blood), class: 'link edit'
 
-            = link_to t('buttons.delete'), [:admin, blood], method: :delete, confirm: t('flash.advertise'), class: 'button delete'
+              = link_to t('buttons.delete'), [:admin, blood], method: :delete, confirm: t('flash.advertise'), class: 'link delete'
 
 - content_for :javascript do
   :javascript

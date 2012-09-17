@@ -18,11 +18,11 @@
             %td= campaign.title
             %td= campaign.expired_at
             %td
-              = link_to t('buttons.show'), [:admin, campaign], class: 'show'
+              = link_to t('buttons.show'), [:admin, campaign], class: 'link show'
 
-              = link_to t('buttons.edit'), [:edit, :admin, campaign], :class => "edit"
+              = link_to t('buttons.edit'), [:edit, :admin, campaign], :class => "link edit"
 
-              = link_to t('buttons.delete'), [:admin, campaign], method: :delete, confirm: t('flash.advertise'), class: "delete"
+              = link_to t('buttons.delete'), [:admin, campaign], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
   - else
     .empty= t('label.empty')

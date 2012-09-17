@@ -19,6 +19,45 @@
     background: #9E9E9E
     &:hover
       background: #747474
+      .show
+        border: 1px solid
   &:hover
     text-decoration: none
     background-color: #721B1B
+
+.link
+  float: left
+  padding: 7px
+  &.edit:hover
+    color: #3A3A3A
+  &.edit:before
+    content: '\270e'
+    margin-right: 5px
+    font-size: 20px
+
+  &.show:hover
+    color: #124912
+  &.show:before
+    content: '\e011'
+    margin-right: 5px
+    font-size: 20px
+
+  &.delete:hover
+    color: #8F0C0C
+  &.delete:before
+    content: '\2718'
+    margin-right: 5px
+    font-size: 20px
+
+.back_form
+  float: right
+  text-decoration: none
+  color: #464545
+  margin-top: 8px
+  &:hover
+    color: #797979
+
+.back_form:before
+  content: '\2190'
+  font-family: 'IconicFill'
+  padding-right: 4px

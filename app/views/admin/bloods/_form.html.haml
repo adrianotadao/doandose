@@ -2,6 +2,8 @@
   = f.label :name, t('label.name')
   = f.text_field :name
 
+= link_to t('buttons.back'), [:admin, :bloods], class: 'back_form'
+
 .actions
   = f.button :submit, t('buttons.save'), class: 'button save'
 

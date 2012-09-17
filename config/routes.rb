@@ -29,7 +29,7 @@ Doandose::Application.routes.draw do
   end
 
   namespace :admin do
-    root :to => 'pages#index'
+    root :to => 'companies#index'
     get  '/sair/' => 'application#logout', :as => :destroy_session
     resources :pages, :only => :index
     resources :partners

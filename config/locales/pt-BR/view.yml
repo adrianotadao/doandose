@@ -3,7 +3,8 @@ pt-BR:
     address:
       title: 'Endereco'
     blood:
-      title: 'Listagem dos tipos de plasma'
+      title_index: 'Listagem dos tipos de plasma'
+      title_new: 'Inserir novo tipo plasma'
       name: 'Tipos'
     company:
       title: 'Compania'
@@ -17,6 +18,7 @@ pt-BR:
     campaign:
       active: 'Ativo'
       title_index: 'Listagem de campanhas'
+      title_new: 'Inserir nova campanha'
       expired_at: 'Ate a data'
     notification:
       active: 'Ativo'

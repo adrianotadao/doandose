@@ -1,3 +1,4 @@
-%h1
+%h2= t('views.blood.title_new')
+
 = simple_form_for @blood, :url => [:admin, @blood] do |f|
   = render :partial => 'form', :locals => { :f => f }
