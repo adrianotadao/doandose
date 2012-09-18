@@ -13,12 +13,13 @@
       = image_tag 'logo.png', :class => 'logo'
       #container
         #top
-          = render 'shared/flash_messages'
           #menu
             = render 'layouts/nav'
         #center
           #header
-          #content= yield
+          #content
+            = render 'shared/flash_messages'
+            = yield
 
       #root_footer
 

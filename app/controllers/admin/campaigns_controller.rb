@@ -45,7 +45,7 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def destroy
-      @campaign = Campaign.find_by_slug params[:campaign]
+      @campaign = Campaign.find_by_slug params[:id]
       if @campaign.destroy
         redirect_to admin_campaigns_path
       end

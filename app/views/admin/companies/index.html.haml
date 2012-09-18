@@ -1,5 +1,5 @@
 #index
-  %h2= t('views.company.title')
+  %h2= t('views.company.title_index')
   = link_to t('buttons.new'), new_admin_company_path, class: 'button new'
 
   - unless @companies.blank?
@@ -7,8 +7,8 @@
       %thead
         %tr
           %th= t('label.name')
-          %th= t('label.fancyname')
-          %th= t('label.logo')
+          %th= t('label.fancy_name')
+          %th= t('label.cnpj')
           %th= t('label.actions')
 
       %tbody
@@ -16,10 +16,13 @@
           %tr
             %td= company.name
             %td= company.fancy_name
-            %td
+            %td= company.cnpj
             %td
               = link_to t('buttons.show'), [:admin, company], class: 'link show'
+
               = link_to t('buttons.edit'), edit_admin_company_path(company), class: 'link edit'
+
+              = link_to t('buttons.delete'), [:admin, company], method: :delete, confirm: t('flash.advertise'), class: "link delete"
   - else
     .empty= t('label.empty')
 

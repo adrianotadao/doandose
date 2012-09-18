@@ -3,7 +3,7 @@
 
   .content
     %p
-      = @company.active
+      = label_boolean(@company.active)
       %b= t('label.active')
 
     %p
@@ -73,5 +73,7 @@
 
   .actions
     = link_to t('buttons.back'), admin_companies_path, class: 'link back'
+
     = link_to t('buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+
     = link_to t('buttons.edit'), edit_admin_company_path(@company), :class => "link edit"

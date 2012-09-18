@@ -36,3 +36,5 @@ pt-BR:
     empty: 'Nao existem nada cadastrado'
     title: 'Titulo'
     company: 'Compania'
+    cnpj: 'Cnpj'
+    logo: 'Logomarca'

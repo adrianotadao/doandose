@@ -1,29 +1,27 @@
 = simple_form_for [:admin, setup_partner(@partner)] do |f|
-  - if @partner.errors.any?
-    #error_explanation
-      .errors
-        = pluralize(@partner.errors.count, "erro")
-        foram encontrados:
+  .form
+    = f.label :active, t('label.active')
+    = f.check_box :active
 
-      %ul
-        - @partner.errors.full_messages.each do |msg|
-          %li= msg
 
-  .inputs
-    = f.input :active, :as => :radio
-    = f.input :name
-    = f.input :site
+    = f.label :name, t('label.name')
+    = f.text_field :name
+
+    = f.label :site, t('label.site')
+    = f.text_field :site
 
     = f.simple_fields_for :logo do |logo|
-      = logo.input :data
+      = f.label :logo, t('label.logo')
+      = logo.file_field logo
       - unless @partner.new_record?
         .logo
           %p Logo:
           = image_tag logo.object.data.url(:thumb)
 
-  .actions
-    = link_to t('form.buttons.back'), [:admin, :partners], :class => 'button back'
-    -unless @partner.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @partner], :confirm => t('flash.partner.delete.advertise'), :method => :delete, :class => "button delete"
 
-    = f.button :submit, t('form.buttons.save'), :class => 'button save'
+  = link_to t('buttons.back'), [:admin, :partners], class: 'back_form'
+  .actions
+    -unless @partner.new_record?
+      = link_to t('form.buttons.delete'), [:admin, @partner], :confirm => t('flash.partner.delete.advertise'), method: :delete, class: "link delete"
+
+    = f.button :submit, t('buttons.save'), class: 'button save'

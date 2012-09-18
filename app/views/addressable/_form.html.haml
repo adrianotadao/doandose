@@ -1,6 +1,5 @@
 %h2= t('views.address.title')
 = f.nested_fields_for :address do |address|
-
   .form
     = address.label :zip_code, t('label.zip_code')
     = address.text_field :zip_code, class: 'postal_code'

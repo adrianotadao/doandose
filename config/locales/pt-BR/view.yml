@@ -7,7 +7,7 @@ pt-BR:
       title_new: 'Inserir novo tipo plasma'
       name: 'Tipos'
     company:
-      title: 'Compania'
+      title_index: 'Compania'
       name: 'Nome'
       fancyname: 'Nome Fantasia'
       logo: 'Identidade Visual'
@@ -27,9 +27,9 @@ pt-BR:
       situation: 'Situacao'
       alerted_at: 'Alerta em'
     partner:
-      title: 'Parceiros'
       name: 'Nome'
       logo: 'Logo'
+      title_index: 'Parceiros'
       title_edit: 'Editar parceiro'
       title_new: 'Adicionar novo parceiro.'
     people:

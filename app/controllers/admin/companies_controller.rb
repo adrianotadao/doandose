@@ -19,9 +19,9 @@ class Admin::CompaniesController < Admin::BaseController
     @company = Company.new(params[:company])
 
     if @company.save
-      redirect_to [:admin, @company], :notice => t('flash.company.create.notice')
+      redirect_to [:admin, @company], notice: t('flash.company.create.notice')
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
@@ -29,9 +29,9 @@ class Admin::CompaniesController < Admin::BaseController
     @company = Company.find_by_slug(params[:id])
 
     if @company.update_attributes(params[:company])
-      redirect_to [:admin, @company], :notice => t('flash.company.update.notice')
+      redirect_to [:admin, @company], notice: t('flash.company.update.notice')
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 
@@ -39,9 +39,9 @@ class Admin::CompaniesController < Admin::BaseController
     @company = Company.find_by_slug(params[:id])
 
     if @company.destroy
-      redirect_to [:admin, :companies], :notice => t('flash.company.delete.notice')
+      redirect_to [:admin, :companies], notice: t('flash.company.delete.notice')
     else
-      redirect_to :action => 'edit'
+      redirect_to action: 'edit'
     end
   end
 end
