@@ -3,7 +3,7 @@
 
   .content
     %p
-      = @campaign.active
+      = label_boolean(@campaign.active)
       %b= t('label.active')
 
     %p
@@ -28,8 +28,8 @@
       %b= t('label.expired_at')
 
   .actions
-    = link_to t('buttons.back'), admin_campaigns_path, class: 'button back'
+    = link_to t('buttons.back'), admin_campaigns_path, class: 'link back'
 
-    = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+    = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
-    = link_to t('buttons.edit'), edit_admin_campaign_path(@campaign), class: "button edit"
+    = link_to t('buttons.edit'), edit_admin_campaign_path(@campaign), class: "link edit"

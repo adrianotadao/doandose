@@ -1,75 +1,77 @@
-%h2= @company.name
+#show
+  %h2= @company.name
 
-%p
-  = @company.active
-  %b= t('label.active')
+  .content
+    %p
+      = @company.active
+      %b= t('label.active')
 
-%p
-  = @company.name
-  %b= t('label.name')
+    %p
+      = @company.name
+      %b= t('label.name')
 
-%p
-  = @company.fancy_name
-  %b= t('label.fancy_name')
+    %p
+      = @company.fancy_name
+      %b= t('label.fancy_name')
 
-%p
-  = @company.cnpj
-  %b= t('label.cnpj')
+    %p
+      = @company.cnpj
+      %b= t('label.cnpj')
 
-%p
-  = @company.responsible
-  %b= t('label.responsible')
+    %p
+      = @company.responsible
+      %b= t('label.responsible')
 
 
-%h2= t('views.company.address')
-%p
-  = @company.address.number
-  %b= t('label.number')
+    %h2= t('views.company.address')
+    %p
+      = @company.address.number
+      %b= t('label.number')
 
-%p
-  = @company.address.street
-  %b= t('label.street')
-%p
-  = @company.address.neighborhood
-  %b= t('label.neighborhood')
+    %p
+      = @company.address.street
+      %b= t('label.street')
+    %p
+      = @company.address.neighborhood
+      %b= t('label.neighborhood')
 
-%p
-  = @company.address.city
-  %b= t('label.city')
+    %p
+      = @company.address.city
+      %b= t('label.city')
 
-%p
-  = @company.address.zip_code
-  %b= t('label.zip_code')
+    %p
+      = @company.address.zip_code
+      %b= t('label.zip_code')
 
-%p
-  = @company.address.state
-  %b= t('label.state')
+    %p
+      = @company.address.state
+      %b= t('label.state')
 
-%p
-  = @company.address.complement
-  %b= t('label.complement')
+    %p
+      = @company.address.complement
+      %b= t('label.complement')
 
-%h2= t('views.company.contact')
+    %h2= t('views.company.contact')
 
-%p
-  = @company.contact.phone
-  %b= t('label.phone')
+    %p
+      = @company.contact.phone
+      %b= t('label.phone')
 
-%p
-  = @company.contact.cellphone
-  %b= t('label.cellphone')
+    %p
+      = @company.contact.cellphone
+      %b= t('label.cellphone')
 
-%p
-  = @company.contact.email
-  %b= t('label.email')
+    %p
+      = @company.contact.email
+      %b= t('label.email')
 
-%h2= t('views.company.user')
+    %h2= t('views.company.user')
 
-%p
-  = @company.user.email
-  %b= t('label.email')
+    %p
+      = @company.user.email
+      %b= t('label.email')
 
-.actions
-  = link_to t('buttons.back'), admin_companies_path, class: 'button back'
-  = link_to t('buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), :class => "button delete"
-  = link_to t('buttons.edit'), edit_admin_company_path(@company), :class => "edit"
+  .actions
+    = link_to t('buttons.back'), admin_companies_path, class: 'link back'
+    = link_to t('buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+    = link_to t('buttons.edit'), edit_admin_company_path(@company), :class => "link edit"

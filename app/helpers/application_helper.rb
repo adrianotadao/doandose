@@ -18,13 +18,21 @@ module ApplicationHelper
   end
 
   def error_for(record, attribute)
-    unless record
+    unless record.errors[attribute].blank?
       message = record.errors[attribute].first
-      content_tag :span, message, :class => "error" if message
+      if message
+        content_tag :span, class: "error" do
+          message
+        end
+      end
     end
   end
 
   def menu_item_class(path)
     return 'selected' if current_page?(path)
+  end
+
+  def label_boolean(label)
+    label ? 'Sim' : 'Nao'
   end
 end

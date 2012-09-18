@@ -1,16 +1,16 @@
-%dl.form.info
-  %dl.people
-    %dd.social.clearfix
-    %dd
-      = f.fields_for :authentications do |auth|
-        = auth.hidden_field :provider
-        = auth.hidden_field :uid
-  %dt= f.label :email, t('label.email')
-  %dd= f.text_field :email
+.form
+  = f.fields_for :authentications do |auth|
+    = auth.hidden_field :provider
+    = auth.hidden_field :uid
 
-  %dl
-    %dt= f.label :password, t('label.password')
-    %dd= f.password_field :password
+  = f.label :email, t('label.email')
+  = f.text_field :email
+  = error_for(record, :email)
 
-    %dt= f.label :password_confirmation, t('label.password_confirmation')
-    %dd= f.password_field :password_confirmation
+  = f.label :password, t('label.password')
+  = f.password_field :password
+  = error_for(record, :password)
+
+  = f.label :password_confirmation, t('label.password_confirmation')
+  = f.password_field :password_confirmation
+  = error_for(record, :password_confirmation)

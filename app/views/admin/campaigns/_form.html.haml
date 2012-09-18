@@ -3,26 +3,36 @@
   .form
     = f.label :active, t('label.active')
     = f.check_box :active
+    = error_for(@campaign, :active)
 
     = f.label :blood, t('label.blood')
     = f.select :blood, @bloods
+    = error_for(@campaign, :blood)
+
+    = f.label :company, t('label.company')
+    = f.select :company, @companies
+    = error_for(@campaign, :company)
 
     = f.label :title, t('label.title')
     = f.text_field :title
+    = error_for(@campaign, :title)
 
     = f.label :content, t('label.content')
     = f.text_field :content
+    = error_for(@campaign, :content)
 
     = f.label :quantity, t('label.quantity')
     = f.text_field :quantity
+    = error_for(@campaign, :quantity)
 
     = f.label :expired_at, t('label.expired_at')
     = f.text_field :expired_at
+    = error_for(@campaign, :expired_at)
 
   = link_to t('buttons.back'), [:admin, :campaigns], class: 'back_form'
 
   .actions
     -unless @campaign.new_record?
-      = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+      = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
     = f.button :submit, t('buttons.save'), class: 'button save'

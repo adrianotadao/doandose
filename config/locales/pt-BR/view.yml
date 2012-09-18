@@ -19,6 +19,7 @@ pt-BR:
       active: 'Ativo'
       title_index: 'Listagem de campanhas'
       title_new: 'Inserir nova campanha'
+      title_edit: 'Editar campanha'
       expired_at: 'Ate a data'
     notification:
       active: 'Ativo'

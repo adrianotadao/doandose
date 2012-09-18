@@ -1,25 +1,27 @@
-%h2= t('views.company.title')
-.actions
-  = link_to t('form.buttons.new'), new_admin_company_path, class: 'button new'
+#index
+  %h2= t('views.company.title')
+  = link_to t('buttons.new'), new_admin_company_path, class: 'button new'
 
-- if @companies
-  %table.list
-    %thead
-      %tr
-        %th= t('label.name')
-        %th= t('label.fancyname')
-        %th= t('label.logo')
-        %th.actions
-
-    %tbody
-      - @companies.each do |company|
+  - unless @companies.blank?
+    %table.list
+      %thead
         %tr
-          %td= company.name
-          %td= company.fancy_name
-          %td
-          %td
-            = link_to t('buttons.show'), [:admin, company], class: 'button show'
-            = link_to t('buttons.edit'), edit_admin_company_path(company), class: 'button edit'
+          %th= t('label.name')
+          %th= t('label.fancyname')
+          %th= t('label.logo')
+          %th= t('label.actions')
+
+      %tbody
+        - @companies.each do |company|
+          %tr
+            %td= company.name
+            %td= company.fancy_name
+            %td
+            %td
+              = link_to t('buttons.show'), [:admin, company], class: 'link show'
+              = link_to t('buttons.edit'), edit_admin_company_path(company), class: 'link edit'
+  - else
+    .empty= t('label.empty')
 
 - content_for :javascript do
   :javascript

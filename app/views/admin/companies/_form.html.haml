@@ -1,31 +1,39 @@
 = simple_form_for [:admin, setup_company(@company)] do |f|
+
+
   .form
     = f.label :active, t('label.active')
     = f.check_box :active
 
     = f.label :name, t('label.name')
     = f.text_field :name
+    = error_for(@company, :name)
 
     = f.label :fancy_name, t('label.fancy_name')
     = f.text_field :fancy_name
+    = error_for(@company, :fancy_name)
 
     = f.label :cnpj, t('label.cnpj')
     = f.text_field :cnpj
+    = error_for(@company, :cnpj)
 
     = f.label :responsible, t('label.responsible')
     = f.text_field :responsible
+    = error_for(@company, :responsible)
 
-  = render partial: '/addressable/form', locals: { f: f }
-  = render partial: '/contactable/form', locals: { f: f }
+  = link_to t('buttons.back'), [:admin, :companies], class: 'back_form'
+
+  = render partial: '/addressable/form', locals: { f: f, record: @company }
+
+  = render partial: '/contactable/form', locals: { f: f, record: @company }
 
   %h2= t('views.company.user')
   = f.nested_fields_for :user do |u|
-    = render partial: '/users/identities/form', locals: { f: u }
+    = render partial: '/users/identities/form', locals: { f: u, record: @company.user }
 
   .actions
-    = link_to t('buttons.back'), [:admin, :companies], class: 'button back'
     -unless @company.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), class: "button delete"
+      = link_to t('form.buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
     = f.button :submit, t('buttons.save'), :class => 'button save'
 

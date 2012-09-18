@@ -1,5 +1,6 @@
 pt-BR:
   label:
+    actions: 'Acoes'
     active: 'Ativo?'
     title: 'Cadastre-se'
     user_title: 'Usuario'
@@ -34,3 +35,4 @@ pt-BR:
     password_confirmation: 'Confirme senha'
     empty: 'Nao existem nada cadastrado'
     title: 'Titulo'
+    company: 'Compania'
