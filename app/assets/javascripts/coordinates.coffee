@@ -17,10 +17,12 @@ class window.Coordinates
       @setCoordinates(result) if status == 'OK'
 
   parseCoordinates: (result) ->
-    return result[0].geometry.location
+    return { lat: result[0].geometry.location.Xa, lng: result[0].geometry.location.Ya}
+
 
   setCoordinates: (result) =>
-    $(this).trigger('searchCoordinatesComplete', { lat: @parseCoordinates(result).Xa, lng: @parseCoordinates(result).Ya})
+    $(this).trigger('searchCoordinatesComplete', @parseCoordinates(result))
 
   setAddress: (result) =>
-    $(this).trigger('searchAddressComplete', { address: result[0].formatted_address })
+    console.log $.extend({ address: result[0] }, @parseCoordinates(result))
+    #$(this).trigger('searchAddressComplete', $.extend({ address: result[0] }, @parseCoordinates(result))

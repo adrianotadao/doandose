@@ -16,7 +16,7 @@ class window.UserGmap
       @lng.val(coordinates.lng)
 
     @coordinates.getCoordinatesByAddress(address)
-    @openMarkerInfoWindow(coodinates, "Latitude: #{coordinates.lat} <br/> Longitude: #{coordinates.lng}")
+    @openMarkerInfoWindow(coordinates, "Latitude: #{coordinates.lat} <br/> Longitude: #{coordinates.lng}")
 
   createMarker: (coordinates) ->
     @marker.setMap(null) unless @marker == undefined
@@ -49,8 +49,10 @@ class window.UserGmap
       @coordinates.getAddressByCoordinates(event.latLng)
       @createMarker(event.latLng)
 
-      $(@coordinates).bind 'searchAddressComplete', (event, result) =>
-        @openMarkerInfoWindow(result.address)
+      #$(@coordinates).bind 'searchAddressComplete', (event, result) =>
+      # console.log result
+      #  #@openMarkerInfoWindow(result.address)
+      #  #$(this).trigger 'addressComplete', { address: result }
 
   openMarkerInfoWindow: (content) ->
     @infoWindow.close() unless @infoWindow == undefined
