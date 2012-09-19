@@ -3,7 +3,6 @@
   .form
     = f.label :active, t('label.active')
     = f.check_box :active
-    = error_for(@campaign, :active)
 
     = f.label :blood, t('label.blood')
     = f.select :blood, @bloods

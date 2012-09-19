@@ -3,25 +3,26 @@
     = f.label :active, t('label.active')
     = f.check_box :active
 
-
     = f.label :name, t('label.name')
     = f.text_field :name
+    = error_for(@partner, :name)
 
     = f.label :site, t('label.site')
     = f.text_field :site
+    = error_for(@partner, :site)
 
-    = f.simple_fields_for :logo do |logo|
-      = f.label :logo, t('label.logo')
-      = logo.file_field logo
+    = f.nested_fields_for :logo do |logo|
+      = f.label :data, t('label.logo')
+      = logo.file_field :data
       - unless @partner.new_record?
         .logo
-          %p Logo:
-          = image_tag logo.object.data.url(:thumb)
-
+          %label= t('label.logo')
+          %div.input_image= image_tag logo.object.data.url(:thumb)
 
   = link_to t('buttons.back'), [:admin, :partners], class: 'back_form'
   .actions
-    -unless @partner.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @partner], :confirm => t('flash.partner.delete.advertise'), method: :delete, class: "link delete"
+
+    - unless @partner.new_record?
+      = link_to t('form.buttons.delete'), [:admin, @partner], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
     = f.button :submit, t('buttons.save'), class: 'button save'

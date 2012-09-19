@@ -1,14 +1,35 @@
-= link_to t('form.buttons.back'), admin_notifications_path, :class => 'button back'
+#show
+  %h2= @notification.denomination
 
-%p
-	%b= @notification.active
-%p
-	%b= @notification.naoun
-%p
-	%b= @notification.quantity
-%p
-	%b= @notification.situation
-%p
-	%b= @notification.observation
-%p
-	%b= @notification.alerted_at
+  .content
+    %p
+      = label_boolean(@notification.active)
+      %b= t('label.active')
+
+    %p
+      = @notification.denomination
+      %b= t('label.denomination')
+
+    %p
+      = @notification.quantity
+      %b= t('label.quantity')
+
+    %p
+      = @notification.situation
+      %b= t('label.situation')
+
+    %p
+      = @notification.observation
+      %b= t('label.observation')
+
+    %p
+      = @notification.alerted_at
+      %b= t('label.alerted_at')
+
+  .actions
+    = link_to t('buttons.back'), admin_notifications_path, :class => 'link back'
+
+    = link_to t('buttons.edit'), edit_admin_notification_path(@notification), :class => 'link edit'
+
+    = link_to t('buttons.delete'), [:admin, @notification], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+

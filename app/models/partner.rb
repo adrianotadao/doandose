@@ -17,6 +17,6 @@ class Partner
   accepts_nested_attributes_for :logo
 
   #validations
-  validates_presence_of :name, :logo
+  validates_presence_of :name
   validates_format_of :site, with: URI::regexp, if: :site?
 end

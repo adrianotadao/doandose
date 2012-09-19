@@ -5,6 +5,8 @@ class Admin::NotificationsController < Admin::BaseController
 
   def new
     @notification = Notification.new
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
+    @companies = Company.scoped.map{ |b| [b.name, b.id] }
   end
 
   def show
@@ -12,10 +14,15 @@ class Admin::NotificationsController < Admin::BaseController
   end
 
   def edit
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
+    @companies = Company.scoped.map{ |b| [b.name, b.id] }
     @notification = Notification.find_by_slug(params[:id])
   end
 
   def create
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
+    @companies = Company.scoped.map{ |b| [b.name, b.id] }
+
     @notification = Notification.new(params[:notification])
 
     if @notification.save
@@ -26,6 +33,9 @@ class Admin::NotificationsController < Admin::BaseController
   end
 
   def update
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
+    @companies = Company.scoped.map{ |b| [b.name, b.id] }
+
     @notification = Notification.find_by_slug(params[:id])
 
     if @notification.update_attributes(params[:notification])

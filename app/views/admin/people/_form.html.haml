@@ -1,53 +1,49 @@
 = simple_form_for [:admin, setup_person(@person)] do |f|
-  - if @person.errors.any?
-    #error_explanation
-      .errors
-        = pluralize(@person.errors.count, "erro")
-        foram encontrados:
 
-      %ul
-        - @person.errors.full_messages.each do |msg|
-          %li= msg
+  .form
+    = f.label :active, t('label.active')
+    = f.check_box :active
 
-  .inputs
-    = f.input :active, :as => :radio
-    = f.input :donor, :as => :radio
-    = f.input :name
-    = f.input :surname
-    = f.input :sex
-    = f.input :weight
-    = f.input :height
-    = f.input :birthday
-    = f.input :observations
+    = f.label :donor, t('label.donor')
+    = f.check_box :donor
 
-  #address
-    %h2= t('label.user.information_step.address_title')
-    = f.fields_for :address do |address|
-      = address.input :zip_code
-      = address.input :street
-      = address.input :number
-      = address.input :neighborhood
-      = address.input :city
-      = address.select :collection, states_collection
-      = address.input :complement
-      = address.input :lat
-      = address.input :lng
+    = f.label :name, t('label.name')
+    = f.text_field :name
+    = error_for(@person, :name)
 
-  #contact
-    %h2= t('label.user.information_step.contact_title')
-    = f.fields_for :contact do |contact|
-      = contact.input :phone
-      = contact.input :cellphone
-      = contact.input :email
+    = f.label :surname, t('label.surname')
+    = f.text_field :surname
+    = error_for(@person, :surname)
 
-  #user
-    %h2= t('label.user.information_step.user_title')
-    = f.fields_for :user do |user|
-      = user.input :email
-      = user.input :password
-      = user.input :password_confirmation
+    = f.label :sex, t('label.sex')
+    = f.text_field :sex
+    = error_for(@person, :sex)
+
+    = f.label :weight, t('label.weight')
+    = f.text_field :weight
+    = error_for(@person, :weight)
+
+    = f.label :height, t('label.height')
+    = f.text_field :height
+    = error_for(@person, :height)
+
+    = f.label :birthday, t('label.birthday')
+    = f.text_field :birthday
+    = error_for(@person, :birthday)
+
+    = f.label :observations, t('label.observations')
+    = f.text_area :observations
+    = error_for(@person, :observations)
+
+  = link_to t('buttons.back'), [:admin, :people], class: 'back_form'
+
+  = render partial: '/addressable/form', locals: { f: f, record: @person }
+
+  = render partial: '/contactable/form', locals: { f: f, record: @person }
+
+  %h2= t('views.person.user')
+  = f.nested_fields_for :user do |u|
+    = render partial: '/users/identities/form', locals: { f: u, record: @person.user }
 
   .actions
-    = link_to t('form.buttons.back'), [:admin, :people], :class => 'button back'
-
-    = f.button :submit, t('form.buttons.save'), :class => 'button save'
+    = f.button :submit, t('buttons.save'), :class => 'button save'

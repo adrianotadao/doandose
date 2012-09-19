@@ -38,3 +38,7 @@ pt-BR:
     company: 'Compania'
     cnpj: 'Cnpj'
     logo: 'Logomarca'
+    observation: 'Observacao'
+    alerted_at: 'Alerta em'
+    situation: 'Situacao'
+    denomination: 'Denominacao'

@@ -1,16 +1,17 @@
-#notifications
-  %h1= t('views.notifications.title')
-  = link_to t('form.buttons.new'), new_admin_notification_path, class: 'button new'
+#index
+  %h2= t('views.notifications.title')
 
-  - if @notifications
+  = link_to t('buttons.new'), new_admin_notification_path, class: 'button new'
+
+  - unless @notifications.blank?
     %table.list
       %thead
         %tr
-          %th= t('views.notification.active')
-          %th= t('views.notification.quantity')
-          %th= t('views.notification.situation')
-          %th= t('views.notification.alerted_at')
-          %th.actions
+          %th= t('label.active')
+          %th= t('label.quantity')
+          %th= t('label.situation')
+          %th= t('label.alerted_at')
+          %th= t('label.action')
 
       %tbody
         - @notifications.each do |notification|
@@ -22,6 +23,8 @@
             %td
               = link_to t('form.buttons.show'), admin_notification_path(notification), class: 'button show'
               = link_to t('form.buttons.edit'), edit_admin_notification_path(notification), class: 'button edit'
+  - else
+    .empty= t('label.empty')
 
 - content_for :javascript do
   :javascript

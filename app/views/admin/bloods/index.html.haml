@@ -17,6 +17,9 @@
 
               = link_to t('buttons.delete'), [:admin, blood], method: :delete, confirm: t('flash.advertise'), class: 'link delete'
 
+  - else
+    .empty= t('label.empty')
+
 - content_for :javascript do
   :javascript
     new Tables()

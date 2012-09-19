@@ -19,6 +19,8 @@
               = link_to t('buttons.show'), [:admin, partner], class: 'link show'
 
               = link_to t('buttons.edit'), edit_admin_partner_path(partner), class: 'link edit'
+
+              = link_to t('form.buttons.delete'), [:admin, partner], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
   - else
     .empty= t('label.empty')
 

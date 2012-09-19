@@ -1,17 +1,16 @@
-#people
-  %h1= t('views.people.title')
-  .actions
-    = link_to t('form.buttons.new'), new_admin_person_path, class: 'button new'
+#index
+  %h2= t('views.people.title_index')
+  = link_to t('buttons.new'), new_admin_person_path, class: 'button new'
 
-  - if @people
+  - unless @people.blank?
     %table.list
       %thead
         %tr
-          %th= t('views.people.active')
-          %th= t('views.people.donor')
-          %th= t('views.people.name')
-          %th= t('views.people.sex')
-          %th.actions
+          %th= t('label.active')
+          %th= t('label.donor')
+          %th= t('label.name')
+          %th= t('label.sex')
+          %th= t('label.action')
 
       %tbody
         - @people.each do |person|
@@ -21,8 +20,11 @@
             %td= person.name
             %td= person.sex
             %td
-              = link_to t('form.buttons.show'), admin_person_path(person), class: 'button show'
-              = link_to t('form.buttons.edit'), edit_admin_person_path(person), class: 'button edit'
+              = link_to t('form.buttons.show'), admin_person_path(person), class: 'link show'
+              = link_to t('form.buttons.edit'), edit_admin_person_path(person), class: 'link edit'
+
+  - else
+    .empty= t('label.empty')
 
 - content_for :javascript do
   :javascript

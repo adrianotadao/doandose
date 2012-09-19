@@ -3,17 +3,36 @@
     = f.label :active, t('label.active')
     = f.check_box :active
 
-    = f.input :blood, :collection => Blood.all.each{|r| r.id}
-    = f.input :company, :collection => Company.all, :prompt => t('views.notifications.associated_company')
-    = f.input :naoun
-    = f.input :quantity
-    = f.input :situation, :input_html => { :rows => 10 }
-    = f.input :observation
-    = f.input :alerted_at
+    = f.label :blood_id, t('label.blood')
+    = f.select :blood_id, @bloods
+    = error_for(@notification, :blood_id)
 
+    = f.label :company_id, t('label.company')
+    = f.select :company_id, @companies
+    = error_for(@notification, :company_id)
+
+    = f.label :denomination, t('label.denomination')
+    = f.text_field :denomination
+
+    = f.label :quantity, t('label.quantity')
+    = f.text_field :quantity
+    = error_for(@notification, :quantity)
+
+    = f.label :situation, t('label.situation')
+    = f.text_area :situation
+    = error_for(@notification, :situation)
+
+    = f.label :observation, t('label.observation')
+    = f.text_area :observation
+
+    = f.label :alerted_at, t('label.alerted_at')
+    = f.text_field :alerted_at
+    = error_for(@notification, :alerted_at)
+
+  = link_to t('form.buttons.back'), [:admin, :notifications], :class => 'back_form'
   .actions
-    = link_to t('form.buttons.back'), [:admin, :notifications], :class => 'button back'
-    -#unless @partner.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @notification], :confirm => t('flash.partner.delete.advertise'), :method => :delete, :class => "button delete"
 
-    = f.button :submit, t('form.buttons.save'), :class => 'button save'
+    - unless @notification.new_record?
+      = link_to t('form.buttons.delete'), [:admin, @notification], confirm: t('flash.advertise'), method: :delete, class: 'button delete'
+
+    = f.button :submit, t('buttons.save'), :class => 'button save'

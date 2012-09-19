@@ -37,6 +37,9 @@ pt-BR:
       donor: 'Doador'
       name: 'Nome'
       sex: 'Sexo'
+      title_index: 'Listagem dos usuarios'
+      title_edit: 'Edicao usuario'
+      title_new: 'Adicionar usuario'
     notifications:
       title: 'Notificacoes'
       title_new: 'Nova Notificacao'
