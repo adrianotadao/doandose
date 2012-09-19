@@ -1,6 +1,6 @@
 %dl.form
   = f.fields_for :user do |user|
-    = render :partial => '/users/identities/form', locals: { f: user }
+    = render :partial => '/users/identities/form', locals: { f: user, record: @person }
 
   %dt= f.label :blood
   %dd= f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
@@ -26,5 +26,5 @@
   %dt= f.label :height
   %dd= f.text_field :height
 
-  = render partial: '/contactable/form', locals: { f: f }
-  = render partial: '/addressable/form', locals: { f: f }
+  = render partial: '/contactable/form', locals: { f: f, record: @person }
+  = render partial: '/addressable/form', locals: { f: f, record: @person }

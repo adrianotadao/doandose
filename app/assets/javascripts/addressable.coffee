@@ -18,6 +18,12 @@ class window.Addressable
 
     @number.focusout => @searchMapCoordinates()
 
+    @gmap.bind 'addressComplete', (e, address) =>
+      setAddress(address)
+
+  setAddress: (address) =>
+    console.log address
+
   getAddress: ->
     $.ajax
       dataType: 'script'

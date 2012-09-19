@@ -29,8 +29,8 @@
     = address.text_field :complement, class: 'complement'
     = error_for(record.address, :complement)
 
-    = address.hidden_field :lat, class: 'lat'
-    = address.hidden_field :lng, class: 'lng'
+    = address.text_field :lat, class: 'lat'
+    = address.text_field :lng, class: 'lng'
 
     #gmap
 
