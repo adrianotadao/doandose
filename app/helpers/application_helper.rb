@@ -35,4 +35,12 @@ module ApplicationHelper
   def label_boolean(label)
     label ? 'Sim' : 'Nao'
   end
+
+  def formated_date(date)
+      unless date.blank?
+        date.strftime('%d/%m/%Y')
+      else
+        ''
+      end
+  end
 end

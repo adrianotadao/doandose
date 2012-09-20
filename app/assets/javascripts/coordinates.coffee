@@ -21,6 +21,7 @@ class window.Coordinates
 
 
   setCoordinates: (result) =>
+    console.log result
     $(this).trigger('searchCoordinatesComplete', @parseCoordinates(result))
 
   setAddress: (result) =>

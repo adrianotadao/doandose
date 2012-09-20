@@ -19,15 +19,15 @@ class Admin::PeopleController < Admin::BaseController
     @person = Person.new(params[:person])
 
     if @person.save
-      redirect_to([:admin, @person], :notice => t('flash.person.create.notice'))
+      redirect_to([:admin, :people], :notice => t('flash.person.create.notice'))
     else
       render :action => "new"
     end
   end
 
   def update
-    @partner = Person.find_by_slug(params[:id])
-    if @partner.update_attributes(params[:person])
+    @person = Person.find_by_slug(params[:id])
+    if @person.update_attributes(params[:person])
       redirect_to([:admin, @person], :notice => t('flash.person.update.notice'))
     else
       render :action => "edit"

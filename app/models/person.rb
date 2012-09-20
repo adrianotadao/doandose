@@ -20,7 +20,7 @@ class Person
                   :user, :user_attributes, :name, :donor, :surname, :sex, :weight,
                   :height, :birthday, :observations, :blood, :blood_id, :email,
                   :phone, :cellphone, :zip_code, :street, :number, :neighborhood,
-                  :city, :state, :provider, :uid, :email
+                  :city, :state, :provider, :uid, :email, :active
 
   #relationship
   belongs_to :blood

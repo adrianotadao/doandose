@@ -19,8 +19,8 @@
       %b= t('label.logo')
 
   .actions
-    = link_to t('form.buttons.back'), admin_partners_path, :class => 'link back'
+    = link_to t('buttons.back'), admin_partners_path, :class => 'link back'
 
-    = link_to t('form.buttons.edit'), edit_admin_partner_path(@partner), :class => 'link edit'
+    = link_to t('buttons.edit'), edit_admin_partner_path(@partner), :class => 'link edit'
 
-    = link_to t('form.buttons.delete'), [:admin, @partner], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+    = link_to t('buttons.delete'), [:admin, @partner], method: :delete, confirm: t('flash.advertise'), :class => "link delete"

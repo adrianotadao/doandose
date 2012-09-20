@@ -7,6 +7,10 @@
       %b= t('label.active')
 
     %p
+      = @notification.blood.name
+      %b= t('label.blood')
+
+    %p
       = @notification.denomination
       %b= t('label.denomination')
 
@@ -23,8 +27,12 @@
       %b= t('label.observation')
 
     %p
-      = @notification.alerted_at
+      = formated_date(@notification.alerted_at)
       %b= t('label.alerted_at')
+
+    %p
+      = @notification.company.name
+      %b= t('label.company')
 
   .actions
     = link_to t('buttons.back'), admin_notifications_path, :class => 'link back'
