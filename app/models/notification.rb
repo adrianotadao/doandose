@@ -18,7 +18,7 @@ class Notification
   has_many :person_notifications
 
   #access control
-  attr_accessible :quantity, :situation, :alerted_at, :active, :blood, :company
+  attr_accessible :quantity, :situation, :alerted_at, :active, :blood_id, :company_id, :denomination, :observation
 
   #validations
   validates_presence_of :company, :blood, :situation, :quantity, :alerted_at

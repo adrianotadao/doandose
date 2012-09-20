@@ -26,13 +26,13 @@
     = f.text_area :observation
 
     = f.label :alerted_at, t('label.alerted_at')
-    = f.text_field :alerted_at
+    = f.text_field :alerted_at, value: formated_date(@notification.alerted_at)
     = error_for(@notification, :alerted_at)
 
-  = link_to t('form.buttons.back'), [:admin, :notifications], :class => 'back_form'
+  = link_to t('buttons.back'), [:admin, :notifications], :class => 'back_form'
   .actions
 
     - unless @notification.new_record?
-      = link_to t('form.buttons.delete'), [:admin, @notification], confirm: t('flash.advertise'), method: :delete, class: 'button delete'
+      = link_to t('form.buttons.delete'), [:admin, @notification], confirm: t('flash.advertise'), method: :delete, class: 'link delete'
 
     = f.button :submit, t('buttons.save'), :class => 'button save'

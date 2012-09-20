@@ -8,11 +8,11 @@
 
     %p
       - p @campaign
-      = @campaign.blood
+      = @campaign.blood.name
       %b= t('label.blood')
 
     %p
-      = @campaign.company
+      = @campaign.company.name
       %b= t('label.company')
 
     %p
@@ -24,7 +24,7 @@
       %b= t('label.quantity')
 
     %p
-      = @campaign.expired_at
+      = formated_date(@campaign.expired_at)
       %b= t('label.expired_at')
 
   .actions

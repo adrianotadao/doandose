@@ -24,6 +24,7 @@ class Admin::NotificationsController < Admin::BaseController
     @companies = Company.scoped.map{ |b| [b.name, b.id] }
 
     @notification = Notification.new(params[:notification])
+    p @notification
 
     if @notification.save
       redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))

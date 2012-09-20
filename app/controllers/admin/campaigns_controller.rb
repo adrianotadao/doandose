@@ -38,7 +38,7 @@ class Admin::CampaignsController < Admin::BaseController
     @campaign = Campaign.find_by_slug params[:id]
 
     if @campaign.update_attributes params[:campaign]
-      redirect_to edit_admin_campaigns_path
+      redirect_to admin_campaigns_path
     else
       render 'edit'
     end

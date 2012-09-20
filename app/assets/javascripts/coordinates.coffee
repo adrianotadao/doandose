@@ -20,6 +20,7 @@ class window.Coordinates
     return { lat: result[0].geometry.location.Xa, lng: result[0].geometry.location.Ya}
 
   setCoordinates: (result) =>
+    console.log result
     $(this).trigger('searchCoordinatesComplete', @parseCoordinates(result))
 
   setAddress: (result) =>

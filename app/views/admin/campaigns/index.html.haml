@@ -14,9 +14,9 @@
       %tbody
         - for campaign in @campaigns
           %tr
-            %td= campaign.active
+            %td= label_boolean(campaign.active)
             %td= campaign.title
-            %td= campaign.expired_at
+            %td= formated_date(campaign.expired_at)
             %td
               = link_to t('buttons.show'), [:admin, campaign], class: 'link show'
 

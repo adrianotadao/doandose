@@ -4,12 +4,12 @@
     = f.label :active, t('label.active')
     = f.check_box :active
 
-    = f.label :blood, t('label.blood')
-    = f.select :blood, @bloods
+    = f.label :blood_id, t('label.blood')
+    = f.select :blood_id, @bloods
     = error_for(@campaign, :blood)
 
-    = f.label :company, t('label.company')
-    = f.select :company, @companies
+    = f.label :company_id, t('label.company')
+    = f.select :company_id, @companies
     = error_for(@campaign, :company)
 
     = f.label :title, t('label.title')
@@ -25,7 +25,7 @@
     = error_for(@campaign, :quantity)
 
     = f.label :expired_at, t('label.expired_at')
-    = f.text_field :expired_at
+    = f.text_field :expired_at, value: formated_date(@campaign.expired_at)
     = error_for(@campaign, :expired_at)
 
   = link_to t('buttons.back'), [:admin, :campaigns], class: 'back_form'
