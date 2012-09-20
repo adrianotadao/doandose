@@ -19,10 +19,8 @@ class window.Coordinates
   parseCoordinates: (result) ->
     return { lat: result[0].geometry.location.Xa, lng: result[0].geometry.location.Ya}
 
-
   setCoordinates: (result) =>
     $(this).trigger('searchCoordinatesComplete', @parseCoordinates(result))
 
   setAddress: (result) =>
-    console.log $.extend({ address: result[0] }, @parseCoordinates(result))
-    #$(this).trigger('searchAddressComplete', $.extend({ address: result[0] }, @parseCoordinates(result))
+    $(this).trigger('searchAddressComplete', $.extend({ address: result[0] }, @parseCoordinates(result)))

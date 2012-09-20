@@ -9,6 +9,10 @@ class window.UserGmap
     @coordinates = new Coordinates()
     @addMapListeners()
 
+    $(@coordinates).bind 'searchAddressComplete', (event, result) =>
+      @openMarkerInfoWindow(result.address.formatted_address)
+      $(this).trigger 'addressComplete', { result: result }
+
   searchMapCoordinates: (address) ->
     $(@coordinates).bind 'searchCoordinatesComplete', (event, coordinates) =>
       @createMarker(@parseLatLng(coordinates))
@@ -38,8 +42,15 @@ class window.UserGmap
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   addMarkerListeners: ->
+    google.maps.event.addListener @marker, 'dragstart', =>
+      @closeInfoWindow()
+
     google.maps.event.addListener @marker, 'drag', =>
       @updateMarkerPosition()
+
+    google.maps.event.addListener @marker, 'dragend', (event) =>
+      @coordinates.getAddressByCoordinates(event.latLng)
+      @createMarker(event.latLng)
 
     google.maps.event.addListener @marker, 'click', (event) =>
       @openMarkerInfoWindow(event.latLng)
@@ -49,13 +60,11 @@ class window.UserGmap
       @coordinates.getAddressByCoordinates(event.latLng)
       @createMarker(event.latLng)
 
-      #$(@coordinates).bind 'searchAddressComplete', (event, result) =>
-      # console.log result
-      #  #@openMarkerInfoWindow(result.address)
-      #  #$(this).trigger 'addressComplete', { address: result }
+  closeInfoWindow: ->
+    @infoWindow.close() unless @infoWindow == undefined
 
   openMarkerInfoWindow: (content) ->
-    @infoWindow.close() unless @infoWindow == undefined
+    @closeInfoWindow()
     @infoWindow = new google.maps.InfoWindow
       content: content
     @infoWindow.open(@map, @marker)
