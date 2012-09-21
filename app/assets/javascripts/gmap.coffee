@@ -54,6 +54,7 @@ class window.Gmap
     $(@coordinates).bind 'searchCoordinatesComplete', (event, result) =>
       @createMarker(@parseLatLng({lat: result.lat, lng: result.lng}))
       @openMarkerInfoWindow(result.address.formatted_address)
+      $(this).trigger 'addressComplete', { result: result }
 
   markerEvents: ->
     google.maps.event.addListener @marker, 'dragstart', =>
