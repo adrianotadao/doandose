@@ -9,9 +9,3 @@
 //= require addressable
 //= require coordinates
 //= require gmap
-
-//=# require search_map
-//=# require gmap
-
-
-//=# require jquery.nested-fields
