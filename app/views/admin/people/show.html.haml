@@ -1,42 +1,87 @@
-= link_to t('form.buttons.back'), admin_people_path, :class => 'button back'
+#show
+  %h2= @person.name
 
-%p
-	%b= @person.active
-%p
-	%b= @person.donor
-%p
-	%b= @person.name
-%p
-	%b= @person.surname
-%p
-	%b= @person.sex
-%p
-	%b= @person.weight
-%p
-	%b= @person.height
+  .content
+    %p
+      = @person.active
+      %b= t('label.active')
 
-- if @person.address
-	%p
-		%b= @person.address.street
-	%p
-		%b= @person.address.number
-	%p
-		%b= @person.address.neighborhood
-	%p
-		%b= @person.address.city
-	%p
-		%b= @person.address.state
-	%p
-		%b= @person.address.zip_code
+    %p
+      = label_boolean(@person.donor)
+      %b= t('label.donor')
 
-- if @person.contact
-	%p
-		%b= @person.contact.phone
-	%p
-		%b= @person.contact.cellphone
-	%p
-		%b= @person.contact.email
+    %p
+      = @person.name
+      %b= t('label.name')
 
-- if @person.user
-	%p
-		%b= @person.user.email
+    %p
+      = @person.surname
+      %b= t('label.surname')
+
+    %p
+      = @person.sex
+      %b= t('label.sex')
+
+    %p
+      = @person.weight
+      %b= t('label.weight')
+
+    %p
+      = @person.height
+      %b= t('label.height')
+
+    %h2= t('label.address')
+
+    - if @person.address
+      %p
+        = @person.address.street
+        %b= t('label.street')
+
+      %p
+        = @person.address.number
+        %b= t('label.number')
+
+      %p
+        = @person.address.neighborhood
+        %b= t('label.neighborhood')
+
+      %p
+        = @person.address.city
+        %b= t('label.city')
+
+      %p
+        = @person.address.state
+        %b= t('label.state')
+
+      %p
+        = @person.address.zip_code
+        %b= t('label.zip_code')
+
+    %h2= t('label.contact')
+
+    - if @person.contact
+
+      %p
+        = @person.contact.phone
+        %b= t('label.phone')
+
+      %p
+        = @person.contact.cellphone
+        %b= t('label.cellphone')
+
+      %p
+        = @person.contact.email
+        %b= t('label.email')
+
+    - if @person.user
+      %p
+        = @person.user.email
+        %b= t('label.email')
+
+  .actions
+
+    = link_to t('buttons.back'), admin_people_path, :class => 'link back'
+
+    = link_to t('buttons.edit'), edit_admin_person_path(@person), :class => 'link edit'
+
+    = link_to t('buttons.delete'), [:admin, @person], method: :delete, confirm: t('flash.advertise'), :class => "link delete"

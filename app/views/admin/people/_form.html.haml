@@ -7,6 +7,9 @@
     = f.label :donor, t('label.donor')
     = f.check_box :donor
 
+    = f.label :blood_id, t('label.blood')
+    = f.select :blood_id, @bloods
+
     = f.label :name, t('label.name')
     = f.text_field :name
     = error_for(@person, :name)

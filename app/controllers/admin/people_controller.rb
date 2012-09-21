@@ -5,6 +5,7 @@ class Admin::PeopleController < Admin::BaseController
 
   def new
     @person = Person.new
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
   end
 
   def show
@@ -13,19 +14,24 @@ class Admin::PeopleController < Admin::BaseController
 
   def edit
     @person = Person.find_by_slug(params[:id])
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
   end
 
   def create
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.new(params[:person])
 
     if @person.save
       redirect_to([:admin, :people], :notice => t('flash.person.create.notice'))
     else
+      p @person.errors
+      p '------------------ errors --------------------'
       render :action => "new"
     end
   end
 
   def update
+    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.find_by_slug(params[:id])
     if @person.update_attributes(params[:person])
       redirect_to([:admin, @person], :notice => t('flash.person.update.notice'))

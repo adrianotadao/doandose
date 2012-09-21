@@ -26,7 +26,7 @@ pt-BR:
       update:
       delete:
 
-    Person:
+    person:
       create:
         notice: 'Doador criado com sucesso'
       update:
@@ -56,9 +56,11 @@ pt-BR:
 
     people:
       create:
-        notice: 'Cadastro efetuado com sucesso!'
+        notice: 'Doador cadastro efetuado com sucesso!'
       update:
-        notice: 'Editado com sucesso'
+        notice: 'Doador editado com sucesso'
+      delete:
+        notice: 'Doador deletado com sucesso'
 
     sessions:
       create:

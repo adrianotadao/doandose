@@ -7,20 +7,16 @@ class Person
   field :donor, type: Boolean
   field :name, type: String
   field :surname, type: String
-  field :sex, type: Boolean
+  field :sex, type: String
   field :weight, type: Float
   field :height, type: Float
-  field :birthday, type: String
+  field :birthday, type: Date
   field :observations, type: String
 
   slug :name
 
   #access control
-  attr_accessible :address, :address_attributes, :contact, :contact_attributes,
-                  :user, :user_attributes, :name, :donor, :surname, :sex, :weight,
-                  :height, :birthday, :observations, :blood, :blood_id, :email,
-                  :phone, :cellphone, :zip_code, :street, :number, :neighborhood,
-                  :city, :state, :provider, :uid, :email, :active
+  attr_accessible :sex, :active, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood_id
 
   #relationship
   belongs_to :blood
@@ -37,4 +33,5 @@ class Person
 
   #scopes
   scope :actives, where: { active: true }
+  scope :donors, where: { donor: true }
 end

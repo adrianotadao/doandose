@@ -1,0 +1,50 @@
+@import compass/css3/box-shadow
+
+h1
+  margin-top: 30px
+  width: 100%
+  text-align: center
+.content
+  margin-top: 20px
+  border: 3px solid #ccc
+  height: 148px
+  padding: 10px
+  background: #fff
+  +box-shadow(#dcdcdc 3px 2px 11px)
+  &:hover
+    background: #F8F8F8
+    cursor: pointer
+
+  div
+    float: left
+    width: 500px
+    display: inline-block
+    .description
+      margin-top: 16px
+      height: 98px
+      overflow: hidden
+      text-align: justify
+
+  #mini_map
+    width: 266px
+    height: 140px
+    border: 3px solid #ccc
+    float: left
+    margin: 0 26px
+
+  .action
+    float: left
+    width: 138px
+    top: 14%
+    position: relative
+    a
+      clear: both
+      border: 1px solid
+      text-decoration: none
+      text-align: center
+      margin: 7px 0
+      padding: 8px
+      line-height: 40px
+      display: block
+      padding: 0
+      width: 137px

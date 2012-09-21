@@ -1,19 +1,17 @@
 #campaigns
   %h1= t('views.campaign.title')
   - unless @campaigns.blank?
-    %table.list
-      %thead
-        %tr
-          %th= t('views.campaign.name')
-          %th= t('views.campaign.fancyname')
-          %th= t('views.campaign.logo')
-          %th.actions
+    - for campaign in @campaigns
+      .content
+        %div
+          %h2= campaign.title
+          .description= campaign.content
 
-      %tbody
-        - @campaigns.each do |campaign|
-          %tr
-            %td= campaign.name
-            %td= campaign.fancy_name
-            %td
-              = link_to t('form.buttons.show'), [:admin, campaign], :class => "show"
-              = link_to t('form.buttons.edit'), edit_admin_campaign_path(campaign), :class => "edit"
+        #mini_map
+
+        .action
+          = link_to t('buttons.participe'), '#', :class => 'button red'
+          = link_to t('buttons.show'), '#', :class => 'button gray'
+
+  - else
+    .empty_list= t('label.empty')

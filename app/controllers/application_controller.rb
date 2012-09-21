@@ -1,6 +1,6 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
-  helper_method :user_signed_in?, :current_user, :admin_signed_in?
+  helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout
   protect_from_forgery
 
   def login(user)
@@ -8,10 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def logout
-    reset_session
+    session.destroy
     session[:user_id] = nil
-    cookies[:user] = nil
-    cookies[:admin] = nil
+    cookies.delete :user
+    cookies.delete :admin
+
     redirect_to root_path
   end
 
