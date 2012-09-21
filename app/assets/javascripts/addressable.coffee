@@ -19,21 +19,43 @@ class window.Addressable
       @getAddress()
       @number.focus()
 
-    @number.focusout => @searchMapCoordinates()
+    @number.focusout => @searchMapCoordinates(@parseNumberAddress())
 
     @callbacks()
 
-  parseAddress: (location) ->
-    addressComponentes = location.result.address.address_components
+  setAddressByMarker: (location) ->
+    addressComponents = location.result.address.address_components
 
-    @lat.val(location.result.lat)
-    @lng.val(location.result.lng)
-    @number.val(addressComponentes[0].long_name) if addressComponentes[0]
-    @street.val(addressComponentes[1].long_name) if addressComponentes[1]
-    @neighborhood.val(addressComponentes[2].long_name) if addressComponentes[2]
-    @city.val(addressComponentes[3].long_name) if addressComponentes[3]
-    @state.val(addressComponentes[4].long_name) if addressComponentes[4]
-    @postalCode.val(addressComponentes[6].long_name) if addressComponentes[6]
+    @setAddress
+      number: addressComponents[0].long_name
+      street: addressComponents[1].long_name
+      neighborhood: addressComponents[2].long_name
+      city: addressComponents[3].long_name
+      state: addressComponents[4].long_name
+      postalCode: addressComponents[6].long_name
+      lat: location.result.lat
+      lng: location.result.lng
+
+  setAddressByInput: (location) ->
+    addressComponents = location.result.address.address_components
+
+    @setAddress
+      street: addressComponents[0].long_name
+      neighborhood: addressComponents[1].long_name
+      city: addressComponents[2].long_name
+      state: addressComponents[3].long_name
+      lat: location.result.lat
+      lng: location.result.lng
+
+  setAddress: (options) ->
+    @number.val(options.number) if options.number
+    @street.val(options.street) if options.street
+    @neighborhood.val(options.neighborhood) if options.neighborhood
+    @city.val(options.city) if options.city
+    @state.val(options.state) if options.state
+    @postalCode.val(options.postalCode) if options.postalCode
+    @lat.val(options.lat) if options.lat
+    @lng.val(options.lng) if options.lng
 
   getAddress: ->
     $.ajax
@@ -42,21 +64,22 @@ class window.Addressable
       beforeSend: => @addLoading()
       success: =>
         if resultadoCEP['resultado'] == '1'
-          @setAddress(resultadoCEP)
-          @searchMapCoordinates()
+          @searchMapCoordinates(@parseCepAddress(resultadoCEP))
         else
           @insertError()
       complete: => @removeLoading()
 
-  searchMapCoordinates: ->
-    @gmap.searchMapCoordinates("#{@number.val()}, #{@street.val()}, #{@city.val().replace('Rua: ', '')}, #{@state.val()}")
+  searchMapCoordinates: (address) ->
+    @gmap.searchMapCoordinates(address)
 
-  setAddress: (string) ->
-    @removeError()
-    @street.val("#{ unescape(string['tipo_logradouro']) }: #{ unescape(string['logradouro']) }")
-    @neighborhood.val(unescape(string['bairro']))
-    @city.val(unescape(string['cidade']))
-    @state.val(unescape(string['uf']))
+  parseCepAddress: (result) ->
+    "#{ unescape(result['tipo_logradouro']) }: #{ unescape(result['logradouro']) }, " +
+    "#{ unescape(result['bairro']) }, " +
+    "#{ unescape(result['cidade']) }, " +
+    "#{ unescape(result['uf']) }"
+
+  parseNumberAddress: ->
+    "#{ @number.val() }, #{ @street.val() }, #{ @city.val().replace('Rua: ', '') }, #{ @state.val() }"
 
   addLoading: =>
     @removeLoading()
@@ -78,4 +101,7 @@ class window.Addressable
 
   callbacks: ->
     $(@gmap).bind 'addressComplete', (e, location) =>
-      @parseAddress(location)
+      @setAddressByMarker(location)
+
+    $(@gmap).bind 'addressCoordinatesComplete', (e, location) =>
+      @setAddressByInput(location)
