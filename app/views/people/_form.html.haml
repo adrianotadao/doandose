@@ -1,30 +1,29 @@
-%dl.form
-  = f.fields_for :user do |user|
-    = render :partial => '/users/identities/form', locals: { f: user, record: @person }
+= f.fields_for :user do |user|
+  = render :partial => '/users/identities/form', locals: { f: user, record: @person }
+.form
+  = f.label :blood
+  = f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
 
-  %dt= f.label :blood
-  %dd= f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
+  = f.label :donor
+  = f.check_box :donor
 
-  %dt= f.label :donor
-  %dd= f.check_box :donor
+  = f.label :name
+  = f.text_field :name
 
-  %dt= f.label :name
-  %dd= f.text_field :name
+  = f.label :surname
+  = f.text_field :surname
 
-  %dt= f.label :surname
-  %dd= f.text_field :surname
+  = f.label :sex
+  = f.select :sex, people_sexes
 
-  %dt= f.label :sex
-  %dd= f.select :sex, people_sexes
+  = f.label :birthday
+  = f.text_field :birthday
 
-  %dt= f.label :birthday
-  %dd= f.text_field :birthday
+  = f.label :weight
+  = f.text_field :weight
 
-  %dt= f.label :weight
-  %dd= f.text_field :weight
+  = f.label :height
+  = f.text_field :height
 
-  %dt= f.label :height
-  %dd= f.text_field :height
-
-  = render partial: '/contactable/form', locals: { f: f, record: @person }
-  = render partial: '/addressable/form', locals: { f: f, record: @person }
+= render partial: '/contactable/form', locals: { f: f, record: @person }
+= render partial: '/addressable/form', locals: { f: f, record: @person }
