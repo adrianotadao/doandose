@@ -1,5 +1,6 @@
 class window.Addressable
   constructor: ->
+    new Mask()
     @postalCode = $('.postal_code')
     @street = $('.street')
     @neighborhood = $('.neighborhood')
