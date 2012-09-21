@@ -1,7 +1,5 @@
 class window.Addressable
   constructor: ->
-    @gmap = new UserGmap()
-
     @postalCode = $('.postal_code')
     @street = $('.street')
     @neighborhood = $('.neighborhood')
@@ -12,18 +10,24 @@ class window.Addressable
     @lng = $('.lng')
     @error = false
 
+    @gmap = new Gmap
+      map: 'gmap'
+      lat: @lat.val()
+      lng: @lng.val()
+
     @postalCode.focusout =>
       @getAddress()
       @number.focus()
 
     @number.focusout => @searchMapCoordinates()
 
-    $(@gmap).bind 'addressComplete', (e, location) =>
-      @parseAddress(location)
+    @callbacks()
 
   parseAddress: (location) ->
     addressComponentes = location.result.address.address_components
 
+    @lat.val(location.result.lat)
+    @lng.val(location.result.lng)
     @number.val(addressComponentes[0].long_name) if addressComponentes[0]
     @street.val(addressComponentes[1].long_name) if addressComponentes[1]
     @neighborhood.val(addressComponentes[2].long_name) if addressComponentes[2]
@@ -71,3 +75,7 @@ class window.Addressable
     if @error
       $('.error_postal_code').remove()
       @error = false
+
+  callbacks: ->
+    $(@gmap).bind 'addressComplete', (e, location) =>
+      @parseAddress(location)
