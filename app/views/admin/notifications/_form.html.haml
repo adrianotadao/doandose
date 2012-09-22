@@ -11,8 +11,8 @@
     = f.select :company_id, @companies
     = error_for(@notification, :company_id)
 
-    = f.label :denomination, t('label.denomination')
-    = f.text_field :denomination
+    = f.label :title, t('label.title')
+    = f.text_field :title
 
     = f.label :quantity, t('label.quantity')
     = f.text_field :quantity
@@ -24,6 +24,9 @@
 
     = f.label :observation, t('label.observation')
     = f.text_area :observation
+
+    = f.label :permalink, t('label.permalink')
+    = f.text_field :permalink
 
     = f.label :alerted_at, t('label.alerted_at')
     = f.text_field :alerted_at, value: formated_date(@notification.alerted_at)

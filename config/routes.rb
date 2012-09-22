@@ -4,7 +4,15 @@ Doandose::Application.routes.draw do
 
   resources :people
   resources :page, only: [:index, :show]
-  resources :notifications
+
+  resources :notifications, only: :index do
+    member do
+      get :confirm
+      post :confirmed
+    end
+  end
+
+  resource :person_notification
   resources :partners, only: [:index, :show]
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]

@@ -24,7 +24,7 @@
 
               = link_to t('buttons.edit'), edit_admin_person_path(person), class: 'link edit'
 
-              = link_to t('buttons.delete'), [:admin, @person], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+              = link_to t('buttons.delete'), [:admin, person], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
 
   - else
     .empty= t('label.empty')

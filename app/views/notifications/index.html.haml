@@ -4,13 +4,13 @@
     - for notification in @notifications
       .content
         %div
-          %h2= notification.denomination
+          %h2= notification.title
           .description= truncate(notification.observation, length:380)
 
         #mini_map
 
         .action
-          = link_to t('buttons.participe'), '#', class: 'button red'
+          = link_to t('buttons.participe'), confirm_notification_path(notification), class: 'button red'
           = link_to t('buttons.show'), '#', class: 'button gray'
 
   - else
