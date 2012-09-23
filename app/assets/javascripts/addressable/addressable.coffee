@@ -11,7 +11,7 @@ class window.Addressable
     @lng = $('.lng')
     @error = false
 
-    @gmap = new Gmap
+    @gmap = new AddressableGmap
       map: 'gmap'
       lat: @lat.val()
       lng: @lng.val()

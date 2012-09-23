@@ -1,4 +1,4 @@
-class window.Gmap
+class window.AddressableGmap
   constructor: (options) ->
     @coordinates = new Coordinates()
     @marker = undefined
