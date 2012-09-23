@@ -16,7 +16,7 @@ class Person
   slug :name
 
   #access control
-  attr_accessible :sex, :active, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood_id
+  attr_accessible :sex, :active, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood, :blood_id
 
   #relationship
   belongs_to :blood

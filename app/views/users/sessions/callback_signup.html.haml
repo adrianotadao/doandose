@@ -1,0 +1,4 @@
+:javascript
+  console.log(#{@user.to_json})
+  window.opener.social.fill(#{@user.to_json})
+  window.close()

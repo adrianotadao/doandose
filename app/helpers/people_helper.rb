@@ -4,6 +4,7 @@ module PeopleHelper
       c.build_user if c.user.blank?
       c.build_address if c.address.blank?
       c.build_contact if c.contact.blank?
+      #c.user.authentications.build if c.user.authentications.blank?
     end
   end
 

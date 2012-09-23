@@ -7,3 +7,7 @@
 
   .actions
     = f.submit t('buttons.new'), class: 'button red'
+
+- content_for :javascript do
+  :javascript
+    window.social = new SocialButtons()

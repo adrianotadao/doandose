@@ -13,11 +13,13 @@ class PeopleController < ApplicationController
   end
 
   def create
+    p params
     @person = Person.new(params[:person])
     if @person.save
       redirect_to root_path
     else
-      render action: :new
+      render 'new'
+      p @person.user.errors
     end
   end
 

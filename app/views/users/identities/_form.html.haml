@@ -1,7 +1,7 @@
-.form
-  = f.fields_for :authentications do |auth|
-    = auth.hidden_field :provider
-    = auth.hidden_field :uid
+.form.user
+  = f.nested_fields_for :authentications do |auth|
+    = auth.text_field :provider
+    = auth.text_field :uid
 
   = f.label :email, t('label.email')
   = f.text_field :email

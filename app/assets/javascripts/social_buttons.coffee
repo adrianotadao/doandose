@@ -1,8 +1,9 @@
 class window.SocialButtons
   constructor: ->
+    console.log '-----------------'
     $('ul.social_links li').mouseenter (event) =>
       @onMouseEnter(event)
-    
+
     $('ul.social_links li').mouseleave (event) =>
       @onMouseLeave(event)
 
@@ -26,6 +27,6 @@ class window.SocialButtons
 
   fill: (attr) ->
     $('#person_user_attributes_email').val attr.email
-    
-    $('form#new_person').append("<input type='hidden' name='users_user[authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
+
+    $('form#new_person .form.user').append("<input type='hidden' name='users_user[authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
                               <input type='hidden' name='users_user[authentications_attributes][0][uid]' value='#{attr.authentication.uid}'>")

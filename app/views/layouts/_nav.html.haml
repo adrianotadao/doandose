@@ -10,6 +10,7 @@
       %dd=# link_to t('nav.companies'), companies_path, :class => "menu #{menu_item_class companies_path}"
       %dd=# link_to t('nav.informations'), '#', :class => "menu #{menu_item_class '#'}"
       %dd= link_to t('nav.new_people'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
+      %dd= link_to t('nav.login'), users_new_session_path, class: "menu #{menu_item_class users_new_session_path}"
       %dd=# link_to t('nav.partners'), partners_path, :class => "menu #{menu_item_class partners_path}"
 - else
   %dl
