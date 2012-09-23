@@ -16,7 +16,7 @@
       %tbody
         - @notifications.each do |notification|
           %tr
-            %td= notification.active
+            %td= label_boolean(notification.active)
             %td= notification.quantity
             %td= notification.situation
             %td= formated_date(notification.alerted_at)

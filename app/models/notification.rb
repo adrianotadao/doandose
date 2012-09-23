@@ -26,4 +26,7 @@ class Notification
   #validations
   validates_presence_of :company, :blood, :situation, :quantity, :alerted_at
 
+  #scopes
+  scope :actives, where(active: true)
+
 end

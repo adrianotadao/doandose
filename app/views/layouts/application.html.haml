@@ -1,6 +1,6 @@
 !!! XML
 !!! 1.1
-%html{:xmlns => 'http://www.w3.org/1999/xhtml', :lang => 'pt-br'}
+%html{xmlns: 'http://www.w3.org/1999/xhtml', lang: 'pt-br'}
   %head
     = yield :stylesheet
     = stylesheet_link_tag 'application'
@@ -13,20 +13,22 @@
       #container
         #top
           #search_location
-            = render :partial => 'shared/home_location'
+            = render partial: 'shared/home_location'
+
+          = render partial: 'layouts/saludation' if current_user
           #menu
-            = link_to image_tag('logo.png'), root_path, :title => 'Doando.se', :class => 'logo'
-            = render :partial => 'layouts/nav'
+            = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
+            = render partial: 'layouts/nav'
         #center
           #header
           #content= yield
 
       #root_footer
-        = render :partial => 'shared/circles_footer'
+        = render partial: 'shared/circles_footer'
 
     #footer
     = javascript_include_tag 'application'
 
-    %script{ :src => 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false', :type => 'text/javascript' }
+    %script{ src: 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false', type: 'text/javascript' }
 
     = yield :javascript
