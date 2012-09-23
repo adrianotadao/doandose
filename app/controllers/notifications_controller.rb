@@ -10,11 +10,14 @@ class NotificationsController < ApplicationController
   end
 
   def confirmed
-    @person = Person.first
+    @person = current_user.authenticable
     @notification = Notification.find_by_slug params[:id]
-    person_id =  params[:person_notification][:person_id]
 
-    if @notification.person_notifications.is_confimed( person_id ).exists?
+    p @person.id
+    p @notification.person_notifications.is_confimed( @person.id ).exists?
+    p '----------------------------------------------------------'
+    if @notification.person_notifications.is_confimed( @person.id ).exists?
+
       redirect_to notifications_path
     else
       save_confirmed_notification

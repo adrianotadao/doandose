@@ -9,15 +9,23 @@
     %dd= link_to t('nav.exit'), admin_destroy_session_path, :class => "menu #{menu_item_class admin_destroy_session_path}"
 - else
   %dl
+    %dd= link_to t('nav.notifications'), notifications_path, :class => "menu #{menu_item_class notifications_path}"
+
+    %dd= link_to t('nav.campaigns'), campaigns_path, :class => "menu #{menu_item_class campaigns_path}"
+
+    %dd=# link_to t('nav.partners'), partners_path, :class => "menu #{menu_item_class partners_path}"
+
+    %dd=# link_to t('nav.companies'), companies_path, :class => "menu #{menu_item_class companies_path}"
+
+    %dd=# link_to t('nav.informations'), '#', :class => "menu #{menu_item_class '#'}"
+
     - if user_signed_in?
+      - p current_user
       %dd= link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id)), :class => "menu #{menu_item_class people_path}"
+
       %dt.saludation Bem vindo! #{Person.find(current_user.authenticable_id).name}
       %dd.saludation= link_to t('nav.users_destroy_session'), users_destroy_session_path, :confirm => 'Deseja sair?'
     - else
-      %dd= link_to t('nav.notifications'), notifications_path, :class => "menu #{menu_item_class notifications_path}"
-      %dd= link_to t('nav.campaigns'), campaigns_path, :class => "menu #{menu_item_class campaigns_path}"
-      %dd=# link_to t('nav.companies'), companies_path, :class => "menu #{menu_item_class companies_path}"
-      %dd=# link_to t('nav.informations'), '#', :class => "menu #{menu_item_class '#'}"
-      %dd= link_to t('nav.new_people'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
       %dd= link_to t('nav.login'), users_new_session_path, class: "menu #{menu_item_class users_new_session_path}"
-      %dd=# link_to t('nav.partners'), partners_path, :class => "menu #{menu_item_class partners_path}"
+
+      %dd= link_to t('nav.new_people'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
