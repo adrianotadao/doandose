@@ -1,33 +1,42 @@
 class Users::IdentitiesController < ApplicationController
   #before_filter :authenticate_user!, :only => [:edit, :update]
-
   def new
     if user_signed_in?
-      redirect_to edit_user_path
+      redirect_to users_features.edit_user_path
     else
       @user = User.new
-      p 'identities new -------------------'
+      @user.authentications.build(:provider => 'foo')
     end
   end
 
   def create
-    p params
-    p '-----------------------------------'
-    reder 'new'
+    @user = User.new(params[:users_user])
+
+    if @user.save
+      login @user
+      redirect_to root_path
+    else
+      render '/identities/new'
+    end
   end
 
   def edit
-    @user = current_user
+    if user_signed_in?
+      @user = current_user
+      @authentications = User.social_networks(@user)
+    else
+      redirect_to new_user_path
+    end
   end
 
   def update
     @user = current_user
-
-    if @user.update_attributes(params[:user])
-      flash[:success] = 'Cadastro atualizado!'
-      redirect_to Users.after_registration_path
+    if @user.update_attributes(params[:users_user])
+      logout
+      login(@user)
+      redirect_to root_path
     else
-      render :action => 'edit'
+      render '/identities/edit'
     end
   end
 

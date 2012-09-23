@@ -1,19 +1,16 @@
 class User
-  require 'bcrypt'
+  #require 'bcrypt'
 
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include OmniAuth::Identity::Model
   include OmniAuth::Identity::Models::Mongoid
-
   has_secure_password
 
   field :email, type: String, case_sensitive: false
   field :password_digest, type: String
   field :reset_password_token, type: String
   field :reset_password_sent_at, type: Time
-
-  index :email
+  index({ email: 1}, {unique: true})
 
   #associations
   belongs_to :authenticable, polymorphic: true
@@ -36,7 +33,7 @@ class User
   after_save :build_identity
 
   def build_identity
-    p password.blank?
+    p authentications
     return if password.blank?
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s)
   end

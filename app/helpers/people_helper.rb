@@ -1,10 +1,9 @@
 module PeopleHelper
-  def setup_person(person)
+  def setup_people(person)
     person.tap do |c|
       c.build_user if c.user.blank?
       c.build_address if c.address.blank?
       c.build_contact if c.contact.blank?
-      #c.user.authentications.build if c.user.authentications.blank?
     end
   end
 

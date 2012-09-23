@@ -12,7 +12,7 @@ module Doandose
   class Application < Rails::Application
     config.time_zone = 'Brasilia'
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
-    Dir["#{config.root}/lib/*.rb"].each{ |file| require file }
+    Dir["#{config.root}/lib/**/*.rb"].each{ |file| require file }
     config.i18n.default_locale = :'pt-BR'
     config.filter_parameters += [:password]
     config.assets.enabled = true
