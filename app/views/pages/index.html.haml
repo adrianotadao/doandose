@@ -1,4 +1,6 @@
-#map{:style => "width: 100%; height: 500px; padding: 0px"}
+#home
+  #gmap
+
 - content_for :javascript do
   :javascript
-    new SearchMap(#{people_markers})
+    new Gmap({map: 'gmap'})

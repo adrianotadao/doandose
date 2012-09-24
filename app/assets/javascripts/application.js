@@ -8,3 +8,5 @@
 //= require addressable/addressable
 //= require addressable/coordinates
 //= require addressable/addressable_gmap
+
+//= require gmap
