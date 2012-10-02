@@ -6,3 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 %w(A+ B+ O+ O-).each{|r| Blood.create(:name => r) }
+
+a = Person.new name: Faker::Name.first_name, surname: Faker::Name.last_name
+
+p "=============="
+p a
+p "=============="

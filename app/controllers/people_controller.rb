@@ -19,6 +19,9 @@ class PeopleController < ApplicationController
       login @person.user
       redirect_to root_path
     else
+      p "================="
+      p @person.errors
+      p "================="
       render 'new'
     end
   end

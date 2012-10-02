@@ -27,6 +27,8 @@ gem 'geokit', '1.6.5'
 
 gem 'rspec', '2.8', :group => [:test, :development]
 
+gem 'faker'
+
 group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
