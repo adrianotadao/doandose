@@ -9,5 +9,5 @@ class window.GmapBase
         @map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
 
   options: ->
-    zoom: 15
+    zoom: 13
     mapTypeId: google.maps.MapTypeId.ROADMAP
