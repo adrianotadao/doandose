@@ -3,4 +3,4 @@
 
 - content_for :javascript do
   :javascript
-    new HomeGmap({map: 'gmap', coordinates: #{@coordinates}})
+    new HomeGmap({map: 'gmap', coordinates: #{@coordinates}, centerUserLocation: true})

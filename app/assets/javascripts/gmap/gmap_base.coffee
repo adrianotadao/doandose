@@ -1,7 +1,7 @@
 class window.GmapBase
   constructor: (options) ->
     @map = new google.maps.Map(document.getElementById(options.map), @options())
-    @userPosition()
+    @userPosition() if options.centerUserLocation
 
   userPosition: ->
     if navigator.geolocation

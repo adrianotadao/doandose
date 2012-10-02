@@ -13,6 +13,7 @@ class window.Addressable
 
     @gmap = new AddressableGmap
       map: 'gmap'
+      centerUserLocation: true
       lat: @lat.val()
       lng: @lng.val()
 
