@@ -1,8 +1,8 @@
-class window.AddressableGmap
+class window.AddressableGmap extends GmapBase
   constructor: (options) ->
+    super(options)
     @coordinates = new Coordinates()
     @marker = undefined
-    @map = new google.maps.Map(document.getElementById(options.map), @options())
 
     if options.lat != '' && options.lng != ''
       @coordinates.getAddressByCoordinates(@parseLatLng({ lat: options.lat, lng: options.lng }))
@@ -29,11 +29,6 @@ class window.AddressableGmap
 
   parseLatLng: (coodinates) ->
     return new google.maps.LatLng(coodinates.lat, coodinates.lng)
-
-  options: ->
-    zoom: 15
-    center: new google.maps.LatLng(-21.289211122989194, -50.33786645853576)
-    mapTypeId: google.maps.MapTypeId.ROADMAP
 
   callbacks: ->
     $(@coordinates).bind 'searchAddressComplete', (event, result) =>

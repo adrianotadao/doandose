@@ -6,6 +6,7 @@
 //= require admin/tables
 //= require mask
 
-//= require addressable/addressable
-//= require addressable/coordinates
-//= require addressable/addressable_gmap
+//= require addressable
+//= require gmap/gmap_base
+//= require gmap/coordinates
+//= require gmap/addressable_gmap

@@ -5,8 +5,9 @@
 //= require mask
 //= require social_buttons
 
-//= require addressable/addressable
-//= require addressable/coordinates
-//= require addressable/addressable_gmap
+//= require addressable
 
-//= require gmap
+//= require gmap/gmap_base
+//= require gmap/coordinates
+//= require gmap/addressable_gmap
+//= require gmap/home_gmap
