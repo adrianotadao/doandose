@@ -23,9 +23,6 @@ gem 'omniauth-google-oauth2', '0.1.9'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.0.3'
 
-gem 'geokit', '1.6.5'
-gem 'geokit-rails3'
-
 gem 'rspec', '2.8', :group => [:test, :development]
 
 group :development do

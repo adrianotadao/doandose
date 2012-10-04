@@ -25,8 +25,6 @@ class Address
   scope :people, where: { addressable_type: 'Person' }
   scope :companies, where: { addressable_type: 'Company' }
 
-  acts_as_mappable
-
   def full_coordinate
     return if lat.blank? || lng.blank?
     "#{self.lat}, #{self.lng}"
