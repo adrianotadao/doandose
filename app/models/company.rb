@@ -3,7 +3,6 @@ class Company
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :active, type: Boolean
   field :name, type: String
   field :fancy_name, type: String
   field :cnpj, type: String
@@ -12,7 +11,7 @@ class Company
   slug :name
 
   #access control
-  attr_accessible :name, :fancy_name, :cnpj, :responsible, :active, :address_attributes, :contact_attributes, :user_attributes
+  attr_accessible :name, :fancy_name, :cnpj, :responsible, :address_attributes, :contact_attributes, :user_attributes
 
   #relationship
   has_one :address, as: :addressable, dependent: :destroy, autosave: true

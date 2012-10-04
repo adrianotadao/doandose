@@ -21,6 +21,12 @@ class Address
   #access control
   attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state, :complement, :lat, :lng
 
+  #scopes
+  scope :people, where: { addressable_type: 'Person' }
+  scope :companies, where: { addressable_type: 'Company' }
+
+  acts_as_mappable
+
   def full_coordinate
     return if lat.blank? || lng.blank?
     "#{self.lat}, #{self.lng}"

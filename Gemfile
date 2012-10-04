@@ -24,10 +24,9 @@ gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.0.3'
 
 gem 'geokit', '1.6.5'
+gem 'geokit-rails3'
 
 gem 'rspec', '2.8', :group => [:test, :development]
-
-gem 'faker'
 
 group :development do
   gem 'capistrano', '2.12.0'

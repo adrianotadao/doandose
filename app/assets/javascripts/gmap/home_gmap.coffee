@@ -2,16 +2,22 @@ class window.HomeGmap extends GmapBase
   constructor: (options) ->
     super(options)
     @mgr = new MarkerManager(@map)
-    @plotMarkers(options.coordinates)
-
-  plotMarkers: (coordinates) ->
     @markers = []
 
+    @prepareMarkers(options.companies, 'http://icons.iconarchive.com/icons/icons-land/gis-gps-map/24/Hospital-icon.png')
+    @prepareMarkers(options.people, 'http://icons.iconarchive.com/icons/david-renelt/little-icon-people/32/Plain-People-icon.png')
+
+    @plotMarkers(@markers)
+
+  prepareMarkers: (coordinates, iconUrl=null) ->
     for coordinate in coordinates
       marker = new google.maps.Marker
-        position: new google.maps.LatLng coordinate[0], coordinate[1]
+        position: new google.maps.LatLng(coordinate[0], coordinate[1])
         map: @map
-        icon: new google.maps.MarkerImage 'http://www.library.arizona.edu/news/img/red_circle.png'
+
+      marker.icon = new google.maps.MarkerImage(iconUrl) if iconUrl
       @markers.push marker
 
-    @mgr.addMarkers(@markers)
+  plotMarkers: (markers) ->
+    @mgr.addMarkers(markers)
+    @markers = []
