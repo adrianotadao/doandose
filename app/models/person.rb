@@ -3,7 +3,6 @@ class Person
   include Mongoid::Timestamps
   include Mongoid::Slug
 
-  field :active, type: Boolean, default: true
   field :donor, type: Boolean
   field :name, type: String
   field :surname, type: String
@@ -16,7 +15,7 @@ class Person
   slug :name
 
   #access control
-  attr_accessible :sex, :active, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood, :blood_id
+  attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood, :blood_id
 
   #relationship
   belongs_to :blood

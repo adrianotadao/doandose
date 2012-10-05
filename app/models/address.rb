@@ -16,11 +16,14 @@ class Address
   belongs_to :addressable, polymorphic: true
 
   #validations
-  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state, :lat, :lng, :complement
+  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state, :lat, :lng
 
   #access control
   attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state, :complement, :lat, :lng
 
+  #scopes
+  scope :people, where: { addressable_type: 'Person' }
+  scope :companies, where: { addressable_type: 'Company' }
 
   def full_coordinate
     return if lat.blank? || lng.blank?

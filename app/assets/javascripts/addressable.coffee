@@ -13,6 +13,7 @@ class window.Addressable
 
     @gmap = new AddressableGmap
       map: 'gmap'
+      centerUserLocation: true
       lat: @lat.val()
       lng: @lng.val()
 
@@ -27,26 +28,30 @@ class window.Addressable
   setAddressByMarker: (location) ->
     addressComponents = location.result.address.address_components
 
-    @setAddress
-      number: addressComponents[0].long_name
-      street: addressComponents[1].long_name
-      neighborhood: addressComponents[2].long_name
-      city: addressComponents[3].long_name
-      state: addressComponents[4].long_name
-      postalCode: addressComponents[6].long_name
-      lat: location.result.lat
-      lng: location.result.lng
+    options = {}
+    options.number = addressComponents[0].long_name if addressComponents[0]
+    options.street = addressComponents[1].long_name if addressComponents[1]
+    options.neighborhood = addressComponents[2].long_name if addressComponents[2]
+    options.city = addressComponents[3].long_name if addressComponents[3]
+    options.state = addressComponents[4].long_name if addressComponents[4]
+    options.postalCode = addressComponents[6].long_name if addressComponents[6]
+    options.lat = location.result.lat
+    options.lng = location.result.lng
+
+    @setAddress(options)
 
   setAddressByInput: (location) ->
     addressComponents = location.result.address.address_components
 
-    @setAddress
-      street: addressComponents[0].long_name
-      neighborhood: addressComponents[1].long_name
-      city: addressComponents[2].long_name
-      state: addressComponents[3].long_name
-      lat: location.result.lat
-      lng: location.result.lng
+    options = {}
+    options.street = addressComponents[0].long_name if addressComponents[0]
+    options.neighborhood = addressComponents[1].long_name if addressComponents[1]
+    options.city = addressComponents[2].long_name if addressComponents[2]
+    options.state = addressComponents[3].long_name if addressComponents[3]
+    options.lat = location.result.lat
+    options.lng = location.result.lng
+
+    @setAddress(options)
 
   setAddress: (options) ->
     @number.val(options.number) if options.number

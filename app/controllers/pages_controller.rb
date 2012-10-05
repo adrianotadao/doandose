@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
-    @addresses = Address.scoped
+    @people_coordinates = Address.people.map{|r| [r.lat, r.lng]}
+    @companies_coordinates = Address.companies.map{|r| [r.lat, r.lng]}
   end
 end

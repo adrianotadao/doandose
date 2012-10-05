@@ -1,6 +1,6 @@
 Doandose::Application.routes.draw do
 
-  root :to => "notifications#index"
+  root :to => "pages#index"
 
   resources :people
   resources :page, only: [:index, :show]

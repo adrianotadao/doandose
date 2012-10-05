@@ -33,7 +33,6 @@ class User
   after_save :build_identity
 
   def build_identity
-    p authentications
     return if password.blank?
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s)
   end
