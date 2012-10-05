@@ -4,6 +4,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include OmniAuth::Identity::Models::Mongoid
+
   has_secure_password
 
   field :email, type: String, case_sensitive: false

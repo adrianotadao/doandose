@@ -18,12 +18,15 @@ Doandose::Application.routes.draw do
   resources :informations, only: [:show]
   resources :campaigns, only: [:index, :show]
 
-  match "/auth/:provider/callback" => "users/sessions#create"
-  match '/auth/failure' => 'users/sessions#failure'
+
 
   namespace :users, :path => 'usuario' do
-    match '/login/' => 'sessions#new', :as => :new_session
-    match '/sair/' => 'sessions#destroy', :as => :destroy_session
+    match '/sair/' => 'sessions#destroy', as: :destroy_session
+    match '/auth/failure/' => 'sessions#failure'
+    match '/auth/:provider/callback/' => 'sessions#create'
+
+    get  '/login/' => 'sessions#new', as: :sign_in
+    post '/login/' => 'sessions#create', as: :sign_in
 
     get  '/cadastro/' => 'identities#new', :as => :new_user
     post '/cadastro/' => 'identities#create', :as => :new_user

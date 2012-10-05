@@ -3,6 +3,8 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
+    p request.env['omniauth.auth']
+    # p '----------- auth_hash -----------------'
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
     case
@@ -28,7 +30,6 @@ class Users::SessionsController < ApplicationController
 
   def destroy
     logout
-    render nothing: true
   end
 
   private

@@ -1,14 +1,13 @@
-= form_tag '/auth/identity/callback', :class => 'sign_in' do
-  %dl.form
-    %dt
-    %dd.social.clearfix
-      = render 'shared/social'
+= form_tag '/usuario/auth/identity/callback/', class: 'sign_in' do
+  .form
+    = label_tag 'auth_key', 'apelido ou email'
+    = text_field_tag :auth_key
 
-    %dt Login ou Email:
-    %dd= text_field_tag :auth_key
+    = label_tag 'password', 'senha'
+    = password_field_tag :password
 
-    %dt Senha:
-    %dd= password_field_tag :password
+    = submit_tag 'login', class: 'submit'
 
-  = submit_tag 'entrar', :class => 'submit'
-  = link_to "Esqueci minha senha!", users_new_password_path, :class => 'recovery_password'
+    <br/> <br/>
+
+    = link_to 'esqueceu sua senha?', '#', class: 'forgot_password'

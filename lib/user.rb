@@ -1,47 +1,45 @@
 #require 'user/session'
+require 'omniauth'
+require 'omniauth-identity'
 
-module OAuth
-  mattr_accessor :twitter
-  @@twitter = {}
+module Users
 
-  mattr_accessor :facebook
-  @@facebook = {}
 
-  mattr_accessor :google
-  @@google = {}
+  autoload :OAuth,   'users/oauth'
 
-  mattr_accessor :windowslive
-  @@windowslive = {}
-
-  def self.load!
-    Rails.application.config.middleware.use OmniAuth::Builder do
-      if @@twitter.present?
-        require 'omniauth-twitter'
-        provider :twitter, @@twitter[:key], @@twitter[:secret]
-      end
-
-      if @@facebook.present?
-        require 'omniauth-facebook'
-        provider :facebook, @@facebook[:key], @@facebook[:secret], :display => 'popup'
-      end
-
-      if @@google.present?
-        require 'omniauth-google-oauth2'
-        provider :google_oauth2, @@google[:key], @@google[:secret], :name => 'google'
-      end
-
-      if @@windowslive.present?
-        require 'omniauth-windowslive'
-        provider :windowslive, @@windowslive[:key], @@windowslive[:secret], :scope => 'wl.basic'
-      end
-      provider :identity, :fields => [:email, :username], :model => Users::User
-
-      provider :developer if Rails.env.development?
-
-      OmniAuth.config.on_failure = Proc.new { |env|
-        OmniAuth::FailureEndpoint.new(env).redirect_to_failure
-      }
-    end
+  # Default way to setup
+  def self.setup
+    yield self
   end
+
+  def self.omniauth
+    yield OAuth
+    OAuth.load!
+  end
+
+  # Paths
+  mattr_accessor :after_login_path
+  @@after_login_path = '/'
+
+  mattr_accessor :after_logout_path
+  @@after_logout_path = '/'
+
+  mattr_accessor :after_registration_path
+  @@after_registration_path = '/'
+
+  mattr_accessor :avatar_path
+  @@avatar_path = 'dl'
+
+  mattr_accessor :avatar_url
+  @@avatar_url = '/dl'
+
+  mattr_accessor :base_layout
+  @@application_layout = 'application'
+
+  mattr_accessor :application_token
+  @@application_token = '/'
+
+  mattr_accessor :application_domain
+  @@application_domain = 'localhost'
 
 end
