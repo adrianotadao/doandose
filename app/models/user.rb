@@ -33,6 +33,14 @@ class User
   # callbacks
   after_save :build_identity
 
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+    end
+  end
+
   def build_identity
     return if password.blank?
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s)

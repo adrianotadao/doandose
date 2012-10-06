@@ -1,10 +1,10 @@
+# encoding: utf-8
 class Users::SessionsController < ApplicationController
   def new
   end
 
   def create
-    p request.env['omniauth.auth']
-    # p '----------- auth_hash -----------------'
+    p 'aqui ============'
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
     case
@@ -30,6 +30,7 @@ class Users::SessionsController < ApplicationController
 
   def destroy
     logout
+    render nothing: true
   end
 
   private
@@ -38,8 +39,8 @@ class Users::SessionsController < ApplicationController
     end
 
     def sign_in
+      login @authentication.user
       if @authentication.provider.eql?('identity')
-        login @authentication.user
         render 'callback_input'
       else
         render 'callback_popup'
@@ -47,7 +48,7 @@ class Users::SessionsController < ApplicationController
     end
 
     def sign_up
-      @user = User.parse_omniauth(auth_hash)
+      @user = Users::User.parse_omniauth(auth_hash)
       render 'callback_signup'
     end
 
