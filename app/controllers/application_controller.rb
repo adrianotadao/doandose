@@ -2,7 +2,6 @@
 class ApplicationController < ActionController::Base
   include Users::Session
   helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout
-  protect_from_forgery
 
   protected
     def update_user_password_with_nested_fields(type)

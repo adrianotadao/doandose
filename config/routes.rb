@@ -1,13 +1,18 @@
 Doandose::Application.routes.draw do
+  class NonFileConstraint
+    def self.matches?(request)
+      request.fullpath.match(/\./).blank?
+    end
+  end
 
   root :to => "pages#index"
 
+
+  match '/auth/:provider/callback/' => 'users/sessions#create'
+  match '/auth/failure/' => 'users/sessions#failure'
+
   namespace :users, :path => 'usuario' do
-    match '/auth/:provider/callback/' => 'sessions#create'
-    match '/auth/failure/' => 'sessions#failure'
     match '/sair/' => 'sessions#destroy', as: :destroy_session
-
-
 
     get  '/login/' => 'sessions#new', as: :sign_in
     post '/login/' => 'sessions#create', as: :sign_in

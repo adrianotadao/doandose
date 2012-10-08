@@ -4,7 +4,8 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    p 'aqui ============'
+    p request.env
+    p 'aqui ============', Authentication, auth_hash
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
     case
@@ -33,7 +34,7 @@ class Users::SessionsController < ApplicationController
     render nothing: true
   end
 
-  private
+  protected
     def auth_hash
       request.env['omniauth.auth']
     end
@@ -48,7 +49,7 @@ class Users::SessionsController < ApplicationController
     end
 
     def sign_up
-      @user = Users::User.parse_omniauth(auth_hash)
+      @user = User.parse_omniauth(auth_hash)
       render 'callback_signup'
     end
 

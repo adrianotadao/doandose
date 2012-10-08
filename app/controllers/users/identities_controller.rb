@@ -1,13 +1,18 @@
 class Users::IdentitiesController < ApplicationController
   #before_filter :authenticate_user!, :only => [:edit, :update]
+  include Users::Session
+
   def new
-    if user_signed_in?
-      redirect_to users_features.edit_user_path
-    else
-      @user = User.new
-      @user.authentications.build(:provider => 'foo')
-    end
+    @user = Users::User.new
   end
+  # def new
+  #   if user_signed_in?
+  #     redirect_to users_features.edit_user_path
+  #   else
+  #     @user = User.new
+  #     @user.authentications.build(:provider => 'foo')
+  #   end
+  # end
 
   def create
     @user = User.new(params[:users_user])
