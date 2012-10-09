@@ -138,8 +138,7 @@ GEM
     omniauth-google-oauth2 (0.1.13)
       omniauth (~> 1.0)
       omniauth-oauth2
-    omniauth-identity (1.1.0)
-      bcrypt-ruby (~> 3.0)
+    omniauth-identity (1.0.0)
       omniauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
@@ -245,7 +244,7 @@ DEPENDENCIES
   omniauth (= 1.1.1)
   omniauth-facebook (= 1.4.1)
   omniauth-google-oauth2 (= 0.1.13)
-  omniauth-identity (= 1.1.0)
+  omniauth-identity (= 1.0.0)
   omniauth-twitter (= 0.0.13)
   paperclip (= 2.7.0)
   rails (= 3.2.8)
