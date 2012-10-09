@@ -1,68 +1,67 @@
 # encoding: utf-8
 class Users::SessionsController < ApplicationController
+  before_filter :check_user_existence, :only => :create
+
   def new
+    p request.env['omniauth.auth']
   end
 
   def create
-    #render :text => request.env["rack.auth"].to_yaml
-    p 'aqui ============', Authentication, auth_hash
-    @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
-
+    p request.env['omniauth.auth']
+    p '----------'
+    p auth_hash
+    @authentication = Authentication.first(:conditions => { :provider => auth_hash.provider, :uid => auth_hash.uid })
     case
       when @authentication then sign_in
-      when current_user then add_new_authentication
+      when @user then add_new_authentication_non_logged
+      when current_user then add_new_authentication_logged
       else sign_up
     end
   end
 
   def failure
-    if current_user
-      render "/sessions/callback_failure_popup_edit"
-    else
-      @user = User.new
-      @user.authentications.build(:provider => 'foo')
-      if params[:strategy] == 'identity'
-        render '/identities/new'
-      else
-        render '/sessions/callback_failure_popup_new'
-      end
-    end
+    render '/users/sessions/new', :status => 401
   end
 
   def destroy
-    logout
-    render nothing: true
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Signed out!"
   end
 
-  protected
+  private
+    def check_user_existence
+      p auth_hash
+      p request.env['omniauth.auth']
+      case
+        when auth_hash['info']['email'].present? then @user = User.first(:conditions => { :email => auth_hash['info']['email'] })
+      end
+    end
+
+    def add_new_authentication_non_logged
+      @user.add_authentication(auth_hash)
+      login @user
+      redirect_to Users.after_login_path
+    end
+
+    def add_new_authentication_logged
+      current_user.add_authentication(auth_hash)
+      redirect_to users_edit_user_path
+    end
+
     def auth_hash
       request.env['omniauth.auth']
     end
 
     def sign_in
       login @authentication.user
-      if @authentication.provider.eql?('identity')
-        render 'callback_input'
-      else
-        render 'callback_popup'
-      end
+      redirect_to Users.after_login_path, :status => 200
     end
 
     def sign_up
-      @user = User.parse_omniauth(auth_hash)
-      render 'callback_signup'
-    end
-
-    def add_new_authentication
-      current_user.add_authentication(auth_hash)
-      @user = {
-         :state => :edit,
-          :authentication => {
-            :provider => auth_hash.provider,
-            :uid => auth_hash.uid
-          }
-      }
-      @authentications = User.social_networks(current_user)
-      render '/sessions/callback_close_popup_edit'
+      session[:person_params] ||= {}
+      @person = Person.new(session[:person_params])
+      @person.current_step = session[:person_step]
+      @person.user = User.new_with_omniauth(auth_hash)
+      render '/people/new'
     end
 end

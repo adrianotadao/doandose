@@ -19,5 +19,5 @@
       %dd= link_to t('nav.people'), person_path(Person.find(current_user.authenticable_id)), :class => "menu #{menu_item_class people_path}"
 
     - else
-      %dd= link_to t('nav.login'), users_sign_in_path, class: "menu #{menu_item_class users_sign_in_path}"
+      %dd= link_to t('nav.login'), users_new_session_path, class: "menu #{menu_item_class users_new_session_path}"
       %dd= link_to t('nav.new_people'), new_person_path, :class => "menu #{menu_item_class new_person_path}"
