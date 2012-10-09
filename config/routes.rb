@@ -7,8 +7,6 @@ Doandose::Application.routes.draw do
     match '/auth/failure/' => 'sessions#failure'
     match '/sair/' => 'sessions#destroy', as: :destroy_session
 
-
-
     get  '/login/' => 'sessions#new', as: :sign_in
     post '/login/' => 'sessions#create', as: :sign_in
 
@@ -27,7 +25,7 @@ Doandose::Application.routes.draw do
   resources :people
   resources :page, only: [:index, :show]
 
-  resources :notifications, only: :index do
+  resources :notifications, only: [:index, :show] do
     member do
       get :confirm
       post :confirmed
