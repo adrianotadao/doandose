@@ -1,4 +1,4 @@
- module Admin::PeopleHelper
+module Admin::PeopleHelper
   def setup_person(person)
     person.tap do |c|
       c.build_user if c.user.blank?
