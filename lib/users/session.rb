@@ -1,5 +1,5 @@
-class Users::SessionsController < ApplicationController
-
+module Users
+  module Session
     def current_user
       return unless session[:user_id]
       if @current_user.nil?
