@@ -4,7 +4,7 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    p request.env
+    #render :text => request.env["rack.auth"].to_yaml
     p 'aqui ============', Authentication, auth_hash
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
