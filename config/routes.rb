@@ -22,7 +22,7 @@ Doandose::Application.routes.draw do
   resources :people
   resources :page, only: [:index, :show]
 
-  resources :notifications, only: :index do
+  resources :notifications, only: [:index, :show] do
     member do
       get :confirm
       post :confirmed

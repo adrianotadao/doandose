@@ -21,7 +21,9 @@ class Notification
   accepts_nested_attributes_for :person_notifications, allow_destroy: true
 
   #access control
-  attr_accessible :quantity, :situation, :alerted_at, :active, :blood_id, :company_id, :title, :observation, :permalink, :person_notifications_attributes
+  attr_accessible :quantity, :situation, :alerted_at, :active, :blood_id, :blood,
+                  :company_id, :title, :observation, :permalink, :company,
+                  :person_notifications_attributes
 
   #validations
   validates_presence_of :company, :blood, :situation, :quantity, :alerted_at

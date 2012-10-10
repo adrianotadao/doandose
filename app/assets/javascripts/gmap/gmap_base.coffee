@@ -1,13 +1,24 @@
 class window.GmapBase
+  coordinate: undefined
   constructor: (options) ->
-    @map = new google.maps.Map(document.getElementById(options.map), @options())
-    @userPosition() if options.centerUserLocation
+    @map = Gmap.createMap(options.map, 13)
+
+    if options.showUserPosition
+      @userPosition()
+      Marker.userPosition(@map, @coordinate)
+    else
+      if window.user.signedIn()
+        @coordinate = [window.user.lat(), window.user.lng()]
+        Marker.userPosition(@map, @coordinate)
+        @centerMap()
+      else
+        @userPosition()
 
   userPosition: ->
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition (position) =>
-        @map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+        @coordinate = [position.coords.latitude, position.coords.longitude]
+        @centerMap()
 
-  options: ->
-    zoom: 13
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+  centerMap: ->
+    @map.setCenter(new google.maps.LatLng(@coordinate[0], @coordinate[1]))
