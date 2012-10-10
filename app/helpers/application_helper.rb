@@ -43,4 +43,14 @@ module ApplicationHelper
         ''
       end
   end
+
+  # javascripts
+  def add_javascript(url, options = {})
+    p url, options
+    p 'helper ---------------------'
+    return unless content_for(:javascript).to_s.match(url).blank?
+    content_for :javascript do
+      javascript_include_tag(url, options)
+    end
+  end
 end
