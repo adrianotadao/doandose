@@ -1,3 +1,3 @@
 class window.Site
-    constructor: ->
-        $(".fancybox").fancybox()
+  constructor: ->
+    $(".fancybox").fancybox()

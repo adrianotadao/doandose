@@ -18,3 +18,5 @@
 
 //= require users/user_base
 //= require users/user
+
+//= require notification

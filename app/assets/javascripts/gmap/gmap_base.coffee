@@ -3,15 +3,16 @@ class window.GmapBase
   constructor: (options) ->
     @map = Gmap.createMap(options.map, 13)
 
-    if options.showUserPosition
-      @userPosition(true)
-    else
-      if window.user.signedIn()
-        @coordinate = [window.user.lat(), window.user.lng()]
-        Marker.userPosition(@map, @coordinate)
-        @centerMap()
+    unless options.manualPosition
+      if options.showUserPosition
+        @userPosition(true)
       else
-        @userPosition(false)
+        if window.user.signedIn()
+          @coordinate = [window.user.lat(), window.user.lng()]
+          Marker.userPosition(@map, @coordinate)
+          @centerMap()
+        else
+          @userPosition(false)
 
   userPosition: (plotUser) ->
     if navigator.geolocation
