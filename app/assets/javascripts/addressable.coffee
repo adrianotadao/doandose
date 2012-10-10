@@ -54,14 +54,14 @@ class window.Addressable
     @setAddress(options)
 
   setAddress: (options) ->
-    @number.val(options.number) if options.number
-    @street.val(options.street) if options.street
-    @neighborhood.val(options.neighborhood) if options.neighborhood
-    @city.val(options.city) if options.city
-    @state.val(options.state) if options.state
-    @postalCode.val(options.postalCode) if options.postalCode
-    @lat.val(options.lat) if options.lat
-    @lng.val(options.lng) if options.lng
+    @number.val("#{if options.number then options.number else ''}")
+    @street.val("#{if options.street then options.street else ''}")
+    @neighborhood.val("#{if options.neighborhood then options.neighborhood else ''}")
+    @city.val("#{if options.city then options.city else ''}")
+    @state.val("#{if options.state then options.state else ''}")
+    @postalCode.val("#{if options.postalCode then options.postalCode else ''}")
+    @lat.val("#{if options.lat then options.lat else ''}")
+    @lng.val("#{if options.lng then options.lng else ''}")
 
   getAddress: ->
     $.ajax
