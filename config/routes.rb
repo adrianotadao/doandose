@@ -1,6 +1,4 @@
 Doandose::Application.routes.draw do
-
-
   root :to => "pages#index"
 
   match "/auth/:provider/callback" => "users/sessions#create"
