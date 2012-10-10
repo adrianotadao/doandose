@@ -1,3 +1,0 @@
-%dl.saludation
-  %dt Bem vindo! #{Person.find(current_user.authenticable_id).name}
-  %dd= link_to t('label.exit'), users_destroy_session_path, :confirm => 'Deseja sair?'

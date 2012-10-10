@@ -1,6 +1,4 @@
 class User
-  #require 'bcrypt'
-
   include Mongoid::Document
   include Mongoid::Timestamps
   include OmniAuth::Identity::Models::Mongoid
@@ -98,4 +96,7 @@ class User
     end
   end
 
+  def self.locate(key)
+    self.any_of({ username: key }, { email: key }).first
+  end
 end

@@ -4,7 +4,6 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    p 'aqui ============'
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
     case
@@ -21,16 +20,15 @@ class Users::SessionsController < ApplicationController
       @user = User.new
       @user.authentications.build(:provider => 'foo')
       if params[:strategy] == 'identity'
-        render '/identities/new'
+        redirect_to users_new_session_path
       else
-        render '/sessions/callback_failure_popup_new'
+        render 'users/sessions/callback_failure'
       end
     end
   end
 
   def destroy
     logout
-    render nothing: true
   end
 
   private
@@ -41,14 +39,14 @@ class Users::SessionsController < ApplicationController
     def sign_in
       login @authentication.user
       if @authentication.provider.eql?('identity')
-        render 'callback_input'
+        redirect_to root_path
       else
         render 'callback_popup'
       end
     end
 
     def sign_up
-      @user = Users::User.parse_omniauth(auth_hash)
+      @user = User.parse_omniauth(auth_hash)
       render 'callback_signup'
     end
 

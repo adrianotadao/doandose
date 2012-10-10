@@ -5,12 +5,13 @@ require 'action_mailer/railtie'
 require 'active_resource/railtie'
 require 'sprockets/railtie'
 require 'rails/test_unit/railtie'
+require 'omniauth'
+
 
 Bundler.require(:default, :assets, Rails.env) if defined?(Bundler)
 
 module Doandose
   class Application < Rails::Application
-    require 'users/session'
     config.time_zone = 'Brasilia'
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
     Dir["#{config.root}/lib/**/*.rb"].each{ |file| require file }

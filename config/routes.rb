@@ -1,14 +1,14 @@
 Doandose::Application.routes.draw do
 
+
   root :to => "pages#index"
 
-  namespace :users, :path => 'usuario' do
-    match '/auth/:provider/callback/' => 'sessions#create'
-    match '/auth/failure/' => 'sessions#failure'
-    match '/sair/' => 'sessions#destroy', as: :destroy_session
+  match "/auth/:provider/callback" => "users/sessions#create"
+  match '/auth/failure' => 'users/sessions#failure'
 
-    get  '/login/' => 'sessions#new', as: :sign_in
-    post '/login/' => 'sessions#create', as: :sign_in
+  namespace :users, :path => 'usuario' do
+    match '/login' => 'sessions#new', :as => :new_session
+    match '/sair' => 'sessions#destroy', :as => :destroy_session
 
     get  '/cadastro/' => 'identities#new', :as => :new_user
     post '/cadastro/' => 'identities#create', :as => :new_user
@@ -20,7 +20,6 @@ Doandose::Application.routes.draw do
     get '/esqueci-minha-senha/:token' => 'passwords#edit', :as => :edit_password
     put '/esqueci-minha-senha/:token' => 'passwords#update', :as => :edit_password
   end
-
 
   resources :people
   resources :page, only: [:index, :show]
