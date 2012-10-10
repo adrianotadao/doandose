@@ -47,3 +47,5 @@ pt-BR:
       title_edit: 'Editar Notificacao'
       associated_blood: 'tipo de sangue'
       associated_company: 'Hemocentro responsavel'
+    filter:
+      title: 'Encontre doadores, use o filtro para ser mais especifico'
