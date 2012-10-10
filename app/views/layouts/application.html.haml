@@ -10,18 +10,15 @@
 
   %body
     #root
-      #container
-        #top
-          #search_location
-            = render partial: 'shared/home_location'
+      #top
+        = render partial: 'shared/social_networks'
+        = render partial: 'shared/saludation' if current_user
+        #menu
+          = render partial: 'shared/nav'
 
-          = render partial: 'layouts/saludation' if current_user
-          #menu
-            = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
-            = render partial: 'layouts/nav'
-        #center
-          #header
-          #content= yield
+        = render partial: 'shared/submenu'
+
+      #content= yield
 
       #root_footer
         = render partial: 'shared/circles_footer'
@@ -29,7 +26,5 @@
     #footer
     = javascript_include_tag 'application'
 
-    %script{ src: 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=true', type: 'text/javascript' }
-    %script{ src: 'http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markermanager/src/markermanager.js', type: 'text/javascript' }
-
+    = render 'shared/require_gmap'
     = yield :javascript

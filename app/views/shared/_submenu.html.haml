@@ -1,0 +1,7 @@
+#submenu
+  = link_to t('nav.login'), users_new_session_path, class: "menu #{menu_item_class users_new_session_path}", class: 'button gray'
+
+  #language
+    = t('label.language')
+    = link_to t('label.english'), class: 'english'
+    = link_to t('label.portuguese'), class: 'portuguese'

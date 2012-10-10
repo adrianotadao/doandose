@@ -1,3 +1,5 @@
+@import compass/css3/border-radius, compass/css3/box-shadow
+
 .saludation
   position: relative
   top: 14px
@@ -8,14 +10,27 @@
   height: 64px
   background: url('background_menu.jpg') repeat
   border-bottom: 3px solid #ccc
+  .bar
+    width: 960px
+    margin: 0 auto
+    .logo
+      background: url('background.jpg')
+      float: left
+      margin-left: 20px
+      padding: 15px
 
-  .logo
-    background: url('background.jpg')
-    float: left
-    margin-left: 20px
-    padding: 15px
-
-  dl
-    dd
+    a
       float: left
       margin-left: 12px
+      &.item
+        color: #ffffff
+        font-family: 'SteelfishEbRegular'
+        font-size: 18pt
+        text-decoration: none
+        padding: 8px
+        margin-top: 12px
+        float: left
+        &:hover, &.selected
+          background-color: #5a0201
+          +border-radius(4px)
+          +box-shadow(#b8201b 0px 0px 15px)
