@@ -1,6 +1,4 @@
 Doandose::Application.routes.draw do
-
-
   root :to => "pages#index"
 
   match "/auth/:provider/callback" => "users/sessions#create"
@@ -20,7 +18,6 @@ Doandose::Application.routes.draw do
     get '/esqueci-minha-senha/:token' => 'passwords#edit', :as => :edit_password
     put '/esqueci-minha-senha/:token' => 'passwords#update', :as => :edit_password
   end
-
 
   resources :people
   resources :page, only: [:index, :show]
