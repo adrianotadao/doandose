@@ -6,4 +6,4 @@ class window.Gmap
       })
 
   @centralize: (map, coordinates) ->
-    map.setCenter(new google.maps.LatLng(coordinates.lat, coordinates.lng))
+    map.setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))

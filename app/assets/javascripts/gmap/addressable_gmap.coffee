@@ -16,7 +16,7 @@ class window.AddressableGmap extends GmapBase
   createMarker: (coordinates) ->
     @destroyMarker()
 
-    @marker = Marker.create(@map, coordinates, {draggable: true})
+    @marker = Marker.default(@map, coordinates, {draggable: true})
 
     Gmap.centralize(@map, coordinates)
     @markerEvents()
@@ -29,19 +29,17 @@ class window.AddressableGmap extends GmapBase
 
   callbacks: ->
     $(@coordinates).bind 'searchAddressComplete', (event, result) =>
-      @createMarker({lat: result.lat, lng: result.lng})
+      @createMarker([result.lat, result.lng])
       $(this).trigger 'addressComplete', { result: result }
 
     $(@coordinates).bind 'searchCoordinatesComplete', (event, result) =>
-      @createMarker({lat: result.lat, lng: result.lng})
+      @createMarker([result.lat, result.lng])
       $(this).trigger 'addressCoordinatesComplete', { result: result }
 
   markerEvents: ->
     google.maps.event.addListener @marker, 'dragend', (event) =>
       @coordinates.getAddressByCoordinates(event.latLng)
-      @createMarker(event.latLng)
 
   mapEvents: ->
     google.maps.event.addListener @map, 'click', (event) =>
       @coordinates.getAddressByCoordinates(event.latLng)
-      @createMarker(event.latLng)

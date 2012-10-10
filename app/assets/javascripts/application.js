@@ -8,13 +8,13 @@
 
 //= require addressable
 
+//= require gmap/gmap_base
 //= require gmap/utilities/gmap
 //= require gmap/utilities/marker
-//= require gmap/gmap_base
+//= require gmap/utilities/direction
 //= require gmap/coordinates
 //= require gmap/addressable_gmap
 //= require gmap/home_gmap
-//= require gmap/direction
 
 //= require users/user_base
 //= require users/user
