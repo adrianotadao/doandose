@@ -6,13 +6,18 @@ class window.Direction
     @directionsRenderer.setMap Gmap.create()
     @directionsRenderer.setPanel document.getElementById(options.panel)
 
-    @calculeRoute(options)
+    @calculateRoute(options)
 
-  calculeRoute: (options) ->
+    $('#directionPanelControl a').click (e) => @directionPanelClicked(options, e)
+
+  directionPanelClicked: (options, e=null) ->
+    @calculateRoute(options, $(e.currentTarget).data().travelmode)
+
+  calculateRoute: (options, travelMode='DRIVING') ->
     request =
       origin: "#{window.user.userPotision()[0]}, #{window.user.userPotision()[1]}",
       destination: "#{options.destination[0]}, #{options.destination[1]}",
-      travelMode: google.maps.DirectionsTravelMode.DRIVING
+      travelMode: google.maps.DirectionsTravelMode[travelMode]
 
     @directionsService.route request, (response, status) =>
       if (status == google.maps.DirectionsStatus.OK)
