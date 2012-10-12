@@ -1,7 +1,7 @@
 class Notification
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include Mongoid::Slug
+  include Mongoid::Slugify
 
   field :active, type: Boolean
   field :quantity, type: Integer
@@ -9,8 +9,6 @@ class Notification
   field :title, type: String
   field :observation, type: String
   field :alerted_at, type: Time
-
-  #slug :permalink
 
   #relationship
   belongs_to :company
@@ -29,5 +27,10 @@ class Notification
 
   #scopes
   scope :actives, where(active: true)
+
+  private
+  def generate_slug
+    title.parameterize
+  end
 
 end

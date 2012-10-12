@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = Notification.find(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def confirm

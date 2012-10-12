@@ -1,11 +1,14 @@
 class Information
 	include Mongoid::Document
-	include Mongoid::Slug
+	include Mongoid::Slugify
 
 	field :title, type: String
 	field :content, type: String
 
-	slug :title
-
 	validates_presence_of :title, :content
+
+  private
+  def generate_slug
+    title.parameterize
+  end
 end

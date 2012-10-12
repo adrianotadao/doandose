@@ -1,13 +1,11 @@
 class Partner
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug
+  include Mongoid::Slugify
 
   field :active, type: Boolean, default: false
   field :name, type: String
   field :site, type: String
-
-  slug :name
 
   #access control
   attr_accessible :name, :site, :active, :logo_attributes
@@ -19,4 +17,9 @@ class Partner
   #validations
   validates_presence_of :name
   validates_format_of :site, with: URI::regexp, if: :site?
+
+  private
+  def generate_slug
+    name.parameterize
+  end
 end

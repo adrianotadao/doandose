@@ -14,7 +14,7 @@ gem 'awesome_nested_fields', '0.6.0'
 gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
 
-gem 'mongoid_slug', '0.10.0'
+gem 'mongoid-slugify', '0.1.0'
 
 gem 'bcrypt-ruby', '3.0.1'
 gem 'omniauth-twitter', '0.0.13'
