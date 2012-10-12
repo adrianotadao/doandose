@@ -1,7 +1,8 @@
 #gmap
 
+#routePanel
+
 - content_for :javascript do
   :javascript
-    new Notification({  to: [-21.2825835, -50.33602689999998],
-                        manualPosition: true
-                  })
+    new Notification({  panel: 'routePanel' ,
+                        destination: [-21.2825835, -50.33602689999998] })

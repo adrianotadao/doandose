@@ -1,4 +1,11 @@
 class window.User extends window.UserBase
+
+  userPotision: ->
+    if @signedIn()
+      [@lat(), @lng()]
+    else
+      [@lat(), @lng()]
+
   lat: ->
     return unless $.cookies.get('lat')?
     $.cookies.get('lat')

@@ -3,10 +3,10 @@
 * Creating markers
 
   --Person--
-  Marker.person(MAP, COORDINATE, OPTIONS)
+  Marker.person(COORDINATE, OPTIONS)
 
   --Company--
-  Marker.company(MAP, COORDINATE, OPTIONS)
+  Marker.company(COORDINATE, OPTIONS)
 
   --User position--
-  Marker.userPosition(MAP, COORDINATE, OPTIONS)
+  Marker.userPosition(COORDINATE, OPTIONS)

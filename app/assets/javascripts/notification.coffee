@@ -1,7 +1,9 @@
 class window.Notification
   constructor: (options) ->
-    Marker.company(options.to)
-    Gmap.centralize(options.to)
+    Marker.company(options.destination)
+    Gmap.centralize(options.destination)
 
     if window.user.signedIn()
       Marker.loggedUserPosition()
+
+      new Direction(options)
