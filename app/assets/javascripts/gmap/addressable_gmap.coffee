@@ -1,6 +1,5 @@
-class window.AddressableGmap extends GmapBase
+class window.AddressableGmap
   constructor: (options) ->
-    super(options)
     @coordinates = new Coordinates()
     @marker = undefined
 
@@ -10,15 +9,17 @@ class window.AddressableGmap extends GmapBase
     @mapEvents()
     @callbacks()
 
+    Marker.nonLoggedUserPosition()
+
   searchMapCoordinates: (address) ->
     @coordinates.getCoordinatesByAddress(address)
 
   createMarker: (coordinates) ->
     @destroyMarker()
 
-    @marker = Marker.default(@map, coordinates, {draggable: true})
+    @marker = Marker.default(coordinates, {draggable: true})
 
-    Gmap.centralize(@map, coordinates)
+    Gmap.centralize(coordinates)
     @markerEvents()
 
   destroyMarker: ->
@@ -41,5 +42,5 @@ class window.AddressableGmap extends GmapBase
       @coordinates.getAddressByCoordinates(event.latLng)
 
   mapEvents: ->
-    google.maps.event.addListener @map, 'click', (event) =>
+    google.maps.event.addListener Gmap.create(), 'click', (event) =>
       @coordinates.getAddressByCoordinates(event.latLng)

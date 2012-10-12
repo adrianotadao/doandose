@@ -1,6 +1,11 @@
-class window.Notification extends window.GmapBase
+class window.Notification
   constructor: (options) ->
-    super(options)
+    Marker.company(options.destination)
+    Gmap.centralize(options.destination)
 
-    Marker.company(@map, options.to)
-    Gmap.centralize(@map, options.to)
+    if window.user.signedIn()
+      Marker.loggedUserPosition()
+    else
+      Marker.nonLoggedUserPosition()
+
+    new Direction(options)

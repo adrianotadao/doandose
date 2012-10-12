@@ -1,9 +1,12 @@
 class window.Gmap
-  @createMap: (el, zoom) ->
-    new google.maps.Map(document.getElementById(el), {
-      zoom: zoom,
+  _instance = undefined
+
+  @create: (options) ->
+    _instance ?= new google.maps.Map(document.getElementById('gmap'), {
+      zoom: 16,
       mapTypeId: google.maps.MapTypeId.ROADMAP
       })
+    $.extend(_instance, options)
 
-  @centralize: (map, coordinates) ->
-    map.setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))
+  @centralize: (coordinates) ->
+    Gmap.create().setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))

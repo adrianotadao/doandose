@@ -15,11 +15,19 @@ module Users
 
     def login(user)
       session[:user_id] = user.id
+      cookies[:email] = { value: user.email, :expires => 10.years.from_now }
+      cookies[:lat] = { value: user.authenticable.address.loc[0], :expires => 10.years.from_now }
+      cookies[:lng] = { value: user.authenticable.address.loc[1], :expires => 10.years.from_now }
     end
 
     def logout
       session.destroy
       session[:user_id] = nil
+
+      cookies.delete :email
+      cookies.delete :lat
+      cookies.delete :lng
+
       redirect_to root_path
     end
 
