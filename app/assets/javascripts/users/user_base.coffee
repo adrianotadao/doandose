@@ -1,8 +1,6 @@
 class window.UserBase
   signedIn: ->
-    $.cookies.get('username')? &&
-      $.cookies.get('lat')? &&
-      $.cookies.get('lng')?
+    $.cookies.get('lat')? && $.cookies.get('lng')?
 
   logout: ->
     $.ajax

@@ -1,7 +1,6 @@
-class window.Direction extends window.GmapBase
+class window.Direction extends
   constructor: (options) ->
-    super(options)
     @directionsRenderer = new google.maps.DirectionsRenderer()
-    @directionsRenderer.setMap(@map)
+    @directionsRenderer.setMap(Gmap.create())
 
     #console.log options, @directionsRenderer

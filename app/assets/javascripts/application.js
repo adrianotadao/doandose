@@ -8,7 +8,6 @@
 
 //= require addressable
 
-//= require gmap/gmap_base
 //= require gmap/utilities/gmap
 //= require gmap/utilities/marker
 //= require gmap/utilities/direction

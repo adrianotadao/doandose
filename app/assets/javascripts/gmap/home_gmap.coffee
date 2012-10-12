@@ -1,6 +1,9 @@
-class window.HomeGmap extends GmapBase
+class window.HomeGmap
   constructor: (options) ->
-    super(options)
+    if window.user.signedIn()
+      Marker.loggedUserPosition()
+    else
+      Marker.nonLoggedUserPosition()
 
     @plotMarkers(options)
 
@@ -9,10 +12,10 @@ class window.HomeGmap extends GmapBase
 
     #companies
     for coordinate in options.companies
-      @markers.push Marker.company(@map, coordinate)
+      @markers.push Marker.company(coordinate)
 
     #peopler
     for coordinate in options.people
-      @markers.push Marker.person(@map, coordinate)
+      @markers.push Marker.person(coordinate)
 
-    new MarkerManager(@map).addMarkers(@markers)
+    new MarkerManager(Gmap.create()).addMarkers(@markers)
