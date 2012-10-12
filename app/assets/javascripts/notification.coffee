@@ -5,5 +5,7 @@ class window.Notification
 
     if window.user.signedIn()
       Marker.loggedUserPosition()
+    else
+      Marker.nonLoggedUserPosition()
 
-      new Direction(options)
+    new Direction(options)

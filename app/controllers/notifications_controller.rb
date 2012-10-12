@@ -3,6 +3,10 @@ class NotificationsController < ApplicationController
     @notifications = Notification.actives
   end
 
+  def show
+    @notification = Notification.find(params[:id])
+  end
+
   def confirm
     @notification = Notification.find_by_slug params[:id]
     @person = current_user.authenticable

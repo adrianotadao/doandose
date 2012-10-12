@@ -1,6 +1,8 @@
 class window.UserBase
   signedIn: ->
-    $.cookies.get('lat')? && $.cookies.get('lng')?
+    @validCookie('email')? &&
+      @validCookie('lat')? &&
+      @validCookie('lng')?
 
   logout: ->
     $.ajax
@@ -10,3 +12,7 @@ class window.UserBase
         alert 'logout não foi feito com sucesso!'
       success: (e) =>
         $(this).trigger('signedOut')
+
+  validCookie: (name) ->
+    cookie = $.cookies.get(name)
+    cookie? && cookie != '' && cookie != undefined

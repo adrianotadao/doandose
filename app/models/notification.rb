@@ -1,17 +1,16 @@
 class Notification
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug
+  #include Mongoid::Slug
 
   field :active, type: Boolean
   field :quantity, type: Integer
   field :situation, type: String
   field :title, type: String
   field :observation, type: String
-  field :permalink, type: String
   field :alerted_at, type: Time
 
-  slug :permalink
+  #slug :permalink
 
   #relationship
   belongs_to :company
@@ -22,7 +21,7 @@ class Notification
 
   #access control
   attr_accessible :quantity, :situation, :alerted_at, :active, :blood_id, :blood,
-                  :company_id, :title, :observation, :permalink, :company,
+                  :company_id, :title, :observation, :company,
                   :person_notifications_attributes
 
   #validations

@@ -15,11 +15,14 @@ class window.Marker
 
         Gmap.centralize([position.coords.latitude, position.coords.longitude])
 
+        $.cookies.set 'lat', position.coords.latitude
+        $.cookies.set 'lng', position.coords.longitude
+
   @loggedUserPosition: (options) ->
     icon = {icon: new google.maps.MarkerImage('http://www.sony.com.br/sonyericssonshop/products/mobilephones/overview/r-www.se-mc.com/cws/file/1.998964.1308638594!translation/image/aGPS-icon.png')}
-    $.extend(Marker.base([$.cookies.get('lat'), $.cookies.get('lng')]), icon, options)
+    $.extend(Marker.base([window.user.lat(), window.user.lng()]), icon, options)
 
-    Gmap.centralize([$.cookies.get('lat'), $.cookies.get('lng')])
+    Gmap.centralize([window.user.lat(), window.user.lng()])
 
   @default: (coordinate, options) ->
     $.extend(Marker.base(coordinate), options)

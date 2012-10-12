@@ -7,4 +7,4 @@
 - content_for :javascript do
   :javascript
     new Notification({  panel: 'routePanel' ,
-                        destination: [-21.2825835, -50.33602689999998] })
+                        destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
