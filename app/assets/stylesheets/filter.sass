@@ -1,4 +1,4 @@
-@import compass/css3/border-radius
+@import compass/css3
 
 #filter
   width: 100%
@@ -43,6 +43,9 @@
       cursor: pointer
       background: #ccc
       +border-radius(2px)
+      +background-image(linear-gradient(top bottom, #fff, #ddd))
+      &:hover
+        +background-image(linear-gradient(top bottom, #ddd, #fff))
 
   #factor
     float: left
@@ -58,17 +61,24 @@
       cursor: pointer
       background: #ccc
       +border-radius(2px)
+      +background-image(linear-gradient(top bottom, #fff, #ddd))
+      &:hover
+        +background-image(linear-gradient(top bottom, #ddd, #fff))
 
   #actions
     float: left
     margin-left: 38px
     .button
+      +border-radius(4px)
+
       border: 1px solid
       width: 120px
-      height: 20px
+      height: 30px
       float: left
       text-align: center
-      line-height: 21px
+      line-height: 30px
       text-decoration: none
       margin-left: 10px
-      color: #000
+      color: #fff
+      background: #590101
+      font-weight: bold
