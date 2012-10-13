@@ -1,15 +1,29 @@
-%h2= @notification.title
+#notification_confirm
+  %h2= @notification.title
 
-%p= @notification.blood.name
-%p= @notification.quantity
-%p= @notification.situation
-%p= @notification.observation
-%p= formated_date(@notification.alerted_at)
-%p= @notification.company.name
+  %span.label= t('label.blood')
+  %span.text= @notification.blood.name
+  %span.label= t('label.quantity')
+  %span.text= @notification.quantity
+  %span.label= t('label.situation')
+  %span.text= @notification.situation
+  %span.label= t('label.observation')
+  %span.text= @notification.observation
+  %span.label= t('label.alerted_at')
+  %span.text= formated_date(@notification.alerted_at)
+  %span.label= t('label.company')
+  %span.text= @notification.company.name
 
-#mini_map
+  #gmap
 
-= simple_form_for  @person_notification, :url => [:confirmed, @notification] do |f|
-  = f.hidden_field :person_id, value: @person.id
-  = f.hidden_field :notification_id, value: @notification.id
-  = f.submit
+  = simple_form_for  @person_notification, :url => [:confirmed, @notification] do |f|
+    = f.hidden_field :person_id, value: @person.id
+    = f.hidden_field :notification_id, value: @notification.id
+    = f.submit
+
+
+
+- content_for :javascript do
+  :javascript
+    new Notification({panel: 'routePanel' ,
+                                destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})

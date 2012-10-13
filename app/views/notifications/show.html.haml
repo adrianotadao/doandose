@@ -1,10 +1,8 @@
-#gmap
-
-= render partial: '/shared/button_direction'
-
-#routePanel
+#notification_show
+  #gmap
+  = render partial: '/shared/button_direction'
+  #routePanel
 
 - content_for :javascript do
   :javascript
-    new Notification({  panel: 'routePanel' ,
-                        destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
+    new Notification({destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})

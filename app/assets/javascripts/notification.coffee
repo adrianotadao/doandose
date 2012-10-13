@@ -1,5 +1,6 @@
 class window.Notification
   constructor: (options) ->
+    console.log options
     Marker.company(options.destination)
     Gmap.centralize(options.destination)
 
@@ -8,4 +9,4 @@ class window.Notification
     else
       Marker.nonLoggedUserPosition()
 
-    new Direction(options)
+    new Direction(options) if options.painel
