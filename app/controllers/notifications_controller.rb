@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = Notification.find(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def confirm
@@ -21,6 +21,14 @@ class NotificationsController < ApplicationController
       redirect_to notifications_path
     else
       save_confirmed_notification
+    end
+  end
+
+  def undo_confirm
+    @person_notification = PersonNotification.find(params[:id])
+
+    if @person_notification.destroy
+      redirect_to notifications_path
     end
   end
 

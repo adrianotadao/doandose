@@ -1,6 +1,6 @@
 class window.UserBase
   signedIn: ->
-    @validCookie('email')? &&
+    @validCookie('email') &&
       @validCookie('lat')? &&
       @validCookie('lng')?
 

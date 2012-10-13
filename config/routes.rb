@@ -25,6 +25,7 @@ Doandose::Application.routes.draw do
   resources :notifications, only: [:index, :show] do
     member do
       get :confirm
+      get :undo_confirm
       post :confirmed
     end
   end

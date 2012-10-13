@@ -36,6 +36,7 @@ pt-BR:
     neighborhood: 'Bairro'
     observation: 'Observacao'
     phone: 'Telefone'
+    participant: 'Participantes'
     password: 'Senha'
     password_confirmation: 'Confirme senha'
     quantity: 'Quantidade'

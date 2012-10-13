@@ -5,12 +5,14 @@
       .content
         %div
           %h2= notification.title
+          .counter
+            #{notification.person_notifications.count} #{t('label.participant')}
           .description= truncate(notification.observation, length:380)
 
         #mini_map
 
         .action
-          = link_to t('buttons.participe'), confirm_notification_path(notification), class: 'button red'
+          = participate_button(notification)
           = link_to t('buttons.show'), notification, class: 'button gray'
 
   - else

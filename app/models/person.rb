@@ -1,7 +1,7 @@
 class Person
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug
+  include Mongoid::Slugify
 
   field :donor, type: Boolean
   field :name, type: String
@@ -11,8 +11,6 @@ class Person
   field :height, type: Float
   field :birthday, type: Date
   field :observations, type: String
-
-  slug :name
 
   #access control
   attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood, :blood_id
@@ -33,4 +31,9 @@ class Person
   #scopes
   scope :actives, where: { active: true }
   scope :donors, where: { donor: true }
+
+  private
+  def generate_slug
+    name.parameterize
+  end
 end

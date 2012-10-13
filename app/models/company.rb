@@ -1,14 +1,12 @@
 class Company
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug
+  include Mongoid::Slugify
 
   field :name, type: String
   field :fancy_name, type: String
   field :cnpj, type: String
   field :responsible, type: String
-
-  slug :name
 
   #access control
   attr_accessible :name, :fancy_name, :cnpj, :responsible, :address_attributes, :contact_attributes, :user_attributes
@@ -24,4 +22,9 @@ class Company
   #validations
   validates_presence_of :name, :fancy_name, :responsible, :address, :contact, :user, :cnpj
   validates_uniqueness_of :name, :fancy_name, :cnpj
+
+  private
+  def generate_slug
+    name.parameterize
+  end
 end
