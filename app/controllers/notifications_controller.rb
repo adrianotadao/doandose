@@ -24,6 +24,14 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def undo_confirm
+    @person_notification = PersonNotification.find(params[:id])
+
+    if @person_notification.destroy
+      redirect_to notifications_path
+    end
+  end
+
   private
     def save_confirmed_notification
       p params

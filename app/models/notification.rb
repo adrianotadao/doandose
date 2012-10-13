@@ -28,6 +28,10 @@ class Notification
   #scopes
   scope :actives, where(active: true)
 
+  def will_participate?(person)
+    person_notifications.where(:person_id => person.id).first
+  end
+
   private
   def generate_slug
     title.parameterize
