@@ -25,9 +25,6 @@
     = f.label :observation, t('label.observation')
     = f.text_area :observation
 
-    = f.label :permalink, t('label.permalink')
-    = f.text_field :permalink
-
     = f.label :alerted_at, t('label.alerted_at')
     = f.text_field :alerted_at, value: formated_date(@notification.alerted_at)
     = error_for(@notification, :alerted_at)
