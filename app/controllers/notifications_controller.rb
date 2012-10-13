@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = Notification.actives
+    @notifications = Notification.actives.paginate(:page => params[:page])
   end
 
   def show

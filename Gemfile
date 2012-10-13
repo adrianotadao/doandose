@@ -15,6 +15,7 @@ gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
 
 gem 'mongoid-slugify', '0.1.0'
+gem 'will_paginate', '3.0.3'
 
 gem 'bcrypt-ruby', '3.0.1'
 gem 'omniauth-twitter', '0.0.13'

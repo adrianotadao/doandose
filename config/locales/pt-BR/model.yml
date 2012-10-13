@@ -1,4 +1,9 @@
 pt-BR:
+  will_paginate:
+      previous_label: 'Anterior'
+      next_label: 'Proximo'
+      page_gap: '...'
+
   errors:
     models:
       address: 'Endereco'

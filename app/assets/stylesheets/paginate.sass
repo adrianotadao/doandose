@@ -1,0 +1,20 @@
+@import compass/css3
+
+.pagination
+  width: 959px
+  display: inline-block
+  margin-top: 10px
+  span, a
+    width: 60px
+    border: 1px solid #ccc
+    color: #000
+    background: #ccc
+    padding: 7px
+    +background-image(linear-gradient(top bottom, #fff, #ddd))
+    +border-radius(2px)
+    cursor: pointer
+    text-decoration: none
+    &:hover
+      +background-image(linear-gradient(top bottom, #ddd, #fff))
+    &:active, &.selected
+      border: 1px solid #590101

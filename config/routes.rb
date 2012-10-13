@@ -23,6 +23,8 @@ Doandose::Application.routes.draw do
   resources :page, only: [:index, :show]
 
   resources :notifications, only: [:index, :show] do
+    get 'page/:page', :action => :index, :on => :collection
+
     member do
       get :confirm
       get :undo_confirm
