@@ -21,7 +21,9 @@ gem 'omniauth-twitter', '0.0.13'
 gem 'omniauth-facebook', '1.4.1'
 gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
-gem "omniauth", "1.1.1"
+gem 'omniauth', '1.1.1'
+
+gem 'faker'
 
 gem 'rspec', '2.8', :group => [:test, :development]
 
