@@ -6,7 +6,6 @@
     %table.list
       %thead
         %tr
-          %th= t('label.active')
           %th= t('label.donor')
           %th= t('label.name')
           %th= t('label.sex')
@@ -15,15 +14,12 @@
       %tbody
         - @people.each do |person|
           %tr
-            %td= person.active
             %td= person.donor
             %td= person.name
             %td= person.sex
             %td
               = link_to t('buttons.show'), admin_person_path(person), class: 'link show'
-
               = link_to t('buttons.edit'), edit_admin_person_path(person), class: 'link edit'
-
               = link_to t('buttons.delete'), [:admin, person], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
 
   - else
