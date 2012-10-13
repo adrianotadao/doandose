@@ -19,7 +19,9 @@
   = simple_form_for  @person_notification, :url => [:confirmed, @notification] do |f|
     = f.hidden_field :person_id, value: @person.id
     = f.hidden_field :notification_id, value: @notification.id
-    = f.submit
+    = f.submit t('label.confirm'), class: 'button red'
+
+  .show_instruction= link_to t('label.getting?'), @notification, class: 'button gray'
 
 
 
