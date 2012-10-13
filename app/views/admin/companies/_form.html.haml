@@ -1,9 +1,6 @@
 = simple_form_for [:admin, setup_company(@company)] do |f|
 
   .form
-    = f.label :active, t('label.active')
-    = f.check_box :active
-
     = f.label :name, t('label.name')
     = f.text_field :name
     = error_for(@company, :name)

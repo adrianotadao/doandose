@@ -24,12 +24,14 @@
   #body
     %h2 Contatos
     = simple_form_for '#' do |f|
-      %dl.contact_form
-        %dt= f.label :name, t('form.label.name')
-        %dd= f.text_field :name
-        %dt= f.label :email, t('form.label.email')
-        %dd= f.text_field :email
-        %dt= f.label :body, t('form.label.body')
-        %dd= f.text_field :body
-        .actions
-          = f.submit 'Enviar', :class => 'button save'
+      .form
+        = f.label :name, t('form.label.name')
+        = f.text_field :name
+
+        = f.label :email, t('form.label.email')
+        = f.text_field :email
+
+        = f.label :body, t('form.label.body')
+        = f.text_field :body
+
+        = f.submit 'Enviar', :class => 'button red'

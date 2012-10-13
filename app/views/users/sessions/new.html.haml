@@ -1,14 +1,16 @@
-= render 'shared/social'
-= form_tag '/auth/identity/callback/', class: 'sign_in' do
-  .form
-    = label_tag 'auth_key', 'apelido ou email'
-    = text_field_tag :auth_key
+#login
+  %h2= t('label.login_title')
+  = render 'shared/social'
+  = form_tag '/auth/identity/callback/', class: 'sign_in' do
+    .form
+      = label_tag 'auth_key', 'apelido ou email'
+      = text_field_tag :auth_key
 
-    = label_tag 'password', 'senha'
-    = password_field_tag :password
+      = label_tag 'password', 'senha'
+      = password_field_tag :password
 
-    = submit_tag 'login', class: 'submit'
+      = submit_tag t('label.login'), class: 'button red'
 
-    <br/> <br/>
 
-    = link_to 'esqueceu sua senha?', '#', class: 'forgot_password'
+
+      = link_to 'esqueceu sua senha?', '#', class: 'forgot_password'

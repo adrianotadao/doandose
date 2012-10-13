@@ -4,16 +4,22 @@
   margin: 20px 0
   background: #505050
   +box-shadow(#bcbcbc 1px 1px 10px)
-  dl dd
-    a.menu
+  .logo
+    background: url('background.jpg')
+    float: left
+    margin-left: 20px
+    padding: 15px
+
+  a
+    float: left
+    margin-left: 12px
+    &.item
       color: #ffffff
       font-family: 'SteelfishEbRegular'
       font-size: 18pt
       text-decoration: none
-      text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6)
-      padding: 12px
+      padding: 8px
+      margin-top: 12px
       float: left
-      border-left: 1px solid
       &:hover, &.selected
-        background-color: #9a9a9a
-        +box-shadow(#bcbcbc 10px 10px 10px inside)
+        background-color: #818181
