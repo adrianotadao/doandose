@@ -44,11 +44,22 @@ module ApplicationHelper
       end
   end
 
-  # javascripts
+  #include javascript
   def add_javascript(url, options = {})
     return unless content_for(:javascript).to_s.match(url).blank?
     content_for :javascript do
       javascript_include_tag(url, options)
+    end
+  end
+
+  #scape to string
+  def escape_and_sanitize(string)
+    escape_javascript( strip_tags(string) )
+  end
+
+  def add_meta_property(property, content)
+    content_for :meta do
+      tag :meta, :property => property, :content => content
     end
   end
 end
