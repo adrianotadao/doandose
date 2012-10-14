@@ -9,6 +9,7 @@
           %h2= notification.title
           .counter
             #{notification.person_notifications.count} #{t('label.participant')}
+          = render partial: 'information', locals: { notification: notification}
 
         .social
           .fb_share
