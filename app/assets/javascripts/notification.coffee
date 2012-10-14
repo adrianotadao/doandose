@@ -1,6 +1,5 @@
 class window.Notification
   constructor: (options) ->
-    console.log options
     Marker.company(options.destination)
     Gmap.centralize(options.destination)
 

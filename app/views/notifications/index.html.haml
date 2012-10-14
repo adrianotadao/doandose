@@ -1,3 +1,5 @@
+
+
 #notifications
   %h1 Notificacoes
   - unless @notifications.blank?
@@ -7,7 +9,10 @@
           %h2= notification.title
           .counter
             #{notification.person_notifications.count} #{t('label.participant')}
-          .description= truncate(notification.observation, length:380)
+          .fb_share
+            = facebook_share 'Compartilhe !', notification.slug
+          .twitter_share
+            - twitter_like notification_url(notification.slug), "#{notification.title} !", :hash_tags => ['doarsangue', "#{notification.blood.name}"]
 
         #mini_map
 
@@ -19,7 +24,3 @@
 
   - else
     .empty_list= t('label.empty')
-
-- content_for :javascript do
-  :javascript
-    new Notification()

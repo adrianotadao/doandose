@@ -4,7 +4,7 @@ class window.Direction
     @directionsService = new google.maps.DirectionsService()
 
     @directionsRenderer.setMap Gmap.create()
-    @directionsRenderer.setPanel document.getElementById(options.panel)
+    @directionsRenderer.setPanel document.getElementById(options.painel)
 
     @calculateRoute(options)
 

@@ -7,8 +7,6 @@
   %span.text= @notification.quantity
   %span.label= t('label.situation')
   %span.text= @notification.situation
-  %span.label= t('label.observation')
-  %span.text= @notification.observation
   %span.label= t('label.alerted_at')
   %span.text= formated_date(@notification.alerted_at)
   %span.label= t('label.company')
@@ -19,11 +17,10 @@
   = simple_form_for  @person_notification, :url => [:confirmed, @notification] do |f|
     = f.hidden_field :person_id, value: @person.id
     = f.hidden_field :notification_id, value: @notification.id
-    = f.submit
+    = f.submit t('label.confirm'), class: 'button red'
 
-
+  .show_instruction= link_to t('label.getting?'), @notification, class: 'button gray'
 
 - content_for :javascript do
   :javascript
-    new Notification({panel: 'routePanel' ,
-                                destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
+    new Notification({destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
