@@ -12,7 +12,7 @@
           .fb_share
             = facebook_share 'Compartilhe !', notification.slug
           .twitter_share
-            - twitter_like notification_url(notification.slug), "#{notification.title} !", :hash_tags => ['doarsangue', "#{notification.blood.name}"]
+            - twitter_like notification_url(notification.slug), "#{notification.title} no @doando.se!", :hash_tags => ["doarsangue", "#{notification.blood.name}.to_s"]
 
         #mini_map
 
