@@ -10,11 +10,11 @@
           .counter
             #{notification.person_notifications.count} #{t('label.participant')}
 
-          .social
-            .fb_share
-              = facebook_share 'Compartilhe!', notification.slug
-            .twitter_share
-              - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
+        .social
+          .fb_share
+            = facebook_share 'Compartilhe!', notification.slug
+          .twitter_share
+            - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
 
         #mini_map
 
