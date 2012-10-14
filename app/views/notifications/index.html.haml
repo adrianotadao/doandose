@@ -1,12 +1,10 @@
-
-
 #notifications
   %h1 Notificacoes
   - unless @notifications.blank?
     - for notification in @notifications
       -facebook_meta_for_notification notification
 
-      .content
+      .content_notifications
         %div
           %h2= notification.title
           .counter
