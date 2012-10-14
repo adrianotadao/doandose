@@ -9,13 +9,13 @@ class window.AddressableGmap
     @mapEvents()
     @callbacks()
 
-    Marker.nonLoggedUserPosition()
+    Marker.nonLoggedUserPosition({icon: null, draggable: true})
 
   searchMapCoordinates: (address) ->
     @coordinates.getCoordinatesByAddress(address)
 
   createMarker: (coordinates) ->
-    @destroyMarker()
+    Gmap.removeAllMarkers()
 
     @marker = Marker.default(coordinates, {draggable: true})
 

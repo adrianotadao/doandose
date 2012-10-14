@@ -8,14 +8,12 @@ class window.HomeGmap
     @plotMarkers(options)
 
   plotMarkers: (options) ->
-    @markers = []
-
     #companies
     for coordinate in options.companies
-      @markers.push Marker.company(coordinate)
+      Marker.company(coordinate)
 
     #peopler
     for coordinate in options.people
-      @markers.push Marker.person(coordinate)
+      Marker.person(coordinate)
 
-    new MarkerManager(Gmap.create()).addMarkers(@markers)
+    new MarkerManager(Gmap.create()).addMarkers(Gmap.markers())
