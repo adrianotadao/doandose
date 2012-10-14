@@ -10,3 +10,13 @@
 
   --User position--
   Marker.userPosition(COORDINATE, OPTIONS)
+
+* Markers
+  --Get All Markers--
+  Gmap.markers()
+
+  --Add marker--
+  Gmap.addMarker MARKER
+
+  --Remove All Markers--
+  Gmap.removeAllMarkers()

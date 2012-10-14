@@ -12,7 +12,6 @@ class window.Addressable
     @error = false
 
     @gmap = new AddressableGmap
-      centerUserLocation: true
       lat: @lat.val()
       lng: @lng.val()
 
