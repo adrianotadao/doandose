@@ -9,16 +9,5 @@ class window.Gmap
       })
     $.extend(_instance, options)
 
-  @addMarker: (marker) ->
-    _markers.push marker
-
-  @markers: ->
-    _markers
-
-  @removeAllMarkers: ->
-    for marker in _markers
-      marker.setMap(null)
-    _markers = []
-
   @centralize: (coordinates) ->
     Gmap.create().setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))

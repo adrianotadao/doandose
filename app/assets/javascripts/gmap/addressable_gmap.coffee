@@ -21,7 +21,7 @@ class window.AddressableGmap
       @coordinates.getAddressByCoordinates(@marker.getPosition())
 
   createMarker: (coordinates) ->
-    Gmap.removeAllMarkers()
+    @marker.setMap(null) if @marker?
 
     @marker = Marker.default(coordinates, {draggable: true})
 

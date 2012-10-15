@@ -45,7 +45,6 @@ class window.Marker
       marker.setMap options.map
     else
       marker.setMap Gmap.create()
-    Gmap.addMarker marker
 
   @base: (coordinate) ->
     position: new google.maps.LatLng(coordinate[0], coordinate[1])
