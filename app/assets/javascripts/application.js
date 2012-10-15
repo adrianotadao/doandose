@@ -20,3 +20,4 @@
 //= require users/user
 
 //= require notification
+//= require social

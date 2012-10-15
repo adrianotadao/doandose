@@ -1,0 +1,11 @@
+#information_notification
+  %span.label= t('label.blood')
+  %span.text= notification.blood.name
+  %span.label= t('label.quantity')
+  %span.text= notification.quantity
+  %span.label= t('label.situation')
+  %span.text= notification.situation
+  %span.label= t('label.alerted_at')
+  %span.text= formated_date(notification.alerted_at)
+  %span.label= t('label.company')
+  %span.text= notification.company.name

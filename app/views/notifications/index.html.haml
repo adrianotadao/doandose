@@ -1,16 +1,21 @@
 #notifications
   %h1 Notificacoes
   - unless @notifications.blank?
+
     - @notifications.each_with_index do |notification, index|
-      .content
+      -facebook_meta_for_notification notification
+      .content_notifications
         %div
           %h2= notification.title
           .counter
             #{notification.person_notifications.count} #{t('label.participant')}
+          = render partial: 'information', locals: { notification: notification}
+
+        .social
           .fb_share
-            = facebook_share 'Compartilhe !', notification.slug
+            = facebook_share 'Compartilhe!', notification.slug
           .twitter_share
-            - twitter_like notification_url(notification.slug), "#{notification.title} no @doando.se!", :hash_tags => ["doarsangue", "#{notification.blood.name}.to_s"]
+            - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
 
         %div{ id: "gmap_#{index}", class: 'mini_map', 'data-lat' => notification.company.address.loc[0], 'data-lng' =>notification.company.address.loc[1]}
 
@@ -18,7 +23,7 @@
           = participate_button(notification)
           = link_to t('buttons.show'), notification, class: 'button gray'
 
-    = will_paginate @posts
+    = will_paginate @notifications
 
     - content_for :javascript do
       :javascript
