@@ -33,7 +33,6 @@
     = address.text_field :lng, class: 'lng'
 
 #gmap
-
 - content_for :javascript do
   :javascript
-    new Addressable()
+    new Addressable(#{record.address.loc})

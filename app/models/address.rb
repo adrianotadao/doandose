@@ -9,7 +9,7 @@ class Address
   field :zip_code, type: String
   field :state, type: String
   field :complement, type: String
-  field :loc, type: Array
+  field :loc, type: Array, default: []
 
   index [[ :loc, Mongo::GEO2D ]]
 

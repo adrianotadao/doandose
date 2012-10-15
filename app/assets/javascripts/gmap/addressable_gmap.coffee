@@ -1,12 +1,14 @@
 class window.AddressableGmap
-  constructor: (options) ->
+  constructor: (userPosition) ->
     @coordinates = new Coordinates()
 
-    if options.lat != '' && options.lng != ''
-      @coordinates.getAddressByCoordinates(@parseLatLng({ lat: options.lat, lng: options.lng }))
+    if userPosition[0]? && userPosition[1]?
+      @marker = Marker.default([userPosition[0], userPosition[1]], {draggable: true})
+      Gmap.centralize([userPosition[0], userPosition[1]])
+    else
+      @userPosition()
 
     @callbacks()
-    @userPosition()
     @markerEvents()
     @mapEvents()
 
