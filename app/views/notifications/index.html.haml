@@ -8,7 +8,11 @@
         .title
           %h2= notification.title
           .counter
-            #{notification.person_notifications.count} #{t('label.participant')}
+            %b.count
+              = show_list(notification.person_notifications.count, notification)
+            #{t('label.participant')} -
+            #{t('label.remaining')}
+            %b.remaining #{notification.remaining}
 
         .social
           .fb_share

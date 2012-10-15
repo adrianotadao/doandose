@@ -11,7 +11,3 @@
     = f.submit t('label.confirm'), class: 'button red'
 
   .show_instruction= link_to t('label.getting?'), @notification, class: 'button gray'
-
-- content_for :javascript do
-  :javascript
-    new Notification({destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})

@@ -32,6 +32,10 @@ class Notification
     person_notifications.where(:person_id => person.id).first
   end
 
+  def remaining
+    quantity - self.person_notifications.count
+  end
+
   private
   def generate_slug
     title.parameterize

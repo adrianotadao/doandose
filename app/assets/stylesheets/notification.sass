@@ -1,14 +1,26 @@
 #notification_confirm
-  width: 710px
+  display: inline-block
+  #information_notification
+    float: left
+    span
+      margin-top: 24px
+  #gmap
+    float: left
+    margin-left: 40px
+  form
+    width: 121px
+    display: inline-block
+    position: relative
+    bottom: 105px
+    right: 270px
+    input[type='submit']
+      line-height: 0px
+
   .show_instruction
     width: 122px
     position: relative
-    bottom: 14px
-    left: 568px
-  #information_notification
-    span
-      margin-top: 24px
-
+    bottom: 42px
+    left: 559px
 #information_notification
   span
     margin-top: 10px
@@ -22,16 +34,50 @@
     text-align: right
     &.label:after
       content: ':'
-
   span.text
     float: left
 
-  input[type='submit']
-    position: relative
-    bottom: 70px
-    left: 46px
-    line-height: 0px
-
-  #gmap
+#notification_show
+  .title
+    margin-bottom: 10px
+  #information_notification
+    float: left
+    span
+      margin-top: 30px
+  .social
     clear: both
-    margin: 27px 0 0 35px
+    float: left
+    width: 330px
+    margin-top: 20px
+    .fb_share
+      float: left
+    .twitter_share
+      float: left
+      margin-left: 10px
+  #gmap
+    float: right
+
+  #directionPanelControl
+    margin-left: 250px
+    clear: both
+    text-align: right
+    span
+      font-weight: bold
+      cursor: pointer
+  #routePanel
+    width: 910px
+
+#list_user
+  width: 420px
+  margin: 0 auto
+  span.title
+    font-weight: bold
+    font-size: 15px
+    margin-top: 10px
+  span.line
+    border-bottom: 1px dashed #ccc
+    clear: both
+    display: block
+    margin: 10px
+    padding: 10px
+    text-align: left

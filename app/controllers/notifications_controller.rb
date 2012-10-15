@@ -34,6 +34,11 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def list_user
+    @notification = Notification.find_by_slug params[:notification_id]
+    @person_notifications = @notification.person_notifications
+  end
+
   private
     def save_confirmed_notification
       p params

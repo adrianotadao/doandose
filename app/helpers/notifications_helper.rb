@@ -11,4 +11,12 @@ module NotificationsHelper
       link_to t('buttons.participate'), confirm_notification_path(notification), class: 'button red'
     end
   end
+
+  def show_list(count, notification)
+    if count.zero?
+      count
+    else
+      link_to count, list_user_notification_path(notification)
+    end
+  end
 end

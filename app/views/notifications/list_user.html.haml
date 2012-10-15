@@ -1,0 +1,5 @@
+#list_user
+  %h2= t('label.list_user')
+  %span.title= @notification.title
+  - for person_notification in @person_notifications
+    %span.line= person_notification.person.name
