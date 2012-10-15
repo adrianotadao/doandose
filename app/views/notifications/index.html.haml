@@ -1,9 +1,9 @@
 #notifications
   %h1 Notificacoes
   - unless @notifications.blank?
-    - for notification in @notifications
-      -facebook_meta_for_notification notification
 
+    - @notifications.each_with_index do |notification, index|
+      -facebook_meta_for_notification notification
       .content_notifications
         .title
           %h2= notification.title
@@ -18,15 +18,17 @@
 
         = render partial: 'information', locals: { notification: notification}
 
-        #mini_map
-
-
+        %div{ id: "gmap_#{index}", class: 'mini_map', 'data-lat' => notification.company.address.loc[0], 'data-lng' =>notification.company.address.loc[1]}
 
         .action
           = participate_button(notification)
           = link_to t('buttons.show'), notification, class: 'button gray'
 
     = will_paginate @notifications
+
+    - content_for :javascript do
+      :javascript
+        Notification.list()
 
   - else
     .empty_list= t('label.empty')

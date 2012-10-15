@@ -1,5 +1,7 @@
 class window.HomeGmap
   constructor: (options) ->
+    @navigator = new Navigator()
+
     if window.user.signedIn()
       Marker.loggedUserPosition()
     else

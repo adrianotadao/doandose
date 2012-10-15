@@ -11,6 +11,7 @@
 //= require gmap/utilities/gmap
 //= require gmap/utilities/marker
 //= require gmap/utilities/direction
+//= require gmap/navigator
 //= require gmap/coordinates
 //= require gmap/addressable_gmap
 //= require gmap/home_gmap

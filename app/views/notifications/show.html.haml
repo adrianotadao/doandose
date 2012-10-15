@@ -5,5 +5,5 @@
 
 - content_for :javascript do
   :javascript
-    new Notification({ painel: 'routePanel' ,
+    Notification.show({ painel: 'routePanel' ,
                                   destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})

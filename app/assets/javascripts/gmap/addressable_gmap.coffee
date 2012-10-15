@@ -1,18 +1,22 @@
 class window.AddressableGmap
   constructor: (options) ->
     @coordinates = new Coordinates()
-    @marker = undefined
 
     if options.lat != '' && options.lng != ''
       @coordinates.getAddressByCoordinates(@parseLatLng({ lat: options.lat, lng: options.lng }))
 
-    @mapEvents()
     @callbacks()
-
-    Marker.nonLoggedUserPosition({icon: null, draggable: true})
+    @userPosition()
+    @markerEvents()
+    @mapEvents()
 
   searchMapCoordinates: (address) ->
     @coordinates.getCoordinatesByAddress(address)
+
+  userPosition: ->
+    @marker = Marker.nonLoggedUserPosition({icon: null, draggable: true})
+    $(@marker).bind 'userPositionFound', =>
+      @coordinates.getAddressByCoordinates(@marker.getPosition())
 
   createMarker: (coordinates) ->
     Gmap.removeAllMarkers()
