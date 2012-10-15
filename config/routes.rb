@@ -19,6 +19,8 @@ Doandose::Application.routes.draw do
     put '/esqueci-minha-senha/:token' => 'passwords#update', :as => :edit_password
   end
 
+  post '/elements_by_user_position/' => 'gmap#elements_by_user_position'
+
   resources :people
   resources :page, only: [:index, :show]
 

@@ -3,19 +3,8 @@ class window.HomeGmap
     @navigator = new Navigator()
 
     if window.user.signedIn()
-      Marker.loggedUserPosition()
+      marker = Marker.loggedUserPosition()
     else
-      Marker.nonLoggedUserPosition()
+      marker = Marker.nonLoggedUserPosition()
 
-    @plotMarkers(options)
-
-  plotMarkers: (options) ->
-    #companies
-    for coordinate in options.companies
-      Marker.company(coordinate)
-
-    #peopler
-    for coordinate in options.people
-      Marker.person(coordinate)
-
-    new MarkerManager(Gmap.create()).addMarkers(Gmap.markers())
+    @navigator.find([marker.getPosition().Xa, marker.getPosition().Ya])

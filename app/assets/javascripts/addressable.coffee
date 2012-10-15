@@ -1,5 +1,5 @@
 class window.Addressable
-  constructor: ->
+  constructor: (userPosition)->
     new Mask()
     @postalCode = $('.postal_code')
     @street = $('.street')
@@ -11,9 +11,7 @@ class window.Addressable
     @lng = $('.lng')
     @error = false
 
-    @gmap = new AddressableGmap
-      lat: @lat.val()
-      lng: @lng.val()
+    @gmap = new AddressableGmap(userPosition)
 
     @postalCode.focusout =>
       @getAddress()
