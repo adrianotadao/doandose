@@ -5,11 +5,10 @@
       -facebook_meta_for_notification notification
 
       .content_notifications
-        %div
+        .title
           %h2= notification.title
           .counter
             #{notification.person_notifications.count} #{t('label.participant')}
-          = render partial: 'information', locals: { notification: notification}
 
         .social
           .fb_share
@@ -17,7 +16,11 @@
           .twitter_share
             - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
 
+        = render partial: 'information', locals: { notification: notification}
+
         #mini_map
+
+
 
         .action
           = participate_button(notification)
