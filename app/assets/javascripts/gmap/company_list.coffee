@@ -6,3 +6,6 @@ class window.CompanyList
 
   @add: (company) ->
     CompanyList.list().push company
+
+  @clear: ->
+    _list = []

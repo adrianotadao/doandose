@@ -6,3 +6,6 @@ class window.PersonList
 
   @add: (person) ->
     PersonList.list().push person
+
+  @clear: ->
+    _list = []

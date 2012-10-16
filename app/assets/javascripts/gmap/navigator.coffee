@@ -1,23 +1,40 @@
 class window.Navigator
   constructor: ->
     @query = undefined
+    @position = []
 
     google.maps.event.addListener Gmap.create(), 'dragend', =>
-      @find [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
+      @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
+      @find()
 
     @prepareAutocomplete()
-    @prepareFilters()
+    @bloodFilters()
+    @distanceFilters()
 
   filters: ->
+    bloodTypes = []
     for type in $('#filter_content #type span.selected')
-      console.log type
+      bloodTypes.push $(type).text().toLowerCase()
 
-  prepareFilters: ->
+    { blood_types: bloodTypes, distance: $('#filter_content #distance span.selected').text() }
+
+  bloodFilters: ->
     $('#filter_content #type span').click (e) =>
       if $(e.currentTarget).hasClass('selected')
         $(e.currentTarget).removeClass('selected')
       else
         $(e.currentTarget).addClass('selected')
+
+      @clearMap()
+      @find()
+
+  distanceFilters: ->
+    $('#filter_content #distance span').click (e) =>
+      $('#filter_content #distance span').removeClass('selected')
+      $(e.currentTarget).addClass('selected')
+
+      @clearMap()
+      @find()
 
   prepareAutocomplete: ->
     @autocomplete = new google.maps.places.Autocomplete(document.getElementById('searchBox'))
@@ -27,18 +44,30 @@ class window.Navigator
       place = @autocomplete.getPlace()
       return unless place.geometry
 
-      Gmap.centralize [place.geometry.location.Xa, place.geometry.location.Ya]
-      @find [place.geometry.location.Xa, place.geometry.location.Ya]
+      @position = [place.geometry.location.Xa, place.geometry.location.Ya]
+      Gmap.centralize @position
+      @clearMap()
+      @find()
 
-  find: (positions) ->
+  find: ->
     @query.abort() if @query != undefined
 
     @query = $.ajax
       url: 'elements_by_user_position'
       type: 'POST'
-      data: {positions: {lat: positions[0], lng: positions[1]}}
+      data: $.extend {position: {lat: @position[0], lng: @position[1]}}, @filters()
       success: (data) => @onSuccess data
       error: (xhr, error)  -> console.log xhr, error
+
+  clearMap: ->
+    for company in CompanyList.list()
+      company.marker.setMap(null)
+
+    for person in PersonList.list()
+      person.marker.setMap(null)
+
+    CompanyList.clear()
+    PersonList.clear()
 
   onSuccess: (options) ->
     #companies
