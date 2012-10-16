@@ -16,6 +16,9 @@
 //= require gmap/addressable_gmap
 //= require gmap/home_gmap
 
+//= require gmap/person_list
+//= require gmap/company_list
+
 //= require users/user_base
 //= require users/user
 
