@@ -15,4 +15,11 @@ class PersonNotification
 
   #scope
   scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
+
+  #callback
+  after_create :send_confirmation_notification_email
+
+  def send_confirmation_notification_email
+    Mailer.confirmation_participation(notification_id).deliver
+  end
 end

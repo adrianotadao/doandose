@@ -16,7 +16,7 @@ module NotificationsHelper
     if count.zero?
       count
     else
-      link_to count, list_user_notification_path(notification)
+      link_to count, notification_list_user_path(notification)
     end
   end
 end
