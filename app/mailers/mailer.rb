@@ -1,5 +1,6 @@
 # encoding: utf-8
 class Mailer < ActionMailer::Base
+  layout 'mailer'
   include MandrillMailer
 
   default :from => 'suporte@doando.se'
