@@ -15,7 +15,7 @@ class window.Direction
 
   calculateRoute: (options, travelMode='DRIVING') ->
     request =
-      origin: "#{window.user.userPotision()[0]}, #{window.user.userPotision()[1]}",
+      origin: "#{window.user.position()[0]}, #{window.user.position()[1]}",
       destination: "#{options.destination[0]}, #{options.destination[1]}",
       travelMode: google.maps.DirectionsTravelMode[travelMode]
 

@@ -2,26 +2,24 @@
   #filter_content
     %span.title= t('views.filter.title')
 
-    #combo
-      .state
-        %select
-          - for state in states_collection
-            %option{:value => state} #{state}
-
-      .city
-        %select
-          - for state in states_collection
-            %option{:value => state} #{state}
+    %input{ id: 'searchBox' }
 
     #type
-      %span a
-      %span b
-      %span ab
-      %span o
+      %span A+
+      %span A-
+      %span B+
+      %span B-
+      %span AB+
+      %span AB-
+      %span O+
+      %span O-
 
-    #factor
-      %span +
-      %span -
-
-    #actions
-      = link_to t('label.filter'), '#', class: 'button red'
+    #distance
+      %span.selected 5
+      %span 10
+      %span 20
+      %span 30
+      %span 40
+      %span 50
+      %span 70
+      %span 100

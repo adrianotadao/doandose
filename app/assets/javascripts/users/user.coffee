@@ -1,5 +1,5 @@
 class window.User extends window.UserBase
-  userPotision: ->
+  position: ->
     [@lat(), @lng()]
 
   lat: ->
