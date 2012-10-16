@@ -14,7 +14,7 @@ class window.Navigator
   filters: ->
     bloodTypes = []
     for type in $('#filter_content #type span.selected')
-      bloodTypes.push $(type).text().toLowerCase()
+      bloodTypes.push $(type).text()#.toLowerCase()
 
     { blood_types: bloodTypes, distance: $('#filter_content #distance span.selected').text() }
 
