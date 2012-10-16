@@ -11,6 +11,7 @@ development: &defaults
       secret: cc93b21b9712bf746f9309e17f8fe86b
     identity:
 
+  mandrill_api_key: 3e4b0875-73c5-40b7-b32f-3b7aefbd834a
   mail:
     delivery_method: smtp
     address: smtp.gmail.com

@@ -41,7 +41,6 @@ class NotificationsController < ApplicationController
 
   private
     def save_confirmed_notification
-      p params
       @person_notification = @notification.person_notifications.new params[:person_notification]
 
       if @person_notification.save

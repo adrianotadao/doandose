@@ -8,8 +8,8 @@ gem 'bson_ext', '1.6.4'
 gem 'jquery-rails', '1.0.19'
 gem 'haml', '3.1.6'
 gem 'simple_form', '1.5.2'
-gem 'settingslogic', '2.0.6'
 gem 'awesome_nested_fields', '0.6.0'
+gem 'settingslogic', '2.0.8'
 
 gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
