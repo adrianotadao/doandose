@@ -1,7 +1,8 @@
+@import mixings/input
+
 .form
   float: left
   clear: both
-  width: 528px
   margin-bottom: 20px
   label
     clear: both
@@ -13,12 +14,8 @@
     margin-top: 8px
     color: #464545
   input[type="text"], input[type="password"], input[type="file"], select, .input_image, textarea
-    border: 1px solid #464545
     float: left
-    margin: 8px 0 0 0
-    height: 26px
-    width: 350px
-    padding-left: 5px
+    +input
 
   textarea
     height: 200px
