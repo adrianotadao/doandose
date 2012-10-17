@@ -1,43 +1,61 @@
 @import compass/css3
+@import mixings/input
+@import compass/css3/border-radius
+@import compass/css3/box-shadow
 
 #filter
-  width: 100%
-  height: 120px
-  background: #dcdcdc
-  display: inline-block
+  width: 940px
+  height: 180px
+  position: relative
+
+  h3
+    +box-shadow(#EBEBEB 0px 5px 10px)
+    margin-top: 13px
+    padding-bottom: 9px
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+    width: 981px
+    right: 21px
+    position: relative
+
 
   #filter_content
-    width: 724px
-    margin: 16px auto
+    width: 940px
+    margin: 8px auto
 
-    input#searchBox
-      float: left
-      width: 300px
-
-    span.title
-      font-family: "NillandRegular"
-      color: #313131
-      font-weight: bold
-      clear: both
-      display: block
-
-  #type, #distance
+  h4
     float: left
-    width: 77px
+    width: 270px
+    margin: 10px 0 10px 34px
+    text-align: left
+    text-decoration: none
+
+  input#searchBox
+    +input
+    float: left
+    width: 270px
+    clear: both
+    margin-left: 30px
+
+  #bloods, #distances
+    float: left
+    width: 270px
     margin-left: 30px
     span
-      width: 30px
+      width: 58px
       height: 30px
-      border: 1px solid #ccc
+      border: 1px solid #bbb
       float: left
       margin: 3px
       text-align: center
       line-height: 29px
       cursor: pointer
       background: #ccc
-      +border-radius(2px)
+      color: #5F4F4F
+      +border-radius(5px)
       +background-image(linear-gradient(top bottom, #fff, #ddd))
       &:hover
         +background-image(linear-gradient(top bottom, #ddd, #fff))
       &:active, &.selected
         border: 1px solid #590101
+        opacity: 0.5
+        color: #5F0A0A

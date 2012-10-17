@@ -10,6 +10,7 @@ gem 'haml', '3.1.6'
 gem 'simple_form', '1.5.2'
 gem 'awesome_nested_fields', '0.6.0'
 gem 'settingslogic', '2.0.8'
+gem 'premailer-rails3', '1.3.1'
 
 gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"

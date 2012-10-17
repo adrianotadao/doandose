@@ -1,10 +1,19 @@
+
 #filter
+  %h3= t('views.filter.title')
+
   #filter_content
-    %span.title= t('views.filter.title')
+    %h4= t('label.address')
+    %h4= t('label.blood_type')
+    %h4= t('label.distance')
 
-    %input{ id: 'searchBox' }
+    / #type
+    /   %span.company= t('label.company')
+    /   %span.donor= t('label.donor')
 
-    #type
+    %input{ id: 'searchBox', placeholder: 'Digite o endereco para buscar' }
+
+    #bloods
       %span A+
       %span A-
       %span B+
@@ -14,7 +23,7 @@
       %span O+
       %span O-
 
-    #distance
+    #distances
       %span.selected 5
       %span 10
       %span 20

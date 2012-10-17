@@ -1,1 +1,9 @@
-%p + 1 voluntario confirmou a presenca referente a notificacao #{@notification.title}
+%h2= t('mailer.salute')
+%p= t('mailer.confirmation_participation_title') #{@notification.title}
+
+.counter
+  %b.count
+    = @notification.person_notifications.count
+  #{t('label.participant')} -
+  #{t('label.remaining')}
+  %b.remaining #{@notification.remaining}
