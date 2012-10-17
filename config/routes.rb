@@ -57,6 +57,7 @@ Doandose::Application.routes.draw do
 
   namespace :institution, :path => 'instituicao' do
     root :to => 'pages#index'
+    match '/sair' => 'base#destroy', :as => :destroy_company_session
     resources :pages, :only => :index
     resources :notifications
   end

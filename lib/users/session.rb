@@ -13,13 +13,17 @@ module Users
       return unless session[:institution_user_id]
       if @current_institution.nil?
         @current_institution = User.find(session[:institution_user_id])
-        logout if @current_institution.nil?
+        logout_company if @current_institution.nil?
       end
       @current_institution
     end
 
     def user_signed_in?
       current_user.present?
+    end
+
+    def company_signed_in?
+      current_institution.present?
     end
 
     def login(user)
@@ -41,6 +45,12 @@ module Users
       cookies.delete :lat
       cookies.delete :lng
 
+      redirect_to root_path
+    end
+
+    def logout_company
+      session.destroy
+      session[:institution_user_id] = nil
       redirect_to root_path
     end
 
