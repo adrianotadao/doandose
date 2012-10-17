@@ -13,13 +13,13 @@ class window.Navigator
 
   filters: ->
     bloodTypes = []
-    for type in $('#filter_content #type span.selected')
-      bloodTypes.push $(type).text()#.toLowerCase()
+    for type in $('#filter_content #bloods span.selected')
+      bloodTypes.push $(type).text()
 
-    { blood_types: bloodTypes, distance: $('#filter_content #distance span.selected').text() }
+    { blood_types: bloodTypes, distance: $('#filter_content #distances span.selected').text() }
 
   bloodFilters: ->
-    $('#filter_content #type span').click (e) =>
+    $('#filter_content #bloods span').click (e) =>
       if $(e.currentTarget).hasClass('selected')
         $(e.currentTarget).removeClass('selected')
       else
@@ -29,8 +29,8 @@ class window.Navigator
       @find()
 
   distanceFilters: ->
-    $('#filter_content #distance span').click (e) =>
-      $('#filter_content #distance span').removeClass('selected')
+    $('#filter_content #distances span').click (e) =>
+      $('#filter_content #distances span').removeClass('selected')
       $(e.currentTarget).addClass('selected')
 
       @clearMap()
@@ -71,13 +71,13 @@ class window.Navigator
 
   onSuccess: (options) ->
     #companies
-    options.companies.map (company) ->
+    options.companies.map (company) =>
       if @companyExists(company) == -1
         marker = Marker.company([company.lat, company.lng])
         CompanyList.add {id: company.id, marker: marker}
 
     #peopler
-    options.people.map (person) ->
+    options.people.map (person) =>
       if @personExists(person) == -1
         marker = Marker.person([person.lat, person.lng])
         PersonList.add {id: person.id, marker: marker}
