@@ -2,6 +2,7 @@
 @import mixings/input
 @import compass/css3/border-radius
 @import compass/css3/box-shadow
+@import compass/css3/transform
 
 #filter
   width: 940px
@@ -9,7 +10,7 @@
   position: relative
 
   h3
-    +box-shadow(#EBEBEB 0px 5px 10px)
+    +box-shadow(#EBEBEB 0px 8px 10px)
     margin-top: 13px
     padding-bottom: 9px
     border-bottom: 1px solid rgba(0, 0, 0, 0.2)
@@ -21,6 +22,7 @@
   #filter_content
     width: 940px
     margin: 8px auto
+    position: relative
 
   h4
     float: left
@@ -36,7 +38,29 @@
     clear: both
     margin-left: 30px
 
-  #bloods, #distances
+  span.donor
+    position: relative
+    font-weight: bold
+    display: block
+    line-height: 44px
+    cursor: pointer
+    color: #630000
+  span.institutional
+    position: absolute
+    +rotate(-90deg)
+    left: 875px
+    top: 58px
+    cursor: pointer
+    color: #630000
+    font-weight: bold
+    width: 140px
+  #bloods
+    position: absolute
+    left: 324px
+    top: 36px
+    background: #fff
+
+  #bloods, #distances, span.donor
     float: left
     width: 270px
     margin-left: 30px

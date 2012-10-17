@@ -4,14 +4,13 @@
 
   #filter_content
     %h4= t('label.address')
-    %h4= t('label.blood_type')
-    %h4= t('label.distance')
+    %h4.blood_type= t('label.blood_type')
+    %h4.distance= t('label.distance')
 
-    / #type
-    /   %span.company= t('label.company')
-    /   %span.donor= t('label.donor')
+    %input{ id: 'searchBox', placeholder: t('label.search_address') }
 
-    %input{ id: 'searchBox', placeholder: 'Digite o endereco para buscar' }
+    %span.institutional Exibir #{ t('label.company') }
+    %span.donor Exibir #{ t('label.donor') }
 
     #bloods
       %span A+

@@ -49,6 +49,7 @@ pt-BR:
     remaining: 'ainda restam'
     surname: 'Sobrenome'
     sex: 'Sexo'
+    search_address: 'Digite o endereco para buscar'
     situation: 'Situacao'
     shared_ideia: 'Compartilhe essa ideia.'
     street: 'Rua'

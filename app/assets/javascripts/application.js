@@ -3,6 +3,7 @@
 //= require jquery.maskedinput-1.3.js
 //= require jquery.nested-fields
 //= require jquery.cookies.2.2.0
+//= require jquery-ui
 //= require mask
 //= require social_buttons
 
