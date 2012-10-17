@@ -38,6 +38,15 @@ class Users::SessionsController < ApplicationController
 
     def sign_in
       login @authentication.user
+
+      if @authentication.user.authenticable_type == 'Company'
+        redirect_to institution_root_path
+      else
+        redirect_to_user
+      end
+    end
+
+    def redirect_to_user
       if @authentication.provider.eql?('identity')
         redirect_to root_path
       else

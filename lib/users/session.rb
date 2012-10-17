@@ -9,15 +9,28 @@ module Users
       @current_user
     end
 
+    def current_institution
+      return unless session[:institution_user_id]
+      if @current_institution.nil?
+        @current_institution = User.find(session[:institution_user_id])
+        logout if @current_institution.nil?
+      end
+      @current_institution
+    end
+
     def user_signed_in?
       current_user.present?
     end
 
     def login(user)
-      session[:user_id] = user.id
+      institution?(user)
       cookies[:email] = { value: user.email, :expires => 10.years.from_now }
       cookies[:lat] = { value: user.authenticable.address.loc[0], :expires => 10.years.from_now }
       cookies[:lng] = { value: user.authenticable.address.loc[1], :expires => 10.years.from_now }
+    end
+
+    def institution?(user)
+      user.authenticable_type == 'Company' ? session[:institution_user_id] = user.id : session[:user_id] = user.id
     end
 
     def logout

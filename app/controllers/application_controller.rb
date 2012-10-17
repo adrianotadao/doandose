@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
   include Users::Session
-  helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout
+  helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout, :current_institution
 
   protected
     def update_user_password_with_nested_fields(type)

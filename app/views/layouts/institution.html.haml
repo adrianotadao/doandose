@@ -10,18 +10,18 @@
 
   %body
     #root
-      Doando.se
-      #container
-        #top
-          #menu
-        #center
-          #header
-          #content= yield
+      #top
+        = render partial: 'shared/social_networks'
+        #menu
+          = render partial: 'shared/nav'
+
+        = render partial: 'shared/submenu'
+        #content= yield
 
       #root_footer
-
+        = render partial: 'shared/circles_footer'
     #footer
-    = javascript_include_tag "institution"
 
+    = javascript_include_tag "institution"
     = render 'shared/require_gmap'
     = yield :javascript
