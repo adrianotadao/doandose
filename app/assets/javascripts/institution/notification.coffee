@@ -33,14 +33,8 @@ class window.Notification
     { bloods: $('#bloods span.selected').text(), distance: $('#distances span.selected').text() }
 
   onSuccess: (data) ->
-    $('table.list')
-
-    html = ''
+    html = '<ul>'
     data.people.map (person) ->
-      html += "<tr class='odd'>"
-      html += '<td></td>'
-      html += "<td>#{person.name}</td>"
-      html += "<td>#{person.address}</td>"
-      html += '</tr>'
-
-    $('table.list tbody').html html
+      html += "<li>#{person.name} - #{person.address}</li>"
+    html += '</ul>'
+    $('#result').html html
