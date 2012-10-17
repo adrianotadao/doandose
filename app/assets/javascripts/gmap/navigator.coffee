@@ -53,17 +53,17 @@ class window.Navigator
     @query.abort() if @query != undefined
 
     @query = $.ajax
-      url: 'elements_by_user_position'
+      url: 'find_elements_to_map'
       type: 'POST'
       data: $.extend {position: {lat: @position[0], lng: @position[1]}}, @filters()
       success: (data) => @onSuccess data
       error: (xhr, error)  -> console.log xhr, error
 
   clearMap: ->
-    for company in CompanyList.list()
+    CompanyList.list().map (company) ->
       company.marker.setMap(null)
 
-    for person in PersonList.list()
+    PersonList.list().map (person) ->
       person.marker.setMap(null)
 
     CompanyList.clear()
@@ -71,13 +71,13 @@ class window.Navigator
 
   onSuccess: (options) ->
     #companies
-    for company in options.companies
+    options.companies.map (company) ->
       if @companyExists(company) == -1
         marker = Marker.company([company.lat, company.lng])
         CompanyList.add {id: company.id, marker: marker}
 
     #peopler
-    for person in options.people
+    options.people.map (person) ->
       if @personExists(person) == -1
         marker = Marker.person([person.lat, person.lng])
         PersonList.add {id: person.id, marker: marker}

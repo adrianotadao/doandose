@@ -1,0 +1,22 @@
+#bloods
+  - for blood in @bloods
+    %span= blood.name
+
+#distances
+  - for distance in distances
+    %span= distance
+
+%input{ type: 'button', id: 'buttonFilter', value: 'Buscar' }
+
+%table.list
+  %thead
+    %tr
+      %th= t('label.active')
+      %th= t('label.title')
+      %th= t('label.expired_at')
+      %th= t('label.actions')
+  %tbody
+
+- content_for :javascript do
+  :javascript
+    new Notification()

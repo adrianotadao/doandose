@@ -1,0 +1,34 @@
+#index
+  %h2= t('views.notifications.title')
+
+  = link_to t('buttons.new'), new_institution_notification_path, class: 'button new'
+
+  - unless @notifications.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('label.active')
+          %th= t('label.quantity')
+          %th= t('label.situation')
+          %th= t('label.alerted_at')
+          %th= t('label.actions')
+
+      %tbody
+        - @notifications.each do |notification|
+          %tr
+            %td= label_boolean(notification.active)
+            %td= notification.quantity
+            %td= notification.situation
+            %td= formated_date(notification.alerted_at)
+            %td
+              = link_to t('buttons.show'), institution_notification_path(notification), class: 'link show'
+
+              = link_to t('buttons.edit'), edit_institution_notification_path(notification), class: 'link edit'
+
+              = link_to t('form.buttons.delete'), [:institution, notification], confirm: t('flash.advertise'), method: :delete, class: 'link delete'
+  - else
+    .empty= t('label.empty')
+
+- content_for :javascript do
+  :javascript
+    new Tables()

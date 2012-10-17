@@ -19,7 +19,8 @@ Doandose::Application.routes.draw do
     put '/esqueci-minha-senha/:token' => 'passwords#update', :as => :edit_password
   end
 
-  post '/elements_by_user_position/' => 'gmap#elements_by_user_position'
+  post '/find_elements_to_map/' => 'gmap#find_elements_to_map'
+  post '/find_elements_to_notification/' => 'gmap#find_elements_to_notification'
 
   resources :people
   resources :page, only: [:index, :show]
@@ -57,5 +58,6 @@ Doandose::Application.routes.draw do
   namespace :institution, :path => 'instituicao' do
     root :to => 'pages#index'
     resources :pages, :only => :index
+    resources :notifications
   end
 end

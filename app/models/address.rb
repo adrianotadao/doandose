@@ -30,6 +30,10 @@ class Address
 
   before_validation :parse_location
 
+  def formated_address
+    "#{street}, #{neighborhood} - #{number}, #{city} - #{state}"
+  end
+
   def parse_location
     return if self.lat.blank? || self.lng.blank?
     self.loc = [self.lat, self.lng]

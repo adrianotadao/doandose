@@ -21,7 +21,7 @@
       #root_footer
 
     #footer
-    = javascript_include_tag "application"
-    %script{ :src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyAE08dkexIDR_HfbiFlSZEXfBibz6Z0_TY&sensor=false", :type => "text/javascript" }
+    = javascript_include_tag "institution"
 
+    = render 'shared/require_gmap'
     = yield :javascript
