@@ -1,7 +1,9 @@
 class window.Navigator
   constructor: ->
     @query = undefined
+    @interval = undefined
     @position = []
+    @distance = 1
 
     google.maps.event.addListener Gmap.create(), 'dragend', =>
       @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
@@ -24,7 +26,7 @@ class window.Navigator
     for type in $('#filter_content #bloods span.selected')
       bloodTypes.push $(type).text()
 
-    { blood_types: bloodTypes, distance: $('#filter_content #distances span.selected').text() }
+    { blood_types: bloodTypes, distance: @distance }
 
   bloodFilters: ->
     $('#filter_content #bloods span').click (e) =>
@@ -37,14 +39,20 @@ class window.Navigator
       @find()
 
   distanceFilters: ->
-    $('#filter_content #distances span').click (e) =>
-      $('#filter_content #distances span').removeClass('selected')
-      $(e.currentTarget).addClass('selected')
-
-      GmapDrawCircle.changeRadius parseInt($(e.currentTarget).text()) * 1000
-
-      @clearMap()
-      @find()
+    $("#distances .range").slider {
+      range: "max",
+      min: 1,
+      max: 100,
+      slide: ( event, ui ) =>
+        @distance = ui.value
+        $('span.range_value').text("#{@distance} KM")
+        GmapDrawCircle.changeRadius @distance * 1000
+        clearInterval(@interval)
+        @interval = window.setTimeout (=>
+          @clearMap()
+          @find()
+        ), 1000
+    }
 
   prepareAutocomplete: ->
     @autocomplete = new google.maps.places.Autocomplete(document.getElementById('searchBox'))

@@ -33,8 +33,9 @@ class window.Marker
     marker
 
   @loggedUserPosition: (options) ->
-    icon = {icon: new google.maps.MarkerImage('http://www.sony.com.br/sonyericssonshop/products/mobilephones/overview/r-www.se-mc.com/cws/file/1.998964.1308638594!translation/image/aGPS-icon.png')}
-    marker = new google.maps.Marker $.extend(Marker.base([window.user.lat(), window.user.lng()]), icon, options)
+    #icon = {icon: new google.maps.MarkerImage('http://www.sony.com.br/sonyericssonshop/products/mobilephones/overview/r-www.se-mc.com/cws/file/1.998964.1308638594!translation/image/aGPS-icon.png')}
+    #marker = new google.maps.Marker $.extend(Marker.base([window.user.lat(), window.user.lng()]), icon, options)
+    marker = new google.maps.Marker $.extend(Marker.base([window.user.lat(), window.user.lng()]), options)
     Marker.markerControl(marker, options)
     Gmap.centralize [window.user.lat(), window.user.lng()]
     _userMarker = marker

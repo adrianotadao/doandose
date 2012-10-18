@@ -17,5 +17,5 @@
         %span= blood.name
 
     #distances
-      - distances.each_with_index do |distance, index|
-        %span{ class: "#{'selected' if index == 0}"}= distance
+      .range
+      %span.range_value 1

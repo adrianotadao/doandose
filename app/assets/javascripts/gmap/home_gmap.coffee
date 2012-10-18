@@ -3,8 +3,9 @@ class window.HomeGmap
     @navigator = new Navigator()
 
     if window.user.signedIn()
-      @navigator.position = window.user.position()
       Gmap.centralize(window.user.position())
+      @navigator.position = window.user.position()
+      Marker.loggedUserPosition()
     else
       marker = Marker.nonLoggedUserPosition()
       @navigator.position = [marker.getPosition().Xa, marker.getPosition().Ya]
