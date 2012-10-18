@@ -1,4 +1,6 @@
 class window.Marker
+  _userMarker = undefined
+
   @person: (coordinate, options) ->
     icon = {icon: new google.maps.MarkerImage('http://icons.iconarchive.com/icons/david-renelt/little-icon-people/32/Plain-People-icon.png')}
     marker = new google.maps.Marker $.extend(Marker.base(coordinate), icon, options)
@@ -12,8 +14,9 @@ class window.Marker
     marker
 
   @nonLoggedUserPosition: (options) ->
-    icon = {icon: new google.maps.MarkerImage('http://www.sony.com.br/sonyericssonshop/products/mobilephones/overview/r-www.se-mc.com/cws/file/1.998964.1308638594!translation/image/aGPS-icon.png')}
-    marker = new google.maps.Marker $.extend(Marker.base([0,0]), icon, options)
+    #icon = {icon: new google.maps.MarkerImage('http://www.sony.com.br/sonyericssonshop/products/mobilephones/overview/r-www.se-mc.com/cws/file/1.998964.1308638594!translation/image/aGPS-icon.png')}
+    #marker = new google.maps.Marker $.extend(Marker.base([0,0]), icon, options)
+    marker = new google.maps.Marker $.extend(Marker.base([0,0]), options)
 
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition (position) =>
@@ -26,6 +29,7 @@ class window.Marker
 
         $(marker).trigger 'userPositionFound'
 
+    _userMarker = marker
     marker
 
   @loggedUserPosition: (options) ->
@@ -33,11 +37,13 @@ class window.Marker
     marker = new google.maps.Marker $.extend(Marker.base([window.user.lat(), window.user.lng()]), icon, options)
     Marker.markerControl(marker, options)
     Gmap.centralize [window.user.lat(), window.user.lng()]
+    _userMarker = marker
     marker
 
   @default: (coordinate, options) ->
     marker = new google.maps.Marker $.extend(Marker.base(coordinate), options)
     Marker.markerControl(marker, options)
+    _userMarker = marker
     marker
 
   @markerControl: (marker, options) ->
@@ -48,3 +54,10 @@ class window.Marker
 
   @base: (coordinate) ->
     position: new google.maps.LatLng(coordinate[0], coordinate[1])
+
+  @userMarker: ->
+    _userMarker
+
+  @centralizeUserMarker: (coordinate) ->
+    return if _userMarker == undefined
+    _userMarker.setPosition(new google.maps.LatLng(coordinate[0], coordinate[1]))

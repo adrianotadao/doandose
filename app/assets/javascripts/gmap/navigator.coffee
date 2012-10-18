@@ -5,6 +5,14 @@ class window.Navigator
 
     google.maps.event.addListener Gmap.create(), 'dragend', =>
       @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
+      Marker.centralizeUserMarker @position
+      @clearMap()
+      @find()
+
+    google.maps.event.addListener Gmap.create(), 'click', (event) =>
+      @position = [event.latLng.Xa, event.latLng.Ya]
+      Marker.centralizeUserMarker @position
+      @clearMap()
       @find()
 
     @prepareAutocomplete()
@@ -33,6 +41,8 @@ class window.Navigator
       $('#filter_content #distances span').removeClass('selected')
       $(e.currentTarget).addClass('selected')
 
+      GmapDrawCircle.changeRadius parseInt($(e.currentTarget).text()) * 1000
+
       @clearMap()
       @find()
 
@@ -46,6 +56,7 @@ class window.Navigator
 
       @position = [place.geometry.location.Xa, place.geometry.location.Ya]
       Gmap.centralize @position
+      Marker.centralizeUserMarker @position
       @clearMap()
       @find()
 

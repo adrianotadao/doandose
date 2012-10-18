@@ -10,4 +10,4 @@ class window.Gmap
     $.extend(_instance, options)
 
   @centralize: (coordinates) ->
-    Gmap.create().setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))
+    _instance.setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))
