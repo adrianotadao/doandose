@@ -17,7 +17,6 @@
 //= require gmap/coordinates
 //= require gmap/addressable_gmap
 //= require gmap/home_gmap
-//= require home
 
 //= require gmap/person_list
 //= require gmap/company_list
