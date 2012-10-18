@@ -24,9 +24,16 @@
   #body
     %h2 Contatos
     .form
+      %label= t('label.name')
       %input.name
+
+      %label= t('label.email')
       %input.email
+
+      %label= t('label.subject')
       %input.subject
+
+      %label= t('label.message')
       %input.message
       %button.submit enviar
 
