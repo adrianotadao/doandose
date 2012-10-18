@@ -12,6 +12,7 @@
 //= require gmap/utilities/gmap
 //= require gmap/utilities/marker
 //= require gmap/utilities/direction
+//= require gmap/utilities/gmap_draw_circle
 //= require gmap/navigator
 //= require gmap/coordinates
 //= require gmap/addressable_gmap

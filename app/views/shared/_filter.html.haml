@@ -13,21 +13,9 @@
     %span.donor Exibir #{ t('label.donor') }
 
     #bloods
-      %span A+
-      %span A-
-      %span B+
-      %span B-
-      %span AB+
-      %span AB-
-      %span O+
-      %span O-
+      - for blood in Blood.scoped
+        %span= blood.name
 
     #distances
-      %span.selected 5
-      %span 10
-      %span 20
-      %span 30
-      %span 40
-      %span 50
-      %span 70
-      %span 100
+      .range
+      %span.range_value 1

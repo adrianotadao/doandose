@@ -3,29 +3,16 @@ class window.HomeGmap
     @navigator = new Navigator()
 
     if window.user.signedIn()
-      @navigator.position = window.user.position()
       Gmap.centralize(window.user.position())
+      @navigator.position = window.user.position()
+      Marker.loggedUserPosition()
     else
       marker = Marker.nonLoggedUserPosition()
       @navigator.position = [marker.getPosition().Xa, marker.getPosition().Ya]
 
+    @initializeUserRadius()
     @navigator.find()
-    @efect()
 
-  efect: ->
-    $('span.institutional').click ->
-      $("#bloods").hide 'bounce', 1000, callback
-
-
-    $('span.donor').click ->
-      $("#bloods").show 'bounce', 1000,
-        $('h4.blood_type').text('Tipo de plasma').text('Tipo de plasma')
-        $('span.institutional').css
-            opacity: '1'
-            cursor: 'pointer'
-
-  callback = ->
-    $('h4.blood_type').text('Clicando abaixo:')
-    $('span.institutional').css
-      opacity: '0.2'
-      cursor: 'none'
+  initializeUserRadius: ->
+    GmapDrawCircle.create({ marker: Marker.userMarker(), radius: 1000 })
+    GmapDrawCircle.centralize [Marker.userMarker().getPosition().Xa, Marker.userMarker().getPosition().Ya]

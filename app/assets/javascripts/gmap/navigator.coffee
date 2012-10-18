@@ -1,22 +1,36 @@
 class window.Navigator
   constructor: ->
     @query = undefined
+    @interval = undefined
     @position = []
+    @distance = 1
 
     google.maps.event.addListener Gmap.create(), 'dragend', =>
       @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
-      @find()
+      Marker.centralizeUserMarker @position
+      @refreshMap()
+
+    google.maps.event.addListener Gmap.create(), 'click', (event) =>
+      @position = [event.latLng.Xa, event.latLng.Ya]
+      Marker.centralizeUserMarker @position
+      @refreshMap()
 
     @prepareAutocomplete()
     @bloodFilters()
     @distanceFilters()
+    @prepareType()
 
   filters: ->
     bloodTypes = []
     for type in $('#filter_content #bloods span.selected')
       bloodTypes.push $(type).text()
 
-    { blood_types: bloodTypes, distance: $('#filter_content #distances span.selected').text() }
+    if $('span.institutional').hasClass 'selected'
+      type = 'company'
+    else
+      type = 'person'
+
+    { blood_types: bloodTypes, distance: @distance, type: type }
 
   bloodFilters: ->
     $('#filter_content #bloods span').click (e) =>
@@ -25,16 +39,44 @@ class window.Navigator
       else
         $(e.currentTarget).addClass('selected')
 
-      @clearMap()
-      @find()
+      @refreshMap()
 
   distanceFilters: ->
-    $('#filter_content #distances span').click (e) =>
-      $('#filter_content #distances span').removeClass('selected')
-      $(e.currentTarget).addClass('selected')
+    $("#distances .range").slider {
+      range: "max",
+      min: 1,
+      max: 100,
+      slide: ( event, ui ) =>
+        @distance = ui.value
+        $('span.range_value').text("#{@distance} KM")
+        GmapDrawCircle.changeRadius @distance * 1000
+        clearInterval(@interval)
+        @interval = window.setTimeout (=>
+          @refreshMap()
+        ), 1000
+    }
 
-      @clearMap()
-      @find()
+  prepareType: ->
+    $('span.institutional').click =>
+      $("#bloods").hide 'bounce', 1000, typeClicked
+      $('span.institutional').addClass 'selected'
+
+      @refreshMap()
+
+    $('span.donor').click =>
+      $('span.institutional').removeClass 'selected'
+      $("#bloods").show 'bounce', 1000,
+        $('h4.blood_type').text('Tipo de plasma').text('Tipo de plasma')
+        $('span.institutional').css
+            opacity: '1'
+            cursor: 'pointer'
+      @refreshMap()
+
+  typeClicked = ->
+    $('h4.blood_type').text('Clicando abaixo:')
+    $('span.institutional').css
+      opacity: '0.2'
+      cursor: 'none'
 
   prepareAutocomplete: ->
     @autocomplete = new google.maps.places.Autocomplete(document.getElementById('searchBox'))
@@ -46,8 +88,8 @@ class window.Navigator
 
       @position = [place.geometry.location.Xa, place.geometry.location.Ya]
       Gmap.centralize @position
-      @clearMap()
-      @find()
+      Marker.centralizeUserMarker @position
+      @refreshMap()
 
   find: ->
     @query.abort() if @query != undefined
@@ -68,6 +110,10 @@ class window.Navigator
 
     CompanyList.clear()
     PersonList.clear()
+
+  refreshMap: ->
+    @clearMap()
+    @find()
 
   onSuccess: (options) ->
     #companies
