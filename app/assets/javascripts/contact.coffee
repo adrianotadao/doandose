@@ -4,27 +4,26 @@ class window.Contact
     @email = $('#circle_three input.email')
     @subject = $('#circle_three input.subject')
     @message = $('#circle_three textarea.message')
-    @buttonSend = $('#circle_three .submit')
-    @changed = true
+    @buttonSend = $('#circle_three input:submit')
+    @changed = undefined
 
     @change()
-    @buttonSend.click => @send() if @changed == true
+    @buttonSend.click => @send() if @changed == undefined || @changed == true
 
-    $('#circle_three input, textarea').keypress =>
-      @hideInformation()
+    $('#circle_three input, textarea').keypress => @hideInformation()
 
   send: ->
     $.ajax
       type: 'POST'
       url: '/send_email/'
       data: contact: @params()
+      beforeSend: =>
+        disabledSubmit( @buttonSend )
       success: (data) =>
         if data == true
           @sucess()
         else
           @error(data)
-      complete: (data) =>
-          @complete(data.responseText == true)
 
   params: ->
     {
@@ -37,44 +36,42 @@ class window.Contact
   error: (messages) =>
     switch
       when messages.name != undefined && messages.name.length > 0
+        @changed = true
         $( @tooltip(messages.name[0]) ).insertAfter(@name)
-        @changed = false
 
       when messages.email != undefined && messages.email.length > 0
+        @changed = true
         $( @tooltip(messages.email[0]) ).insertAfter(@email)
-        @changed = false
 
       when messages.subject != undefined &&  messages.subject.length > 0
+        @changed = true
         $( @tooltip(messages.subject[0]) ).insertAfter(@subject)
-        @changed = false
 
       when messages.message != undefined &&  messages.message.length > 0
+        @changed = true
         $( @tooltip(messages.message[0]) ).insertAfter(@message)
-        @changed = false
 
       else
+        @changed = true
         $( @tooltip('Erro desconhecido') ).insertAfter(@message)
-        @changed = false
 
-  sucess: ->
-    @buttonSend.attr('disabled', true)
-    @buttonSend.addClass('disabled_submit')
-    @buttonSend.attr('value', " #{ @buttonSend.attr('value') } ...")
+  sucess: =>
+    alert 'enviado com sucesso !!!'
+    @clear()
+    enabledSubmit(@buttonSend)
 
-  complete: (response) ->
-    if response
+  clear: ->
       @name.val('')
       @email.val('')
       @subject.val('')
       @message.val('')
-      @buttonSend.attr('disabled', false)
-      @buttonSend.addClass('submit')
-      @buttonSend.attr('value', "Enviar")
-      alert 'enviado com sucesso !!!'
 
   tooltip: (message) ->
-    $('#circle_three .information').remove()
-    "<div class='information'>#{message}</div>" if $('#circle_three .information').length == 0
+    if @changed
+      $('#circle_three .information').remove()
+      enabledSubmit(@buttonSend)
+      @changed = false
+      "<div class='information'>#{message}</div>"
 
   change: ->
     $('#circle_three input').change =>

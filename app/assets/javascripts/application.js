@@ -24,6 +24,7 @@
 //= require users/user_base
 //= require users/user
 
+//= require util
 //= require notification
 //= require social
 //= require contact

@@ -28,7 +28,7 @@
     %input.subject{ placeholder: t('label.subject') }
     %textarea.message{ placeholder: t('label.message') }
 
-    %button.submit{ class: 'button red' } enviar
+    %input{ type: 'submit', class: 'submit button red', value: t('label.send') }
 
 - content_for :javascript do
   :javascript
