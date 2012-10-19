@@ -6,6 +6,7 @@ pt-BR:
     bloods: 'tipos-sanguineos'
     campaigns: 'Campanhas'
     companies: 'Hemocentros'
+    exit: 'Sair'
     informations: 'Saiba mais'
     institution: 'Instituicao'
     page: 'Paginas'
@@ -14,5 +15,4 @@ pt-BR:
     users_new_sessions: 'Login'
     users_destroy_sessions: 'Sair'
     notifications: 'Notificacoes'
-    exit: 'Sair'
-
+    tips: 'Dicas'

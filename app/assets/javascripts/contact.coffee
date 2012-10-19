@@ -10,6 +10,9 @@ class window.Contact
     @change()
     @buttonSend.click => @send() if @changed == true
 
+    $('#circle_three input, textarea').keypress =>
+      @hideInformation()
+
   send: ->
     $.ajax
       type: 'POST'
@@ -76,3 +79,6 @@ class window.Contact
   change: ->
     $('#circle_three input').change =>
         @changed = true
+
+  hideInformation: ->
+    $('.information').hide()

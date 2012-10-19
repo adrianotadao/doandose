@@ -42,6 +42,7 @@ Doandose::Application.routes.draw do
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]
   resources :campaigns, only: [:index, :show]
+  get '/dicas/' => 'tips#index', as: :tips
 
   namespace :admin do
     root :to => 'companies#index'
