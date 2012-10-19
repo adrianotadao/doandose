@@ -31,15 +31,13 @@ class GmapController < ApplicationController
   def find_elements_to_notification
     position = [params[:position][:lat].to_f, params[:position][:lng].to_f]
     distance = params[:distance].to_i
-    blood_types = params[:bloods]
+    blood_type = params[:blood]
 
     @people = GMap.elements_by_distance(position, distance, 'Person').map(&:addressable).map do |r|
-      if blood_types
-        if r.blood.name.in? blood_types
-          { name: r.name, address: r.address.formated_address }
+      if blood_type
+        if r.blood.name.in? blood_type
+          { name: r.name, address: r.address.formated_address, lat: r.address.loc[0], lng: r.address.loc[1] }
         end
-      else
-        { name: r.name, address: r.address.formated_address }
       end
     end
 

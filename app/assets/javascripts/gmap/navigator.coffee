@@ -70,11 +70,6 @@ class window.Navigator
       cursor: 'none'
 
   mapEvents: ->
-    # google.maps.event.addListener Gmap.create(), 'dragend', =>
-    #   @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
-    #   Marker.centralizeUserMarker @position
-    #   @refreshMap()
-
     google.maps.event.addListener Gmap.create(), 'click', (event) =>
       @position = [event.latLng.Xa, event.latLng.Ya]
       Marker.centralizeUserMarker @position
