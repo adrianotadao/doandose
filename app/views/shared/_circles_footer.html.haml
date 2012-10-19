@@ -21,21 +21,14 @@
     %h4= t('footer.circle.more')
 
 #circle_three
-  #body
-    %h2 Contatos
-    .form
-      %label= t('label.name')
-      %input.name
+  %h2 Contatos
+  .form
+    %input.name{ placeholder: t('label.name') }
+    %input.email{ placeholder: t('label.email') }
+    %input.subject{ placeholder: t('label.subject') }
+    %textarea.message{ placeholder: t('label.message') }
 
-      %label= t('label.email')
-      %input.email
-
-      %label= t('label.subject')
-      %input.subject
-
-      %label= t('label.message')
-      %input.message
-      %button.submit enviar
+    %button.submit{ class: 'button red' } enviar
 
 - content_for :javascript do
   :javascript
