@@ -11,3 +11,6 @@ class window.Gmap
 
   @centralize: (coordinates) ->
     _instance.setCenter(new google.maps.LatLng(coordinates[0], coordinates[1]))
+
+  @getMap: ->
+    _instance

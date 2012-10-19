@@ -11,8 +11,6 @@ class Address
   field :complement, type: String
   field :loc, type: Array, default: []
 
-  index [[ :loc, Mongo::GEO2D ]]
-
   attr_accessor :lat, :lng
 
   #relationship
