@@ -3,6 +3,7 @@ Doandose::Application.routes.draw do
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure' => 'users/sessions#failure'
+  post '/send_email/' => 'send_mail#create', :as => :send_mail
 
   namespace :users, :path => 'usuario' do
     match '/login' => 'sessions#new', :as => :new_session

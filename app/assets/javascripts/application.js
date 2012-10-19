@@ -26,3 +26,4 @@
 
 //= require notification
 //= require social
+//= require contact

@@ -23,15 +23,20 @@
 #circle_three
   #body
     %h2 Contatos
-    = simple_form_for '#' do |f|
-      .form
-        = f.label :name, t('form.label.name')
-        = f.text_field :name
+    .form
+      %label= t('label.name')
+      %input.name
 
-        = f.label :email, t('form.label.email')
-        = f.text_field :email
+      %label= t('label.email')
+      %input.email
 
-        = f.label :body, t('form.label.body')
-        = f.text_field :body
+      %label= t('label.subject')
+      %input.subject
 
-        = f.submit 'Enviar', :class => 'button red'
+      %label= t('label.message')
+      %input.message
+      %button.submit enviar
+
+- content_for :javascript do
+  :javascript
+    new Contact()
