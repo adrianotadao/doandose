@@ -5,16 +5,7 @@ class window.Navigator
     @position = []
     @distance = 1
 
-    google.maps.event.addListener Gmap.create(), 'dragend', =>
-      @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
-      Marker.centralizeUserMarker @position
-      @refreshMap()
-
-    google.maps.event.addListener Gmap.create(), 'click', (event) =>
-      @position = [event.latLng.Xa, event.latLng.Ya]
-      Marker.centralizeUserMarker @position
-      @refreshMap()
-
+    @mapEvents()
     @prepareAutocomplete()
     @bloodFilters()
     @distanceFilters()
@@ -77,6 +68,22 @@ class window.Navigator
     $('span.institutional').css
       opacity: '0.2'
       cursor: 'none'
+
+  mapEvents: ->
+    google.maps.event.addListener Gmap.create(), 'dragend', =>
+      @position = [Gmap.create().getCenter().Xa, Gmap.create().getCenter().Ya]
+      Marker.centralizeUserMarker @position
+      @refreshMap()
+
+    google.maps.event.addListener Gmap.create(), 'click', (event) =>
+      @position = [event.latLng.Xa, event.latLng.Ya]
+      Marker.centralizeUserMarker @position
+      @refreshMap()
+
+  markerEvents: ->
+    google.maps.event.addListener Marker.userMarker(), 'dragend', (event) =>
+      @position = [event.latLng.Xa, event.latLng.Ya]
+      @refreshMap()
 
   prepareAutocomplete: ->
     @autocomplete = new google.maps.places.Autocomplete(document.getElementById('searchBox'))
