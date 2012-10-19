@@ -1,5 +1,6 @@
 class SendMailController < ApplicationController
   def create
+    params[:contact]
     @contact = SendMail.new params[:contact]
     if @contact.valid?
       Mailer.contact(@contact).deliver
