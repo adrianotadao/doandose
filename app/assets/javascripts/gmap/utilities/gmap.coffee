@@ -4,7 +4,7 @@ class window.Gmap
 
   @create: (options) ->
     _instance ?= new google.maps.Map(document.getElementById('gmap'), {
-      zoom: 15,
+      zoom: 15s,
       mapTypeId: google.maps.MapTypeId.ROADMAP
       })
     $.extend(_instance, options)
