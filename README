@@ -10,3 +10,11 @@
 
   --User position--
   Marker.userPosition(COORDINATE, OPTIONS)
+
+== Mongo
+
+* Indexes
+
+mongo
+use doandose_development
+db.addresses.ensureIndex( { loc : "2d" } )
