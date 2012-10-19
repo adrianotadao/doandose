@@ -1,5 +1,5 @@
 require 'json'
-require 'net/http'
+require 'net/https'
 
 module MandrillMailer
   module API
@@ -17,6 +17,7 @@ module MandrillMailer
         req_body.merge!(args.last) if args.last.is_a?(Hash)
 
         uri = URI.parse("#{API_URL}/#{@api_version}/#{api_method.to_s}/#{args.first.to_s}.#{@format}")
+
         req = Net::HTTP::Post.new(uri.path)
         req.body = JSON.dump(req_body)
         req['Content-Type'] = 'application/json'

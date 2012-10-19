@@ -3,7 +3,7 @@ class window.Contact
     @name = $('#circle_three input.name')
     @email = $('#circle_three input.email')
     @subject = $('#circle_three input.subject')
-    @message = $('#circle_three input.message')
+    @message = $('#circle_three textarea.message')
     @buttonSend = $('#circle_three .submit')
     @changed = true
 
