@@ -30,8 +30,8 @@ Doandose::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
     get :list_user
     member do
-      get '/indication_friend' => 'notifications#indication_friend', as: :indication_friend
-      post '/indication_friend' => 'notifications#send_indication', as: :send_indication
+      get :indication_friend
+      post :send_indication
       get :confirm
       get :undo_confirm
       post :confirmed
