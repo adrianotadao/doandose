@@ -17,6 +17,7 @@ pt-BR:
       contact: 'Contatos'
       user: 'Usuario'
     campaign:
+      title: 'Campanhas'
       active: 'Ativo'
       title_index: 'Listagem de campanhas'
       title_new: 'Inserir nova campanha'

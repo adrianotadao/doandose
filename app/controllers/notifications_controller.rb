@@ -39,6 +39,23 @@ class NotificationsController < ApplicationController
     @person_notifications = @notification.person_notifications
   end
 
+  def indication_friend
+    @notification = Notification.find_by_slug params[:id]
+    @indication_friend = IndicationFriend.new
+  end
+
+  def indication_friend_send
+    @notification = Notification.find_by_slug params[:id]
+    @indication_friend = IndicationFriend.new params[:indication_friend]
+
+    if @indication_friend.valid?
+      Mailer.indication_friend(@indication_friend).deliver
+      redirirect_to notification_path(@notification)
+    else
+      render 'indication_friend'
+    end
+  end
+
   private
     def save_confirmed_notification
       @person_notification = @notification.person_notifications.new params[:person_notification]

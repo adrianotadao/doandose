@@ -27,6 +27,7 @@
         .action
           = participate_button(notification)
           = link_to t('buttons.show'), notification, class: 'button gray'
+          = link_to t('label.indicate'), indication_friend_notification_path(notification), class: 'button gray'
 
     = will_paginate @notifications
 

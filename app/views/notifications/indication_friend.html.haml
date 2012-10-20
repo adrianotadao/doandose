@@ -1,0 +1,18 @@
+#indicate
+  %h1= t('label.indicate_friend')
+
+  = simple_form_for indication_friend_send_notification_path do |f|
+
+    = f.text_field :sender, placeholder: t('label.sender')
+    = error_for(@indication_friend, :sender)
+
+    = f.text_field :email, placeholder: t('label.email')
+    = error_for(@indication_friend, :email)
+
+    = f.text_field :subject, placeholder: t('label.subject')
+    = error_for(@indication_friend, :subject)
+
+    = f.text_area :message, placeholder: t('label.message'), value: message(@notification)
+    = error_for(@indication_friend, :message)
+
+    = f.button :submit, t('label.send'), class: 'button save'

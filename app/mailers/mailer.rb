@@ -14,4 +14,9 @@ class Mailer < ActionMailer::Base
     @contact = contact
     mail subject: contact.subject, to: Settings.contact_email, reply_to: contact.email
   end
+
+  def indication_friend(friend)
+    @friend = friend
+    mail subject: friend.subject, to: friend.sender, reply_to: friend.email
+  end
 end
