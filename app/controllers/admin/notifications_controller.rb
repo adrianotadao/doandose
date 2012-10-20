@@ -28,7 +28,7 @@ class Admin::NotificationsController < Admin::BaseController
     if @notification.save
       redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 
