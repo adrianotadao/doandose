@@ -8,9 +8,6 @@ class IndicationFriend
     format: { with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
   def initialize(attributes = {})
-    p attributes
-    p attributes[:message]
-    p attributes[:subject]
     @message = attributes[:message]
     @subject = attributes[:subject]
     @email = attributes[:email]
@@ -19,5 +16,9 @@ class IndicationFriend
 
   def persisted?
     false
+  end
+
+  def to_key
+    persisted? ? false : nil
   end
 end

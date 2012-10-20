@@ -41,18 +41,18 @@ class NotificationsController < ApplicationController
 
   def indication_friend
     @notification = Notification.find_by_slug params[:id]
-    @indication_friend = IndicationFriend.new
+    @send_indication = IndicationFriend.new
   end
 
-  def indication_friend_send
+  def send_indication
     @notification = Notification.find_by_slug params[:id]
     @indication_friend = IndicationFriend.new params[:indication_friend]
 
     if @indication_friend.valid?
       Mailer.indication_friend(@indication_friend).deliver
-      redirirect_to notification_path(@notification)
+      redirect_to notification_path(@notification)
     else
-      render 'indication_friend'
+      redirect_to indication_friend_notification_path
     end
   end
 
