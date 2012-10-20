@@ -1,64 +1,63 @@
+@import mixings/content
+
+.content_notifications
+  width: 742px
+
+#notification_confirm, .content_notifications, #notification_show, #list_user
+  +container
+  .title
+    +title
+    .counter
+      margin-top: 10px
+      b
+        font-weight: boldS
+        &.count, a
+          color: #5A0505
+
+  #information_notification
+    +information
+    span
+      +span_position
+    span.label
+      +span_label
+    span.text
+      +span_text
+
+  .mini_map
+    +mini_map
+
+  .social
+    +social
+
+  .action
+    float: left
+    width: 138px
+    margin-left: 24px
+    a
+      margin-top: 10px
+
 #notification_confirm
   display: inline-block
-  #information_notification
-    float: left
-    span
-      margin-top: 24px
   #gmap
     float: left
     margin-left: 40px
   form
-    width: 121px
-    display: inline-block
-    position: relative
     bottom: 105px
-    right: 270px
+    left: 40px
+    position: relative
+    width: 121px
     input[type='submit']
       line-height: 0px
 
   .show_instruction
     width: 122px
     position: relative
-    bottom: 42px
-    left: 559px
-#information_notification
-  span
-    margin-top: 10px
-  span.label
-    clear: both
-    display: block
-    float: left
-    font-weight: bold
-    margin-right: 16px
-    width: 124px
-    text-align: right
-    &.label:after
-      content: ':'
-  span.text
-    float: left
+    bottom: 22px
+    left: 632px
 
 #notification_show
-  .title
-    margin-bottom: 10px
-  #information_notification
-    float: left
-    span
-      margin-top: 30px
-  .social
-    clear: both
-    float: left
-    width: 330px
-    margin-top: 20px
-    .fb_share
-      float: left
-    .twitter_share
-      float: left
-      margin-left: 10px
-  #gmap
-    float: right
-
   #directionPanelControl
-    margin-left: 250px
+    margin-left: 576px
     clear: both
     text-align: right
     span
@@ -66,6 +65,10 @@
       cursor: pointer
   #routePanel
     width: 910px
+
+  a
+    float: left
+    margin-left: 10px
 
 #list_user
   width: 420px

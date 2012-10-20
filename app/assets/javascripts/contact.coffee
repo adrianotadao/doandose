@@ -7,10 +7,9 @@ class window.Contact
     @buttonSend = $('#circle_three input:submit')
     @changed = undefined
 
-    @change()
+    $('#circle_three input').change => @changed = true
     @buttonSend.click => @send() if @changed == undefined || @changed == true
-
-    $('#circle_three input, textarea').keypress => @hideInformation()
+    $('#circle_three input, textarea').keypress => @removeInformation()
 
   send: ->
     $.ajax
@@ -73,9 +72,5 @@ class window.Contact
       @changed = false
       "<div class='information'>#{message}</div>"
 
-  change: ->
-    $('#circle_three input').change =>
-        @changed = true
-
-  hideInformation: ->
-    $('.information').hide()
+  removeInformation: ->
+    $('#circle_three .information').remove()

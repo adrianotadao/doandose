@@ -2,16 +2,20 @@
   %h1= t('views.campaign.title')
   - unless @campaigns.blank?
     - for campaign in @campaigns
-      .content
-        %div
-          %h2= campaign.title
-          .description= campaign.content
 
-        #mini_map
+      .content_campaigns
+        %h2= campaign.title
 
-        .action
-          = link_to t('buttons.participe'), '#', :class => 'button red'
-          = link_to t('buttons.show'), '#', :class => 'button gray'
+        %span.label= t('label.content')
+        %span.text= campaign.content
+
+        %span.label= t('label.quantity')
+        %span.text= campaign.quantity
+
+        %span.label= t('label.expired_at')
+        %span.text= campaign.expired_at
 
   - else
     .empty_list= t('label.empty')
+
+

@@ -23,6 +23,7 @@ pt-BR:
       title_edit: 'Editar campanha'
       expired_at: 'Ate a data'
     notification:
+      title: 'Notificacoes'
       active: 'Ativo'
       quantity: 'Quantidade de bolsas'
       situation: 'Situacao'

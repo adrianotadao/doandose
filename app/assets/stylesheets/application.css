@@ -3,10 +3,10 @@
 //= require typography
 //= require menu
 //= require button
-//= require site
+//= require footer
 //= require admin/form
 
-//= require people
+//= require subscribe
 //= require pages
 //= require shared
 //= require views
@@ -17,4 +17,4 @@
 //= require login
 //= require paginate
 //= require notification
-//= require content
+//= require campaign

@@ -3,9 +3,9 @@
   - if admin_signed_in?
     = render 'shared/nav/admin'
   - else
+    = render 'shared/nav/public'
+
     - if user_signed_in?
       = render 'shared/nav/user'
     - elsif company_signed_in?
       = render 'shared/nav/institution'
-    - else
-      = render 'shared/nav/public'
