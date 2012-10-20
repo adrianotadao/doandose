@@ -61,13 +61,39 @@ class window.Notification
     { blood: $('#bloods span.selected').text(), distance: @distance }
 
   onSuccess: (options) ->
+    html = "<table class='result'>"
+    html += "<thead>
+              <tr>
+                <th class='distance'>Distancia</th>
+                <th class='name'>Nome</th>
+                <th class='address'>Endereço</th>
+              </tr>
+            </thead>
+            <tbody>"
 
-    html = '<ul>'
     options.people.map (person) =>
       marker = Marker.person([person.lat, person.lng])
-      PersonList.add {id: person.id, marker: marker}
+      PersonList.add {id: person.id, marker: marker, distance: "#{person.distance[0]}#{person.distance[1]}"}
 
-      html += "<li>#{person.name} - #{person.address}</li>"
+      html += "<tr id = '#{person.id}'>
+                  <td>#{person.distance[0]}#{person.distance[1]}</td>
+                  <td>#{person.name}</td>
+                  <td>#{person.address}</td>
+                </tr>"
 
-    html += '</ul>'
+    html += '</tbody></table>'
     $('#result').html html
+
+    @markerEvents()
+
+  markerEvents: ->
+    infowindow = new google.maps.InfoWindow
+
+    $('#result table tbody tr').mouseover (e) =>
+      infowindow.close()
+      for person in PersonList.list()
+        if person.id == $(e.currentTarget).attr('id')
+          marker = person.marker
+          infowindow.setContent person.distance
+          break
+      infowindow.open(Gmap.create(), marker)
