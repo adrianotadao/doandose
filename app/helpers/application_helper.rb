@@ -18,6 +18,7 @@ module ApplicationHelper
   end
 
   def error_for(record, attribute)
+    p record, attribute
     unless record.errors[attribute].blank?
       message = record.errors[attribute].first
       if message
