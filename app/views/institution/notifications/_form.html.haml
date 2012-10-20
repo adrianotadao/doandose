@@ -8,6 +8,17 @@
 
 %input{ type: 'button', id: 'buttonFilter', value: 'Buscar' }
 
+#gmap{style: 'width:1000px;height:430px;'}
+
+#filters
+  #bloods
+    - for blood in Blood.scoped
+      %span= blood.name
+
+  #distances
+    .range
+    %span.range_value 1
+
 #result
 
 - content_for :javascript do
