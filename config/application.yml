@@ -12,6 +12,7 @@ development: &defaults
     identity:
 
   mandrill_api_key: 3e4b0875-73c5-40b7-b32f-3b7aefbd834a
+  domain: 'http://staging.doando.se/'
   mail:
     delivery_method: smtp
     address: smtp.gmail.com

@@ -2,7 +2,7 @@
   %span.shared= t('label.shared_ideia')
 
   #facebook
-    - facebook_like 'http://staging.doando.se', { :width => 100, :send => true, no_override: true }
+    - facebook_like Settings.domain, { :width => 100, :send => true, no_override: true }
 
   #twitter
-    - twitter_like 'http://staging.doando.se', "Ajude uma vida doando.se !", :hash_tags => ['doarsangue']
+    - twitter_like Settings.domain, "Ajude uma vida doando.se !", :hash_tags => ['doarsangue']

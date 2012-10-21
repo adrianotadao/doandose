@@ -56,12 +56,23 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def complete
+    @notification = Notification.find_by_slug params[:notification_id]
+    person = current_user.authenticable
+
+    if @notification.person_notifications.is_confimed( person.id ).exists?
+      @qr_code = QRCode::QRCode.new( notification_url(@notification), :size => 10, leve: :l )
+    else
+      redirect_to notification_url(@notification)
+    end
+  end
+
   private
     def save_confirmed_notification
       @person_notification = @notification.person_notifications.new params[:person_notification]
 
       if @person_notification.save
-        redirect_to notifications_path
+        redirect_to notification_complete_path(@notification)
       else
         render action: 'confirm'
       end

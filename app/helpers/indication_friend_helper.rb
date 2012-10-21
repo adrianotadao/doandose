@@ -6,7 +6,7 @@ module IndicationFriendHelper
       do tipo #{attr.blood.name}.
       Tempo maximo para participar da notificacao #{attr.alerted_at}.
 
-      Acesse: staging.com.br/notification/#{attr.slug}
+      Acesse: #{Settings.domain}#{attr.slug}
     "
   end
 end
