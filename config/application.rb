@@ -19,7 +19,7 @@ module Doandose
     config.filter_parameters += [:password]
     config.assets.enabled = true
     config.assets.version = '1.0'
-    config.assets.precompile += %w( admin.js admin.css mailer.css institution.js )
+    config.assets.precompile += %w( admin.js admin.css mailer.css institution.js institution.css )
     initializer :add_fonts, :group => :all, :after => :append_assets_path do
        config.assets.paths.unshift Rails.root.join('vendor', 'fonts').to_s
     end

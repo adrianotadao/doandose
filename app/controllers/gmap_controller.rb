@@ -24,7 +24,6 @@ class GmapController < ApplicationController
         end
       end
     end
-
     render json: { people: @people.compact, companies: @companies.compact}
   end
 
@@ -36,11 +35,17 @@ class GmapController < ApplicationController
     @people = GMap.elements_by_distance(position, distance, 'Person').map(&:addressable).map do |r|
       if blood_type
         if r.blood.name.in? blood_type
-          { name: r.name, address: r.address.formated_address, lat: r.address.loc[0], lng: r.address.loc[1] }
+          {
+            id: r.id,
+            name: r.name,
+            address: r.address.formated_address,
+            lat: r.address.loc[0],
+            lng: r.address.loc[1],
+            distance: GMap.distance(position, [r.address.loc[0], r.address.loc[1]])
+          }
         end
       end
     end
-
-    render json: { people: @people.compact }
+    render json: { people: @people.compact.sort_by{|r| r[:distance][2]} }
   end
 end
