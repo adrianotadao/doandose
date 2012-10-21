@@ -1,6 +1,8 @@
 = render 'notifications/complete'
+
 .action
   %span
     %b Antes de imprimir se concientize como  meio ambiente e utilize o QRCODE ou PDF.
-  = link_to t('label.print'), notification_complete_path(@notification), class: 'button gray print'
-  =# link_to t('label.pdf'), notification_complete_path(@notification, format: 'pdf'), class: 'button gray print'
+
+  = link_to t('label.print'), notification_print_path(@notification), target: '_blank',  class: 'button gray print'
+  = link_to t('label.pdf'), notification_print_path(@notification, :format => "pdf"), target: '_blank',  class: 'button gray print'

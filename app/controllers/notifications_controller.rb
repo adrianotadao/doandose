@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  layout '/layouts/print', only: :print
   before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm, :complete]
 
   def index
@@ -65,6 +66,11 @@ class NotificationsController < ApplicationController
     else
       redirect_to notification_url(@notification)
     end
+  end
+
+  def print
+    @notification = Notification.find_by_slug params[:notification_id]
+    @qr_code = QRCode::QRCode.new( notification_url(@notification), :size => 10, leve: :l )
   end
 
   private

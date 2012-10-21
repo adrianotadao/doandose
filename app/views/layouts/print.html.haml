@@ -8,3 +8,6 @@
   %body
     = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
     = yield
+
+    = javascript_include_tag "application"
+    = yield :javascript
