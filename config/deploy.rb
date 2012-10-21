@@ -44,7 +44,7 @@ namespace :assets do
     run "cp #{release_path}/config/server/#{rails_env}/mongoid.yml #{release_path}/config/mongoid.yml"
     run "cp #{release_path}/config/server/rvmrc #{release_path}/.rvmrc"
   end
-  
+
   task :bundle do
     run "cd #{release_path} && LC_ALL='en_US.UTF-8' RAILS_ENV='#{ rails_env }' bundle install --without test development"
   end
