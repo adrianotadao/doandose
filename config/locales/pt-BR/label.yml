@@ -47,6 +47,8 @@ pt-BR:
     participant: 'Participantes'
     password: 'Senha'
     password_confirmation: 'Confirme senha'
+    print: 'Imprimir'
+    pdf: 'pdf'
     quantity: 'Quantidade'
     responsible: 'Responsabilidade'
     remaining: 'ainda restam'

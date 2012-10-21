@@ -14,15 +14,6 @@
         &.count, a
           color: #5A0505
 
-  #information_notification
-    +information
-    span
-      +span_position
-    span.label
-      +span_label
-    span.text
-      +span_text
-
   .mini_map
     +mini_map
 
@@ -84,3 +75,43 @@
     margin: 10px
     padding: 10px
     text-align: left
+
+#complete
+  +container
+  .thank
+    text-align: justify
+    margin: 30px 0
+    display: block
+  .qrcode
+    float: right
+    b
+      font-weight: bold
+      margin: 10px
+      display: block
+    .action
+      margin-top: 20px
+      clear: both
+      float: right
+      span
+        display: block
+        width: 350px
+        text-align: justify
+      a
+        clear: both
+        margin: 10px 0 0 218px
+
+#information_notification
+  +information
+  span
+    +span_position
+  span.label
+    +span_label
+  span.text
+    +span_text
+  .location
+    display: inline-block
+    clear: both
+    margin-top: 20px
+    h3
+      width: 380px
+      font-size: 24px

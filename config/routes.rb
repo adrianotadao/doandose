@@ -30,6 +30,7 @@ Doandose::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
     get :list_user
     get :complete
+    get :print
     member do
       get :indication_friend
       post :send_indication

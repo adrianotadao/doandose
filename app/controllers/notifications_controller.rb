@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm]
+  before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm, :complete]
 
   def index
     @notifications = Notification.actives.paginate(:page => params[:page])

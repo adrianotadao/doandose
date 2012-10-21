@@ -1,3 +1,6 @@
-%h2 Obrigado por ajudar quem precisa!
-%p Segue as informacoes para acessar pelo celular.
-- qr_code(@qr_code)
+= render 'notifications/complete'
+.action
+  %span
+    %b Antes de imprimir se concientize como  meio ambiente e utilize o QRCODE ou PDF.
+  = link_to t('label.print'), notification_complete_path(@notification), class: 'button gray print'
+  =# link_to t('label.pdf'), notification_complete_path(@notification, format: 'pdf'), class: 'button gray print'

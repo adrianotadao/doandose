@@ -159,6 +159,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    pdfkit (0.5.2)
     polyglot (0.3.3)
     premailer (1.7.3)
       css_parser (>= 1.1.9)
@@ -263,6 +264,7 @@ DEPENDENCIES
   omniauth-identity (= 1.0.0)
   omniauth-twitter (= 0.0.13)
   paperclip (= 2.7.0)
+  pdfkit (= 0.5.2)
   premailer-rails3 (= 1.3.1)
   rails (= 3.2.8)
   rb-inotify (= 0.8.6)

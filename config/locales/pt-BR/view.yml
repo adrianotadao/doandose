@@ -25,6 +25,7 @@ pt-BR:
       expired_at: 'Ate a data'
     notification:
       title: 'Notificacoes'
+      address_company: 'Informacoes de onde ocorrera a doacao'
       active: 'Ativo'
       quantity: 'Quantidade de bolsas'
       situation: 'Situacao'
