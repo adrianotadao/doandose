@@ -87,6 +87,10 @@ class User
     end
 
     def social_networks(user)
+      p user.authentications
+      p user.authentications.map{ |auth| auth.provider}.join(',')
+      p 'user -------------------------------'
+
       user.authentications.map{ |auth| auth.provider}.join(',') if user
     end
 

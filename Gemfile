@@ -6,6 +6,8 @@ gem 'mongoid', '2.4.11'
 gem 'bson_ext', '1.6.4'
 
 #gem 'pdfkit', '0.5.2'
+gem 'rqrcode', '0.4.2'
+
 gem 'jquery-rails', '1.0.19'
 gem 'haml', '3.1.6'
 gem 'simple_form', '1.5.2'

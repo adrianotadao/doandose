@@ -15,5 +15,5 @@ class Authentication
   validates_presence_of :uid, :provider, :user
   validates_uniqueness_of :provider, scope: :user_id
   validates_uniqueness_of :uid, scope: :provider
-  validates_inclusion_of :provider, in: %w(identity facebook twitter windowslive google)
+  validates_inclusion_of :provider, in: %w(identity facebook twitter windowslive google_oauth2)
 end

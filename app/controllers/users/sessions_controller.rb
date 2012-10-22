@@ -50,13 +50,13 @@ class Users::SessionsController < ApplicationController
       if @authentication.provider.eql?('identity')
         redirect_to root_path
       else
-        render 'callback_popup'
+        render 'users/sessions/callback_popup'
       end
     end
 
     def sign_up
       @user = User.parse_omniauth(auth_hash)
-      render 'callback_signup'
+      render 'users/sessions/callback_signup'
     end
 
     def add_new_authentication
@@ -69,6 +69,6 @@ class Users::SessionsController < ApplicationController
           }
       }
       @authentications = User.social_networks(current_user)
-      render '/sessions/callback_close_popup_edit'
+      render 'users/sessions/callback_close_popup_edit'
     end
 end
