@@ -1,9 +1,9 @@
 .social_links
 
-  = link_to image_tag('twitter.png'), '/auth/twitter', :title => 'Twitter', :class => 'twitter'
-  = link_to image_tag('facebook.png'), '/auth/facebook', :title => 'Facebook', :class => 'facebook'
-  = link_to image_tag('google.png'), '/auth/google_oauth2', :title => 'Conta Google', :class => 'google'
+  = link_to image_tag('twitter.png'), '/auth/twitter', title: 'Twitter', class: 'twitter'
+  = link_to image_tag('facebook.png'), '/auth/facebook', title: 'Facebook', class: 'facebook'
+  = link_to image_tag('google.png'), '/auth/google_oauth2', title: 'Conta Google', class: 'google_oauth2'
 
 - content_for :javascript do
   :javascript
-    //window.user = new SocialButtons()
+    window.user = new SocialButtons()
