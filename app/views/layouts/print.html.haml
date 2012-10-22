@@ -2,8 +2,7 @@
 !!! 1.1
 %html{xmlns: 'http://www.w3.org/1999/xhtml', lang: 'pt-br'}
   %head
-    = yield :stylesheet
-    = stylesheet_link_tag 'print'
+    = stylesheet_link_tag 'print', media: 'all'
 
   %body
     = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
