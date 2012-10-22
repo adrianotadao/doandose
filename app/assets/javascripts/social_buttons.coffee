@@ -1,12 +1,14 @@
 class window.SocialButtons
   constructor: ->
-    $('ul.social_links li').mouseenter (event) =>
+    @links = $('.social_links a')
+
+    @links.mouseenter (event) =>
       @onMouseEnter(event)
 
-    $('ul.social_links li').mouseleave (event) =>
+    @links.mouseleave (event) =>
       @onMouseLeave(event)
 
-    $('ul.social_links li a').click (e) =>
+    @links.click (e) =>
       @open $(e.currentTarget).attr('href')
       e.stopPropagation()
       return false
@@ -29,3 +31,15 @@ class window.SocialButtons
 
     $('form#new_person .form.user').append("<input type='hidden' name='person[user_attributes][authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
                               <input type='hidden' name='person[user_attributes][authentications_attributes][0][uid]' value='#{attr.authentication.uid}'>")
+
+    @check(attr)
+
+  check: (attr) ->
+    attr = attr.authentication.provider if attr.authentication
+    console.log $(".social_links a.#{attr}"), attr
+    $(".social_links a.#{attr}")
+      .css('opacity', '0.2')
+      .addClass('selected')
+      .append("<span class='check'></span>")
+      .attr('href', '#')
+      .unbind('click')

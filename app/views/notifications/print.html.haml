@@ -1,2 +1,6 @@
-= layout 'mailer'
 = render 'notifications/complete'
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      window.print();
+    })
