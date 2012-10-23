@@ -5,6 +5,8 @@
     - for blood in Blood.scoped
       %span= blood.name
 
+    = error_for(@notification, :blood_type)
+
   #distances
     .range
     %span.range_value 1
@@ -13,18 +15,25 @@
 
 #result
 
-= form_for @notification do |f|
+= form_for @notification, url: institution_notifications_path do |f|
   = f.label :title, t('label.title')
   = f.text_field :title
+  = error_for(@notification, :title)
 
   = f.label :quantity, t('label.quantity')
   = f.text_field :quantity
+  = error_for(@notification, :quantity)
+
+  = f.label :situation, t('label.situation')
+  = f.select :situation, situations
+  = error_for(@notification, :situation)
 
   = f.label :observation, t('label.title')
   = f.text_area :observation
+  = error_for(@notification, :observation)
 
-  = f.hidden_field :blood, class: 'blood'
-  = f.hidden_field :distance, value: 1, class: 'distance'
+  = f.hidden_field :blood_type, class: 'blood'
+  = f.hidden_field :distance, class: 'distance'
 
   = f.submit 'salvar', class: 'notification'
 

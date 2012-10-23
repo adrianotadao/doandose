@@ -51,8 +51,8 @@ class GmapController < ApplicationController
     end
 
     render json: {
-                    people: @collectedPeople.compact.sort_by{|r| r[:distance][2]},
-                    counter: @people.map(&:addressable).map(&:blood).group_by(&:name).map {|k,v| [k, v.length]}
-                  }
+      people: @collectedPeople.compact.sort_by{|r| r[:distance][2]},
+      counters: @collectedPeople.compact.group_by{|r| r[:blood]}.map{|k,v| [k, v.length]}
+    }
   end
 end

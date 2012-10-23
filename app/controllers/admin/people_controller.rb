@@ -24,8 +24,6 @@ class Admin::PeopleController < Admin::BaseController
     if @person.save
       redirect_to([:admin, :people], :notice => t('flash.person.create.notice'))
     else
-      p @person.errors
-      p '------------------ errors --------------------'
       render :action => "new"
     end
   end

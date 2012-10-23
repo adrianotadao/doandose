@@ -19,4 +19,11 @@ module NotificationsHelper
       link_to count, notification_list_user_path(notification)
     end
   end
+
+  def situations
+    [
+      ['Urgente', 'urgent'],
+      ['Moderado', 'moderate']
+    ]
+  end
 end

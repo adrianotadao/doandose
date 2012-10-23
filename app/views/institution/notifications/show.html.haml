@@ -27,16 +27,16 @@
       %b= t('label.observation')
 
     %p
-      = formated_date(@notification.alerted_at)
-      %b= t('label.alerted_at')
-
-    %p
       = @notification.company.name
       %b= t('label.company')
 
+    %h1 NOTIFICADOS
+    - for person_notification in @notification.person_notifications
+      %p= person_notification.person.name
+      %p= person_notification.canceled_at
+      %p= person_notification.alerted_at
+      %p= person_notification.confirmed_at
+
   .actions
-    = link_to t('buttons.back'), admin_notifications_path, :class => 'link back'
-
-    = link_to t('buttons.edit'), edit_admin_notification_path(@notification), :class => 'link edit'
-
-    = link_to t('buttons.delete'), [:admin, @notification], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+    = link_to t('buttons.back'), institution_notifications_path, :class => 'link back'
+    = link_to t('buttons.delete'), [:institution, @notification], method: :delete, confirm: t('flash.advertise'), :class => "link delete"

@@ -6,7 +6,8 @@ class PersonNotification
   field :alerted_at, type: Time
 
   #access control
-  attr_accessible :alerted_at, :canceled_at, :confirmed_at, :person_id, :notification_id
+  attr_accessible :alerted_at, :canceled_at, :confirmed_at, :person_id,
+    :notification_id, :person, :notification
 
   #relationship
   belongs_to :person
@@ -22,6 +23,6 @@ class PersonNotification
   after_create :send_confirmation_notification_email
 
   def send_confirmation_notification_email
-    Mailer.confirmation_participation(notification_id).deliver
+    #Mailer.confirmation_participation(notification_id).deliver
   end
 end

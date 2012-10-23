@@ -8,9 +8,9 @@
       %thead
         %tr
           %th= t('label.active')
+          %th= t('label.title')
           %th= t('label.quantity')
           %th= t('label.situation')
-          %th= t('label.alerted_at')
           %th= t('label.actions')
 
       %tbody
@@ -18,13 +18,10 @@
           %tr
             %td= label_boolean(notification.active)
             %td= notification.quantity
+            %td= notification.title
             %td= notification.situation
-            %td= formated_date(notification.alerted_at)
             %td
               = link_to t('buttons.show'), institution_notification_path(notification), class: 'link show'
-
-              = link_to t('buttons.edit'), edit_institution_notification_path(notification), class: 'link edit'
-
               = link_to t('form.buttons.delete'), [:institution, notification], confirm: t('flash.advertise'), method: :delete, class: 'link delete'
   - else
     .empty= t('label.empty')
