@@ -18,7 +18,6 @@ class Admin::PeopleController < Admin::BaseController
   end
 
   def create
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.new(params[:person])
 
     if @person.save
@@ -29,8 +28,8 @@ class Admin::PeopleController < Admin::BaseController
   end
 
   def update
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.find_by_slug(params[:id])
+
     if @person.update_attributes(params[:person])
       redirect_to([:admin, @person], :notice => t('flash.person.update.notice'))
     else

@@ -15,7 +15,7 @@ class Person
   #access control
   attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday,
     :observations, :address_attributes, :contact_attributes, :user_attributes,
-    :blood, :blood_id
+    :blood, :blood_id, :lat, :lng, :loc
 
   #relationship
   belongs_to :blood
@@ -33,6 +33,11 @@ class Person
   #scopes
   scope :actives, where: { active: true }
   scope :donors, where: { donor: true }
+
+  def update_location
+    return if self.address.lat.blank? || self.address.lng.blank?
+    self.address.update_attributes(loc: [self.address.lat, self.address.lng])
+  end
 
   private
   def generate_slug

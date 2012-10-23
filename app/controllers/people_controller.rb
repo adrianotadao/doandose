@@ -10,7 +10,6 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find_by_slug params[:id]
-    @person_notifications = @person.person_notifications
   end
 
   def create

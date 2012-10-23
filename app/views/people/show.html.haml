@@ -8,7 +8,7 @@
     #perfil Editar Perfil
 
 
-  - for person_notification in @person_notifications
+  - for person_notification in @person.person_notifications
     = link_to notification_complete_path(person_notification.notification) do
       #notifications
         %h2= person_notification.notification.title
