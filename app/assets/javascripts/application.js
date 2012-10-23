@@ -23,6 +23,7 @@
 
 //= require users/user_base
 //= require users/user
+//= require users/forms
 
 //= require util
 //= require notification
