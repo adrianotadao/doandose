@@ -1,7 +1,7 @@
-%h1= t('views.person.show')
+%h1= t('views.people.show')
 
 #show_person
-  #map{:style => "width: 100%; height: 200px; padding: 0px"}
+  #map{:style => "width: 908px; height: 200px; padding: 0px"}
 
 
   = link_to edit_person_path(Person.find(current_user.authenticable_id)) do
@@ -9,14 +9,21 @@
 
 
   - for person_notification in @person_notifications
-    = link_to notification_complete_path(person_notification.notification) do
-      #notifications
-        %h2= person_notification.notification.title
-        %span.label= t('label.quantity')
-        %span.text= person_notification.notification.quantity
-        .counter
-          %b.count
-            = show_list(person_notification.notification.person_notifications.count, person_notification.notification)
-          #{t('label.participant')} -
-          #{t('label.remaining')}
-          %b.remaining #{person_notification.notification.remaining}
+    #notifications
+      %h2= link_to person_notification.notification.title, notification_complete_path(person_notification.notification)
+      %span.label= t('label.quantity')
+      %span.text= person_notification.notification.quantity
+      .counter
+        %b.count
+          = show_list(person_notification.notification.person_notifications.count, person_notification.notification)
+        #{t('label.participant')} -
+        #{t('label.remaining')}
+        %b.remaining #{person_notification.notification.remaining}
+
+      .social
+        .fb_share
+          = facebook_share 'Compartilhe!', person_notification.notification.slug
+        .twitter_share
+          - twitter_like notification_url(person_notification.notification.slug), notification_twitt_label(true, person_notification.notification), :hash_tags => ["doandose", person_notification.notification.blood.name]
+
+  = will_paginate @person_notifications

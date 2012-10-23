@@ -1,12 +1,13 @@
 #list_user
   %h2= t('label.list_user')
   %span.title= @notification.title
+
+  %span.top
+    .line= t('label.name')
+    .line= t('label.city')
+    .line= t('label.state')
   - for person_notification in @person_notifications
-    %span.top
-      .line= t('label.name')
-      .line= t('label.street')
-      .line= t('label.city')
     %span.body
-      .line= truncate( person_notification.person.name, length: 20)
-      .line= truncate( person_notification.person.address.street, length: 20)
-      .line= truncate(  person_notification.person.address.city, length: 20)
+      .line= truncate( person_notification.person.name, length: 15)
+      .line= truncate( person_notification.person.address.city, length: 15)
+      .line= truncate(  person_notification.person.address.state, length: 15)

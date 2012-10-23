@@ -34,7 +34,7 @@ pt-BR:
     indicate: 'Indicar'
     is_donor: 'E doador?'
     language: 'Idioma'
-    list_user: 'Listagem dos usuarios'
+    list_user: 'Doadores confirmados'
     logo: 'Logomarca'
     login_title: 'Faca o login'
     login: 'Login'

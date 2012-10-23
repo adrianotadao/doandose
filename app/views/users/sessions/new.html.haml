@@ -11,6 +11,8 @@
 
       = submit_tag t('label.login'), class: 'button red'
 
-
-
       = link_to 'esqueceu sua senha?', '#', class: 'forgot_password'
+
+- content_for :javascript do
+  :javascript
+    window.social = new SocialButtons()

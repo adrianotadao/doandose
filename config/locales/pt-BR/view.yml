@@ -41,6 +41,7 @@ pt-BR:
       donor: 'Doador'
       name: 'Nome'
       sex: 'Sexo'
+      show: 'Perfil'
       title_index: 'Listagem dos usuarios'
       title_edit: 'Edicao usuario'
       title_new: 'Adicionar usuario'

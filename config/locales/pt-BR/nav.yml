@@ -12,6 +12,7 @@ pt-BR:
     page: 'Paginas'
     partners: 'Parceiros'
     people: 'Doadores'
+    people_edit: 'Perfil'
     users_new_sessions: 'Login'
     users_destroy_sessions: 'Sair'
     notifications: 'Notificacoes'
