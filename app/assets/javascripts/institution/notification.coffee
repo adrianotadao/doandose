@@ -3,32 +3,45 @@ class window.Notification
     @request = undefined
     @blood = $('.blood')
     @distance = $('.distance')
-    @submitButton = $(':submit.notification')
+    @slider = $("#distances .range")
 
     @prepareBloods()
-
     Marker.loggedUserPosition()
     @initializeUserRadius()
     @distanceFilters()
+    @hasValues()
+
+  hasValues: ->
+    if @blood.val() != ''
+      @find()
+
+    if @distance.val() == ''
+      @distance.val(1)
 
   initializeUserRadius: ->
     GmapDrawCircle.create({ marker: Marker.userMarker(), radius: 1000 })
     GmapDrawCircle.centralize [Marker.userMarker().getPosition().Xa, Marker.userMarker().getPosition().Ya]
 
   distanceFilters: ->
-    $("#distances .range").slider {
+    @slider.slider {
       range: "max",
       min: 1,
       max: 200,
       slide: ( event, ui ) =>
         @distance.val(ui.value)
-        $('span.range_value').text("#{@distance.val()} KM")
+        @updateDistance()
         GmapDrawCircle.changeRadius parseInt(@distance.val()) * 1000
         clearInterval(@interval)
         @interval = window.setTimeout (=>
           @refreshMap()
         ), 1000
     }
+
+    @slider.slider('value', @distance.val())
+    @updateDistance()
+
+  updateDistance: ->
+    $('span.range_value').text("#{@distance.val()} KM")
 
   refreshMap: ->
     @clearMap()
@@ -46,11 +59,11 @@ class window.Notification
       @bloods.removeClass 'selected'
       $(e.currentTarget).addClass 'selected'
       @blood.val($(e.currentTarget).text())
-      @submitButton.show()
       @refreshMap()
 
   find: ->
     @query.abort() if @query != undefined
+    return if @blood.val() == '' || @distance.val() == ''
     @request = $.ajax
       url: '/find_elements_to_notification'
       type: 'POST'
@@ -59,7 +72,7 @@ class window.Notification
       error: (xhr, error) -> console.log xhr, error
 
   filters: ->
-    { blood: $('#bloods span.selected').text(), distance: @distance.val() }
+    { blood: @blood.val(), distance: @distance.val() }
 
   onSuccess: (options) ->
     html = "<table class='result'>"
@@ -72,10 +85,6 @@ class window.Notification
               </tr>
             </thead>
             <tbody>"
-
-    $('#counter').empty()
-    options.counter.map (counter) =>
-      $('#counter').append "<p>#{counter[0]} = #{counter[1]}</p>"
 
     options.people.map (person) =>
       marker = Marker.person([person.lat, person.lng])
@@ -92,6 +101,12 @@ class window.Notification
     $('#result').html html
 
     @markerEvents()
+    @counter(options.counters)
+
+  counter: (counters) ->
+    $('#counter').empty()
+    counters.map (counter) =>
+      $('#counter').append "<p>#{counter[0]} = #{counter[1]}</p>"
 
   markerEvents: ->
     infowindow = new google.maps.InfoWindow

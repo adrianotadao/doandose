@@ -13,7 +13,9 @@ class Person
   field :observations, type: String
 
   #access control
-  attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday, :observations, :address_attributes, :contact_attributes, :user_attributes, :blood, :blood_id
+  attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday,
+    :observations, :address_attributes, :contact_attributes, :user_attributes,
+    :blood, :blood_id
 
   #relationship
   belongs_to :blood

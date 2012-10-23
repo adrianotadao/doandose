@@ -9,20 +9,23 @@ class Notification
   field :title, type: String
   field :observation, type: String
 
+  attr_accessor :blood_type, :distance
+
   #relationship
   belongs_to :company
   belongs_to :blood
-  has_many :person_notifications
-
-  accepts_nested_attributes_for :person_notifications, allow_destroy: true
+  has_many :person_notifications, autosave: true
 
   #access control
   attr_accessible :quantity, :situation, :active, :blood_id, :blood,
                   :company_id, :title, :observation, :company,
-                  :person_notifications_attributes
+                  :person_notifications_attributes, :blood_type, :distance,
+                  :person_notifications
 
   #validations
-  validates_presence_of :company, :blood, :situation, :quantity, :alerted_at
+  validates_presence_of :company, :blood, :situation, :quantity, :blood_type,
+                        :person_notifications
+  validates_numericality_of :quantity
 
   #scopes
   scope :actives, where(active: true)
@@ -39,5 +42,4 @@ class Notification
   def generate_slug
     title.parameterize
   end
-
 end
