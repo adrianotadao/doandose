@@ -1,0 +1,50 @@
+@import mixings/content
+
+#show_person
+  +container
+  #map
+    border: 1px solid
+  #notifications
+    border: 1px solid #ccc
+    width: 260px
+    margin: 10px
+    padding: 10px
+    float: left
+    h2
+      margin: 10px 0
+    span
+      margin: 10px 0px
+      display: block
+      float: left
+      color: #000
+      &.label
+        font-weight: bold
+        margin-left: 4px
+      &.label:after
+        content: ':'
+      &.text
+        margin-left: 5px
+    .counter
+      clear: both
+      width: 241px
+      a
+        b
+          color: #000
+          font-weight: bold
+
+  a
+    text-decoration: none
+    #perfil
+      clear: both
+      width: 900px
+      margin-top: 5px
+      background: #969696
+      padding: 10px
+      cursor: pointer
+      color: #fff
+
+      font-weight: bold
+      font-family: 'geosanslight'
+      font-size: 20pt
+      &:hover
+        background: #696969

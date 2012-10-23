@@ -64,17 +64,31 @@
 #list_user
   width: 420px
   margin: 0 auto
+  span.top
+    width: 100%
+    background: #ccc
+    display: inline-block
+    .line
+      float: left
+      padding: 5px
+      font-weight: bold
+      width: 128px
+      border: 1px solid #9B9B9B
   span.title
     font-weight: bold
     font-size: 15px
-    margin-top: 10px
-  span.line
-    border-bottom: 1px dashed #ccc
+    margin: 10px auto
+    width: 100%
+  span.body
     clear: both
-    display: block
-    margin: 10px
-    padding: 10px
+    display: inline-block
     text-align: left
+    width: 421px
+    .line
+      float: left
+      width: 132px
+      border: 1px solid #9B9B9B
+      padding: 3px
 
 #complete
   +container
