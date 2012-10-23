@@ -1,12 +1,11 @@
 class window.Notification
   constructor: ->
     @request = undefined
-    @distance = 1
-    @buttonFilter = $('#buttonFilter')
+    @blood = $('.blood')
+    @distance = $('.distance')
+    @submitButton = $(':submit.notification')
 
     @prepareBloods()
-
-    @buttonFilter.click => @find()
 
     Marker.loggedUserPosition()
     @initializeUserRadius()
@@ -20,11 +19,11 @@ class window.Notification
     $("#distances .range").slider {
       range: "max",
       min: 1,
-      max: 100,
+      max: 200,
       slide: ( event, ui ) =>
-        @distance = ui.value
-        $('span.range_value').text("#{@distance} KM")
-        GmapDrawCircle.changeRadius @distance * 1000
+        @distance.val(ui.value)
+        $('span.range_value').text("#{@distance.val()} KM")
+        GmapDrawCircle.changeRadius parseInt(@distance.val()) * 1000
         clearInterval(@interval)
         @interval = window.setTimeout (=>
           @refreshMap()
@@ -46,6 +45,8 @@ class window.Notification
     @bloods.click (e) =>
       @bloods.removeClass 'selected'
       $(e.currentTarget).addClass 'selected'
+      @blood.val($(e.currentTarget).text())
+      @submitButton.show()
       @refreshMap()
 
   find: ->
@@ -58,7 +59,7 @@ class window.Notification
       error: (xhr, error) -> console.log xhr, error
 
   filters: ->
-    { blood: $('#bloods span.selected').text(), distance: @distance }
+    { blood: $('#bloods span.selected').text(), distance: @distance.val() }
 
   onSuccess: (options) ->
     html = "<table class='result'>"
@@ -66,10 +67,15 @@ class window.Notification
               <tr>
                 <th class='distance'>Distancia</th>
                 <th class='name'>Nome</th>
+                <th class='name'>Sangue</th>
                 <th class='address'>Endereço</th>
               </tr>
             </thead>
             <tbody>"
+
+    $('#counter').empty()
+    options.counter.map (counter) =>
+      $('#counter').append "<p>#{counter[0]} = #{counter[1]}</p>"
 
     options.people.map (person) =>
       marker = Marker.person([person.lat, person.lng])
@@ -77,6 +83,7 @@ class window.Notification
 
       html += "<tr id = '#{person.id}'>
                   <td>#{person.distance[0]}#{person.distance[1]}</td>
+                  <td>#{person.blood}</td>
                   <td>#{person.name}</td>
                   <td>#{person.address}</td>
                 </tr>"

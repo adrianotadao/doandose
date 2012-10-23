@@ -9,7 +9,24 @@
     .range
     %span.range_value 1
 
+#counter
+
 #result
+
+= form_for @notification do |f|
+  = f.label :title, t('label.title')
+  = f.text_field :title
+
+  = f.label :quantity, t('label.quantity')
+  = f.text_field :quantity
+
+  = f.label :observation, t('label.title')
+  = f.text_area :observation
+
+  = f.hidden_field :blood, class: 'blood'
+  = f.hidden_field :distance, value: 1, class: 'distance'
+
+  = f.submit 'salvar', class: 'notification'
 
 - content_for :javascript do
   :javascript

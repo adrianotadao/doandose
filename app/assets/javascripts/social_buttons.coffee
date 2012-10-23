@@ -36,10 +36,16 @@ class window.SocialButtons
 
   check: (attr) ->
     attr = attr.authentication.provider if attr.authentication
-    console.log $(".social_links a.#{attr}"), attr
     $(".social_links a.#{attr}")
       .css('opacity', '0.2')
       .addClass('selected')
       .append("<span class='check'></span>")
       .attr('href', '#')
       .unbind('click')
+
+  setSocialNetwork: (attr) ->
+    console.log attr
+    return unless attr
+    attr = attr.split(',')
+    for i in attr
+      @check(i)

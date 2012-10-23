@@ -2,9 +2,11 @@ class PersonNotification
   include Mongoid::Document
 
   field :confirmed_at, type: Time
+  field :canceled_at, type: Time
+  field :alerted_at, type: Time
 
   #access control
-  attr_accessible :confirmed_at, :person_id, :notification_id
+  attr_accessible :alerted_at, :canceled_at, :confirmed_at, :person_id, :notification_id
 
   #relationship
   belongs_to :person

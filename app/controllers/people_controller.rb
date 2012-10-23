@@ -19,13 +19,14 @@ class PeopleController < ApplicationController
       login @person.user
       redirect_to root_path
     else
-      p @person.errors
       render 'new'
     end
   end
 
   def edit
     @person = Person.find_by_slug params[:id]
+    @user = current_user
+    @authentications = User.social_networks(@user)
   end
 
   def update
