@@ -8,7 +8,6 @@ class Notification
   field :situation, type: String
   field :title, type: String
   field :observation, type: String
-  field :alerted_at, type: Time
 
   #relationship
   belongs_to :company
@@ -18,7 +17,7 @@ class Notification
   accepts_nested_attributes_for :person_notifications, allow_destroy: true
 
   #access control
-  attr_accessible :quantity, :situation, :alerted_at, :active, :blood_id, :blood,
+  attr_accessible :quantity, :situation, :active, :blood_id, :blood,
                   :company_id, :title, :observation, :company,
                   :person_notifications_attributes
 

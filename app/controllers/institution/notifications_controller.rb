@@ -18,15 +18,30 @@ class Institution::NotificationsController < Institution::BaseController
   end
 
   def create
-    @bloods = Blood.scoped
+    distance = params[:notification_params][:distance].to_i
+    position = current_institution.authenticable.address.loc
+    blood = params[:notification_params][:blood]
 
-    @notification = Notification.new(params[:notification])
+    @notification = Notification.new
 
-    if @notification.save
-      redirect_to([:institution, :notifications], :notice => t('flash.notification.create.notice'))
-    else
-      render :action => "new"
+    GMap.elements_by_distance(position, distance, 'Person').map(&:addressable).map do |person|
+      if person.blood.name.in? blood
+        @notification.person_notifications.new person: person
+      end
     end
+
+    p "============="
+    p @notification.save
+    p @notification.errors
+    p "============="
+
+    # @notification = Notification.new(params[:notification])
+
+    # if @notification.save
+    #   redirect_to([:institution, :notifications], :notice => t('flash.notification.create.notice'))
+    # else
+    #   render :action => "new"
+    # end
   end
 
   def update
