@@ -1,11 +1,11 @@
 # encoding: utf-8
 class Users::SessionsController < ApplicationController
   def new
+    redirect_to root_path if current_user
   end
 
   def create
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
-
     case
       when @authentication then sign_in
       when current_user then add_new_authentication
@@ -37,8 +37,6 @@ class Users::SessionsController < ApplicationController
     end
 
     def sign_in
-      login @authentication.user
-
       if @authentication.user.authenticable_type == 'Company'
         redirect_to institution_root_path
       else
@@ -48,8 +46,10 @@ class Users::SessionsController < ApplicationController
 
     def redirect_to_user
       if @authentication.provider.eql?('identity')
+        login @authentication.user
         redirect_to root_path
       else
+        login @authentication.user
         render 'users/sessions/callback_popup'
       end
     end

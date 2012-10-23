@@ -4,12 +4,19 @@ class PeopleController < ApplicationController
     c.send(:update_user_password_with_nested_fields, :person)
   end
 
+  before_filter :authenticate_user!, only: [:edit, :update]
+
   def new
-    @person = Person.new
+    if current_user
+      redirect_to edit_person_path(Person.find(current_user.authenticable_id))
+    else
+      @person = Person.new
+    end
   end
 
   def show
     @person = Person.find_by_slug params[:id]
+    @person_notifications = @person.person_notifications.paginate( per_page: 3, page: params[:page])
   end
 
   def create

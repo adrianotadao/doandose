@@ -1,12 +1,13 @@
 %h1= t('label.user')
 
-= render 'shared/social'
+#edit
+  = render 'shared/social'
 
-= form_for setup_people(@person), :html => { multipart: true } do |f|
-  = render partial: 'form', locals: { f: f }
+  = form_for setup_people(@person), :html => { multipart: true } do |f|
+    = render partial: 'form', locals: { f: f }
 
-  .actions
-    = f.submit t('buttons.new'), class: 'button red'
+    .actions
+      = f.submit t('buttons.new'), class: 'button red'
 
 - content_for :javascript do
   :javascript

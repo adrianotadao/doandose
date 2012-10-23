@@ -23,7 +23,9 @@ Doandose::Application.routes.draw do
   post '/find_elements_to_map/' => 'gmap#find_elements_to_map'
   post '/find_elements_to_notification/' => 'gmap#find_elements_to_notification'
 
-  resources :people
+  resources :people do
+    get ':id/page/:page', :action => :show, :on => :collection
+  end
   resources :page, only: [:index, :show]
 
   resources :notifications, only: [:index, :show] do
