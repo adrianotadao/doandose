@@ -1,9 +1,17 @@
 %h2= t('views.company.contact')
 = f.nested_fields_for :contact do |contact|
   .form
+    = contact.label :ddd_phone, t('label.ddd_phone')
+    = contact.text_field :ddd_phone
+    = error_for(record.contact, :ddd_phone)
+
     = contact.label :phone, t('label.phone')
     = contact.text_field :phone
     = error_for(record.contact, :phone)
+
+    = contact.label :ddd_cellphone, t('label.ddd_cellphone')
+    = contact.text_field :ddd_cellphone
+    = error_for(record.contact, :ddd_cellphone)
 
     = contact.label :cellphone, t('label.cellphone')
     = contact.text_field :cellphone
