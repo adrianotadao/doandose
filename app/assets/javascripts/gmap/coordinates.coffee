@@ -9,15 +9,15 @@ class window.Coordinates
     (result, status) =>
       @setAddress(result) if status == 'OK'
 
-  getCoordinatesByAddress: (address) ->
+  getCoordinatesByAddress: (type, address) ->
     @geocode.geocode {
       address: address
     },
     (result, status) =>
-      @setCoordinates(result) if status == 'OK'
+      @setCoordinates(type, result) if status == 'OK'
 
-  setCoordinates: (result) =>
-    $(this).trigger('searchCoordinatesComplete', $.extend({ address: result[0] }, @parseCoordinates(result)))
+  setCoordinates: (type, result) =>
+    $(this).trigger("#{type}SearchCoordinatesComplete", $.extend({ address: result[0] }, @parseCoordinates(result)))
 
   setAddress: (result) =>
     $(this).trigger('searchAddressComplete', $.extend({ address: result[0] }, @parseCoordinates(result)))

@@ -12,8 +12,8 @@ class window.AddressableGmap
     @markerEvents()
     @mapEvents()
 
-  searchMapCoordinates: (address) ->
-    @coordinates.getCoordinatesByAddress(address)
+  searchMapCoordinates: (type, address) ->
+    @coordinates.getCoordinatesByAddress(type, address)
 
   userPosition: ->
     @marker = Marker.nonLoggedUserPosition({icon: null, draggable: true})
@@ -39,9 +39,13 @@ class window.AddressableGmap
       @createMarker([result.lat, result.lng])
       $(this).trigger 'addressComplete', { result: result }
 
-    $(@coordinates).bind 'searchCoordinatesComplete', (event, result) =>
+    $(@coordinates).bind 'postalCodeSearchCoordinatesComplete', (event, result) =>
       @createMarker([result.lat, result.lng])
-      $(this).trigger 'addressCoordinatesComplete', { result: result }
+      $(this).trigger 'postalCodeAddressCoordinatesComplete', { result: result }
+
+    $(@coordinates).bind 'numberSearchCoordinatesComplete', (event, result) =>
+      @createMarker([result.lat, result.lng])
+      $(this).trigger 'numberAddressCoordinatesComplete', { result: result }
 
   markerEvents: ->
     google.maps.event.addListener @marker, 'dragend', (event) =>
