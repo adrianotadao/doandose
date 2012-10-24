@@ -28,6 +28,7 @@ class Person
 
   #validations
   validates :donor, inclusion: { in: %w(true false) }
+  validates :sex, inclusion: { in: %w(0 1) }
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday,
                         :contact, :address, :blood, :user
   validates :name, length: { minimum: 2, maximum: 30 }
