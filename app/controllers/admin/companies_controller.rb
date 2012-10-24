@@ -19,6 +19,7 @@ class Admin::CompaniesController < Admin::BaseController
     @company = Company.new(params[:company])
 
     if @company.save
+      update_user_cookie(@company.user)
       redirect_to [:admin, @company], notice: t('flash.company.create.notice')
     else
       render action: "new"
@@ -29,6 +30,7 @@ class Admin::CompaniesController < Admin::BaseController
     @company = Company.find_by_slug(params[:id])
 
     if @company.update_attributes(params[:company])
+      update_user_cookie(@company.user)
       redirect_to [:admin, @company], notice: t('flash.company.update.notice')
     else
       render action: "edit"

@@ -9,9 +9,9 @@ class Contact
   field :email, type: String
 
   #validations
-  validates_inclusion_of :ddd_phone, in: Ddd.possibles
+  validates_inclusion_of :ddd_phone, in: Ddd.possibles, if: :ddd_phone?
   validates_presence_of :ddd_phone, :phone, unless: :cellphone?
-  validates_inclusion_of :ddd_cellphone, in: Ddd.possibles
+  validates_inclusion_of :ddd_cellphone, in: Ddd.possibles, if: :ddd_cellphone
   validates_presence_of :ddd_cellphone, :cellphone, unless: :phone?
 
   #relationship

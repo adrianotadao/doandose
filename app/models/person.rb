@@ -34,11 +34,6 @@ class Person
   scope :actives, where: { active: true }
   scope :donors, where: { donor: true }
 
-  def update_location
-    return if self.address.lat.blank? || self.address.lng.blank?
-    self.address.update_attributes(loc: [self.address.lat, self.address.lng])
-  end
-
   private
   def generate_slug
     name.parameterize
