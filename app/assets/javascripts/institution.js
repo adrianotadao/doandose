@@ -9,6 +9,8 @@
 //= require gmap/utilities/marker
 //= require gmap/utilities/direction
 //= require gmap/utilities/gmap_draw_circle
+//= require gmap/list
+//= require gmap/user_direction
 
 //= require users/user_base
 //= require users/user

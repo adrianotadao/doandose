@@ -23,11 +23,13 @@
 //= require gmap/person_list
 //= require gmap/company_list
 
+//= require gmap/list
+//= require gmap/user_direction
+
 //= require users/user_base
 //= require users/user
 //= require users/forms
 
 //= require util
-//= require notification
 //= require social
 //= require contact

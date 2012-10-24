@@ -18,7 +18,7 @@ class window.AddressableGmap
   userPosition: ->
     @marker = Marker.nonLoggedUserPosition({icon: null, draggable: true})
     $(@marker).bind 'userPositionFound', =>
-      @coordinates.getAddressByCoordinates(@marker.getPosition())
+      Gmap.centralize([@marker.getPosition().Xa, @marker.getPosition().Ya])
 
   createMarker: (coordinates) ->
     @marker.setMap(null) if @marker?
