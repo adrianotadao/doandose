@@ -3,7 +3,7 @@ class window.IdentityForm extends BaseForm
     super
       form: '#subscribe form.new_person'
       validates: [
-        new UsernameValidation(),
+        new NameValidation(),
         new SurnameValidation(),
         new BirthdateValidation(),
         new HeightValidation(),

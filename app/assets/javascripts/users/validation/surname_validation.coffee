@@ -4,7 +4,7 @@ class window.SurnameValidation extends BaseValidation
     super(surname)
 
   run: ->
-    switch
-      when @field.val() == '' then @setStatus('error', 'Digite seu sobrenome')
-      else
-        @setStatus('valid')
+    if @field.val() == ''
+      @setStatus('error', 'Digite seu sobrenome')
+    else
+      @setStatus('valid')
