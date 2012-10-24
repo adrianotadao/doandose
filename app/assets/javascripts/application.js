@@ -6,6 +6,8 @@
 //= require jquery-ui
 //= require mask
 //= require social_buttons
+//= require plugins/infields
+//= require plugins/tooltips
 
 //= require addressable
 
@@ -23,6 +25,7 @@
 
 //= require users/user_base
 //= require users/user
+//= require users/forms
 
 //= require util
 //= require notification
