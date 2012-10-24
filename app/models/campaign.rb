@@ -12,7 +12,8 @@ class Campaign
   belongs_to :blood
   has_many :people
 
-  attr_accessible :active, :title, :content, :quantity, :expired_at, :company_id, :blood_id
+  attr_accessible :active, :title, :content, :quantity, :expired_at,
+                  :company_id, :company, :blood, :blood_id
 
   validates_presence_of :title, :content, :quantity, :expired_at, :company, :blood
 
