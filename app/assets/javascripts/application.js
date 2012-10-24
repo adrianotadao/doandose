@@ -6,6 +6,8 @@
 //= require jquery-ui
 //= require mask
 //= require social_buttons
+//= require plugins/infields
+//= require plugins/tooltips
 
 //= require addressable
 
