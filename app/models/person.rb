@@ -27,8 +27,20 @@ class Person
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
 
   #validations
+  validates :donor, inclusion: { in: %w(true false) }
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday,
                         :contact, :address, :blood, :user
+  validates :name, length: { minimum: 2, maximum: 30 }
+  validates :weight, length: { minimum: 2, maximum: 3 }
+  validates :height, length: { minimum: 3, maximum: 3 }
+  validates :weight, :height, numericality: true
+
+  #validate birtdhate
+  def birthdate=value
+    super value
+  rescue
+    nil
+  end
 
   #scopes
   scope :actives, where: { active: true }
