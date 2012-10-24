@@ -15,5 +15,5 @@
 
 - content_for :javascript do
   :javascript
-    Notification.show({ painel: 'routePanel' ,
-                                  destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
+    UserDirection.diretion({ painel: 'routePanel' ,
+                            destination: [#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]}]})
