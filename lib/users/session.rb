@@ -28,6 +28,10 @@ module Users
 
     def login(user)
       institution?(user)
+      update_user_cookie(user)
+    end
+
+    def update_user_cookie(user)
       cookies[:email] = { value: user.email, :expires => 10.years.from_now }
       cookies[:lat] = { value: user.authenticable.address.loc[0], :expires => 10.years.from_now }
       cookies[:lng] = { value: user.authenticable.address.loc[1], :expires => 10.years.from_now }

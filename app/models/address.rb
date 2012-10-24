@@ -17,7 +17,7 @@ class Address
   belongs_to :addressable, polymorphic: true
 
   #validations
-  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state, :loc
+  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state
 
   #access control
   attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state, :complement, :lat, :lng, :loc
@@ -34,7 +34,7 @@ class Address
 
   def parse_location
     return if self.lat.blank? || self.lng.blank?
-    self.loc = [self.lat, self.lng]
+    self.loc = [self.lat.to_f, self.lng.to_f]
   end
 
   def full_coordinate

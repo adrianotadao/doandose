@@ -40,7 +40,8 @@ class PeopleController < ApplicationController
     @person = Person.find_by_slug params[:id]
 
     if @person.update_attributes(params[:person])
-      redirect_to person_path(@person.name), notice: t('flash.people.update.notice')
+      update_user_cookie(@person.user)
+      redirect_to person_path(@person), notice: t('flash.people.update.notice')
     else
       render action: :edit
     end

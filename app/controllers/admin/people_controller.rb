@@ -18,10 +18,10 @@ class Admin::PeopleController < Admin::BaseController
   end
 
   def create
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.new(params[:person])
 
     if @person.save
+      update_user_cookie(@person.user)
       redirect_to([:admin, :people], :notice => t('flash.person.create.notice'))
     else
       render :action => "new"
@@ -29,9 +29,10 @@ class Admin::PeopleController < Admin::BaseController
   end
 
   def update
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
     @person = Person.find_by_slug(params[:id])
+
     if @person.update_attributes(params[:person])
+      update_user_cookie(@person.user)
       redirect_to([:admin, @person], :notice => t('flash.person.update.notice'))
     else
       render :action => "edit"

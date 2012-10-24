@@ -1,12 +1,10 @@
 %h1= t('views.people.show')
 
 #show_person
-  #map{:style => "width: 908px; height: 200px; padding: 0px"}
-
+  #gmap{:style => "width: 908px; height: 200px; padding: 0px"}
 
   = link_to edit_person_path(Person.find(current_user.authenticable_id)) do
     #perfil Editar Perfil
-
 
   - for person_notification in @person_notifications
     #notifications
@@ -27,3 +25,8 @@
           - twitter_like notification_url(person_notification.notification.slug), notification_twitt_label(true, person_notification.notification), :hash_tags => ["doandose", person_notification.notification.blood.name]
 
   = will_paginate @person_notifications
+
+- content_for :javascript do
+  :javascript
+    Gmap.create()
+    Marker.loggedUserPosition()
