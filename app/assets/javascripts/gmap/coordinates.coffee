@@ -23,4 +23,4 @@ class window.Coordinates
     $(this).trigger('searchAddressComplete', $.extend({ address: result[0] }, @parseCoordinates(result)))
 
   parseCoordinates: (result) ->
-    return { lat: result[0].geometry.location.Xa, lng: result[0].geometry.location.Ya}
+    return { lat: result[0].geometry.location.Ya, lng: result[0].geometry.location.Za}

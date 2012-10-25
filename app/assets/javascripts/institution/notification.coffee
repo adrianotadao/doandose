@@ -20,7 +20,7 @@ class window.Notification
 
   initializeUserRadius: ->
     GmapDrawCircle.create({ marker: Marker.userMarker(), radius: 1000 })
-    GmapDrawCircle.centralize [Marker.userMarker().getPosition().Xa, Marker.userMarker().getPosition().Ya]
+    GmapDrawCircle.centralize [Marker.userMarker().getPosition().Ya, Marker.userMarker().getPosition().Za]
 
   distanceFilters: ->
     @slider.slider {

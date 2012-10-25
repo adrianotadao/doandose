@@ -27,6 +27,7 @@ gem 'omniauth-facebook', '1.4.1'
 gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.1.1'
+gem 'dropbox-sdk'
 
 gem 'faker'
 

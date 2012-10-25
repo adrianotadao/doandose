@@ -71,13 +71,13 @@ class window.Navigator
 
   mapEvents: ->
     google.maps.event.addListener Gmap.create(), 'click', (event) =>
-      @position = [event.latLng.Xa, event.latLng.Ya]
+      @position = [event.latLng.Ya, event.latLng.Za]
       Marker.centralizeUserMarker @position
       @refreshMap()
 
   markerEvents: ->
     google.maps.event.addListener Marker.userMarker(), 'dragend', (event) =>
-      @position = [event.latLng.Xa, event.latLng.Ya]
+      @position = [event.latLng.Ya, event.latLng.Za]
       @refreshMap()
 
   prepareAutocomplete: ->
@@ -88,14 +88,13 @@ class window.Navigator
       place = @autocomplete.getPlace()
       return unless place.geometry
 
-      @position = [place.geometry.location.Xa, place.geometry.location.Ya]
+      @position = [place.geometry.location.Ya, place.geometry.location.Za]
       Gmap.centralize @position
       Marker.centralizeUserMarker @position
       @refreshMap()
 
   find: ->
     @query.abort() if @query != undefined
-
     @query = $.ajax
       url: 'find_elements_to_map'
       type: 'POST'

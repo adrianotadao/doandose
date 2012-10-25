@@ -23,6 +23,7 @@ class PersonNotification
   after_create :send_confirmation_notification_email
 
   def send_confirmation_notification_email
-    #Mailer.confirmation_participation(notification_id).deliver
+    self.update_attributes(alerted_at: Time.now)
+    #Mailer.alerting(id).deliver
   end
 end
