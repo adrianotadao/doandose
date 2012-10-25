@@ -42,7 +42,11 @@ Doandose::Application.routes.draw do
     end
   end
 
-  resource :person_notification, only: :index
+  resources :person_notification, only: :index do
+    member do
+      get :canceling
+    end
+  end
   resources :partners, only: [:index, :show]
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]

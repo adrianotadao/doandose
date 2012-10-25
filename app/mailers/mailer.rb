@@ -5,11 +5,6 @@ class Mailer < ActionMailer::Base
 
   default from: 'suporte@doando.se'
 
-  def confirmation_participation(notification_id)
-    @notification = Notification.find(notification_id)
-    mail subject: "+ 1 voluntario confirmou a presenca referente a notificacao #{@notification.title}", to: @notification.company.contact.email
-  end
-
   def contact(contact)
     @contact = contact
     mail subject: contact.subject, to: Settings.contact_email, reply_to: contact.email
