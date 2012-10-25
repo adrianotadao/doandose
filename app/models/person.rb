@@ -27,13 +27,11 @@ class Person
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
 
   #validations
-  validates_inclusion_of :donor, in: %w(true false)
-  validates_inclusion_of :sex, in: %w(0 1)
+  validates_inclusion_of :donor,  in: [true, false]
+  validates_inclusion_of :sex,  in: %(f m)
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday,
                         :contact, :address, :blood, :user
   validates_length_of :name, in: 2..30
-  validates_length_of :weight, in: 2..3
-  validates_length_of :height, in: 3..3
   validates :weight, :height, numericality: true
 
   #validate birtdhate

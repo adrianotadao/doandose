@@ -21,8 +21,8 @@ module PeopleHelper
 
   def people_sexes
     [
-      ['Masculino', 1],
-      ['Feminino', 0],
+      ['Masculino', 'm'],
+      ['Feminino', 'f'],
     ]
   end
 end
