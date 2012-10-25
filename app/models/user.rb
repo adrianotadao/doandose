@@ -26,7 +26,7 @@ class User
   validates_presence_of :email
   validates_associated :authentications, if: :authentications?
   validates_uniqueness_of :email, case_sensitive: false
-  validates_format_of :email, with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates_format_of :email, with: /^([^@\s]+[a-zA-Z0-9._-])@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   # callbacks
   after_save :build_identity

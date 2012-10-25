@@ -18,6 +18,7 @@ class Address
 
   #validations
   validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state
+  validates :number, :zip_code, numericality: true
 
   #access control
   attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state, :complement, :lat, :lng, :loc
