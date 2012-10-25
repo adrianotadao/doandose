@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 300.times do
-  a = Person.create({
+  Person.create({
     blood: Blood.all.to_a.shuffle.first,
     donor: [true, false].sample,
     name: Faker::Name.first_name,
