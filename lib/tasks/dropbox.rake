@@ -8,6 +8,10 @@ namespace :dropbox do
     host, port = Mongoid.database.connection.host_to_try
     db_name =    Mongoid.database.name
     auths =      Mongoid.database.connection.auths
+ 
+    if auths.length > 0
+      auth_string = "-u #{auths[0]["username"]} -p #{auths[0]["password"]}"
+    end
     
     dump_filename = Time.now.to_i
     cmd = "mongodump #{auth_string} --host #{host} --port #{port} -d #{db_name} -o db/mongodumps/#{Rails.env}/#{dump_filename}"
@@ -22,9 +26,7 @@ namespace :dropbox do
     
     #check if a session file already exist's if not it create one
     unless File.exist? 'dropbox_session.txt'
-      session = DropboxSession.new(DROPBOX_CONFIG["app_key"],DROPBOX_CONFIG["app_secret"])
-      ACCESS_TYPE = :app_folder
-      
+      session = DropboxSession.new(DROPBOX_CONFIG["app_key"],DROPBOX_CONFIG["app_secret"])      
       puts "Visit #{session.get_authorize_url} to log in to Dropbox. Hit enter when you have done this."
       STDIN.gets
       session.get_access_token
