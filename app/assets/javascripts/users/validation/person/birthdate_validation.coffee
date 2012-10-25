@@ -1,6 +1,7 @@
 class window.BirthdateValidation extends BaseValidation
   constructor: ->
     super('#person_birthday')
+    @field.mask('99/99/9999')
 
   run: ->
     unless @validationDate()
