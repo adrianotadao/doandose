@@ -21,10 +21,10 @@
   = f.text_field :birthday
 
   = f.label :weight
-  = f.text_field :weight
+  = f.text_field :weight, maxlength: '6'
 
   = f.label :height
-  = f.text_field :height
+  = f.text_field :height, maxlength: '6'
 
 = render partial: '/contactable/form', locals: { f: f, record: @person }
 = render partial: '/addressable/form', locals: { f: f, record: @person }

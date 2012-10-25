@@ -1,5 +1,5 @@
 window.is_blank = (field) ->
-    if $(field).val() == ''
+    if field == ''
       return true
     else
       return false

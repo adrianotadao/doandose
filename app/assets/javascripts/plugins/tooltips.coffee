@@ -24,7 +24,7 @@ class window.Tooltip
       label = $("label[for=\'#{input.attr 'id'}\']")
       input = label if label?
 
-    left = input.offset().left + input.outerWidth()
+    left = ( input.offset().left + input.outerWidth() ) - 180
     top = input.offset().top + (input.outerHeight() - @container().outerHeight())/2
 
     if left + @container().outerWidth() > $(document).width()
@@ -41,9 +41,7 @@ class window.Tooltip
   @container: ->
     selector = $('#tooltip')
     if selector.length == 0
-      selector = $("<div id='tooltip' style='display: none; position: absolute; height: 26px'>
-                      <div class='tip' style='width: 8px; height: 8px; display: inline-block;'>
-                      </div>
+      selector = $("<div id='tooltip' style='display: none; position: absolute; height: 11px'>
                       <div class='message'>
                       </div>
                     </div>").appendTo('body')

@@ -11,7 +11,9 @@ class window.BaseForm
       )
 
     $(document).ready =>
+      console.log @valid()
       $(@options.form).submit (e) =>
+        console.log '-----------------------------'
         if @submitted
           return false
         else if @valid()
@@ -26,6 +28,7 @@ class window.BaseForm
     status = true
     setFocusTo = undefined
     for field in @fields
+      console.log field.validate()
       unless field.validate()
         status = false
         setFocusTo = field unless setFocusTo?
@@ -37,6 +40,7 @@ class window.BaseForm
     status = true
     for field in @fields
       status = false unless field.isValid()
+      console.log status
     return status
 
   disabledButton: ->

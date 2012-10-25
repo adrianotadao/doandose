@@ -27,7 +27,6 @@ class PeopleController < ApplicationController
       redirect_to root_path
     else
       p @person.errors
-      render 'new'
     end
   end
 
