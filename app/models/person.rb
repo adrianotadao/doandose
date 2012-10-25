@@ -27,7 +27,7 @@ class Person
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
 
   #validations
-  validates_inclusion_of :donor,  in: [true false]
+  validates_inclusion_of :donor,  in: [true, false]
   validates_inclusion_of :sex,  in: %(f m)
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday,
                         :contact, :address, :blood, :user
