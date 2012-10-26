@@ -44,7 +44,6 @@ class window.SocialButtons
       .unbind('click')
 
   setSocialNetwork: (attr) ->
-    console.log attr
     return unless attr
     attr = attr.split(',')
     for i in attr

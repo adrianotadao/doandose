@@ -2,8 +2,9 @@
   = render :partial => '/users/identities/form', locals: { f: user, record: @person }
 
 .form
-  = f.label :blood
-  = f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
+  - @bloods.each do |blood|
+    = label_tag 'blood_type', blood.name
+    = radio_button("blood", "blood_id", "#{blood.id}")
 
   = f.label :donor
   = f.check_box :donor
@@ -14,16 +15,17 @@
   = f.label :surname
   = f.text_field :surname
 
-  = f.label :sex
-  = f.select :sex, people_sexes
+  - people_sexes.each do |sex|
+    = label_tag sex[0], sex[0]
+    = radio_button('person', 'sex', "#{sex[1]}")
 
   = f.label :birthday
   = f.text_field :birthday
 
-  = f.label :weight
+  = f.label :weight, t('label.weight')
   = f.text_field :weight, maxlength: '6'
 
-  = f.label :height
+  = f.label :height, t('label.height')
   = f.text_field :height, maxlength: '6'
 
 = render partial: '/contactable/form', locals: { f: f, record: @person }

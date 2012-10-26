@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
       redirect_to edit_person_path(Person.find(current_user.authenticable_id))
     else
       @person = Person.new
+      @bloods = Blood.all
     end
   end
 
