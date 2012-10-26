@@ -34,6 +34,8 @@ gem 'rspec', '2.8', :group => [:test, :development]
 
 gem 'twilio-ruby'
 
+gem 'resque', '1.23.0'
+
 group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'

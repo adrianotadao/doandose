@@ -4,6 +4,7 @@ class PersonNotification
   field :confirmed_at, type: Time
   field :canceled_at, type: Time
   field :alerted_at, type: Time
+  field :alerted_with, type: Array, default: []
 
   #access control
   attr_accessible :alerted_at, :canceled_at, :confirmed_at, :person_id,
@@ -19,11 +20,4 @@ class PersonNotification
   #scope
   scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
 
-  #callback
-  after_create :send_confirmation_notification_email
-
-  def send_confirmation_notification_email
-    self.update_attributes(alerted_at: Time.now)
-    #Mailer.alerting(id).deliver
-  end
 end
