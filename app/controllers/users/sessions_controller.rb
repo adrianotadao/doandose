@@ -57,7 +57,7 @@ class Users::SessionsController < ApplicationController
 
     def sign_up
       @user = User.parse_omniauth(auth_hash)
-      render 'users/sessions/callback_signup'
+      render 'users/sessions/callback_subscribe'
     end
 
     def add_new_authentication
