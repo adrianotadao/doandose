@@ -72,4 +72,7 @@ Doandose::Application.routes.draw do
     resources :pages, :only => :index
     resources :notifications
   end
+
+  mount Resque::Server.new, :at => "/resque"
+
 end

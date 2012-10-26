@@ -18,3 +18,7 @@
 mongo
 use doandose_development
 db.addresses.ensureIndex( { loc : "2d" } )
+
+== Resque
+
+QUEUE=* rake resque:work
