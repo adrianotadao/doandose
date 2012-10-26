@@ -1,4 +1,4 @@
-development: &defaults
+development:
   social:
     twitter:
       key: Raryta0iwaVCB7e5NALlDQ

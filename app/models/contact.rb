@@ -26,4 +26,8 @@ class Contact
 
   #relationship
   belongs_to :contactable, polymorphic: true
+
+  def parse_to_twilio
+    "+55#{ddd_cellphone}#{cellphone}"
+  end
 end
