@@ -30,10 +30,10 @@ class Notification
   #scopes
   scope :actives, where(active: true)
 
-  after_create :send_sms_message, :send_email_message
+  after_create :send_sms, :send_email
 
-  def send_sms_message
-    #ContactTwilio.send_sms()
+  def send_sms
+    Resque.enqueue(SMSNotification, self.id)
   end
 
   def send_email_message
@@ -42,10 +42,8 @@ class Notification
       person_notification.alerted_at = Time.now
       person_notification.save
     end
-
-
     #Mailer.alerting(id).deliver
-
+    Resque.enqueue(EmailNotification, self.id)
   end
 
   def will_participate?(person)

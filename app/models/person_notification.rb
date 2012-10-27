@@ -19,5 +19,4 @@ class PersonNotification
 
   #scope
   scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
-
 end
