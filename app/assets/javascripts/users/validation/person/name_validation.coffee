@@ -3,8 +3,6 @@ class window.NameValidation extends BaseValidation
     super('#person_name')
 
   run: ->
-
-
     switch
       when is_blank(@field) then @setStatus('error', 'Nao pode ficar em branco')
       when @field.val().match(/\s/gi) then @setStatus('error', 'Contém espaços')

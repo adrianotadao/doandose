@@ -1,7 +1,7 @@
 class window.IdentityForm extends BaseForm
   constructor: ->
     super
-      form: '#subscribe form.new_person'
+      form: '#subscribe form.person'
       validates: [
         new NameValidation(),
         new SurnameValidation(),
@@ -23,5 +23,5 @@ class window.IdentityForm extends BaseForm
 
         new EmailValidation(),
         new PasswordValidation(),
-        new PasswordConfirmationValidation(),
+        new PasswordConfirmationValidation()
       ]

@@ -11,24 +11,8 @@ class window.EmailValidation extends BaseValidation
   run: ->
     expReg = /^([a-zA-Z0-9\.\-\+]+[a-zA-Z0-9._-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
     switch
-      when is_blank(@field)
-        alert 'a'
-        @setStatus('error', 'Preencha o seu e-mail')
+      when is_blank(@field) then @setStatus('error', 'Preencha o seu e-mail')
       when @field.val().length > 100 then @setStatus('error', 'Excedeu o limite')
       when !expReg.test(@field.val()) then @setStatus('error', 'E-mail inválido')
       else
-        @setStatus('pending')
-        @request.abort() if @request? && @request == undefined
-        @request = $.ajax
-          type: 'POST'
-          url: '/cadastro/email-em-uso/'
-          data: email: @field.val()
-          beforeSend: =>
-            @setStatus('pending')
-          success: (data) =>
-            if data
-              @setStatus('valid')
-            else
-              @setStatus('error', 'E-mail já existe')
-          complete: (data) =>
-            @removeLoading()
+        @setStatus('valid')

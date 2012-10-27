@@ -36,7 +36,7 @@ class Notification
     Resque.enqueue(SMSNotification, self.id)
   end
 
-  def send_email_message
+  def send_email
     person_notifications.each do |person_notification|
       person_notification.alerted_with << 'email'
       person_notification.alerted_at = Time.now
