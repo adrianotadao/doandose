@@ -42,6 +42,7 @@ namespace :assets do
   task :copy_config_files do
     run "cp #{release_path}/config/server/#{rails_env}/application.yml #{release_path}/config/application.yml"
     run "cp #{release_path}/config/server/#{rails_env}/mongoid.yml #{release_path}/config/mongoid.yml"
+    run "cp #{release_path}/config/server/#{rails_env}/resque.yml #{release_path}/config/resque.yml"
     run "cp #{release_path}/config/server/rvmrc #{release_path}/.rvmrc"
   end
 
