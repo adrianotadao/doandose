@@ -12,11 +12,9 @@ class window.BaseForm
 
     $(document).ready =>
       $(@options.form).submit (e) =>
-        alert e
         if @submitted
           return false
         else if @valid()
-          console.log @valid()
           @submitted = true
           @disabledButton()
           return true
