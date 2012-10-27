@@ -45,7 +45,7 @@ class Notification
 
 
     #Mailer.alerting(id).deliver
-  end
+
   end
 
   def will_participate?(person)

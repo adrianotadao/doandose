@@ -28,6 +28,7 @@ class PeopleController < ApplicationController
       redirect_to root_path
     else
       p @person.errors
+      p '-------------------------------'
     end
   end
 

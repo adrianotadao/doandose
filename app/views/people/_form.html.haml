@@ -2,9 +2,11 @@
   = render :partial => '/users/identities/form', locals: { f: user, record: @person }
 
 .form
-  - @bloods.each do |blood|
-    = label_tag 'blood_type', blood.name
-    = radio_button("blood", "blood_id", "#{blood.id}")
+  / - @bloods.each do |blood|
+  /   = label_tag 'blood_type', blood.name
+  /   = radio_button("person", "blood_id", "#{blood.id}")
+  = f.label :blood
+  = f.select :blood, Blood.all.to_a.map{|r| [r.name, r.id]}
 
   = f.label :donor
   = f.check_box :donor
