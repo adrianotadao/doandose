@@ -1,13 +1,12 @@
-//= require ../../../vendor/assets/stylesheets/jquery-ui-1.9.1.custom.min
 //= require global
 //= require typography
 //= require menu
 //= require button
 //= require footer
+//= require ../../../vendor/assets/stylesheets/jquery-ui-1.9.1.custom.min
 
 
 //= require subscribe
-//= require admin/form
 //= require pages
 //= require shared
 //= require views

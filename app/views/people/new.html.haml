@@ -1,9 +1,9 @@
-%h1= t('label.user')
+%h1= t('views.people.subscribe')
 
 #subscribe
   = render 'shared/social'
 
-  = form_for setup_people(@person), :html => { multipart: true } do |f|
+  = simple_form_for setup_people(@person), :html => { multipart: true } do |f|
     = render partial: 'form', locals: { f: f }
 
     .actions

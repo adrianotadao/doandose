@@ -6,5 +6,9 @@ class window.Mask
     $('#person_weight, #person_height').maskMoney({thousands:"."})
 
 
-    $('#person_birthday') .datepicker()
+    $('#person_birthday') .datepicker
+      changeMonth: true,
+      changeYear: true
+    $( "#person_birthday" ).datepicker("option", "dateFormat", 'dd/mm/yy')
+
     $('#person_weight, #person_height').spinner()

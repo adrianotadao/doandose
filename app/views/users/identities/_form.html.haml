@@ -1,12 +1,9 @@
 .form.user
-  = f.label :email, t('label.email')
-  = f.text_field :email
+  = f.text_field :email, placeholder: t('label.email')
   = error_for(record, :email)
 
-  = f.label :password, t('label.password')
-  = f.password_field :password
+  = f.password_field :password, placeholder: t('label.password')
   = error_for(record, :password)
 
-  = f.label :password_confirmation, t('label.password_confirmation')
-  = f.password_field :password_confirmation
+  = f.password_field :password_confirmation, placeholder: t('label.password_confirmation')
   = error_for(record, :password_confirmation)

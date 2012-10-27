@@ -1,5 +1,6 @@
 window.is_blank = (field) ->
-    if field == ''
+    alert field.val()
+    if field.val() == ""
       return true
     else
       return false

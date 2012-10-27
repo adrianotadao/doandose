@@ -28,7 +28,8 @@ class PeopleController < ApplicationController
       redirect_to root_path
     else
       p @person.errors
-      p '-------------------------------'
+     #render action: 'new'
+     render nothing: true
     end
   end
 
@@ -47,5 +48,11 @@ class PeopleController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def email_in_use
+    email = true if user_signed_in? && current_user.email == params[:email]
+    email = !User.where(:email => /^#{params[:email]}/i).first if email.blank?
+    render :json => email
   end
 end

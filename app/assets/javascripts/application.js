@@ -7,7 +7,6 @@
 //= require jquery-ui
 
 //= require social_buttons
-//= require plugins/infields
 //= require plugins/tooltips
 
 //= require addressable

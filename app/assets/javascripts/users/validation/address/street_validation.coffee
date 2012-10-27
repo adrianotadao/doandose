@@ -1,7 +1,6 @@
 class window.StreetValidation extends BaseValidation
   constructor: ->
-    surname = 'input.street'
-    super(surname)
+    super('input.street')
 
   run: ->
     if is_blank(@field)

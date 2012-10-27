@@ -10,27 +10,21 @@
     margin: 0
   input[type='radio']
     border-right: 2px
+
   span.ui-spinner
-    float: left
-    width: 380px
+    width: 257px
     height: 36px
     margin-top: 10px
+    clear: both
     input
       margin: 0
 
-
-  label
-    clear: both
-    float: left
-    width: 150px
-    text-align: right
-    line-height: 38px
-    margin-right: 10px
-    margin-top: 8px
-    color: #464545
   input[type="text"], input[type="password"], input[type="file"], select, .input_image, textarea
-    float: left
     +input
+    height: 37px
+    width: 516px
+    display: block
+    margin-top: 20px
     &.invalid
       border: 1px solid #973333
 
@@ -43,19 +37,6 @@
 
   input[type="checkbox"]
     margin-top: 14px
-  span.error
-    display: none
-
-  input:focus + span.error, select:focus + span.error, span.error:first-of-type, input
-    background: #FFFFFF
-    border: 1px solid #FF0000
-    float: left
-    margin: 10px 0 0 36px
-    padding: 4px
-    display: inline-block
-
-  span.error:first-of-type
-    display: block
 
 .actions
   margin-top: 20px

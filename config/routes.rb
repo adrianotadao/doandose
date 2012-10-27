@@ -2,34 +2,35 @@ Doandose::Application.routes.draw do
   root :to => "pages#index"
 
   match "/auth/:provider/callback" => "users/sessions#create"
-  match '/auth/failure' => 'users/sessions#failure'
-  post '/send_email/' => 'send_mail#create', :as => :send_mail
+  match '/auth/failure/' => 'users/sessions#failure'
+  post '/send_email/' => 'send_mail#create', as: :send_mail
+  post '/cadastro/email-em-uso/' => 'people#email_in_use'
 
   namespace :users, :path => 'usuario' do
-    match '/login' => 'sessions#new', :as => :new_session
-    match '/sair' => 'sessions#destroy', :as => :destroy_session
+    match '/login' => 'sessions#new', as: :new_session
+    match '/sair' => 'sessions#destroy', as: :destroy_session
 
-    get  '/cadastro/' => 'identities#new', :as => :new_user
-    post '/cadastro/' => 'identities#create', :as => :new_user
-    get  '/meu-cadastro/' => 'identities#edit', :as => :edit_user
-    put  '/meu-cadastro/' => 'identities#update', :as => :edit_user
+    get  '/cadastro/' => 'identities#new', as: :new_user
+    post '/cadastro/' => 'identities#create', as: :new_user
+    get  '/meu-cadastro/' => 'identities#edit', as: :edit_user
+    put  '/meu-cadastro/' => 'identities#update', as: :edit_user
 
-    get '/esqueci-minha-senha/' => 'users/passwords#new', :as => :new_password
-    post '/esqueci-minha-senha/' => 'users/passwords#create', :as => :new_password
-    get '/esqueci-minha-senha/:token' => 'passwords#edit', :as => :edit_password
-    put '/esqueci-minha-senha/:token' => 'passwords#update', :as => :edit_password
+    get '/esqueci-minha-senha/' => 'users/passwords#new', as: :new_password
+    post '/esqueci-minha-senha/' => 'users/passwords#create', as: :new_password
+    get '/esqueci-minha-senha/:token' => 'passwords#edit', as: :edit_password
+    put '/esqueci-minha-senha/:token' => 'passwords#update', as: :edit_password
   end
 
   post '/find_elements_to_map/' => 'gmap#find_elements_to_map'
   post '/find_elements_to_notification/' => 'gmap#find_elements_to_notification'
 
   resources :people do
-    get ':id/page/:page', :action => :show, :on => :collection
+    get ':id/page/:page', action: :show, on: :collection
   end
   resources :page, only: [:index, :show]
 
   resources :notifications, only: [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', action: :index, on: :collection
     get :list_user
     get :complete
     get :print
@@ -55,8 +56,8 @@ Doandose::Application.routes.draw do
 
   namespace :admin do
     root :to => 'companies#index'
-    match '/sair/' => 'base#destroy', :as => :destroy_session
-    resources :pages, :only => :index
+    match '/sair/' => 'base#destroy', as: :destroy_session
+    resources :pages, only: :index
     resources :partners
     resources :companies
     resources :bloods
@@ -66,13 +67,13 @@ Doandose::Application.routes.draw do
     resources :campaigns
   end
 
-  namespace :institution, :path => 'instituicao' do
+  namespace :institution, path: 'instituicao' do
     root :to => 'pages#index'
-    match '/sair' => 'base#destroy', :as => :destroy_company_session
-    resources :pages, :only => :index
+    match '/sair' => 'base#destroy', as: :destroy_company_session
+    resources :pages, only: :index
     resources :notifications
   end
 
-  mount Resque::Server.new, :at => "/resque"
+  mount Resque::Server.new, at: "/resque"
 
 end

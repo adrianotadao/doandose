@@ -3,7 +3,7 @@ class window.PhoneValidation extends BaseValidation
     super('input#person_contact_attributes_phone')
 
   run: ->
-    if is_blank('input#person_contact_attributes_cellphone')
+    if is_blank(@field)
       switch
         when is_blank(@field) then @setStatus('error', 'Nao pode ficar em branco')
         when not_number(@field) then @setStatus('error', 'Nao e numero')

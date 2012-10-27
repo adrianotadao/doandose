@@ -19,6 +19,8 @@ pt-BR:
     company: 'Compania'
     cnpj: 'Cnpj'
     complement: 'Complemento'
+    ddd_cellphone: 'DDD cel'
+    ddd_phone: 'DDD fon'
     denomination: 'Denominacao'
     distance: 'Distancia'
     donor: 'Doador'

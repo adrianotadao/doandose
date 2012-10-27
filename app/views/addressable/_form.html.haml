@@ -1,32 +1,26 @@
 %h2= t('views.address.title')
 = f.nested_fields_for :address do |address|
   .form
-    = address.label :zip_code, t('label.zip_code')
-    = address.text_field :zip_code, class: 'postal_code'
+
+    = address.text_field :zip_code, class: 'postal_code', placeholder: t('label.zip_code')
     = error_for(record.address, :zip_code)
 
-    = address.label :number, t('label.number')
-    = address.text_field :number, class: 'number'
+    = address.text_field :number, class: 'number', placeholder: t('label.number')
     = error_for(record.address, :number)
 
-    = address.label :street, t('label.street')
-    = address.text_field :street, class: 'street'
+    = address.text_field :street, class: 'street', placeholder: t('label.street')
     = error_for(record.address, :street)
 
-    = address.label :neighborhood, t('label.neighborhood')
-    = address.text_field :neighborhood, class: 'neighborhood'
+    = address.text_field :neighborhood, class: 'neighborhood', placeholder: t('label.neighborhood')
     = error_for(record.address, :neighborhood)
 
-    = address.label :city, t('label.city')
-    = address.text_field :city, class: 'city'
+    = address.text_field :city, class: 'city', placeholder: t('label.city')
     = error_for(record.address, :city)
 
-    = address.label :state, t('label.state')
-    = address.text_field :state, class: 'state'
+    = address.text_field :state, class: 'state', placeholder: t('label.state')
     = error_for(record.address, :state)
 
-    = address.label :complement, t('label.complement')
-    = address.text_field :complement, class: 'complement'
+    = address.text_field :complement, class: 'complement', placeholder: t('label.complement')
     = error_for(record.address, :complement)
 
     = address.hidden_field :lat, class: 'lat'
