@@ -11,7 +11,7 @@ class window.EmailValidation extends BaseValidation
   run: ->
     expReg = /^([a-zA-Z0-9\.\-\+]+[a-zA-Z0-9._-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
     switch
-      when is_blank(@field) then @setStatus('error', 'Preencha o seu e-mail')
+      when @field.val() == '' then @setStatus('error', 'Preencha o seu e-mail')
       when @field.val().length > 100 then @setStatus('error', 'Excedeu o limite')
       when !expReg.test(@field.val()) then @setStatus('error', 'E-mail inválido')
       else

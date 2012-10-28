@@ -11,4 +11,7 @@ class window.Mask
       changeYear: true
     $( "#person_birthday" ).datepicker("option", "dateFormat", 'dd/mm/yy')
 
-    $('#person_weight, #person_height').spinner()
+    $('#person_weight, #person_height').spinner(
+      step: 0.01,
+      numberFormat: "n"
+    )
