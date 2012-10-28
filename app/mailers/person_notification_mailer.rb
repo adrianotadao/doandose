@@ -12,6 +12,7 @@ class PersonNotificationMailer < ActionMailer::Base
 
   def confirmation(notification_id)
     @notification = Notification.find(notification_id)
+    p notification_id, @notification
     mail subject: "+ 1 voluntario confirmou a presenca referente a notificacao #{@notification.title}", to: @notification.company.contact.email
   end
 end

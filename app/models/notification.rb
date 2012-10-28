@@ -42,7 +42,7 @@ class Notification
       person_notification.alerted_at = Time.now
       person_notification.save
     end
-    #Mailer.alerting(id).deliver
+    Mailer.alerting(id).deliver
     Resque.enqueue(EmailNotification, self.id)
   end
 

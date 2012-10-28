@@ -19,4 +19,14 @@ class PersonNotification
 
   #scope
   scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
+
+  #callbacks
+  after_create :send_email
+
+  def send_email
+    return unless self.notification.blank?
+    PersonNotificationMailer.confirmation(self.notification.id).deliver
+  end
+
+
 end
