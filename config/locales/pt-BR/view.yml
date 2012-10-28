@@ -44,7 +44,7 @@ pt-BR:
       show: 'Perfil'
       subscribe: 'Cadastro'
       title_index: 'Listagem dos usuarios'
-      title_edit: 'Edicao usuario'
+      title_edit: 'Perfil'
       title_new: 'Adicionar usuario'
     notifications:
       title: 'Notificacoes'

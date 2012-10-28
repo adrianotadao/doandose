@@ -3,7 +3,7 @@ class window.StreetValidation extends BaseValidation
     super('input.street')
 
   run: ->
-    if is_blank(@field)
+    if @field.val() == ''
       @setStatus('error', 'Nao pode ser branco')
     else
       @setStatus('valid')

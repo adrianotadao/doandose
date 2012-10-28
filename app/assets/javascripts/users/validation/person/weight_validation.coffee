@@ -3,7 +3,7 @@ class window.WeightValidation extends BaseValidation
     super('#person_weight')
 
   run: ->
-    if is_blank(@field)
+    if @field.val() == ''
       @setStatus('error', 'Nao pode ficar em branco')
     else
       @setStatus('valid')

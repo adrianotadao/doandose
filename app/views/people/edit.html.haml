@@ -1,4 +1,4 @@
-%h1= t('label.user')
+%h1= t('views.people.title_edit')
 
 #edit
   = render 'shared/social'
@@ -11,5 +11,6 @@
 
 - content_for :javascript do
   :javascript
-    window.socialNetwork = new SocialButtons()
+    new IdentityForm(),
+    window.socialNetwork = new SocialButtons(),
      socialNetwork.setSocialNetwork("#{@authentications}")
