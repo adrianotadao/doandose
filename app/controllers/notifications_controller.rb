@@ -7,8 +7,6 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    p "========="
-    p Notification.find_by_slug params[:id]
     @notification = Notification.find_by_slug params[:id]
   end
 
@@ -31,7 +29,6 @@ class NotificationsController < ApplicationController
 
   def undo_confirm
     @person_notification = PersonNotification.find(params[:id])
-
     if @person_notification.destroy
       redirect_to notifications_path
     end

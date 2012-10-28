@@ -3,7 +3,7 @@ class window.NeighborhoodValidation extends BaseValidation
     super('input.neighborhood')
 
   run: ->
-    if is_blank(@field)
+    if @field.val() == ''
       @setStatus('error', 'Nao pode ficar em branco')
     else
       @setStatus('valid')

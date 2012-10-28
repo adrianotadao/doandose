@@ -19,4 +19,20 @@ class PersonNotification
 
   #scope
   scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
+
+  #callbacks
+  after_create :send_email_confirmation
+  after_destroy :send__email_undo_confirm
+
+  def send__email_undo_confirm
+    return if self.notification.blank? && self.person.blank?
+    CompanyNotificationMailer.undo_confirmation(self.notification.id, self.person.id).deliver
+  end
+
+  def send_email
+    return if self.notification.blank?
+    CompanyNotificationMailer.confirmation(self.notification.id).deliver
+  end
+
+
 end

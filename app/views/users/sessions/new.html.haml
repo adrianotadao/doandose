@@ -3,11 +3,9 @@
   = render 'shared/social'
   = form_tag '/auth/identity/callback/', class: 'sign_in' do
     .form
-      = label_tag 'auth_key', 'apelido ou email'
-      = text_field_tag :auth_key
 
-      = label_tag 'password', 'senha'
-      = password_field_tag :password
+      = text_field_tag :auth_key, '', placeholder: t('label.auth_key')
+      = password_field_tag :password, '', placeholder: t('label.password')
 
       = submit_tag t('label.login'), class: 'button red'
 

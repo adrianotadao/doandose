@@ -29,7 +29,6 @@ class PeopleController < ApplicationController
     else
       p @person.errors
      #render action: 'new'
-     render nothing: true
     end
   end
 
