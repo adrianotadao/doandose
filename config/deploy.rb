@@ -23,12 +23,16 @@ require 'rvm/capistrano'
 # ==
 after 'deploy:update_code', 'assets:copy_config_files', 'assets:bundle', 'assets:compile'
 after 'deploy', 'deploy:cleanup', "deploy:restart"
+after "deploy:update_crontab"
 
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join current_path, 'tmp', 'restart.txt'}"
+  end
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
 
@@ -42,6 +46,7 @@ namespace :assets do
   task :copy_config_files do
     run "cp #{release_path}/config/server/#{rails_env}/application.yml #{release_path}/config/application.yml"
     run "cp #{release_path}/config/server/#{rails_env}/mongoid.yml #{release_path}/config/mongoid.yml"
+    run "cp #{release_path}/config/server/#{rails_env}/resque.yml #{release_path}/config/resque.yml"
     run "cp #{release_path}/config/server/rvmrc #{release_path}/.rvmrc"
   end
 

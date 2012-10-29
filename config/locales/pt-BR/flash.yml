@@ -62,6 +62,9 @@ pt-BR:
       delete:
         notice: 'Doador deletado com sucesso'
 
+    reset_password:
+      reset_no_exists: 'O token nao e valido! Redefina sua senha novamente!'
+
     sessions:
       create:
         notice: 'Que bom que você voltou!'

@@ -1,5 +1,7 @@
 Doandose::Application.routes.draw do
-  root :to => "pages#index"
+  mount Resque::Server.new, at: "/resque"
+
+  root to: "pages#index", host: 'localhost:3000'
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure/' => 'users/sessions#failure'
@@ -15,10 +17,10 @@ Doandose::Application.routes.draw do
     get  '/meu-cadastro/' => 'identities#edit', as: :edit_user
     put  '/meu-cadastro/' => 'identities#update', as: :edit_user
 
-    get '/esqueci-minha-senha/' => 'users/passwords#new', as: :new_password
-    post '/esqueci-minha-senha/' => 'users/passwords#create', as: :new_password
+    get '/esqueci-minha-senha/' => 'passwords#new', as: :new_password
+    post '/esqueci-minha-senha/' => 'passwords#create', as: :new_password
     get '/esqueci-minha-senha/:token' => 'passwords#edit', as: :edit_password
-    put '/esqueci-minha-senha/:token' => 'passwords#update', as: :edit_password
+    put '/esqueci-minha-senha/:token' => 'passwords#update'
   end
 
   post '/find_elements_to_map/' => 'gmap#find_elements_to_map'
@@ -27,6 +29,7 @@ Doandose::Application.routes.draw do
   resources :people do
     get ':id/page/:page', action: :show, on: :collection
   end
+
   resources :page, only: [:index, :show]
 
   resources :notifications, only: [:index, :show] do
@@ -74,6 +77,6 @@ Doandose::Application.routes.draw do
     resources :notifications
   end
 
-  mount Resque::Server.new, at: "/resque"
+
 
 end

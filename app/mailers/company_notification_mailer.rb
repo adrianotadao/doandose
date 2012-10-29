@@ -16,9 +16,7 @@ class CompanyNotificationMailer < ActionMailer::Base
   end
 
   def undo_confirmation(notification_id, person_id)
-    p notification_id, person_id
-    p 'mailer -----------------------------'
     @notification = Notification.find(notification_id)
-    mail subject: "+ 1 voluntario confirmou a presenca referente a notificacao #{@notification.title}", to: @notification.company.contact.email
+    mail subject: "Cancelamento de um participante da notificacao: #{@notification.title}", to: @notification.company.contact.email
   end
 end

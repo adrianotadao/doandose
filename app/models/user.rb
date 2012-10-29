@@ -64,12 +64,14 @@ class User
   end
 
   def password_is_reseted!
-    self.update_attributes(:reset_password_token => nil)
+    self.update_attributes(reset_password_token: nil, reset_password_sent_at: Time.now)
   end
 
   def generate_token!(field)
-    self.update_attributes(field => Digest::MD5.hexdigest("#{UsersFeatures.application_token}-#{email}-#{Time.now.to_i}"))
+    self.update_attributes(field => Digest::MD5.hexdigest("#{TOKEN}+#{Time.now.to_i}+#{email}"))
   end
+
+  TOKEN = 'jadshA099y79GSHDJAHGSDJHhsg87565765DDas'
 
   # static
   class << self
@@ -87,10 +89,6 @@ class User
     end
 
     def social_networks(user)
-      p user.authentications
-      p user.authentications.map{ |auth| auth.provider}.join(',')
-      p 'user -------------------------------'
-
       user.authentications.map{ |auth| auth.provider}.join(',') if user
     end
 
@@ -101,6 +99,6 @@ class User
   end
 
   def self.locate(key)
-    self.any_of({ username: key }, { email: key }).first
+    self.any_of({ email: key }).first
   end
 end
