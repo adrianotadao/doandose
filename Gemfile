@@ -29,12 +29,10 @@ gem 'omniauth', '1.1.1'
 gem 'dropbox-sdk', '1.5.1'
 
 gem 'faker'
+gem 'twilio-ruby'
+gem 'resque', '1.23.0'
 
 gem 'rspec', '2.8', :group => [:test, :development]
-
-gem 'twilio-ruby'
-
-gem 'resque', '1.23.0'
 
 group :development do
   gem 'capistrano', '2.12.0'

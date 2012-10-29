@@ -27,7 +27,12 @@ module Users
     end
 
     def login(user)
-      institution?(user)
+      if user.authenticable_type == 'Company'
+        session[:institution_user_id] = user.id
+      else
+        session[:user_id] = user.id
+      end
+
       update_user_cookie(user)
     end
 
@@ -37,10 +42,6 @@ module Users
       cookies[:lng] = { value: user.authenticable.address.loc[1], :expires => 10.years.from_now }
     end
 
-    def institution?(user)
-      user.authenticable_type == 'Company' ? session[:institution_user_id] = user.id : session[:user_id] = user.id
-    end
-
     def logout
       session.destroy
       session[:user_id] = nil
@@ -48,8 +49,6 @@ module Users
       cookies.delete :email
       cookies.delete :lat
       cookies.delete :lng
-
-      redirect_to root_path
     end
 
     def logout_company

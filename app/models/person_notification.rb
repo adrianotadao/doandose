@@ -29,7 +29,7 @@ class PersonNotification
     CompanyNotificationMailer.undo_confirmation(self.notification.id, self.person.id).deliver
   end
 
-  def send_email
+  def send_email_confirmation
     return if self.notification.blank?
     CompanyNotificationMailer.confirmation(self.notification.id).deliver
   end
