@@ -13,7 +13,7 @@ namespace :dropbox do
       auth_string = "-u #{auths[0]["username"]} -p #{auths[0]["password"]}"
     end
 
-    dump_filename = Time.now.to_i
+    dump_filename = Time.now.strftime("%m-%d-%Y_%H%M")
     cmd = "mongodump #{auth_string} --host #{host} --port #{port} -d #{db_name} -o db/mongodumps/#{Rails.env}/#{dump_filename}"
     puts "Running '#{cmd}'"
     `#{cmd}`
