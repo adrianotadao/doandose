@@ -18,6 +18,7 @@
       = radio_button('person', 'sex', "#{sex[1]}")
 
   = f.text_field :birthday, value: "#{ formated_birthdate(f.object.birthday) } ", placeholder: t('label.birthday')
+
   = f.text_field :weight, maxlength: '6', placeholder: t('label.weight')
   = f.text_field :height, maxlength: '6', placeholder: t('label.height')
 

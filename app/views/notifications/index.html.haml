@@ -1,7 +1,7 @@
 #notifications
   %h1= t('views.notification.title')
-  - unless @notifications.blank?
 
+  - unless @notifications.blank?
     - @notifications.each_with_index do |notification, index|
       -facebook_meta_for_notification notification
       .content_notifications

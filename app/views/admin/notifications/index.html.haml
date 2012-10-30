@@ -10,7 +10,6 @@
           %th= t('label.active')
           %th= t('label.quantity')
           %th= t('label.situation')
-          %th= t('label.alerted_at')
           %th= t('label.actions')
 
       %tbody
@@ -19,7 +18,6 @@
             %td= label_boolean(notification.active)
             %td= notification.quantity
             %td= notification.situation
-            %td= formated_date(notification.alerted_at)
             %td
               = link_to t('buttons.show'), admin_notification_path(notification), class: 'link show'
 

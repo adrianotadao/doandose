@@ -54,3 +54,5 @@ pt-BR:
       associated_company: 'Hemocentro responsavel'
     filter:
       title: 'Encontre doadores, use o filtro para ser mais especifico'
+    reset_password:
+      title: 'Resetar senha'
