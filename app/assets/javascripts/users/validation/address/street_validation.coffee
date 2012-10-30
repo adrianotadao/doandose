@@ -1,10 +1,9 @@
 class window.StreetValidation extends BaseValidation
   constructor: ->
-    surname = 'input.street'
-    super(surname)
+    super('input.street')
 
   run: ->
-    if is_blank(@field)
+    if @field.val() == ''
       @setStatus('error', 'Nao pode ser branco')
     else
       @setStatus('valid')

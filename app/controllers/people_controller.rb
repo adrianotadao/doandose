@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
       redirect_to edit_person_path(Person.find(current_user.authenticable_id))
     else
       @person = Person.new
+      @bloods = Blood.all
     end
   end
 
@@ -26,7 +27,8 @@ class PeopleController < ApplicationController
       login @person.user
       redirect_to root_path
     else
-      render 'new'
+      p @person.errors
+     #render action: 'new'
     end
   end
 
@@ -45,5 +47,11 @@ class PeopleController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def email_in_use
+    email = true if user_signed_in? && current_user.email == params[:email]
+    email = !User.where(:email => /^#{params[:email]}/i).first if email.blank?
+    render :json => email
   end
 end

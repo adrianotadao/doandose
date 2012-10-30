@@ -3,15 +3,13 @@
   = render 'shared/social'
   = form_tag '/auth/identity/callback/', class: 'sign_in' do
     .form
-      = label_tag 'auth_key', 'apelido ou email'
-      = text_field_tag :auth_key
 
-      = label_tag 'password', 'senha'
-      = password_field_tag :password
+      = text_field_tag :auth_key, '', placeholder: t('label.auth_key')
+      = password_field_tag :password, '', placeholder: t('label.password')
 
       = submit_tag t('label.login'), class: 'button red'
 
-      = link_to 'esqueceu sua senha?', '#', class: 'forgot_password'
+      = link_to 'esqueceu sua senha?', users_new_password_path, class: 'forgot_password'
 
 - content_for :javascript do
   :javascript

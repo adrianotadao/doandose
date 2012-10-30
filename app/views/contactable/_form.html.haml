@@ -1,21 +1,17 @@
 %h2= t('views.company.contact')
 = f.nested_fields_for :contact do |contact|
   .form
-    = contact.label :ddd_phone, t('label.ddd_phone')
-    = contact.text_field :ddd_phone
+    = contact.text_field :ddd_phone, maxlength: '2', placeholder: t('label.ddd_phone')
     = error_for(record.contact, :ddd_phone)
 
-    = contact.label :phone, t('label.phone')
-    = contact.text_field :phone
+    = contact.text_field :phone, maxlength: '9', placeholder: t('label.phone')
     = error_for(record.contact, :phone)
 
-    = contact.label :ddd_cellphone, t('label.ddd_cellphone')
-    = contact.text_field :ddd_cellphone
+    = contact.text_field :ddd_cellphone, maxlength: '2', placeholder: t('label.ddd_cellphone')
     = error_for(record.contact, :ddd_cellphone)
 
-    = contact.label :cellphone, t('label.cellphone')
-    = contact.text_field :cellphone
+    = contact.text_field :cellphone, maxlength: '9', placeholder: t('label.cellphone')
     = error_for(record.contact, :cellphone)
 
-    = contact.label :email, t('label.email')
-    = contact.text_field :email
+    - if admin_signed_in?
+      = contact.text_field :email

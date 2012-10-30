@@ -5,7 +5,6 @@ gem 'mongo', '1.6.2'
 gem 'mongoid', '2.4.11'
 gem 'bson_ext', '1.6.4'
 
-#gem 'pdfkit', '0.5.2'
 gem 'rqrcode', '0.4.2'
 
 gem 'jquery-rails', '1.0.19'
@@ -27,12 +26,14 @@ gem 'omniauth-facebook', '1.4.1'
 gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.1.1'
+gem 'dropbox-sdk', '1.5.1'
+gem 'whenever', '0.7.3'
 
 gem 'faker'
+gem 'twilio-ruby'
+gem 'resque', '1.23.0'
 
 gem 'rspec', '2.8', :group => [:test, :development]
-
-gem 'twilio-ruby'
 
 group :development do
   gem 'capistrano', '2.12.0'

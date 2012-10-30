@@ -2,7 +2,6 @@ class window.PasswordConfirmationValidation extends BaseValidation
   constructor: ->
     super('#person_user_attributes_password_confirmation')
     @password = $('#person_user_attributes_password')
-
   run: ->
     if @field.val() == ''
       return @setStatus('error', 'Confirme a senha')

@@ -30,6 +30,16 @@ class Notification
   #scopes
   scope :actives, where(active: true)
 
+  after_create :send_sms, :send_email
+
+  def send_sms
+    Resque.enqueue(SMSNotification, self.id)
+  end
+
+  def send_email
+    Resque.enqueue(EmailNotification, self.id)
+  end
+
   def will_participate?(person)
     person_notifications.where(:person_id => person.id).first
   end

@@ -27,7 +27,8 @@ class window.SocialButtons
     window.open(url, 'authPopup', "menubar=no,toolbar=no,status=no,width=#{width},height=#{height},toolbar=no,left=#{left},top=#{top}")
 
   fill: (attr) ->
-    $('#person_user_attributes_email').val attr.email
+    $('#person_user_attributes_email').val attr.email if $('#person_user_attributes_email').val() == ''
+    $('#person_name').val attr.username if $('#person_name').val() == ''
 
     $('form#new_person .form.user').append("<input type='hidden' name='person[user_attributes][authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
                               <input type='hidden' name='person[user_attributes][authentications_attributes][0][uid]' value='#{attr.authentication.uid}'>")
@@ -44,7 +45,6 @@ class window.SocialButtons
       .unbind('click')
 
   setSocialNetwork: (attr) ->
-    console.log attr
     return unless attr
     attr = attr.split(',')
     for i in attr

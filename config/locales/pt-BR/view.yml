@@ -42,8 +42,9 @@ pt-BR:
       name: 'Nome'
       sex: 'Sexo'
       show: 'Perfil'
+      subscribe: 'Cadastro'
       title_index: 'Listagem dos usuarios'
-      title_edit: 'Edicao usuario'
+      title_edit: 'Perfil'
       title_new: 'Adicionar usuario'
     notifications:
       title: 'Notificacoes'
@@ -53,3 +54,5 @@ pt-BR:
       associated_company: 'Hemocentro responsavel'
     filter:
       title: 'Encontre doadores, use o filtro para ser mais especifico'
+    reset_password:
+      title: 'Resetar senha'

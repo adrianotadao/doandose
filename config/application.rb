@@ -20,7 +20,7 @@ module Doandose
     config.assets.enabled = true
     config.assets.version = '1.0'
     config.assets.precompile += %w( admin.js admin.css institution.js institution.css mailer.css print.css)
-    #config.middleware.use "PDFKit::Middleware", :print_media_type => true
+    config.action_mailer.default_url_options = { host: 'doandodev.se', port: nil, trailing_slash: true }
     initializer :add_fonts, :group => :all, :after => :append_assets_path do
        config.assets.paths.unshift Rails.root.join('vendor', 'fonts').to_s
     end

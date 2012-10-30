@@ -35,7 +35,6 @@ class window.BaseValidation
     throw('You should implement this method')
 
   validate: ->
-
     if @changed() || !@visited
       @lastValue = @field.val()
       @visited = true
@@ -50,7 +49,6 @@ class window.BaseValidation
     @lastValue != @field.val()
 
   openToolTip: ->
-    console.log @message?
     if @message?
       @field.tooltip({ message: @message, class: 'invalid' })
     @visited = true

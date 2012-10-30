@@ -6,6 +6,7 @@ class Users::SessionsController < ApplicationController
 
   def create
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
+
     case
       when @authentication then sign_in
       when current_user then add_new_authentication
@@ -29,6 +30,7 @@ class Users::SessionsController < ApplicationController
 
   def destroy
     logout
+    redirect_to root_path
   end
 
   private
@@ -37,26 +39,25 @@ class Users::SessionsController < ApplicationController
     end
 
     def sign_in
+      login @authentication.user
       if @authentication.user.authenticable_type == 'Company'
         redirect_to institution_root_path
       else
-        redirect_to_user
+        after_sign_in
       end
     end
 
-    def redirect_to_user
+    def after_sign_in
       if @authentication.provider.eql?('identity')
-        login @authentication.user
-        redirect_to root_path
+        redirect_to person_path(Person.find(current_user.authenticable_id))
       else
-        login @authentication.user
         render 'users/sessions/callback_popup'
       end
     end
 
     def sign_up
       @user = User.parse_omniauth(auth_hash)
-      render 'users/sessions/callback_signup'
+      render 'users/sessions/callback_subscribe'
     end
 
     def add_new_authentication
