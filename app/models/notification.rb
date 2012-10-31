@@ -1,37 +1,41 @@
 class Notification
+  # Includes
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slugify
 
+  # Fields
   field :active, type: Boolean
   field :quantity, type: Integer
   field :situation, type: String
   field :title, type: String
   field :observation, type: String
 
+  # Accessors
   attr_accessor :blood_type, :distance
 
-  #relationship
+  # Relationships
   belongs_to :company
   belongs_to :blood
   has_many :person_notifications, autosave: true
 
-  #access control
+  # Access control
   attr_accessible :quantity, :situation, :active, :blood_id, :blood,
-                  :company_id, :title, :observation, :company,
-                  :person_notifications_attributes, :blood_type, :distance,
-                  :person_notifications
+    :company_id, :title, :observation, :company, :person_notifications_attributes,
+    :blood_type, :distance, :person_notifications
 
-  #validations
+  # Validations
   validates_presence_of :company, :blood, :situation, :quantity, :blood_type,
-                        :person_notifications
+    :person_notifications
   validates_numericality_of :quantity
 
-  #scopes
+  # Scopes
   scope :actives, where(active: true)
 
+  # Callbacks
   after_create :send_sms, :send_email
 
+  # Others
   def send_sms
     Resque.enqueue(SMSNotification, self.id)
   end

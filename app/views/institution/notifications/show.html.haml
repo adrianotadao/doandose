@@ -31,11 +31,23 @@
       %b= t('label.company')
 
     %h1 NOTIFICADOS
-    - for person_notification in @notification.person_notifications
-      %p= person_notification.person.name
-      %p= person_notification.canceled_at
-      %p= person_notification.alerted_at
-      %p= person_notification.confirmed_at
+    %table
+      %thead
+        %tr
+          %th= t('label.name')
+          %th= t('label.canceled_at')
+          %th= t('label.alerted_at')
+          %th= t('label.confirmed_at')
+          %th
+      %tbody
+        - for person_notification in @notification.person_notifications
+          %tr
+            %td= person_notification.person.name
+            %td= person_notification.canceled_at
+            %td= person_notification.alerted_at
+            %td= person_notification.confirmed_at
+            %td
+              = link_to 'detalhes', institution_person_notification_path(person_notification)
 
   .actions
     = link_to t('buttons.back'), institution_notifications_path, :class => 'link back'

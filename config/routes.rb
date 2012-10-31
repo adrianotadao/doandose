@@ -76,6 +76,7 @@ Doandose::Application.routes.draw do
     match '/sair' => 'base#destroy', as: :destroy_company_session
     resources :pages, only: :index
     resources :notifications
+    resources :person_notifications, only: :show
   end
 
 

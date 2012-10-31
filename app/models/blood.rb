@@ -1,17 +1,20 @@
 class Blood
+  # Includes
   include Mongoid::Document
   include Mongoid::Slugify
 
+  # Fields
   field :name, type: String
 
-  #relationship
+  # Relationships
   has_many :people
   has_many :notifications
 
-  #validations
+  # Validations
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  # Others
   private
   def generate_slug
     name.parameterize
