@@ -5,7 +5,7 @@
     = f.check_box :donor
 
     = f.label :blood_id, t('label.blood')
-    = f.select :blood_id, @bloods
+    = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
 
     = f.label :name, t('label.name')
     = f.text_field :name

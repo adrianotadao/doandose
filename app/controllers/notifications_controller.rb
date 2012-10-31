@@ -20,7 +20,7 @@ class NotificationsController < ApplicationController
     @person = current_user.authenticable
     @notification = Notification.find_by_slug params[:id]
 
-    if @notification.person_notifications.is_confimed( @person.id ).exists?
+    if @notification.person_notifications.by_person( @person.id ).exists?
       redirect_to notifications_path
     else
       save_confirmed_notification
@@ -60,7 +60,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find_by_slug params[:notification_id]
     person = current_user.authenticable
 
-    if @notification.person_notifications.is_confimed( person.id ).exists?
+    if @notification.person_notifications.by_person( person.id ).exists?
       @qr_code = RQRCode::QRCode.new( notification_url(@notification), :size => 10, leve: :l )
     else
       redirect_to notification_url(@notification)

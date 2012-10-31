@@ -8,7 +8,6 @@ class SMSNotification
       person_notifications.each do |person_notification|
         if person_notification.person.contact.cellphone?
           person_notification.alerted_with << { source: 'sms', date: Time.now }
-          person_notification.alerted_at = Time.now
           person_notification.save
         end
       end

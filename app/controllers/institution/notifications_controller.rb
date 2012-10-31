@@ -5,19 +5,19 @@ class Institution::NotificationsController < Institution::BaseController
 
   def new
     @notification = Notification.new
-    @bloods = Blood.scoped
   end
 
   def show
-    @notification = Notification.find_by_slug(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def create
     @notification = Notification.new params[:notification]
-    @notification.company = current_institution.authenticable
+
+    @notification.company = current_user.authenticable
     @notification.blood = Blood.where( name: @notification.blood_type).first
 
-    position = current_institution.authenticable.address.loc
+    position = current_user.authenticable.address.loc
     blood_types = BloodMatch.matcher @notification.blood_type
 
     if blood_types
@@ -40,7 +40,7 @@ class Institution::NotificationsController < Institution::BaseController
   end
 
   def destroy
-    @notification = Notification.find_by_slug(params[:id])
+    @notification = Notification.find_by_slug params[:id]
 
     if @notification.destroy
       redirect_to [:institution, :notifications], :notice => t('flash.notification.delete.notice')

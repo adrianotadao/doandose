@@ -7,7 +7,6 @@ class EmailNotification
     unless person_notifications.blank?
       person_notifications.each do |person_notification|
         person_notification.alerted_with << { source: 'email', date: Time.now }
-        person_notification.alerted_at = Time.now
         person_notification.save
       end
     end

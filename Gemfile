@@ -15,7 +15,7 @@ gem 'settingslogic', '2.0.8'
 gem 'premailer-rails3', '1.3.1'
 
 gem 'paperclip', '2.7.0'
-gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
+gem 'mongoid-paperclip', '0.0.7', require: "mongoid_paperclip"
 
 gem 'mongoid-slugify', '0.1.0'
 gem 'will_paginate', '3.0.3'
@@ -33,7 +33,7 @@ gem 'faker'
 gem 'twilio-ruby'
 gem 'resque', '1.23.0'
 
-gem 'rspec', '2.8', :group => [:test, :development]
+gem 'rspec', '2.8', group: [:test, :development]
 
 group :development do
   gem 'capistrano', '2.12.0'

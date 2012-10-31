@@ -8,11 +8,11 @@ class Admin::BloodsController < Admin::BaseController
   end
 
   def edit
-    @blood = Blood.find_by_slug(params[:id])
+    @blood = Blood.find_by_slug params[:id]
   end
 
   def create
-    @blood = Blood.new(params[:blood])
+    @blood = Blood.new params[:blood]
 
     if @blood.save
       redirect_to [:admin, :bloods], :notice => t('flash.blood.create.notice')
@@ -22,7 +22,7 @@ class Admin::BloodsController < Admin::BaseController
   end
 
   def update
-    @blood = Blood.find_by_slug(params[:id])
+    @blood = Blood.find_by_slug params[:id]
 
     if @blood.update_attributes(params[:blood])
       redirect_to [:admin, :bloods], :notice => t('flash.blood.update.notice')
@@ -32,7 +32,7 @@ class Admin::BloodsController < Admin::BaseController
   end
 
   def destroy
-    @blood = Blood.find_by_slug(params[:id])
+    @blood = Blood.find_by_slug params[:id]
     @blood.destroy
     redirect_to [:admin, :bloods], :notice => t('flash.blood.delete.notice')
   end

@@ -36,7 +36,6 @@
         %tr
           %th= t('label.name')
           %th= t('label.canceled_at')
-          %th= t('label.alerted_at')
           %th= t('label.confirmed_at')
           %th
       %tbody
@@ -44,7 +43,6 @@
           %tr
             %td= person_notification.person.name
             %td= person_notification.canceled_at
-            %td= person_notification.alerted_at
             %td= person_notification.confirmed_at
             %td
               = link_to 'detalhes', institution_person_notification_path(person_notification)
