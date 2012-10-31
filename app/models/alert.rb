@@ -20,4 +20,29 @@ class Alert
   # Validations
   validates_presence_of :person
 
+  # Others
+  def sms_list
+    source_list('sms')
+  end
+
+  def email_list
+    source_list('email')
+  end
+
+  def last_sms
+    last_source('sms')
+  end
+
+  def last_email
+    last_source('email')
+  end
+
+  def last_source(typo)
+    alerted_with.map{ |r| r['date'] if r['source'] == typo }.compact.last
+  end
+
+  def source_list(typo)
+    alerted_with.map{ |r| r if r['source'] == typo }.compact
+  end
+
 end

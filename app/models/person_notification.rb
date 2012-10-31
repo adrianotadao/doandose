@@ -9,9 +9,10 @@ class PersonNotification < Alert
   validates_presence_of :notification
 
   # Callbacks
-  after_create :send_email_confirmation
+  #after_create :send_email_confirmation
   after_destroy :send_email_undo_confirm
 
+  # Others
   def send_email_undo_confirm
     return if self.notification.blank? && self.person.blank?
     CompanyNotificationMailer.undo_confirmation(self.notification.id, self.person.id).deliver

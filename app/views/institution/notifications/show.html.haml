@@ -47,7 +47,7 @@
             %td= person_notification.alerted_at
             %td= person_notification.confirmed_at
             %td
-              =# link_to 'detalhes',
+              = link_to 'detalhes', institution_person_notification_path(person_notification)
 
   .actions
     = link_to t('buttons.back'), institution_notifications_path, :class => 'link back'

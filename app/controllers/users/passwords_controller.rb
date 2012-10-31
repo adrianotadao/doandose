@@ -15,7 +15,6 @@ class Users::PasswordsController < ApplicationController
   end
 
   def edit
-
     if reset_password_token?
       logout
       @user = User.first(conditions: {reset_password_token: params[:token] })

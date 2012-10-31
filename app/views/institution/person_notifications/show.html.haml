@@ -1,0 +1,15 @@
+%h1= @person_notification.person.name
+
+#email
+  %h2 EMAIL
+
+  .list
+    - for email in @person_notification.email_list.reverse
+      = email['date']
+
+#sms
+  %h2 SMS
+
+  .list
+    - for sms in @person_notification.sms_list.reverse
+      = sms['date']
