@@ -9,30 +9,12 @@ module Users
       @current_user
     end
 
-    def current_institution
-      return unless session[:institution_user_id]
-      if @current_institution.nil?
-        @current_institution = User.find(session[:institution_user_id])
-        logout_company if @current_institution.nil?
-      end
-      @current_institution
-    end
-
     def user_signed_in?
       current_user.present?
     end
 
-    def company_signed_in?
-      current_institution.present?
-    end
-
     def login(user)
-      if user.authenticable_type == 'Company'
-        session[:institution_user_id] = user.id
-      else
-        session[:user_id] = user.id
-      end
-
+      session[:user_id] = user.id
       update_user_cookie(user)
     end
 
@@ -49,12 +31,6 @@ module Users
       cookies.delete :email
       cookies.delete :lat
       cookies.delete :lng
-    end
-
-    def logout_company
-      session.destroy
-      session[:institution_user_id] = nil
-      redirect_to root_path
     end
 
     def authenticate_user!

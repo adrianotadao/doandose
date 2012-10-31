@@ -1,15 +1,25 @@
 %h1= @person_notification.person.name
 
-#email
-  %h2 EMAIL
+#alert_details
+  %p
+    %strong Cancelado em:
+    = @person_notification.canceled_at
 
-  .list
-    - for email in @person_notification.email_list.reverse
-      = email['date']
+  %p
+    %strong Confirmado em:
+    = @person_notification.confirmed_at
 
-#sms
-  %h2 SMS
+#alert_show
+  #email
+    .title{class: "#{ 'disabled' if can_send_email(@person_notification) }"} EMAIL
+    .counter= @person_notification.email_counter
+    .list
+      - for email in @person_notification.email_list.reverse
+        = email['date']
 
-  .list
-    - for sms in @person_notification.sms_list.reverse
-      = sms['date']
+  #sms
+    .title{class: "#{ 'disabled' if can_send_sms(@person_notification) }"} SMS
+    .counter= @person_notification.sms_counter
+    .list
+      - for sms in @person_notification.sms_list.reverse
+        = sms['date']

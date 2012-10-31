@@ -5,25 +5,18 @@ class Admin::NotificationsController < Admin::BaseController
 
   def new
     @notification = Notification.new
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
   end
 
   def show
-    @notification = Notification.find_by_slug(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def edit
     @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
-    @notification = Notification.find_by_slug(params[:id])
   end
 
   def create
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
-
-    @notification = Notification.new(params[:notification])
+    @notification = Notification.new params[:notification]
 
     if @notification.save
       redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
@@ -33,12 +26,9 @@ class Admin::NotificationsController < Admin::BaseController
   end
 
   def update
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
+    @notification = Notification.find_by_slug params[:id]
 
-    @notification = Notification.find_by_slug(params[:id])
-
-    if @notification.update_attributes(params[:notification])
+    if @notification.update_attributes params[:notification]
       redirect_to([:admin, @notification], :notice => t('flash.notification.update.notice'))
     else
       render :action => "edit"
