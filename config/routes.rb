@@ -68,6 +68,7 @@ Doandose::Application.routes.draw do
     resources :people
     resources :informations
     resources :campaigns
+    get '/estatisticas/' => 'statistics#index', as: :statistics
   end
 
   namespace :institution, path: 'instituicao' do

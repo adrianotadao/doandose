@@ -1,6 +1,8 @@
-= form_tag '/usuario/esqueci-minha-senha/', :class => 'forgot_password' do
-  %dl.form
-    %dt Login ou Email:
-    %dd= text_field_tag :email
+%h2= t('views.reset_password.title')
+#new_password
+  = form_tag '/usuario/esqueci-minha-senha/', :class => 'forgot_password' do
+    %dl.form
+      %dd= text_field_tag :email, '', placeholder: t('label.email')
 
-  = submit_tag 'enviar reset', :class => 'submit'
+    .actions
+      = submit_tag 'enviar reset', class: 'button red'

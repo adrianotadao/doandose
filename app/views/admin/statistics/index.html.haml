@@ -1,0 +1,24 @@
+#index
+  %h2= t('views.statics.title_index')
+
+
+  %div#orders_chart{ style: "width: 560px; height: 300px;"} 
+
+- content_for :javascript do
+  :javascript
+    new MultiCharts({
+      pointStart: #{ 3.weeks.ago.at_midnight.to_i * 1000 },
+      pointInterval: #{ 1.day * 1000 },
+      data: [
+        ['A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'],
+
+        [
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A-', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O-', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB-', date).to_f }.inspect }
+        ]
+      ]
+    })
