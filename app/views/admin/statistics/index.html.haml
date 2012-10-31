@@ -8,9 +8,12 @@
         %p= render 'total_per_blood'
 
     .group
-      %h3 Porcetagem de tipos sanguineos
+      %h3 Porcetagem ( tipos sanguineos, sexo, idade )
       %div
-        %p= render 'percentage_blood_of_type'
+        %p
+          = render 'admin/statistics/percentage/blood_of_type'
+          = render 'admin/statistics/percentage/gender'
+          = render 'admin/statistics/percentage/age_group'
 
 - content_for :javascript do
   :javascript
