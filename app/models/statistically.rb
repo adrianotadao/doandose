@@ -41,14 +41,18 @@ class Statistically
        Person.only(:birthday).aggregate.sort_by{|e| -e["count"]}[0..8]
     end
 
-    def birthdate_percent(position)
-      return false if position > birthdate_max.length
-      [years_old(position), (100 * birthdate_max[position]['count'] / person_total.to_f)]
+    def birthdate_percent
+      aux = []
+      for position in 0..( birthdate_max.length - 1 )
+        aux << [ years_old(position), (100 * birthdate_max[position]['count'] / person_total.to_f)]
+      end
+      aux
     end
 
     def years_old(position)
       return false if position > birthdate_max.length
-      Date.today.strftime('%Y').to_i - birthdate_max[position]['birthday'].strftime('%Y').to_i
+      years = Date.today.strftime('%Y').to_i - birthdate_max[position]['birthday'].strftime('%Y').to_i
+      "#{ years } anos"
     end
 
   end

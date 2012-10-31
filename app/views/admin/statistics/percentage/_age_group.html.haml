@@ -2,7 +2,6 @@
 
 - content_for :javascript do
   :javascript
-
     new PieCharts(
       {
         element: 'age_group',
@@ -11,14 +10,6 @@
       {
         type: 'pie',
         name: 'Porcentagem',
-        data: [
-
-          for (var i=0; i<10; i++){
-            console.log i
-
-          }
-
-
-        ]
+        data: #{Statistically.birthdate_percent}
       }
     )
