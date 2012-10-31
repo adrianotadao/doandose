@@ -17,7 +17,7 @@
 //= require gmap/utilities/gmap_draw_circle
 //= require gmap/navigator
 //= require gmap/coordinates
-//= require gmap/addressable_gmap
+//= require gmap/addressable_requiregmap
 //= require gmap/home_gmap
 
 //= require gmap/person_list

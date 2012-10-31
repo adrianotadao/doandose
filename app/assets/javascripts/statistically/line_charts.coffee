@@ -1,7 +1,8 @@
-class window.Charts
-  constructor: (series) ->
+class window.LineCharts
+  constructor: (element, series) ->
+
     new Highcharts.Chart
-      chart: { renderTo: 'orders_chart' }
+      chart: { renderTo: element }
       title: { text: 'Cadastro por dia' }
       xAxis: { type: 'datetime' }
       yAxis:

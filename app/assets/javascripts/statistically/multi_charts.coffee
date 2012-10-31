@@ -3,14 +3,14 @@ class window.MultiCharts
     @pointStart = options.pointStart
     @pointInterval = options.pointInterval
     @data = options.data
+    @element = options.element
 
-    new Charts(@series())
+    new LineCharts(@element, @series())
 
   series: ->
     aux = []
 
     for data, i in @data[1]
-      console.log data, i, @data[0]
       aux.push( {
         name: @data[0][i]
         pointInterval: @pointInterval
