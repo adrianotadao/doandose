@@ -1,7 +1,9 @@
 class Address
+  # Includes
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  # Fields
   field :number, type: String
   field :street, type: String
   field :neighborhood, type: String
@@ -11,24 +13,29 @@ class Address
   field :complement, type: String
   field :loc, type: Array, default: []
 
+  # Accessors
   attr_accessor :lat, :lng
 
-  #relationship
+  # Relationships
   belongs_to :addressable, polymorphic: true
 
-  #validations
-  validates_presence_of :zip_code, :number, :street, :neighborhood, :city, :state
+  # Validations
+  validates_presence_of :zip_code, :number, :street, :neighborhood, :city,
+    :state
   validates :number, numericality: true
 
-  #access control
-  attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state, :complement, :lat, :lng, :loc
+  # Access control
+  attr_accessible :number, :street, :neighborhood, :city, :zip_code, :state,
+    :complement, :lat, :lng, :loc
 
-  #scopes
+  # Scopes
   scope :people, where: { addressable_type: 'Person' }
   scope :companies, where: { addressable_type: 'Company' }
 
+  # Callbacks
   before_validation :parse_location
 
+  # Others
   def formated_address
     "#{street}, #{neighborhood} - #{number}, #{city} - #{state}"
   end

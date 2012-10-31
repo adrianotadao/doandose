@@ -1,8 +1,10 @@
 class Person
+  # Includes
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slugify
 
+  # Fields
   field :donor, type: Boolean
   field :name, type: String
   field :surname, type: String
@@ -12,12 +14,12 @@ class Person
   field :birthday, type: Date
   field :observations, type: String
 
-  #access control
+  # Access control
   attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday,
     :observations, :address_attributes, :contact_attributes, :user_attributes,
     :blood, :blood_id, :lat, :lng, :loc
 
-  #relationship
+  # Relationships
   belongs_to :blood
   belongs_to :company
   has_many :person_notifications
@@ -26,24 +28,24 @@ class Person
   has_one :user, as: :authenticable, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
 
-  #validations
+  # Validations
   validates_inclusion_of :donor,  in: [true, false]
   validates_inclusion_of :sex,  in: %(f m)
   validates_presence_of :name, :weight, :height, :surname, :sex, :birthday,
-                        :contact, :address, :blood, :user
+    :contact, :address, :blood, :user
   validates_length_of :name, in: 2..30
   validates :weight, :height, numericality: true
 
-  #validate birtdhate
+  # Scopes
+  scope :actives, where: { active: true }
+  scope :donors, where: { donor: true }
+
+  # Others
   def birthdate=value
     super value
   rescue
     nil
   end
-
-  #scopes
-  scope :actives, where: { active: true }
-  scope :donors, where: { donor: true }
 
   private
   def generate_slug

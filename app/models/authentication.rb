@@ -1,17 +1,21 @@
 class Authentication
+  # Includes
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  # attributes
-  belongs_to :user, class_name: 'User'
+  # Fields
   field :provider
   field :uid
 
+  # Indexes
   index({ provider: 1})
   index({ uid: 1})
   index({ provider: 1, uid: 1})
 
-  # validations
+  # Relationships
+  belongs_to :user, class_name: 'User'
+
+  # Validations
   validates_presence_of :uid, :provider, :user
   validates_uniqueness_of :provider, scope: :user_id
   validates_uniqueness_of :uid, scope: :provider
