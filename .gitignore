@@ -1,5 +1,6 @@
 tmp/*
 log/*.log
+dump.rdb
 .bundle/
 .DS_Store
 public/stylesheets/compiled
