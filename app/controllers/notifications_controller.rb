@@ -8,6 +8,7 @@ class NotificationsController < ApplicationController
 
   def show
     @notification = Notification.find_by_slug params[:id]
+    @qr_code = RQRCode::QRCode.new( notification_url(@notification), :size => 10, leve: :l )
   end
 
   def confirm

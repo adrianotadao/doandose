@@ -15,7 +15,11 @@
         #menu
           .bar
             = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
-            = render partial: 'shared/nav/public'
+
+            - if user_signed_in?
+              = render partial: 'shared/nav/user'
+            - else
+              = render partial: 'shared/nav/public'
 
         = render partial: 'shared/submenu'
 
