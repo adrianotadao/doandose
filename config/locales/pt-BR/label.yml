@@ -53,6 +53,7 @@ pt-BR:
     password: 'Senha'
     password_confirmation: 'Confirme senha'
     print: 'Imprimir'
+    present: 'Presente'
     pdf: 'pdf'
     quantity: 'Quantidade'
     responsible: 'Responsabilidade'

@@ -1,4 +1,4 @@
-class window.Notification
+class window.NewNotification
   constructor: ->
     @request = undefined
     @blood = $('.blood')
