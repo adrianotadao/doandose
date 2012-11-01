@@ -2,18 +2,20 @@ class Alert
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  field :participated, type: Boolean, default: false
   field :confirmed_at, type: Time
   field :canceled_at, type: Time
   field :alerted_with, type: Array, default: []
 
   # Access control
-  attr_accessible :canceled_at, :confirmed_at, :person_id, :person
+  attr_accessible :canceled_at, :confirmed_at, :person_id, :person, :participated
 
   # Relationships
   belongs_to :person
 
   # Scopes
   scope :by_person, lambda { |person_id| where(person_id: person_id ) }
+  scope :participateds, where(participated: true )
 
   # Validations
   validates_presence_of :person

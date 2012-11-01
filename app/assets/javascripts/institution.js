@@ -16,6 +16,7 @@
 //= require users/user
 
 //= require gmap/person_list
-//= require institution/notification
+//= require institution/notifications/new
+//= require institution/notifications/show
 
 //= require admin/tables

@@ -2,14 +2,12 @@ class window.Marker
   _userMarker = undefined
 
   @person: (coordinate, options) ->
-    icon = {icon: new google.maps.MarkerImage('http://icons.iconarchive.com/icons/david-renelt/little-icon-people/32/Plain-People-icon.png')}
-    marker = new google.maps.Marker $.extend(Marker.base(coordinate), icon, options)
+    marker = new google.maps.Marker $.extend(Marker.base(coordinate), options)
     Marker.markerControl(marker, options)
     marker
 
   @company: (coordinate, options) ->
-    icon = {icon: new google.maps.MarkerImage('http://icons.iconarchive.com/icons/icons-land/gis-gps-map/24/Hospital-icon.png')}
-    marker = new google.maps.Marker $.extend(Marker.base(coordinate), icon, options)
+    marker = new google.maps.Marker $.extend(Marker.base(coordinate), options)
     Marker.markerControl(marker, options)
     marker
 

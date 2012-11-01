@@ -1,4 +1,4 @@
-class window.Notification
+class window.NewNotification
   constructor: ->
     @request = undefined
     @blood = $('.blood')
@@ -78,7 +78,7 @@ class window.Notification
     html = "<table class='result'>"
     html += "<thead>
               <tr>
-                <th class='distance'>Distancia</th>
+                <th class='distance'>Distância</th>
                 <th class='name'>Nome</th>
                 <th class='name'>Sangue</th>
                 <th class='address'>Endereço</th>
@@ -92,30 +92,17 @@ class window.Notification
 
       html += "<tr id = '#{person.id}'>
                   <td>#{person.distance[0]}#{person.distance[1]}</td>
-                  <td>#{person.blood}</td>
                   <td>#{person.name}</td>
+                  <td>#{person.blood}</td>
                   <td>#{person.address}</td>
                 </tr>"
 
     html += '</tbody></table>'
     $('#result').html html
 
-    @markerEvents()
     @counter(options.counters)
 
   counter: (counters) ->
     $('#counter').empty()
     counters.map (counter) =>
-      $('#counter').append "<p>#{counter[0]} = #{counter[1]}</p>"
-
-  markerEvents: ->
-    infowindow = new google.maps.InfoWindow
-
-    $('#result table tbody tr').mouseover (e) =>
-      infowindow.close()
-      for person in PersonList.list()
-        if person.id == $(e.currentTarget).attr('id')
-          marker = person.marker
-          infowindow.setContent person.distance
-          break
-      infowindow.open(Gmap.create(), marker)
+      $('#counter').append "<div class='blood_type'><div class='title'>#{counter[0]}</div><div class='total'>#{counter[1]}</div></div>"
