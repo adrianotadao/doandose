@@ -23,6 +23,7 @@ class Person
   belongs_to :blood
   belongs_to :company
   has_many :person_notifications
+  has_many :alerts
   has_one :address, as: :addressable, dependent: :destroy, autosave: true
   has_one :contact, as: :contactable, dependent: :destroy, autosave: true
   has_one :user, as: :authenticable, dependent: :destroy, autosave: true

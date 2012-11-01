@@ -36,6 +36,9 @@ class GmapController < ApplicationController
 
     @collectedPeople = @people.map(&:addressable).map do |r|
       if blood_types
+        last_participation = r.alerts.participateds.last
+        next if last_participation && (last_participation.created_at + 3.months) > Time.now
+
         if r.blood.name.in? blood_types
           {
             id: r.id,
