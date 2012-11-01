@@ -1,15 +1,15 @@
-%div#age_group{ style: "width: 560px; height: 300px;"} 
+%div#age_group{ style: "width: 460px; height: 300px; float: left;"} 
 
 - content_for :javascript do
   :javascript
     new PieCharts(
       {
         element: 'age_group',
-        titleText: 'Doadores agupado por data de nascimento',
+        titleText: 'Doadores agupado pela idade',
       },
       {
         type: 'pie',
         name: 'Porcentagem',
-        data: #{Statistically.birthdate_percent}
+        data: #{Statistically.indexed_ages_more}
       }
     )

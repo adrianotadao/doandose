@@ -1,4 +1,4 @@
-%div#blood_of_type{ style: "width: 560px; height: 300px;"} 
+%div#blood_of_type{ style: "width: 460px; height: 300px; float: left;"} 
 
 - content_for :javascript do
   :javascript
@@ -11,18 +11,18 @@
         type: 'pie',
         name: 'Porcentagem',
         data: [
-          ['A+',  #{ Statistically.blood_percentage('A+') } ],
-          ['A-',    #{ Statistically.blood_percentage('A-') } ],
+          ['A+',  #{ Statistically.percentage_blood_type('A+') } ],
+          ['A-',    #{ Statistically.percentage_blood_type('A-') } ],
           {
               name: 'B+',
-              y: #{ Statistically.blood_percentage('B+') },
+              y: #{ Statistically.percentage_blood_type('B+') },
               sliced: true,
               selected: true
           },
-          ['B-',        #{ Statistically.blood_percentage('B-') }],
-          ['AB+',    #{ Statistically.blood_percentage('AB+') }],
-          ['AB-',     #{ Statistically.blood_percentage('AB-') }],
-          ['0+',      #{ Statistically.blood_percentage('O+') }],
-          ['0-',       #{ Statistically.blood_percentage('O-') }]
+          ['B-',        #{ Statistically.percentage_blood_type('B-') }],
+          ['AB+',    #{ Statistically.percentage_blood_type('AB+') }],
+          ['AB-',     #{ Statistically.percentage_blood_type('AB-') }],
+          ['0+',      #{ Statistically.percentage_blood_type('O+') }],
+          ['0-',       #{ Statistically.percentage_blood_type('O-') }]
         ]
     })

@@ -1,4 +1,4 @@
-%div#gender{ style: "width: 560px; height: 300px;"} 
+%div#gender{ style: "width: 460px; height: 300px; float: left;"} 
 
 - content_for :javascript do
   :javascript
@@ -11,10 +11,10 @@
         type: 'pie',
         name: 'Porcentagem',
         data: [
-          ['Maculino',    #{ Statistically.gender_percentage('m') } ],
+          ['Maculino',    #{ Statistically.percentage_gender('m') } ],
           {
               name: 'Feminino',
-              y: #{ Statistically.gender_percentage('f') },
+              y: #{ Statistically.percentage_gender('f') },
               sliced: true,
               selected: true
           }

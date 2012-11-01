@@ -10,12 +10,12 @@
         ['A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'],
 
         [
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB-', date).to_f }.inspect }
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('A+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('A-', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('O+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('O-', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('AB+', date).to_f }.inspect },
+          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('AB-', date).to_f }.inspect }
         ]
       ]
     })

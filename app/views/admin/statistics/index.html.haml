@@ -15,6 +15,11 @@
           = render 'admin/statistics/percentage/gender'
           = render 'admin/statistics/percentage/age_group'
 
+    .group
+      %h3 Ultimas notificacao com porcentagem de participacao
+      %div
+        %p= render 'percentage_notification'
+
 - content_for :javascript do
   :javascript
     new Menu("#sessions" )
