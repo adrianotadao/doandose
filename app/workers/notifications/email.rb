@@ -1,4 +1,4 @@
-class EmailNotification
+class Notifications::Email
   @queue = "email_notification_#{Rails.env}"
 
   def self.perform(notification_id)

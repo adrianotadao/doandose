@@ -37,11 +37,11 @@ class Notification
 
   # Others
   def send_sms
-    Resque.enqueue(SMSNotification, self.id)
+    Resque.enqueue(Notifications::SMS, self.id)
   end
 
   def send_email
-    Resque.enqueue(EmailNotification, self.id)
+    Resque.enqueue(Notifications::Email, self.id)
   end
 
   def will_participate?(person)

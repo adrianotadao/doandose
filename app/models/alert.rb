@@ -21,6 +21,14 @@ class Alert
   validates_presence_of :person
 
   # Others
+  def can_send_sms
+    last_sms > (Time.now - 1.hours)
+  end
+
+  def can_send_email
+    last_email > (Time.now - 1.hours)
+  end
+
   def sms_list
     source_list('sms')
   end

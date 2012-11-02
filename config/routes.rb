@@ -80,6 +80,8 @@ Doandose::Application.routes.draw do
     resources :person_notifications, only: :show do
       member do
         post :participation
+        post :send_sms
+        post :send_email
       end
     end
   end

@@ -18,5 +18,6 @@
 //= require gmap/person_list
 //= require institution/notifications/new
 //= require institution/notifications/show
+//= require institution/person_notifications/show
 
 //= require admin/tables
