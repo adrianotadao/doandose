@@ -42,6 +42,10 @@ class Person
   scope :donors, where: { donor: true }
 
   # Others
+  def blood_donors
+    BloodMatch.donor(blood.name)
+  end
+
   def birthdate=value
     super value
   rescue

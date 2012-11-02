@@ -25,12 +25,13 @@ class Notification
     :blood_type, :distance, :person_notifications
 
   # Validations
-  validates_presence_of :company, :blood, :situation, :quantity, :blood_type,
-    :person_notifications
+  validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
+  validates_presence_of :blood_type, :if => :new_record?
   validates_numericality_of :quantity
 
   # Scopes
   scope :actives, where(active: true)
+  scope :compatibles_by, ->(bloods) { where(:blood_id.in => bloods) }
 
   # Callbacks
   after_create :send_sms, :send_email

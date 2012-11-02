@@ -18,7 +18,7 @@ class Institution::NotificationsController < Institution::BaseController
     @notification.blood = Blood.where( name: @notification.blood_type).first
 
     position = current_user.authenticable.address.loc
-    blood_types = BloodMatch.matcher @notification.blood_type
+    blood_types = BloodMatch.receives @notification.blood_type
 
     if blood_types
       for person in GMap.elements_by_distance(position, @notification.distance.to_i, 'Person').map(&:addressable)
