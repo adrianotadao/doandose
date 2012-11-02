@@ -23,6 +23,9 @@ class Campaign
   validates_presence_of :title, :content, :quantity, :expired_at, :company,
     :blood
 
+  # Scopes
+  scope :actives, where(active: true)
+
   # Others
   private
   def generate_slug
