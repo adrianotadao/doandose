@@ -10,19 +10,5 @@
       {
         type: 'pie',
         name: 'Porcentagem',
-        data: [
-          ['A+',  #{ Statistically.percentage_blood_type('A+') } ],
-          ['A-',    #{ Statistically.percentage_blood_type('A-') } ],
-          {
-              name: 'B+',
-              y: #{ Statistically.percentage_blood_type('B+') },
-              sliced: true,
-              selected: true
-          },
-          ['B-',        #{ Statistically.percentage_blood_type('B-') }],
-          ['AB+',    #{ Statistically.percentage_blood_type('AB+') }],
-          ['AB-',     #{ Statistically.percentage_blood_type('AB-') }],
-          ['0+',      #{ Statistically.percentage_blood_type('O+') }],
-          ['0-',       #{ Statistically.percentage_blood_type('O-') }]
-        ]
+        data: #{ Statistically.percentage_blood_type }
     })

@@ -60,6 +60,7 @@ Doandose::Application.routes.draw do
   namespace :admin do
     root :to => 'companies#index'
     match '/sair/' => 'base#destroy', as: :destroy_session
+    post '/estatistica/cadastro-por-dia/' => 'statistics#subscribe_per_date'
     resources :pages, only: :index
     resources :partners
     resources :companies

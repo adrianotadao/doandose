@@ -1,3 +1,7 @@
+%span.less - 3
+%span.restore restaurar
+%span.more + 3
+
 %div#orders_chart{ style: "width: 560px; height: 300px;"} 
 
 - content_for :javascript do
@@ -7,15 +11,7 @@
       pointStart: #{ 3.weeks.ago.at_midnight.to_i * 1000 },
       pointInterval: #{ 1.day * 1000 },
       data: [
-        ['A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'],
-
-        [
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('A+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('A-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('O+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('O-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('AB+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.amount_of_blood_type('AB-', date).to_f }.inspect }
-        ]
+        #{ Blood.all.map( &:name ) },
+        #{ Statistically.amount_of_blood_type(3.weeks.ago, Date.today) }
       ]
     })

@@ -10,13 +10,5 @@
       {
         type: 'pie',
         name: 'Porcentagem',
-        data: [
-          ['Maculino',    #{ Statistically.percentage_gender('m') } ],
-          {
-              name: 'Feminino',
-              y: #{ Statistically.percentage_gender('f') },
-              sliced: true,
-              selected: true
-          }
-        ]
+        data: #{  Statistically.percentage_gender }
     })

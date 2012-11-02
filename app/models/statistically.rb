@@ -1,33 +1,43 @@
 class Statistically
   class << self
 
-    #global
+    #person count
     def person_total
       Person.all.count
     end
 
     #Subscribe per day of blood type
-    def amount_of_blood_type(type, date)
-      blood = Blood.where(name: type).first
-      blood.people.where(:created_at.gte => date, :created_at.lte => date + 1.day).count
+    def amount_of_blood_type(data_start, date_end)
+      bloods = Blood.all
+      bloods.map do |blood|
+        (data_start.to_date..date_end.to_date).map do |date|
+          (blood.people.where(:created_at.gte => date, :created_at.lte => date + 1.day).count).to_f
+        end
+      end
     end
 
     #blood
-    def percentage_blood_type(blood)
-      blood = Blood.where(name: blood).first.people.count
-      (100 * blood / person_total.to_f).round(2)
+    def percentage_blood_type
+      blood = Blood.all
+      result = []
+      blood.map do |b|
+        quantity = Blood.where(name: b.name).first.people.count
+        result << [ b.name, (100 * quantity / person_total.to_f).round(2) ]
+      end
+      result
     end
 
     #gender
-    def percentage_gender(gender)
-      gender = Person.where(sex: gender).count
-      (100 * gender / person_total.to_f).round(2)
+    def percentage_gender
+      ['m', 'f'].map do |g|
+        counter = Person.where(sex: g).count
+        [ g == 'm' ? 'Masculino' : 'Feminino', (100 * counter / person_total.to_f).round(2) ]
+      end
     end
 
     #birthdate
     def indexed_ages_more
-      birthdates = Person.only(:birthday).aggregate.sort_by{|e| -e["count"]}[0..8]
-
+      birthdates = Person.only(:birthday).aggregate.sort_by{|e| -e["count"] }[0..8]
       birthdates.map do |b|
         [
           "#{ Date.today.strftime('%Y').to_i - b['birthday'].strftime('%Y').to_i } anos",
@@ -38,12 +48,13 @@ class Statistically
 
     #notification
     def joined_by_blood_type
-      notifications = Notification.all.asc(:created_at)[0..5]
+      notifications = Notification.all.asc(:created_at).limit( 5 )
+      confirmed = notifications.map( &:person_notifications).map( &:count )
 
       {
-        title: notifications.map{|t| t.title.to_s },
-        confirmed: notifications.map{ |c| c.person_notifications.count },
-        not_confirmed: notifications.map{ |c| c.quantity - c.person_notifications.count }
+        title: notifications.map( &:title ),
+        confirmed: confirmed,
+        not_confirmed: notifications.map( &:quantity ) -  confirmed
       }
     end
   end

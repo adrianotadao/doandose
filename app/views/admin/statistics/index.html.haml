@@ -1,25 +1,21 @@
 #index
   %h2= t('views.statics.title_index')
 
-  #sessions
-    .group
-      %h3 Total de cadastro por tipo de sangue
-      %div
-        %p= render 'total_per_blood'
+  #tabs
+    %ul
+      %li= link_to 'Cadastro por dia', '#tab-1'
+      %li= link_to 'Porcentagem por tipo de sangue', '#tab-2'
+      %li= link_to 'Porcentagem do sexo', '#tab-3'
+      %li= link_to 'Porcentagem da idade', '#tab-4'
+      %li= link_to 'Estatistica das notificacoes', '#tab-5'
 
-    .group
-      %h3 Porcetagem ( tipos sanguineos, sexo, idade )
-      %div
-        %p
-          = render 'admin/statistics/percentage/blood_of_type'
-          = render 'admin/statistics/percentage/gender'
-          = render 'admin/statistics/percentage/age_group'
 
-    .group
-      %h3 Ultimas notificacao com porcentagem de participacao
-      %div
-        %p= render 'percentage_notification'
+    #tab-1= render 'total_per_blood'
+    #tab-2= render 'admin/statistics/percentage/blood_of_type'
+    #tab-3= render 'admin/statistics/percentage/gender'
+    #tab-4= render 'admin/statistics/percentage/age_group'
+    #tab-5= render 'percentage_notification'
 
 - content_for :javascript do
   :javascript
-    new Menu("#sessions" )
+    new Menu("#tabs" )
