@@ -16,6 +16,8 @@ class Alert
   # Scopes
   scope :by_person, lambda { |person_id| where(person_id: person_id ) }
   scope :participateds, where(participated: true )
+  scope :canceleds, where(:canceled_at.ne => nil, :canceled_at.exists => true)
+  scope :non_canceleds, where(:canceled_at.exists => false)
 
   # Validations
   validates_presence_of :person

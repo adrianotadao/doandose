@@ -34,7 +34,7 @@ class NotificationsController < ApplicationController
 
   def undo_confirm
     @person_notification = PersonNotification.find(params[:id])
-    if @person_notification.destroy
+    if @person_notification.update_attributes(canceled_at: Time.now)
       redirect_to notifications_path
     end
   end

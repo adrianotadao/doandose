@@ -5,7 +5,7 @@ class Notification
   include Mongoid::Slugify
 
   # Fields
-  field :active, type: Boolean
+  field :active, type: Boolean, default: true
   field :quantity, type: Integer
   field :situation, type: String
   field :title, type: String
@@ -46,7 +46,7 @@ class Notification
   end
 
   def will_participate?(person)
-    person_notifications.where(:person_id => person.id).first
+    person_notifications.non_canceleds.where(:person_id => person.id).first
   end
 
   def remaining
