@@ -11,14 +11,14 @@
 
 #alert_show
   #email
-    .title{class: "#{ 'disabled' unless @person_notification.can_send_email }"} EMAIL
+    .title{class: "#{ 'disabled' if @person_notification.can_send_email }"} EMAIL
     .counter= @person_notification.email_counter
     .list
       - for email in @person_notification.email_list.reverse
         = email['date']
 
   #sms
-    .title{class: "#{ 'disabled' unless @person_notification.can_send_sms }"} SMS
+    .title{class: "#{ 'disabled' if @person_notification.can_send_sms }"} SMS
     .counter= @person_notification.sms_counter
     .list
       - for sms in @person_notification.sms_list.reverse

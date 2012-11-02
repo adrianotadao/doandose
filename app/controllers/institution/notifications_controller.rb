@@ -1,6 +1,6 @@
 class Institution::NotificationsController < Institution::BaseController
   def index
-    @notifications = Notification.all
+    @notifications = current_user.authenticable.notifications
   end
 
   def new
