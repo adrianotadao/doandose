@@ -1,7 +1,6 @@
 # stages
 set :stages, %w(staging production)
 require 'capistrano/ext/multistage'
-require "whenever/capistrano"
 
 # General
 set :application, 'doandose'
@@ -24,7 +23,6 @@ require 'rvm/capistrano'
 # ==
 after 'deploy:update_code', 'assets:copy_config_files', 'assets:bundle', 'assets:compile'
 after 'deploy', 'deploy:cleanup', "deploy:restart"
-after "deploy:symlink", "deploy:update_crontab"
 
 namespace :deploy do
   task :start do ; end
@@ -32,11 +30,6 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join current_path, 'tmp', 'restart.txt'}"
   end
-  
-  desc "Update the crontab file"  
-  task :update_crontab, :roles => :db do  
-    run "cd #{release_path} && whenever --update-crontab #{application}"  
-  end  
 end
 
 namespace :assets do
