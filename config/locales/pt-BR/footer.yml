@@ -4,5 +4,8 @@ pt-BR:
       title:
         testimony: 'Depoimento'
         about_us: 'Quem Somos'
+        about_us_description:
+          'Doando.se é uma ferramenta que conecta hemocentros e doadores para a manutenção e reposição de seus estoques de sangue, em situações
+          de emergência ou para manter seu niveis atuais'
         contact: 'Contato'
       more: 'Mais...'

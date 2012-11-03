@@ -24,5 +24,8 @@ module Doandose
     initializer :add_fonts, :group => :all, :after => :append_assets_path do
        config.assets.paths.unshift Rails.root.join('vendor', 'fonts').to_s
     end
+    initializer :add_jquery_fancybox, :group => :all, :after => :append_assets_path do
+       config.assets.paths.unshift Rails.root.join('vendor', 'assets', 'images', 'jquery_fancybox').to_s
+    end
   end
 end
