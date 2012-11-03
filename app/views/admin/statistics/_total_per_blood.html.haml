@@ -1,14 +1,14 @@
-%span.less - 3
+%span.less - 3 semanas
 %span.restore restaurar
-%span.more + 3
+%span.more + 3 semanas
 
 %div#orders_chart{ style: "width: 560px; height: 300px;"} 
 
 - content_for :javascript do
   :javascript
-    new MultiCharts({
+    new LineCharts({
       element: "orders_chart",
-      pointStart: #{ 3.weeks.ago.at_midnight.to_i * 1000 },
+      pointStart: #{ 6.weeks.ago.at_midnight.to_i * 1000 },
       pointInterval: #{ 1.day * 1000 },
       data: [
         #{ Blood.all.map( &:name ) },
