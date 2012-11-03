@@ -3,7 +3,11 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm, :complete]
 
   def index
-    @notifications = Notification.actives.paginate(:page => params[:page])
+    if user_signed_in?
+      @notifications = Notification.actives.compatibles_by(Blood.where(:name.in => BloodMatch.donor(current_user.authenticable.blood.name)).map(&:id)).paginate(:page => params[:page])
+    else
+      @notifications = Notification.actives.paginate(:page => params[:page])
+    end
   end
 
   def show
@@ -30,7 +34,7 @@ class NotificationsController < ApplicationController
 
   def undo_confirm
     @person_notification = PersonNotification.find(params[:id])
-    if @person_notification.destroy
+    if @person_notification.update_attributes(canceled_at: Time.now)
       redirect_to notifications_path
     end
   end

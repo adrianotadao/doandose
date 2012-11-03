@@ -16,11 +16,21 @@ class Alert
   # Scopes
   scope :by_person, lambda { |person_id| where(person_id: person_id ) }
   scope :participateds, where(participated: true )
+  scope :canceleds, where(:canceled_at.ne => nil, :canceled_at.exists => true)
+  scope :non_canceleds, where(:canceled_at.exists => false)
 
   # Validations
   validates_presence_of :person
 
   # Others
+  def can_send_sms
+    last_sms > (Time.now - 1.hours)
+  end
+
+  def can_send_email
+    last_email > (Time.now - 1.hours)
+  end
+
   def sms_list
     source_list('sms')
   end

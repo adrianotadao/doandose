@@ -30,7 +30,7 @@ class GmapController < ApplicationController
   def find_elements_to_notification
     position = [params[:position][:lat].to_f, params[:position][:lng].to_f]
     distance = params[:distance].to_i
-    blood_types = BloodMatch.matcher params[:blood]
+    blood_types = BloodMatch.receives params[:blood]
 
     @people = GMap.elements_by_distance(position, distance, 'Person')
 

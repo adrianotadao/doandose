@@ -5,7 +5,7 @@ class Notification
   include Mongoid::Slugify
 
   # Fields
-  field :active, type: Boolean
+  field :active, type: Boolean, default: true
   field :quantity, type: Integer
   field :situation, type: String
   field :title, type: String
@@ -25,27 +25,28 @@ class Notification
     :blood_type, :distance, :person_notifications
 
   # Validations
-  validates_presence_of :company, :blood, :situation, :quantity, :blood_type,
-    :person_notifications
+  validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
+  validates_presence_of :blood_type, :if => :new_record?
   validates_numericality_of :quantity
 
   # Scopes
   scope :actives, where(active: true)
+  scope :compatibles_by, ->(bloods) { where(:blood_id.in => bloods) }
 
   # Callbacks
   after_create :send_sms, :send_email
 
   # Others
   def send_sms
-    Resque.enqueue(SMSNotification, self.id)
+    Resque.enqueue(Notifications::SMS, self.id)
   end
 
   def send_email
-    Resque.enqueue(EmailNotification, self.id)
+    Resque.enqueue(Notifications::Email, self.id)
   end
 
   def will_participate?(person)
-    person_notifications.where(:person_id => person.id).first
+    person_notifications.non_canceleds.where(:person_id => person.id).first
   end
 
   def remaining
