@@ -38,12 +38,17 @@ class Statistically
     #birthdate
     def indexed_ages_more
       birthdates = Person.only(:birthday).aggregate.sort_by{|e| -e["count"] }[0..8]
-      birthdates.map do |b|
+      count = 0
+
+      result = birthdates.map do |b|
+        percentage = ( 100 * b['count'] / person_total.to_f ).round(2)
+        count += percentage
         [
           "#{ Date.today.strftime('%Y').to_i - b['birthday'].strftime('%Y').to_i } anos",
-          ( 100 * b['count'] / person_total.to_f ).round(2)
+          percentage
         ]
       end
+      result << ['Outras idades', 100 - count]
     end
 
     #notification

@@ -1,20 +1,19 @@
-#index
-  %h2= t('views.statics.title_index')
+#statistically
+  %h2= t('views.statistics.title')
 
   #tabs
     %ul
-      %li= link_to 'Cadastro por dia', '#tab-1'
-      %li= link_to 'Porcentagem por tipo de sangue', '#tab-2'
-      %li= link_to 'Porcentagem do sexo', '#tab-3'
-      %li= link_to 'Porcentagem da idade', '#tab-4'
-      %li= link_to 'Estatistica das notificacoes', '#tab-5'
-
+      %li= link_to t('views.statistics.tabs.subcribe_per_day'), '#tab-1'
+      %li= link_to t('views.statistics.tabs.type_of_blood'), '#tab-2'
+      %li= link_to t('views.statistics.tabs.sex'), '#tab-3'
+      %li= link_to t('views.statistics.tabs.age'), '#tab-4'
+      %li= link_to t('views.statistics.tabs.notification_confirmed'), '#tab-5'
 
     #tab-1= render 'total_per_blood'
-    #tab-2= render 'admin/statistics/percentage/blood_of_type'
-    #tab-3= render 'admin/statistics/percentage/gender'
-    #tab-4= render 'admin/statistics/percentage/age_group'
-    #tab-5= render 'percentage_notification'
+    #tab-2= render 'admin/statistics/percentages/blood_of_type'
+    #tab-3= render 'admin/statistics/percentages/gender'
+    #tab-4= render 'admin/statistics/percentages/age_group'
+    #tab-5= render 'admin/statistics/percentages/notification_confirmed'
 
 - content_for :javascript do
   :javascript

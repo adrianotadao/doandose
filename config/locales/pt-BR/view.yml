@@ -56,3 +56,11 @@ pt-BR:
       title: 'Use o filtro para encontrar os doadores desejáveis'
     reset_password:
       title: 'Resetar senha'
+    statistics:
+      title: 'Estatisticas'
+      tabs:
+        subcribe_per_day: 'Cadastro por dia'
+        type_of_blood: 'Porcentagem por tipo de sangue'
+        sex: 'Porcentagem por sexo'
+        age: 'Porcentagem por idade'
+        notification_confirmed: 'Porcentagens das notificacoes confirmadas e nao confirmadas'

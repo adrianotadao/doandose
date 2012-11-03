@@ -36,9 +36,8 @@ class window.LineCharts
       data:
         start_at: @interval[0]
         end_at: @interval[1]
-
       beforeSend: =>
-        console.log 'before'
+        addLoad('#tab-1')
       success: (data) =>
         if data
           @data[1] = data
@@ -46,6 +45,7 @@ class window.LineCharts
         else
           alert 'erro inexperado aguarde a pagina sera recarregada novamente !'
           location.reload()
+        removeLoad('#tab-1')
 
   series: ->
     aux = []
@@ -66,5 +66,5 @@ class window.LineCharts
       title: { text: 'Cadastro por dia' }
       xAxis: { type: 'datetime' }
       yAxis:
-        title: { text: 'cadastro' }
+        title: { text: 'quantidade' }
       series: @series()

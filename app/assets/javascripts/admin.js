@@ -6,6 +6,7 @@
 
 //= require highcharts/highcharts
 //= require highcharts/exporting
+//= require util
 
 //= require admin/tables
 //= require mask
