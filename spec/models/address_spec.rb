@@ -6,16 +6,16 @@ describe 'Address' do
   end
 
   it 'Lat should not be required' do
-    FactoryGirl.build(:address, :lat => nil).should be_valid
+    FactoryGirl.build(:address, lat: nil).should be_valid
   end
 
   it 'Lng should not be required' do
-    FactoryGirl.build(:address, :lng => nil).should be_valid
+    FactoryGirl.build(:address, lng: nil).should be_valid
   end
 
   describe 'Zip code' do
     it 'Should not be null' do
-      FactoryGirl.build(:address, :zip_code => nil).should_not be_valid
+      FactoryGirl.build(:address, zip_code: nil).should_not be_valid
     end
     it 'Should be a string' do
       FactoryGirl.build(:address).zip_code.is_a?(String).should be_true
@@ -24,7 +24,7 @@ describe 'Address' do
 
   describe 'Number' do
     it 'Should not be null' do
-      FactoryGirl.build(:address, :number => nil).should_not be_valid
+      FactoryGirl.build(:address, number: nil).should_not be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).number.is_a?(String).should be_true
@@ -33,7 +33,7 @@ describe 'Address' do
 
   describe 'Street' do
     it 'Should have a street' do
-      FactoryGirl.build(:address, :street => nil).should_not be_valid
+      FactoryGirl.build(:address, street: nil).should_not be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).street.is_a?(String).should be_true
@@ -42,7 +42,7 @@ describe 'Address' do
 
   describe 'Neighborhood' do
     it 'Should have a neighborhood' do
-      FactoryGirl.build(:address, :neighborhood => nil).should_not be_valid
+      FactoryGirl.build(:address, neighborhood: nil).should_not be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).neighborhood.is_a?(String).should be_true
@@ -51,7 +51,7 @@ describe 'Address' do
 
   describe 'Complement' do
     it 'Complement should not be required' do
-      FactoryGirl.build(:address, :complement => nil).should be_valid
+      FactoryGirl.build(:address, complement: nil).should be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).complement.is_a?(String).should be_true
@@ -60,7 +60,7 @@ describe 'Address' do
 
   describe 'City' do
     it 'Should have a city' do
-      FactoryGirl.build(:address, :city => nil).should_not be_valid
+      FactoryGirl.build(:address, city: nil).should_not be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).city.is_a?(String).should be_true
@@ -69,7 +69,7 @@ describe 'Address' do
 
   describe 'State' do
     it 'Should have a state' do
-      FactoryGirl.build(:address, :state => nil).should_not be_valid
+      FactoryGirl.build(:address, state: nil).should_not be_valid
     end
     it 'Should be a String' do
       FactoryGirl.build(:address).state.is_a?(String).should be_true
@@ -78,7 +78,7 @@ describe 'Address' do
 
   describe 'Loc' do
     it 'Loc should not be required' do
-      FactoryGirl.build(:address, :loc => nil).should be_valid
+      FactoryGirl.build(:address, loc: nil).should be_valid
     end
     it 'Loc should be a array' do
       FactoryGirl.build(:address).loc.is_a?(Array).should be_true
