@@ -1,0 +1,25 @@
+#index
+  %h2= t('views.testimonials.title_index')
+
+  - unless @testimonials.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('label.active')
+          %th= t('label.title')
+          %th= t('label.body')
+          %th= t('label.actions')
+
+      %tbody
+        - @testimonials.each do |testimonial|
+          %tr
+            %td= label_boolean(testimonial.active)
+            %td= testimonial.title
+            %td= testimonial.body
+            %td= link_to t('buttons.edit'), edit_admin_testimonial_path(testimonial), class: 'link edit'
+  - else
+    .empty= t('label.empty')
+
+- content_for :javascript do
+  :javascript
+    new Tables()

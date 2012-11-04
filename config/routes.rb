@@ -9,6 +9,7 @@ Doandose::Application.routes.draw do
   post '/cadastro/email-em-uso/' => 'people#email_in_use'
 
   get '/quem_somos/' => 'pages#about_us', as: :about_us
+  get '/depoimentos/' => 'testimonials#index', as: :testimonials
 
   namespace :users, :path => 'usuario' do
     match '/login' => 'sessions#new', as: :new_session
@@ -71,6 +72,7 @@ Doandose::Application.routes.draw do
     resources :people
     resources :informations
     resources :campaigns
+    resources :testimonials, except: [:new, :create, :show]
     get '/estatisticas/' => 'statistics#index', as: :statistics
   end
 

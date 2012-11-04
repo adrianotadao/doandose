@@ -13,6 +13,7 @@ class Admin::NotificationsController < Admin::BaseController
 
   def edit
     @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def create

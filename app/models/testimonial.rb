@@ -10,7 +10,10 @@ class Testimonial
   field :body, type: String
 
   # Access control
-  attr_accessible :body, :notification_id, :title, :company_id
+  attr_accessible :body, :notification_id, :title, :company_id, :active
+
+  # Scopes
+  scope :actives, where(active: true)
 
   # Relationships
   belongs_to :notification
