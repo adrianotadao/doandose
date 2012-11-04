@@ -52,7 +52,7 @@ group :test do
   gem 'spork', '0.9.0'
   gem 'database_cleaner', '0.7.1'
   gem 'ffaker', '1.12.1'
-  gem 'fabrication', '1.3.1'
+  gem 'factory_girl', '~> 4.1.0'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
