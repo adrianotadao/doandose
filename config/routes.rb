@@ -38,7 +38,6 @@ Doandose::Application.routes.draw do
   resources :notifications, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
     get :list_user
-    get :complete
     get :print
     member do
       get :indication_friend

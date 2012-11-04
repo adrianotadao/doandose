@@ -54,6 +54,10 @@ class Notification
     quantity - self.person_notifications.count
   end
 
+  def notification_confirmed(user)
+     self.person_notifications.by_person( user ).exists?
+  end
+
   private
   def generate_slug
     title.parameterize
