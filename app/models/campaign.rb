@@ -27,6 +27,7 @@ class Campaign
   scope :actives, where(active: true)
   scope :compatibles_by, ->(bloods) { where(:blood_id.in => bloods) }
 
+ # Others
   def campaign_confirmed(user)
      self.person_campaigns.by_person( user ).exists?
   end
@@ -35,7 +36,6 @@ class Campaign
     person_campaigns.non_canceleds.where(:person_id => person.id).first
   end
 
-  # Others
   private
   def generate_slug
     title.parameterize
