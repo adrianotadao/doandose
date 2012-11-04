@@ -55,14 +55,5 @@ group :test do
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-
-  if RUBY_PLATFORM.downcase.include?("darwin")
-    gem 'rb-fsevent', '0.9.0'
-    gem 'growl', '1.0.3'
-  end
-
-  if RUBY_PLATFORM.downcase.include?("linux")
-    gem 'rb-inotify', '0.8.6'
-    gem 'libnotify', '0.7.2'
-  end
+  gem 'rb-fsevent', '~> 0.9.1'
 end
