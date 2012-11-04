@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   layout '/layouts/print', only: :print
-  before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm, :complete]
+  before_filter :authenticate_user!, only: [:confirm, :confirmed, :undo_confirm]
 
   def index
     if user_signed_in?

@@ -1,0 +1,6 @@
+= render partial: 'campaigns/full_information', locals:{ campaign: @campaign }
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      window.print();
+    })

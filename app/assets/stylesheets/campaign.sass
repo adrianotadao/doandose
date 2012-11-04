@@ -1,11 +1,70 @@
 @import mixings/content
+@import mixings/form
 
-.content_campaigns
+#campaigns
   +container
   .content_campaigns
+    float: left
+    border: 1px dashed #ccc
+    margin: 8px
+    padding: 16px
+    &:hover
+      border: 1px dashed #5E5B5B
     span
       +span_position
     span.label
+      display: block
+      clear: both
       +span_label
     span.text
       +span_text
+
+  .pagination
+    width: 912px
+
+#campaign_show
+  +container
+  .qrcode
+    display: inline-block
+    float: left
+    padding: 10px
+    width: 296px
+    text-align: left
+    clear: both
+  #gmap
+    width: 556px
+  .social
+    +social
+  #directionPanelControl
+    margin-left: 576px
+    clear: both
+    text-align: right
+    span
+      font-weight: bold
+      cursor: pointer
+  #routePanel
+    width: 910px
+
+  a
+    float: left
+    margin-left: 10px
+
+#information_campaign
+  +information
+  margin-bottom: 30px
+  span
+    +span_position
+  span.label
+    +span_label
+  span.text
+    +span_text
+  .location
+    display: inline-block
+    clear: both
+    margin-top: 20px
+    float: rigth
+    h3
+      width: 380px
+      font-size: 24px
+  .information
+    float: left
