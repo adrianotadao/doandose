@@ -1,12 +1,15 @@
 Doandose::Application.routes.draw do
   mount Resque::Server.new, at: "/resque"
 
-  root to: "pages#index", host: 'localhost:3000'
+  root to: "pages#index"
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure/' => 'users/sessions#failure'
   post '/send_email/' => 'send_mail#create', as: :send_mail
   post '/cadastro/email-em-uso/' => 'people#email_in_use'
+
+  get '/quem_somos/' => 'pages#about_us', as: :about_us
+  get '/depoimentos/' => 'testimonials#index', as: :testimonials
 
   namespace :users, :path => 'usuario' do
     match '/login' => 'sessions#new', as: :new_session
@@ -69,6 +72,7 @@ Doandose::Application.routes.draw do
     resources :people
     resources :informations
     resources :campaigns
+    resources :testimonials, except: [:new, :create, :show]
     get '/estatisticas/' => 'statistics#index', as: :statistics
   end
 
@@ -84,6 +88,7 @@ Doandose::Application.routes.draw do
         post :send_email
       end
     end
+    resources :testimonials, except: [:show, :destroy]
   end
 
 

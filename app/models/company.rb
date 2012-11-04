@@ -18,7 +18,8 @@ class Company
   has_one :address, as: :addressable, dependent: :destroy, autosave: true
   has_one :contact, as: :contactable, dependent: :destroy, autosave: true
   has_one :user, as: :authenticable, dependent: :destroy, autosave: true
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
+  has_many :testimonials, dependent: :destroy
 
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
 

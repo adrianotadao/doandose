@@ -1,24 +1,14 @@
 #circle_one
   #body
     %h2= t('footer.circle.title.about_us')
-    %p
-      É um fato conhecido de todos que um leitor
-      se distrairá com o conteúdo de texto legível
-      de uma página quando estiver examinando sua diagramação.
-      A vantagem de usar Lorem Ipsum é que ele tem uma distribuição
-      normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui".
-    %h4= t('footer.circle.more')
+    %p= t('footer.circle.title.about_us_description')
+    %h4.about_us= t('footer.circle.more')
 
 #circle_two
   #body
     %h2= t('footer.circle.title.testimony')
-    .quotes_rigth
-    .quotes_left
-    %p
-      É um fato conhecido de todos que um leitor
-      se distrairá com o conteúdo de texto legível
-      de uma página quando...
-    %h4= t('footer.circle.more')
+    %p= sort_by_testimonial
+    %h4= link_to t('footer.circle.more'), testimonials_path
 
 #circle_three
   %h2 Contatos
@@ -33,3 +23,4 @@
 - content_for :javascript do
   :javascript
     new Contact()
+    new Site()

@@ -17,6 +17,7 @@ class Notification
   # Relationships
   belongs_to :company
   belongs_to :blood
+  belongs_to :testimonial
   has_many :person_notifications, autosave: true
 
   # Access control

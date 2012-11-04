@@ -5,6 +5,9 @@
 //= require jquery.nested-fields
 //= require jquery.cookies.2.2.0
 //= require jquery-ui
+//= requre jquery.easing-1.3.pack
+//= require jquery.mousewheel-3.0.4.pack
+//= require jquery.fancybox-1.3.4.pack
 
 //= require social_buttons
 //= require plugins/tooltips
@@ -34,3 +37,4 @@
 //= require social
 //= require contact
 //= require mask
+//= require site
