@@ -4,6 +4,6 @@
       %h2= testimonial.title
       %span.label= t('label.notifications')
       %span.notificaion= testimonial.notification.title
-      %span.text= testimonial.body
+      %p.text= h testimonial.body
 
   = will_paginate @person_notifications

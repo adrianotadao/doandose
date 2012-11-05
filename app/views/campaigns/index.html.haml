@@ -1,5 +1,6 @@
+%h1= t('views.campaign.title')
+
 #campaigns
-  %h1= t('views.campaign.title')
   - unless @campaigns.blank?
     - for campaign in @campaigns
 
@@ -15,6 +16,9 @@
         %span.label= t('label.expired_at')
         %span.text= campaign.expired_at
 
+        = participate_button_campaign(campaign)
+
+    = will_paginate @campaigns
   - else
     .empty_list= t('label.empty')
 

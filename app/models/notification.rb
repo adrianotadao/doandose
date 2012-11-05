@@ -18,7 +18,7 @@ class Notification
   belongs_to :company
   belongs_to :blood
   belongs_to :testimonial
-  has_many :person_notifications, autosave: true
+  has_many :person_notifications, dependent: :destroy, autosave: true
 
   # Access control
   attr_accessible :quantity, :situation, :active, :blood_id, :blood,
@@ -53,6 +53,10 @@ class Notification
 
   def remaining
     quantity - self.person_notifications.count
+  end
+
+  def notification_confirmed(user)
+     self.person_notifications.by_person( user ).exists?
   end
 
   private

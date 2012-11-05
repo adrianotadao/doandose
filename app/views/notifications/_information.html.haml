@@ -1,18 +1,19 @@
 #information_notification
-  %span.label= t('label.blood')
-  %span.text= notification.blood.name
-  %span.label= t('label.quantity')
-  %span.text= notification.quantity
-  %span.label= t('label.situation')
-  %span.text= notification.situation
-  %span.label= t('label.alerted_at')
-  %span.text= formated_date(notification.created_at)
-  %span.label= t('label.company')
-  %span.text= notification.company.name
+  .information
+    %span.label= t('label.blood')
+    %span.text= notification.blood.name
+    %span.label= t('label.quantity')
+    %span.text= notification.quantity
+    %span.label= t('label.situation')
+    %span.text= notification.situation
+    %span.label= t('label.alerted_at')
+    %span.text= formated_date(notification.created_at)
+    %span.label= t('label.company')
+    %span.text= notification.company.name
 
   - if information
     .location
-      %h3= t('views.notification.address_company')
+      %h3= t('label.address_company')
 
       %span.label= t('label.street')
       %span.text= notification.company.address.street

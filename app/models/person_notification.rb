@@ -12,6 +12,9 @@ class PersonNotification < Alert
   #after_create :send_email_confirmation
   after_destroy :send_email_undo_confirm
 
+  # Scopes
+  scope :non_canceled, where(canceled_at: nil)
+
   # Others
   def send_email_undo_confirm
     return if self.notification.blank? && self.person.blank?

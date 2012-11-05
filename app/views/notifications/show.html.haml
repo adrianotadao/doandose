@@ -1,7 +1,16 @@
 #notification_show
-  .title
-    %h2= @notification.title
-  = render partial: 'information', locals: { notification: @notification}
+  - if current_user && @notification.notification_confirmed( current_user.authenticable.id )
+    = render partial: 'full_information', locals: { notification: @notification}
+  - else
+    .title
+      %h2= @notification.title
+    = render partial: 'information', locals: { notification: @notification }
+
+  %span.qrcode
+    %span
+      %b Acesse pelo celular.
+    - qr_code(@qr_code)
+
   #gmap
 
   .social

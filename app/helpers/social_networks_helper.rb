@@ -54,4 +54,10 @@ module SocialNetworksHelper
     label+= "#{notification_url(notification.slug)}" if show_url
     label
   end
+
+  def campaign_twitt_label(show_url = true, campaign)
+    label = "#{campaign.title} no @doandose! "
+    label+= "#{campaign_url(campaign.slug)}" if show_url
+    label
+  end
 end
