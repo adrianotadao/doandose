@@ -15,6 +15,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find_by_slug params[:id]
 
     if @campaign.campaign_confirmed( current_user.authenticable.id )
+      update_campaign_canceled
       redirect_to campaigns_path
     else
       save_confirmed_campaign
@@ -22,7 +23,8 @@ class CampaignsController < ApplicationController
   end
 
   def undo_confirm
-    @person_campaign= PersonCampaign.find(params[:id])
+    @campaign = Campaign.find_by_slug(params[:id])
+    @person_campaign= @campaign.will_participate(current_user.authenticable)
     if @person_campaign.update_attributes(canceled_at: Time.now)
       redirect_to campaigns_path
     end
@@ -48,6 +50,14 @@ class CampaignsController < ApplicationController
       redirect_to campaign_path(@campaign)
     else
       render action: 'index'
+    end
+  end
+
+  def update_campaign_canceled
+    @person_campaign = @campaign.will_participate(current_user.authenticable)
+
+    if @person_campaign.canceled?
+      @person_campaign.update_attributes(canceled_at: '')
     end
   end
 end

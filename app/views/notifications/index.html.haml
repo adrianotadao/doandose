@@ -9,7 +9,7 @@
           %h2= notification.title
           .counter
             %b.count
-              = show_list(notification.person_notifications.count, notification)
+              = show_list(notification.person_notifications.non_canceleds.count, notification)
             #{t('label.participant')} -
             #{t('label.remaining')}
             %b.remaining #{notification.remaining}

@@ -46,8 +46,8 @@ class Notification
     Resque.enqueue(Notifications::Email, self.id)
   end
 
-  def will_participate?(person)
-    person_notifications.non_canceleds.where(:person_id => person.id).first
+  def will_participate(person)
+    person_notifications.by_person(person.id).notification_contains(self.id).first
   end
 
   def remaining

@@ -3,7 +3,7 @@
 
 .counter
   %b.count
-    = @notification.person_notifications.count
+    = @notification.person_notifications.non_canceleds.count
   #{t('label.participant')} -
   #{t('label.remaining')}
   %b.remaining #{@notification.remaining}

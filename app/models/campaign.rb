@@ -32,8 +32,8 @@ class Campaign
      self.person_campaigns.by_person( user ).exists?
   end
 
-  def will_participate?(person)
-    person_campaigns.non_canceleds.where(:person_id => person.id).first
+  def will_participate(person)
+    person_campaigns.by_person(person.id).campaign_contains(self.id).first
   end
 
   private

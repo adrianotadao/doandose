@@ -1,5 +1,5 @@
 #campaign_show
-  - if current_user && @campaign.campaign_confirmed( current_user.authenticable.id )
+  - if current_user && @campaign.will_participate( current_user.authenticable ).present? && @campaign.will_participate( current_user.authenticable ).non_canceled?
     = render partial: 'full_information', locals: { campaign: @campaign}
   - else
     .title

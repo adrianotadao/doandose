@@ -26,6 +26,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find_by_slug params[:id]
 
     if @notification.notification_confirmed( current_user.authenticable.id )
+      update_notification_canceled
       redirect_to notifications_path
     else
       save_confirmed_notification
@@ -33,7 +34,8 @@ class NotificationsController < ApplicationController
   end
 
   def undo_confirm
-    @person_notification = PersonNotification.find(params[:id])
+    @notification = Notification.find_by_slug(params[:id])
+    @person_notification = @notification.will_participate(current_user.authenticable)
     if @person_notification.update_attributes(canceled_at: Time.now)
       redirect_to notifications_path
     end
@@ -74,6 +76,14 @@ class NotificationsController < ApplicationController
         redirect_to notification_path(@notification)
       else
         render action: 'confirm'
+      end
+    end
+
+    def update_notification_canceled
+      @person_notification = @notification.will_participate(current_user.authenticable)
+
+      if @person_notification.canceled?
+        @person_notification.update_attributes(canceled_at: '')
       end
     end
 end
