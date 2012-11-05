@@ -17,7 +17,7 @@ class Person
   # Access control
   attr_accessible :sex, :donor, :name, :surname, :weight, :height, :birthday,
     :observations, :address_attributes, :contact_attributes, :user_attributes,
-    :blood, :blood_id, :lat, :lng, :loc
+    :blood, :blood_id
 
   # Relationships
   belongs_to :blood
