@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :authentication do
-    provider { %w(identity facebook twitter google_oauth2).sample }
+    provider { %w(identity).sample }
 
     ignore do
       users_count 1

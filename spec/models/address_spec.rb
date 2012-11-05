@@ -13,7 +13,7 @@ describe 'Address' do
     FactoryGirl.build(:address, lng: nil).should be_valid
   end
 
-  describe 'Zip code' do
+  context 'Zip code' do
     it 'Should not be null' do
       FactoryGirl.build(:address, zip_code: nil).should_not be_valid
     end
@@ -22,7 +22,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Number' do
+  context 'Number' do
     it 'Should not be null' do
       FactoryGirl.build(:address, number: nil).should_not be_valid
     end
@@ -31,7 +31,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Street' do
+  context 'Street' do
     it 'Should have a street' do
       FactoryGirl.build(:address, street: nil).should_not be_valid
     end
@@ -40,7 +40,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Neighborhood' do
+  context 'Neighborhood' do
     it 'Should have a neighborhood' do
       FactoryGirl.build(:address, neighborhood: nil).should_not be_valid
     end
@@ -49,7 +49,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Complement' do
+  context 'Complement' do
     it 'Complement should not be required' do
       FactoryGirl.build(:address, complement: nil).should be_valid
     end
@@ -58,7 +58,7 @@ describe 'Address' do
     end
   end
 
-  describe 'City' do
+  context 'City' do
     it 'Should have a city' do
       FactoryGirl.build(:address, city: nil).should_not be_valid
     end
@@ -67,7 +67,7 @@ describe 'Address' do
     end
   end
 
-  describe 'State' do
+  context 'State' do
     it 'Should have a state' do
       FactoryGirl.build(:address, state: nil).should_not be_valid
     end
@@ -76,7 +76,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Loc' do
+  context 'Loc' do
     it 'Loc should not be required' do
       FactoryGirl.build(:address, loc: nil).should be_valid
     end
@@ -85,7 +85,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Should have this methods' do
+  context 'Should have this methods' do
     it 'Formated address' do
       FactoryGirl.build(:address).should respond_to :formated_address
     end
@@ -97,7 +97,7 @@ describe 'Address' do
     end
   end
 
-  describe 'Actions of methods' do
+  context 'Actions of methods' do
     it 'Should have to format the address' do
       address = FactoryGirl.build(:address)
       address.formated_address.should == "#{address.street}, #{address.neighborhood} - #{address.number}, #{address.city} - #{address.state}"

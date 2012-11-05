@@ -5,7 +5,7 @@ describe 'Blood' do
     FactoryGirl.build(:blood).should be_valid
   end
 
-  describe 'Name' do
+  context 'Name' do
     it 'Should not be null' do
       FactoryGirl.build(:blood, name: nil).should_not be_valid
     end
