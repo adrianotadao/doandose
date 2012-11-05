@@ -29,6 +29,7 @@ class Notification
   validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
   validates_presence_of :blood_type, :if => :new_record?
   validates_numericality_of :quantity
+  validates_inclusion_of :situation, in: %w(urgent moderate)
 
   # Scopes
   scope :actives, where(active: true)
