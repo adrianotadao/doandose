@@ -14,9 +14,6 @@ gem 'awesome_nested_fields', '0.6.0'
 gem 'settingslogic', '2.0.8'
 gem 'premailer-rails3', '1.3.1'
 
-gem 'paperclip', '2.7.0'
-gem 'mongoid-paperclip', '0.0.7', require: "mongoid_paperclip"
-
 gem 'mongoid-slugify', '0.1.0'
 gem 'will_paginate', '3.0.3'
 
@@ -53,6 +50,10 @@ group :test do
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-  gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec', '2.8'
+end
+
+group :development, :test do
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-livereload'
 end

@@ -11,7 +11,6 @@ Spork.prefork do
   require 'bundler/setup'
   Bundler.require
   require 'factory_girl'
-  require 'paperclip'
   require 'bcrypt'
   require 'premailer-rails3'
 
