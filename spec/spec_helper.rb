@@ -39,8 +39,6 @@ Spork.prefork do
   end
 end
 
-Paperclip.options[:log] = false
-
 Spork.each_run do
   FactoryGirl.find_definitions
   FactoryGirl.factories.clear

@@ -7,7 +7,7 @@ class PersonCampaign < Alert
   attr_accessible :campaign_id, :campaign, :person, :person_id
 
   # Validations
-  validates_presence_of :campaign, :person
+  validates_presence_of :campaign
 
   # Scopes
   scope :campaign_contains,  lambda { |campaign_id| where( campaign_id: campaign_id ) }

@@ -22,6 +22,8 @@ class Campaign
   # Validations
   validates_presence_of :title, :content, :quantity, :expired_at, :company,
     :blood
+  validates_inclusion_of :active, in: [true, false]
+  validates_numericality_of :quantity
 
   # Scopes
   scope :actives, where(active: true)

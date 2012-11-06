@@ -41,6 +41,9 @@ describe 'Company' do
     it 'should relate to notifications' do
       FactoryGirl.build(:company).should respond_to(:notifications)
     end
+    it 'should relate to campaigns' do
+      FactoryGirl.build(:company).should respond_to(:campaigns)
+    end
   end
 
   it 'Should have a address' do
