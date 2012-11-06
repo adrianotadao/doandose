@@ -38,10 +38,6 @@ describe 'Company' do
   end
 
   context 'Relationships' do
-    it 'should relate to testimonials' do
-      FactoryGirl.build(:company).should respond_to(:testimonials)
-    end
-
     it 'should relate to notifications' do
       FactoryGirl.build(:company).should respond_to(:notifications)
     end

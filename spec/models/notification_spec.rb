@@ -47,8 +47,8 @@ describe 'Notification' do
       FactoryGirl.build(:notification).should respond_to :send_email
     end
 
-    it 'Should be have will_participate?' do
-      FactoryGirl.build(:notification).should respond_to :will_participate?
+    it 'Should be have will_participate' do
+      FactoryGirl.build(:notification).should respond_to :will_participate
     end
 
     it 'Should be have remaining?' do

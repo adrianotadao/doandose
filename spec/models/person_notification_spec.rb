@@ -26,11 +26,8 @@ describe 'PersonNotification' do
   end
 
   context 'Should have this methods' do
-    it 'send_email_undo_confirm' do
-      FactoryGirl.build(:person_notification).should respond_to :send_email_undo_confirm
-    end
-    it 'send_email_confirmation' do
-      FactoryGirl.build(:person_notification).should respond_to :send_email_confirmation
+    it 'send_email' do
+      FactoryGirl.build(:person_notification).should respond_to :send_email
     end
   end
 end

@@ -16,6 +16,5 @@ FactoryGirl.define do
 
     before(:create) { |notification| notification.class.skip_callback(:create, :after, :send_sms) }
     before(:create) { |notification| notification.class.skip_callback(:create, :after, :send_email) }
-
   end
 end
