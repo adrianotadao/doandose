@@ -7,7 +7,7 @@ class PersonNotification < Alert
   attr_accessible :notification_id, :notification, :person_id, :person
 
   # Validations
-  validates_presence_of :notification, :person
+  validates_presence_of :notification
 
   # Callbacks
   #after_save :send_email

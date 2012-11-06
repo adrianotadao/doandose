@@ -2,7 +2,7 @@ class Statistically
   class << self
 
     #person count
-    def person_total
+    def total_person
       Person.all.count
     end
 
@@ -22,7 +22,7 @@ class Statistically
       result = []
       blood.map do |b|
         quantity = Blood.where(name: b.name).first.people.count
-        result << [ b.name, (100 * quantity / person_total.to_f).round(2) ]
+        result << [ b.name, (100 * quantity / total_person.to_f).round(2) ]
       end
       result
     end
@@ -31,7 +31,7 @@ class Statistically
     def percentage_gender
       ['m', 'f'].map do |g|
         counter = Person.where(sex: g).count
-        [ g == 'm' ? 'Masculino' : 'Feminino', (100 * counter / person_total.to_f).round(2) ]
+        [ g == 'm' ? 'Masculino' : 'Feminino', (100 * counter / total_person.to_f).round(2) ]
       end
     end
 
@@ -41,7 +41,7 @@ class Statistically
       count = 0
 
       result = birthdates.map do |b|
-        percentage = ( 100 * b['count'] / person_total.to_f ).round(2)
+        percentage = ( 100 * b['count'] / total_person.to_f ).round(2)
         count += percentage
         [
           "#{ Date.today.strftime('%Y').to_i - b['birthday'].strftime('%Y').to_i } anos",
