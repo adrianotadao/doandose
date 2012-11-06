@@ -20,7 +20,7 @@ class Alert
   scope :non_canceleds, where(:canceled_at => nil)
 
   # Validations
-  validates_presence_of :person
+  validates_presence_of :person, :alerted_with
 
   # Others
   def can_send_sms

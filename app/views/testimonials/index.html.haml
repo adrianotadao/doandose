@@ -1,9 +1,0 @@
-#testimonials
-  - for testimonial in @testimonials
-    .testimonial
-      %h2= testimonial.title
-      %span.label= t('label.notifications')
-      %span.notificaion= testimonial.notification.title
-      %p.text= h testimonial.body
-
-  = will_paginate @person_notifications

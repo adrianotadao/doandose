@@ -7,12 +7,6 @@ module Admin::BuildersHelper
     end
   end
 
-  def setup_partner(partner)
-    partner.tap do |r|
-      r.build_logo if r.logo.blank?
-    end
-  end
-
   def setup_person(person)
     person.tap do |c|
       c.build_user if c.user.blank?

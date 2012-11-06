@@ -1,7 +1,0 @@
-#partners
-  %h1= t('views.partner.title')
-  - unless @partners.blank?
-    - @partners.each do |partner|
-      %dl
-        %dd= partner.name
-        %dd= image_tag partner.logo.data.url(:thumb)

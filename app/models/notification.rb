@@ -10,6 +10,8 @@ class Notification
   field :situation, type: String
   field :title, type: String
   field :observation, type: String
+  field :closed_at, type: Time
+  field :result, type: String
 
   # Accessors
   attr_accessor :blood_type, :distance
@@ -17,7 +19,6 @@ class Notification
   # Relationships
   belongs_to :company
   belongs_to :blood
-  belongs_to :testimonial
   has_many :person_notifications, dependent: :destroy, autosave: true
 
   # Access control
@@ -29,6 +30,7 @@ class Notification
   validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
   validates_presence_of :blood_type, :if => :new_record?
   validates_numericality_of :quantity
+  validates_inclusion_of :situation, in: %w(urgent moderate)
 
   # Scopes
   scope :actives, where(active: true)

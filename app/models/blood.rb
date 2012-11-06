@@ -14,7 +14,7 @@ class Blood
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  # Others
+  # Other
   private
   def generate_slug
     name.parameterize
