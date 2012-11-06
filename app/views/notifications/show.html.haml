@@ -1,5 +1,5 @@
 #notification_show
-  - if current_user && @notification.notification_confirmed( current_user.authenticable.id )
+  - if current_user && @notification.will_participate( current_user.authenticable ).present? && @notification.will_participate( current_user.authenticable ).non_canceled?
     = render partial: 'full_information', locals: { notification: @notification}
   - else
     .title

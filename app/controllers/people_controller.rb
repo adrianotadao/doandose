@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find_by_slug params[:id]
-    @person_notifications = @person.person_notifications.non_canceled.paginate( per_page: 3, page: params[:page])
+    @person_notifications = @person.person_notifications.non_canceleds.paginate( per_page: 3, page: params[:page])
   end
 
   def create

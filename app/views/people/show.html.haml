@@ -8,7 +8,7 @@
 
   - for person_notification in @person_notifications
     #notifications
-      %h2= link_to person_notification.notification.title, notification_complete_path(person_notification.notification)
+      %h2= link_to person_notification.notification.title, notification_path(person_notification.notification)
       %span.label= t('label.quantity')
       %span.text= person_notification.notification.quantity
       .counter
