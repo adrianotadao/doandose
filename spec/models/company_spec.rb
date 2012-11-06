@@ -37,6 +37,16 @@ describe 'Company' do
     end
   end
 
+  context 'Relationships' do
+    it 'should relate to testimonials' do
+      FactoryGirl.build(:company).should respond_to(:testimonials)
+    end
+
+    it 'should relate to notifications' do
+      FactoryGirl.build(:company).should respond_to(:notifications)
+    end
+  end
+
   it 'Should have a address' do
     FactoryGirl.build(:company, address: nil).should_not be_valid
   end

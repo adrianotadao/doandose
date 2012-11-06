@@ -21,7 +21,6 @@ class Person
 
   # Relationships
   belongs_to :blood
-  belongs_to :company
   has_many :person_notifications, dependent: :destroy, autosave: true
   has_many :person_campaigns, dependent: :destroy, autosave: true
   has_many :alerts, dependent: :destroy, autosave: true

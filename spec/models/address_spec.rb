@@ -97,6 +97,12 @@ describe 'Address' do
     end
   end
 
+  context 'Relationships' do
+    it 'should relate to addressable' do
+      FactoryGirl.build(:address).should respond_to(:addressable)
+    end
+  end
+
   context 'Actions of methods' do
     it 'Should have to format the address' do
       address = FactoryGirl.build(:address)

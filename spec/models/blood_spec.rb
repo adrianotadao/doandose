@@ -13,4 +13,14 @@ describe 'Blood' do
       FactoryGirl.build(:blood).name.is_a?(String).should be_true
     end
   end
+
+  context 'Relationships' do
+    it 'should relate to people' do
+      FactoryGirl.build(:blood).should respond_to(:people)
+    end
+
+    it 'should relate to notifications' do
+      FactoryGirl.build(:blood).should respond_to(:notifications)
+    end
+  end
 end

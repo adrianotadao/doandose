@@ -41,6 +41,12 @@ describe 'Contact' do
     end
   end
 
+  context 'Relationships' do
+    it 'should relate to contactable' do
+      FactoryGirl.build(:contact).should respond_to(:contactable)
+    end
+  end
+
   context 'Actions of methods' do
     it 'Should have to format number to twilio' do
       contact = FactoryGirl.build(:contact)

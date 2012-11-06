@@ -32,8 +32,6 @@ gem 'faker'
 gem 'twilio-ruby'
 gem 'resque', '1.23.0'
 
-gem 'rspec', '2.8', group: [:test, :development]
-
 group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
@@ -56,4 +54,5 @@ group :test do
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
   gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rspec', '2.8'
 end

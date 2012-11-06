@@ -17,7 +17,7 @@ class Notification
   # Relationships
   belongs_to :company
   belongs_to :blood
-  belongs_to :testimonial
+  has_many :testimonials
   has_many :person_notifications, dependent: :destroy, autosave: true
 
   # Access control

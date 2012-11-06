@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'Alert' do
   it 'Should have a person' do
-    pending
     FactoryGirl.build(:alert, person: nil).should_not be_valid
   end
 
