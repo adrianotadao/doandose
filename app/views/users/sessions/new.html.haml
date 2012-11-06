@@ -7,6 +7,7 @@
       = text_field_tag :auth_key, '', placeholder: t('label.auth_key')
       = password_field_tag :password, '', placeholder: t('label.password')
 
+    .actions
       = submit_tag t('label.login'), class: 'button red'
 
       = link_to 'esqueceu sua senha?', users_new_password_path, class: 'forgot_password'

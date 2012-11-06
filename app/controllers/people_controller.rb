@@ -17,7 +17,7 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find_by_slug params[:id]
-    @person_notifications = @person.person_notifications.paginate( per_page: 3, page: params[:page])
+    @person_notifications = @person.person_notifications.non_canceleds.paginate( per_page: 3, page: params[:page])
   end
 
   def create
@@ -27,8 +27,7 @@ class PeopleController < ApplicationController
       login @person.user
       redirect_to root_path
     else
-      p @person.errors
-     #render action: 'new'
+     render action: 'new'
     end
   end
 

@@ -1,0 +1,26 @@
+#information_campaign
+  .information
+    %span.label= t('label.blood')
+    %span.text= campaign.blood.name
+    %span.label= t('label.quantity')
+    %span.text= campaign.quantity
+    %span.label= t('label.expired_at')
+    %span.text= formated_date(campaign.expired_at)
+
+  - if information
+    .location
+      %h3= t('label.address_company')
+      %span.label= t('label.company')
+      %span.text= campaign.company.name
+      %span.label= t('label.street')
+      %span.text= campaign.company.address.street
+      %span.label= t('label.neighborhood')
+      %span.text= campaign.company.address.neighborhood
+      %span.label= t('label.number')
+      %span.text= campaign.company.address.number
+      %span.label= t('label.city')
+      %span.text= campaign.company.address.city
+      %span.label= t('label.state')
+      %span.text= campaign.company.address.state
+      %span.label= t('label.zip_code')
+      %span.text= campaign.company.address.zip_code

@@ -38,12 +38,20 @@ Doandose::Application.routes.draw do
   resources :notifications, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
     get :list_user
-    get :complete
     get :print
     member do
       get :indication_friend
       post :send_indication
       get :confirm
+      get :undo_confirm
+      post :confirmed
+    end
+  end
+
+  resources :campaigns, only: [:index, :show] do
+    get 'page/:page', action: :index, on: :collection
+    get :print
+    member do
       get :undo_confirm
       post :confirmed
     end
@@ -57,7 +65,7 @@ Doandose::Application.routes.draw do
   resources :partners, only: [:index, :show]
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]
-  resources :campaigns, only: [:index, :show]
+
   get '/dicas/' => 'tips#index', as: :tips
 
   namespace :admin do

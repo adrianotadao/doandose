@@ -21,6 +21,7 @@ class Testimonial
 
   # Validations
   validates_presence_of :body, :notification, :title, :company
+  validates_length_of :body, in: 120..130
 
   private
   def generate_slug

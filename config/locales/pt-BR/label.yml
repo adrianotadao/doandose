@@ -2,6 +2,7 @@ pt-BR:
   label:
     actions: 'Ações'
     active: 'Ativo?'
+    address_company: 'Informações da instituição'
     address: 'Endereço'
     address_title: 'Endereço'
     alerted_at: 'Alertado em'
