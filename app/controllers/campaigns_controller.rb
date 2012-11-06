@@ -32,7 +32,6 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find_by_slug params[:id]
-    @person = current_user.authenticable
     @person_campaign = @campaign.person_campaigns.new
     @qr_code = RQRCode::QRCode.new( campaign_url(@campaign), :size => 10, leve: :l )
   end

@@ -86,6 +86,7 @@ Doandose::Application.routes.draw do
     get '/sair/' => 'base#destroy', as: :destroy_company_session
     resources :pages, only: :index
     resources :notifications
+    resources :campaigns, except: :destroy
     resources :person_notifications, only: :show do
       member do
         post :participation

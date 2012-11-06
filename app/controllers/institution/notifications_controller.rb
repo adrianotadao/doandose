@@ -21,8 +21,8 @@ class Institution::NotificationsController < Institution::BaseController
     blood_types = BloodMatch.receives @notification.blood_type
 
     if blood_types
-      for person in GMap.elements_by_distance(position, @notification.distance.to_i, 'Person').map(&:addressable)
-
+      people = GMap.elements_by_distance(position, @notification.distance.to_i, 'Person').map(&:addressable)
+      for person in people
         last_participation = person.alerts.participateds.last
         next if last_participation && (last_participation.created_at + 3.months) > Time.now
 

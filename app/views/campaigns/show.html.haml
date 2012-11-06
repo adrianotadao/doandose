@@ -7,10 +7,11 @@
 
     = render partial: 'information', locals: { campaign: @campaign }
 
-    = simple_form_for  @person_campaign, :url => [:confirmed, @campaign] do |f|
-      = f.hidden_field :person_id, value: @person.id
-      = f.hidden_field :campaign_id, value: @campaign.id
-      = f.submit t('label.confirm'), class: 'button red'
+    - if current_user
+      = simple_form_for  @person_campaign, :url => [:confirmed, @campaign] do |f|
+        = f.hidden_field :person_id, value: current_user.authenticable.id
+        = f.hidden_field :campaign_id, value: @campaign.id
+        = f.submit t('label.confirm'), class: 'button red'
 
   %span.qrcode
     %span
