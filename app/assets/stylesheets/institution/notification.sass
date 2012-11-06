@@ -1,21 +1,63 @@
+form
+  display: inline-block
+
+#gmap
+  width: 98%
+
 #counter
+  display: inline-block
+  width: 176px
+  margin-left: 50%
   .blood_type
-    border: 1px solid
+    border: 1px solid #ccc
     width: 42px
     float: left
-
     .title
-      background: #ccc
+      background: #EBE9E9
+      padding: 5px
+    .total
+      padding: 4px
 
 #result
   margin-top: 20px
+  width: 50%
+  float: right
   table.result
     thead
       tr
         th
+          border: 1px solid #ccc
+          padding: 8px
+          background: #EBE9E9
+          font-weight: bold
           &.distance
             width: 120px
           &.name
             width: 100px
           &.address
             width: 300px
+    tbody
+      tr
+        td
+          padding: 8px
+          border: 1px solid #ccc
+
+#filters
+  display: inline-block
+  width: 100%
+  #bloods
+    margin-bottom: 21px
+    width: 470px
+    span
+      display: inline-block
+      padding: 10px
+      margin: 6px
+      border: 1px solid #ccc
+      cursor: pointer
+      &:hover, &.selected
+        border: 1px solid #535353
+  #distances
+    .range
+    .range_value
+      display: inline-block
+      margin: 12px

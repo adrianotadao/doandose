@@ -1,4 +1,4 @@
-#gmap{style: 'width:1000px;height:430px;'}
+#gmap
 
 #filters
   #bloods
@@ -16,26 +16,28 @@
 #result
 
 = form_for @notification, url: institution_notifications_path do |f|
-  = f.label :title, t('label.title')
-  = f.text_field :title
-  = error_for(@notification, :title)
+  .form
+    = f.label :title, t('label.title')
+    = f.text_field :title
+    = error_for(@notification, :title)
 
-  = f.label :quantity, t('label.quantity')
-  = f.text_field :quantity
-  = error_for(@notification, :quantity)
+    = f.label :quantity, t('label.quantity')
+    = f.text_field :quantity
+    = error_for(@notification, :quantity)
 
-  = f.label :situation, t('label.situation')
-  = f.select :situation, situations
-  = error_for(@notification, :situation)
+    = f.label :situation, t('label.situation')
+    = f.select :situation, situations
+    = error_for(@notification, :situation)
 
-  = f.label :observation, t('label.title')
-  = f.text_area :observation
-  = error_for(@notification, :observation)
+    = f.label :observation, t('label.title')
+    = f.text_area :observation
+    = error_for(@notification, :observation)
 
-  = f.hidden_field :blood_type, class: 'blood'
-  = f.hidden_field :distance, class: 'distance'
+    = f.hidden_field :blood_type, class: 'blood'
+    = f.hidden_field :distance, class: 'distance'
 
-  = f.submit 'salvar', class: 'notification'
+  .actions
+    = f.submit 'salvar', class: 'notification', class: 'button save'
 
 - content_for :javascript do
   :javascript

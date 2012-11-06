@@ -13,7 +13,7 @@ class PersonCampaign < Alert
   scope :campaign_contains,  lambda { |campaign_id| where( campaign_id: campaign_id ) }
 
   # Callbacks
-  after_save :send_email
+  #after_save :send_email
 
   # Others
   def send_email

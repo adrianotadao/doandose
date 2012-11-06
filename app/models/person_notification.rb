@@ -10,7 +10,7 @@ class PersonNotification < Alert
   validates_presence_of :notification, :person
 
   # Callbacks
-  after_save :send_email
+  #after_save :send_email
 
   # Scopes
   scope :notification_contains,  lambda { |notification_id| where( notification_id: notification_id ) }

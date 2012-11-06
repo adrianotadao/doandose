@@ -1,0 +1,33 @@
+= simple_form_for [:institution, @campaign] do |f|
+
+  .form
+    = f.label :active, t('label.active')
+    = f.check_box :active
+
+    = f.label :blood_id, t('label.blood')
+    = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
+    = error_for(@campaign, :blood)
+
+    = f.label :title, t('label.title')
+    = f.text_field :title
+    = error_for(@campaign, :title)
+
+    = f.label :content, t('label.content')
+    = f.text_field :content
+    = error_for(@campaign, :content)
+
+    = f.label :quantity, t('label.quantity')
+    = f.text_field :quantity
+    = error_for(@campaign, :quantity)
+
+    = f.label :expired_at, t('label.expired_at')
+    = f.text_field :expired_at, value: formated_date(@campaign.expired_at)
+    = error_for(@campaign, :expired_at)
+
+  = link_to t('buttons.back'), [:institution, :campaigns], class: 'back_form'
+
+  .actions
+    -unless @campaign.new_record?
+      = link_to t('buttons.delete'), [:institution, @campaign], method: :delete, confirm: t('flash.advertise'), class: "link delete"
+
+    = f.button :submit, t('buttons.save'), class: 'button save'
