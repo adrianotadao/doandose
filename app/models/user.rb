@@ -41,14 +41,6 @@ class User
   after_save :build_identity
 
   # Others
-  def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
-    end
-  end
-
   def build_identity
     return if password.blank?
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s)
@@ -56,10 +48,6 @@ class User
 
   def authentications?
     authentications.to_a.present?
-  end
-
-  def self.locate(key)
-    self.any_of({ :username => key }, { :email => key }).first
   end
 
   def add_authentication(auth)
@@ -82,6 +70,18 @@ class User
   end
 
   class << self
+    def locate(key)
+      self.any_of({ email: key }).first
+    end
+
+    def create_with_omniauth(auth)
+      create! do |user|
+        user.provider = auth["provider"]
+        user.uid = auth["uid"]
+        user.name = auth["info"]["name"]
+      end
+    end
+
     def parse_omniauth(oauth)
       {
         :state => :new,
@@ -103,9 +103,5 @@ class User
       return if oauth.extra.raw_info.gender.blank?
       oauth.extra.raw_info.gender.eql?('male') ? 'm' : 'f'
     end
-  end
-
-  def self.locate(key)
-    self.any_of({ email: key }).first
   end
 end
