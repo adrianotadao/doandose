@@ -21,11 +21,6 @@ pt-BR:
       delete:
         notice: 'Hemocentro deletado com sucesso'
 
-    partner:
-      create:
-      update:
-      delete:
-
     person:
       create:
         notice: 'Doador criado com sucesso'

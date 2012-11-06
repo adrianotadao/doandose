@@ -62,7 +62,6 @@ Doandose::Application.routes.draw do
       get :canceling
     end
   end
-  resources :partners, only: [:index, :show]
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]
 
@@ -73,14 +72,12 @@ Doandose::Application.routes.draw do
     match '/sair/' => 'base#destroy', as: :destroy_session
     post '/estatistica/cadastro-por-dia/' => 'statistics#subscribe_per_date'
     resources :pages, only: :index
-    resources :partners
     resources :companies
     resources :bloods
     resources :notifications
     resources :people
     resources :informations
     resources :campaigns
-    resources :testimonials, except: [:new, :create, :show]
     get '/estatisticas/' => 'statistics#index', as: :statistics
   end
 
@@ -96,7 +93,6 @@ Doandose::Application.routes.draw do
         post :send_email
       end
     end
-    resources :testimonials, except: [:show, :destroy]
   end
 
 

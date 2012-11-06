@@ -29,12 +29,6 @@ pt-BR:
       quantity: 'Quantidade de bolsas'
       situation: 'Situação'
       alerted_at: 'Alerta em'
-    partner:
-      name: 'Nome'
-      logo: 'Logo'
-      title_index: 'Parceiros'
-      title_edit: 'Editar parceiro'
-      title_new: 'Adicionar novo parceiro.'
     people:
       active: 'Ativo'
       donor: 'Doador'

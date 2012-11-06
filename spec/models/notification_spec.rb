@@ -33,10 +33,6 @@ describe 'Notification' do
   end
 
   context 'Relationships' do
-    it 'should relate to testimonials' do
-      FactoryGirl.build(:notification).should respond_to(:testimonials)
-    end
-
     it 'should relate to person_notifications' do
       FactoryGirl.build(:notification).should respond_to(:person_notifications)
     end

@@ -10,6 +10,8 @@ class Notification
   field :situation, type: String
   field :title, type: String
   field :observation, type: String
+  field :closed_at, type: Time
+  field :result, type: String
 
   # Accessors
   attr_accessor :blood_type, :distance
