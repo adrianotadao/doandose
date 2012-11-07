@@ -5,6 +5,18 @@ describe 'Contact' do
     FactoryGirl.build(:contact).should be_valid
   end
 
+  context 'Email' do
+    it 'should be uniq' do
+      user = FactoryGirl.create(:contact)
+      FactoryGirl.build(:contact, email: user.email).should_not be_valid
+    end
+
+    it 'must have a email format' do
+      FactoryGirl.build(:contact, email: 'foo').should_not be_valid
+      FactoryGirl.build(:contact, email: 'foo@bar.com.br').should be_valid
+    end
+  end
+
   context 'Phone and Cellphone' do
     it 'Number and ddd should not be null if cellphone is null' do
       FactoryGirl.build(:contact, ddd_phone: nil, phone: nil, cellphone: nil).should_not be_valid
