@@ -1,5 +1,5 @@
 # encoding: utf-8
-class CompanyCampaignMailer < ActionMaicompany_campaignler::Base
+class CompanyCampaignMailer < ActionMailer::Base
   layout 'mailer'
   include MandrillMailer
 

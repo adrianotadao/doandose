@@ -75,6 +75,7 @@ class NotificationsController < ApplicationController
       if @person_notification.save
         redirect_to notification_path(@notification)
       else
+        p @person_notification.errors
         render action: 'confirm'
       end
     end

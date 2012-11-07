@@ -18,9 +18,9 @@ class PersonNotification < Alert
 
   # Others
   def send_email
-    if @person_notification.can_send_email
-      Resque.enqueue(PersonNotifications::Email, @person_notification.id)
-      Resque.enqueue(PersonNotifications::Confirmation, @person_notification.notification.id)
+    if self.can_send_email
+      Resque.enqueue(PersonNotifications::Email, id)
+      Resque.enqueue(PersonNotifications::Confirmation, self.notification.id)
     end
   end
 
