@@ -1,11 +1,6 @@
-%h2= t('mailer.salute')
-%p= t('mailer.confirmation_participation_title') #{@notification.title}
-
-Obrigado por participar desta campanha !
++ 1 voluntario confirmou !
 
 .counter
   %b.count
-    = @notification.person_notifications.count
-  #{t('label.participant')} -
-  #{t('label.remaining')}
-  %b.remaining #{@notification.remaining}
+    = @notification.person_notifications.non_canceleds.count
+    ja estao com a presenca confirmada !

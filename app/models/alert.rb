@@ -20,7 +20,7 @@ class Alert
   scope :non_canceleds, where(:canceled_at => nil)
 
   # Validations
-  validates_presence_of :person, :alerted_with
+  validates_presence_of :person
 
   # Others
   def can_send_sms
@@ -28,6 +28,7 @@ class Alert
   end
 
   def can_send_email
+    return true if last_email.blank?
     last_email > (Time.now - 1.hours)
   end
 
@@ -56,6 +57,7 @@ class Alert
   end
 
   def source_counter(typo)
+    p typo
     alerted_with.map{ |r| r['date'] if r['source'] == typo }.compact.size
   end
 

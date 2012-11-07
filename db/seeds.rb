@@ -1,4 +1,5 @@
 #encoding: utf-8
+require "#{Rails.root}/db/status"
 
 require "#{Rails.root}/db/seeds/blood"
 require "#{Rails.root}/db/seeds/person"

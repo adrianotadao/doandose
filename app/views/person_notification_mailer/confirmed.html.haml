@@ -1,0 +1,11 @@
+%h2= t('mailer.salute')
+%p= t('mailer.confirmation_participation_title') #{@notification.title}
+
+Obrigado por participar desta campanha !
+
+.counter
+  %b.count
+    = @notification.person_notifications.count
+  #{t('label.participant')} -
+  #{t('label.remaining')}
+  %b.remaining #{@notification.remaining}

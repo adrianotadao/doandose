@@ -22,7 +22,7 @@ describe PersonNotification do
   end
 
   it 'Alerted with is required' do
-    FactoryGirl.build(:person_notification, alerted_with: nil).should_not be_valid
+    FactoryGirl.build(:person_notification, alerted_with: nil).should be_valid
   end
 
   context 'Should have this methods' do

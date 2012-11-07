@@ -8,6 +8,6 @@ class PersonCampaigns::Week
 
     person_campaign.alerted_with << { source: 'email', date: Time.now }
     person_campaign.save
-    #PersonNotificationMailer.alerting(id).deliver
+    PersonNotificationMailer.alerting(person_campaign_id).deliver
   end
 end
