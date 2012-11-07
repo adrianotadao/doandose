@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'BloodMatch' do
+describe BloodMatch do
   it 'Should respond to receives method' do
     BloodMatch.should respond_to :receives
   end

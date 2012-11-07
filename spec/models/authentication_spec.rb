@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Authentication' do
+describe Authentication do
   it 'Should make a valid authentication' do
     FactoryGirl.build(:authentication).should be_valid
   end

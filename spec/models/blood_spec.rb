@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Blood' do
+describe Blood do
   it 'Should have a valid blood' do
     FactoryGirl.build(:blood).should be_valid
   end

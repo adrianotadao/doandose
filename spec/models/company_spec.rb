@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Company' do
+describe Company do
   it 'should make a valid company' do
     FactoryGirl.build(:company).should be_valid
   end

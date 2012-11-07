@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'PersonNotification' do
+describe PersonNotification do
   it 'Should have a valid person notifiation' do
     FactoryGirl.build(:person_notification).should be_valid
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Campaign' do
+describe Campaign do
   it 'Should have a valid address' do
     FactoryGirl.build(:campaign).should be_valid
   end

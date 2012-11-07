@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Statistically' do
+describe Statistically do
   it 'Should respond to total_person method' do
     Statistically.should respond_to :total_person
   end

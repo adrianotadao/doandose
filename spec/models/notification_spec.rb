@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Notification' do
+describe Notification do
   it 'Should have a valid notification' do
     FactoryGirl.build(:notification).should be_valid
   end

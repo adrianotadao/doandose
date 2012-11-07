@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'PersonCampaign' do
+describe PersonCampaign do
   it 'Should have a valid person campaign' do
     FactoryGirl.build(:person_campaign).should be_valid
   end

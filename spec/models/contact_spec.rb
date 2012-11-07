@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Contact' do
+describe Contact do
   it 'Should have a valid contact' do
     FactoryGirl.build(:contact).should be_valid
   end

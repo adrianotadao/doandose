@@ -4,7 +4,7 @@ Spork.prefork do
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV['RACK_ENV'] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
-  require 'rspec'
+  require 'rspec/rails'
   require 'database_cleaner'
 
   # Requires supporting ruby files with custom matchers and macros, etc,

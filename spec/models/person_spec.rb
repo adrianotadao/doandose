@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Person' do
+describe Person do
   it 'Should make a valid person' do
     FactoryGirl.build(:person).should be_valid
   end
