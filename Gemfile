@@ -43,21 +43,15 @@ group :assets do
   gem 'uglifier', '1.2.6'
 end
 
-group :test, :development do
-  gem 'rspec-rails', '2.11.0'
-end
-
 group :test do
   gem 'spork', '0.9.0'
   gem 'database_cleaner', '0.7.1'
-  gem 'ffaker', '1.12.1'
   gem 'factory_girl', '~> 4.1.0'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-
+  gem 'rspec', '2.8'
   if RUBY_PLATFORM.downcase.include?("darwin")
-
     gem 'growl'
   end
 

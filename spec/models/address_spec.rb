@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Address' do
+describe Address do
   it 'Should have a valid address' do
     FactoryGirl.build(:address).should be_valid
   end
