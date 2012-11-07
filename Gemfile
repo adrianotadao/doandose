@@ -33,6 +33,7 @@ group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
   gem 'rvm-capistrano', '1.2.2'
+  gem 'rb-fsevent', :require => false
 end
 
 group :assets do
@@ -40,6 +41,10 @@ group :assets do
   gem 'sass-rails', '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.6'
+end
+
+group :test, :development do
+  gem 'rspec-rails', '2.11.0'
 end
 
 group :test do
@@ -50,10 +55,16 @@ group :test do
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-  gem 'rspec', '2.8'
+
+  if RUBY_PLATFORM.downcase.include?("darwin")
+
+    gem 'growl'
+  end
+
 end
 
 group :development, :test do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-livereload'
+  gem 'growl_notify'
+  gem 'terminal-notifier-guard'
 end
