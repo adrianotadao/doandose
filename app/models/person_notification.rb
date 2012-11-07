@@ -10,18 +10,23 @@ class PersonNotification < Alert
   validates_presence_of :notification
 
   # Callbacks
-  #after_save :send_email
+  after_create :send_email
+  after_update :undo_confirmation
 
   # Scopes
   scope :notification_contains,  lambda { |notification_id| where( notification_id: notification_id ) }
 
   # Others
   def send_email
-    return if self.notification.blank? && self.person.blank?
+    if @person_notification.can_send_email
+      Resque.enqueue(PersonNotifications::Email, @person_notification.id)
+      Resque.enqueue(PersonNotifications::Confirmation, @person_notification.notification.id)
+    end
+  end
+
+  def undo_confirmation
     if self.canceled?
-      CompanyNotificationMailer.undo_confirmation(self.notification.id, self.person.id).deliver
-    else
-      CompanyNotificationMailer.confirmation(self.notification.id).deliver
+      Resque.enqueue(PersonNotifications::UndoConfirmation, @person_notification.id)
     end
   end
 

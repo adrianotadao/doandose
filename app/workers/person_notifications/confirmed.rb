@@ -1,5 +1,5 @@
-class PersonNotifications::ResendingEmail
-  @queue = "email_resending_person_notification_#{Rails.env}"
+class PersonNotifications::Confirmed
+  @queue = "email_confirmed_person_notification_#{Rails.env}"
 
   def self.perform(person_notification_id)
     person_notification = PersonNotification.find(person_notification_id)
@@ -9,6 +9,6 @@ class PersonNotifications::ResendingEmail
     person_notification.alerted_with << { source: 'email', date: Time.now }
     person_notification.save
 
-    PersonNotificationMailer.resending(person_notification_id).deliver
+    PersonNotificationMailer.confirmed(id).deliver
   end
 end
