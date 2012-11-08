@@ -30,24 +30,7 @@
       = @notification.company.name
       %b= t('label.company')
 
-    %h1 NOTIFICADOS
-    %table
-      %thead
-        %tr
-          %th= t('label.name')
-          %th= t('label.canceled_at')
-          %th= t('label.confirmed_at')
-          %th= t('label.present')
-          %th
-      %tbody
-        - for person_notification in @notification.person_notifications
-          %tr
-            %td= person_notification.person.name
-            %td= person_notification.canceled_at
-            %td= person_notification.confirmed_at
-            %td= check_box_tag 'participated', person_notification.id, person_notification.participated, class: 'particpated'
-            %td
-              = link_to 'detalhes', institution_person_notification_path(person_notification)
+  = render partial: 'institution/notifications/reported', locals: { notification: @notification }
 
   .actions
     = link_to t('buttons.back'), institution_notifications_path, :class => 'link back'

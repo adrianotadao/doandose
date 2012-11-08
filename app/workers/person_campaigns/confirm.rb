@@ -8,6 +8,6 @@ class PersonCampaigns::Confirm
 
     person_campaign.alerted_with << { source: 'email', date: Time.now }
     person_campaign.save
-    PersonNotificationMailer.confirm(person_campaign_id).deliver
+    PersonCampaignMailer.confirm(person_campaign_id).deliver
   end
 end

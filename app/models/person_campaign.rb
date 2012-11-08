@@ -14,14 +14,20 @@ class PersonCampaign < Alert
 
   # Callbacks
   after_save :send_email
+  after_update :undo_confirmation
 
   # Others
   def send_email
-
+    if self.can_send_email
+      Resque.enqueue(PersonCampaigns::Confirmation, id)
+      Resque.enqueue(PersonCampaigns::Confirm, id)
+    end
   end
 
-  def send_email_undo_confirm
-
+  def undo_confirmation
+    if self.canceled?
+      Resque.enqueue(PersonCampaigns::UndoConfirmation, id)
+    end
   end
 
   def non_canceled?

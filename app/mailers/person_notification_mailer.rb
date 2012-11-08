@@ -5,28 +5,28 @@ class PersonNotificationMailer < ActionMailer::Base
 
   default from: 'suporte@doando.se'
 
-  def alerting(id)
-    @person_notification = PersonNotification.find(id)
-    mail subject: "Foi criada uma nova notificação na qual precisam de você #{@notification.title}", to: @person_notification.person.contact.email
+  def alerting(person_notification_id)
+    @person_notification = PersonNotification.find(person_notification_id)
+    mail subject: "Foi criada uma nova notificação na qual precisam de você #{@person_notification.notification.title}", to: @person_notification.person.user.email
   end
 
-  def confirmed(notification_id)
-    @notification = Notification.find(notification_id)
-    mail subject: "Obrigado por participar #{@notification.title}", to: current_user.email
+  def confirmed(person_notification_id)
+    @person_notification = PersonNotification.find(person_notification_id)
+    mail subject: "Obrigado por participar #{@person_notification.notification.title}", to: @person_notification.notification.person.user.email
   end
 
-  def confirmation(notification_id)
-    @notification = Notification.find(notification_id)
-    mail subject: "+ 1 voluntario se cadastrou na #{@notification.title}", to: @notification.company.email
+  def confirmation(person_notification_id)
+    @person_notification = PersonNotification.find(person_notification_id)
+    mail subject: "+ 1 voluntario se cadastrou na #{@person_notification.notification.title}", to: @person_notification.notification.company.user.email
   end
 
-  def resending(id)
-    @person_notification = PersonNotification.find(id)
-    mail subject: "Pense com carinho nessa notificacao: #{@notification.title}", to: @person_notification.person.contact.email
+  def resending(person_notification_id)
+    @person_notification = PersonNotification.find(person_notification_id)
+    mail subject: "Pense com carinho nessa notificacao: #{@person_notification.notification.title}", to: @person_notification.person.contact.email
   end
 
-  def undo_confirmation(notification_id)
-    @notification = Notification.find(notification_id)
-    mail subject: "Cancelamento de um participante da notificacao: #{@notification.title}", to: @notification.company.contact.email
+  def undo_confirmation(person_notification_id)
+    @person_notification = PersonNotification.find(person_notification_id)
+    mail subject: "Cancelamento de um participante da notificacao: #{@person_notification.notification.title}", to: @person_notification.notification.company.contact.email
   end
 end

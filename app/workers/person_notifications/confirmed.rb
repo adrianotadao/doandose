@@ -9,6 +9,6 @@ class PersonNotifications::Confirmed
     person_notification.alerted_with << { source: 'email', date: Time.now }
     person_notification.save
 
-    PersonNotificationMailer.confirmed(id).deliver
+    PersonNotificationMailer.confirmed(person_notification_id).deliver
   end
 end

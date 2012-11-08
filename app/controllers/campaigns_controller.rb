@@ -14,9 +14,8 @@ class CampaignsController < ApplicationController
     @person = current_user.authenticable
     @campaign = Campaign.find_by_slug params[:id]
 
-    if @campaign.campaign_confirmed( current_user.authenticable.id )
+    if @campaign.will_participate(current_user.authenticable)
       update_campaign_canceled
-      redirect_to campaigns_path
     else
       save_confirmed_campaign
     end
@@ -32,7 +31,11 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find_by_slug params[:id]
-    @person_campaign = @campaign.person_campaigns.new
+
+    unless @campaign.will_participate(current_user.authenticable)
+      @person_campaign = @campaign.person_campaigns.new
+    end
+
     @qr_code = RQRCode::QRCode.new( campaign_url(@campaign), :size => 10, leve: :l )
   end
 
@@ -58,5 +61,7 @@ class CampaignsController < ApplicationController
     if @person_campaign.canceled?
       @person_campaign.update_attributes(canceled_at: '')
     end
+
+    redirect_to campaigns_path
   end
 end

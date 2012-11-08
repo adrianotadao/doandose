@@ -5,7 +5,7 @@ namespace :alert do
       for campaign in Campaign.actives
         if campaign.created_at > Time.now + 1.week
           for person_campaign in campaign.person_campaigns.actives
-            Resque.enqueue(PersonCampaigns::Week, person_campaign.id)
+            #Resque.enqueue(PersonCampaigns::Week, person_campaign.id)
           end
         end
       end
@@ -15,7 +15,7 @@ namespace :alert do
       for campaign in Campaign.actives
         if campaign.created_at > Time.now + 1.day
           for person_campaign in campaign.person_campaigns.actives
-            Resque.enqueue(PersonCampaigns::Day, person_campaign.id)
+            #Resque.enqueue(PersonCampaigns::Day, person_campaign.id)
           end
         end
       end
@@ -25,7 +25,7 @@ namespace :alert do
       for campaign in Campaign.actives
         if campaign.created_at > Time.now + 1.hour
           for person_campaign in campaign.person_campaigns.actives
-            Resque.enqueue(PersonCampaigns::Hour, person_campaign.id)
+            #Resque.enqueue(PersonCampaigns::Hour, person_campaign.id)
           end
         end
       end

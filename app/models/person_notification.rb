@@ -20,13 +20,13 @@ class PersonNotification < Alert
   def send_email
     if self.can_send_email
       Resque.enqueue(PersonNotifications::Email, id)
-      Resque.enqueue(PersonNotifications::Confirmation, self.notification.id)
+      Resque.enqueue(PersonNotifications::Confirmation, id)
     end
   end
 
   def undo_confirmation
     if self.canceled?
-      Resque.enqueue(PersonNotifications::UndoConfirmation, @person_notification.id)
+      Resque.enqueue(PersonNotifications::UndoConfirmation, id)
     end
   end
 
