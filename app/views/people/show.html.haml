@@ -3,7 +3,7 @@
 #show_person
   #gmap{:style => "width: 908px; height: 200px; padding: 0px"}
 
-  = link_to edit_person_path(Person.find(current_user.authenticable_id)) do
+  = link_to edit_person_path(@person) do
     #perfil Editar Perfil
 
   - unless @person_notifications.blank?
