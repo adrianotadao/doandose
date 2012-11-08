@@ -52,12 +52,12 @@ group :test do
   gem 'guard-spork', '0.5.2'
   if RUBY_PLATFORM.downcase.include?("darwin")
     gem 'growl'
+    gem 'growl_notify'
   end
 end
 
 group :development, :test do
   gem 'guard-livereload'
-  gem 'growl_notify'
   gem 'terminal-notifier-guard'
   gem 'rspec-rails', '2.11.0'
 end
