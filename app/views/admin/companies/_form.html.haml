@@ -1,20 +1,16 @@
 = simple_form_for [:admin, setup_company(@company)] do |f|
 
   .form
-    = f.label :name, t('label.name')
-    = f.text_field :name
+    = f.text_field :name, placeholder: t('label.name')
     = error_for(@company, :name)
 
-    = f.label :fancy_name, t('label.fancy_name')
-    = f.text_field :fancy_name
+    = f.text_field :fancy_name, placeholder: t('label.fancy_name')
     = error_for(@company, :fancy_name)
 
-    = f.label :cnpj, t('label.cnpj')
-    = f.text_field :cnpj
+    = f.text_field :cnpj, placeholder: t('label.cnpj')
     = error_for(@company, :cnpj)
 
-    = f.label :responsible, t('label.responsible')
-    = f.text_field :responsible
+    = f.text_field :responsible, placeholder: t('label.responsible')
     = error_for(@company, :responsible)
 
   = link_to t('buttons.back'), [:admin, :companies], class: 'back_form'

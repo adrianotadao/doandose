@@ -1,7 +1,7 @@
 Doandose::Application.routes.draw do
   mount Resque::Server.new, at: "/resque"
 
-  root to: "pages#index"
+  root to: "application#after_sing_in"
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure/' => 'users/sessions#failure'
@@ -33,7 +33,7 @@ Doandose::Application.routes.draw do
     get ':id/page/:page', action: :show, on: :collection
   end
 
-  resources :page, only: [:index, :show]
+  resources :pages, only: [:index, :show]
 
   resources :notifications, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
@@ -82,9 +82,8 @@ Doandose::Application.routes.draw do
   end
 
   namespace :institution, path: 'instituicao' do
-    root :to => 'pages#index'
+    root :to => 'notifications#index'
     get '/sair/' => 'base#destroy', as: :destroy_company_session
-    resources :pages, only: :index
     resources :notifications
     resources :campaigns, except: :destroy
     resources :person_notifications, only: :show do

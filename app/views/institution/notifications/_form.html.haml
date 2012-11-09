@@ -17,20 +17,17 @@
 
 = form_for @notification, url: institution_notifications_path do |f|
   .form
-    = f.label :title, t('label.title')
-    = f.text_field :title
+    = f.text_field :title, placeholder: t('label.title')
     = error_for(@notification, :title)
 
-    = f.label :quantity, t('label.quantity')
-    = f.text_field :quantity
+    = f.text_field :quantity, placeholder: t('label.quantity')
     = error_for(@notification, :quantity)
 
     = f.label :situation, t('label.situation')
     = f.select :situation, situations
     = error_for(@notification, :situation)
 
-    = f.label :observation, t('label.title')
-    = f.text_area :observation
+    = f.text_area :observation, placeholder: t('label.title')
     = error_for(@notification, :observation)
 
     = f.hidden_field :blood_type, class: 'blood'
@@ -42,3 +39,4 @@
 - content_for :javascript do
   :javascript
     new NewNotification()
+    new Mask()

@@ -10,10 +10,6 @@ class Company
   field :cnpj, type: String
   field :responsible, type: String
 
-  # Access control
-  attr_accessible :name, :fancy_name, :cnpj, :responsible, :address_attributes,
-    :contact_attributes, :user_attributes
-
   # Relationships
   has_one :address, as: :addressable, dependent: :destroy, autosave: true
   has_one :contact, as: :contactable, dependent: :destroy, autosave: true
@@ -22,6 +18,10 @@ class Company
   has_many :campaigns, dependent: :destroy
 
   accepts_nested_attributes_for :address, :contact, :user, allow_destoy: true
+
+  # Access control
+  attr_accessible :name, :fancy_name, :cnpj, :responsible, :address_attributes,
+    :contact_attributes, :user_attributes
 
   # Validations
   validates_presence_of :name, :fancy_name, :responsible, :address, :contact,

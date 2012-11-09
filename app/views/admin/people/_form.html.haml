@@ -7,32 +7,27 @@
     = f.label :blood_id, t('label.blood')
     = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
 
-    = f.label :name, t('label.name')
-    = f.text_field :name
+    = f.text_field :name, placeholder: t('label.name')
     = error_for(@person, :name)
 
-    = f.label :surname, t('label.surname')
-    = f.text_field :surname
+    = f.text_field :surname, placeholder: t('label.surname')
     = error_for(@person, :surname)
 
-    = f.label :sex, t('label.sex')
-    = f.text_field :sex
-    = error_for(@person, :sex)
+    .outher
+      - people_sexes.each do |sex|
+        = label_tag sex[0], sex[0]
+        = radio_button('person', 'sex', "#{sex[1]}")
 
-    = f.label :weight, t('label.weight')
-    = f.text_field :weight
+    = f.text_field :weight, placeholder: t('label.weight')
     = error_for(@person, :weight)
 
-    = f.label :height, t('label.height')
-    = f.text_field :height
+    = f.text_field :height, placeholder: t('label.height')
     = error_for(@person, :height)
 
-    = f.label :birthday, t('label.birthday')
-    = f.text_field :birthday
+    = f.text_field :birthday, value: "#{ formated_birthdate(f.object.birthday) } ", placeholder: t('label.birthday')
     = error_for(@person, :birthday)
 
-    = f.label :observations, t('label.observations')
-    = f.text_area :observations
+    = f.text_area :observations, wrapper_html: { placeholder: t('label.observations') }
     = error_for(@person, :observations)
 
   = link_to t('buttons.back'), [:admin, :people], class: 'back_form'

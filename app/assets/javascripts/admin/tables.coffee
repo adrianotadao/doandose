@@ -1,9 +1,10 @@
 class window.Tables
   constructor: ->
     $('.list').dataTable(
-      bJQueryUI: true
-      sPaginationType: "full_numbers"
+      bJQueryUI: true,
+      sPaginationType: "full_numbers",
       iDisplayLength: -1,
+      iDisplayLength: 10,
       oLanguage: {
           sProcessing:   "Processando...",
           sLengthMenu:   "Mostrar _MENU_ registros",

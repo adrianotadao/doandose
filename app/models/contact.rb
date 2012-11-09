@@ -18,9 +18,9 @@ class Contact
   validates_presence_of :ddd_phone, :phone, unless: :cellphone?
   validates :ddd_cellphone, inclusion: { :in => Ddd.possibles  }, if: :ddd_cellphone?
   validates_presence_of :ddd_cellphone, :cellphone, unless: :phone?
-  validates_uniqueness_of :email, case_sensitive: false
+  validates_uniqueness_of :email, case_sensitive: false, if: :email?
   validates_format_of :email,
-    with: /^([^@\s]+[a-zA-Z0-9._-])@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+    with: /^([^@\s]+[a-zA-Z0-9._-])@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, if: :email?
 
   # Relationships
   belongs_to :contactable, polymorphic: true

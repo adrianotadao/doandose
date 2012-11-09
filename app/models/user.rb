@@ -69,6 +69,10 @@ class User
     self.update_attributes(field => Digest::MD5.hexdigest("#{TOKEN}+#{Time.now.to_i}+#{email}"))
   end
 
+  def is_company?
+    authenticable_type == 'Company'
+  end
+
   class << self
     def locate(key)
       self.any_of({ email: key }).first

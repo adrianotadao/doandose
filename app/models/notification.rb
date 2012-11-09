@@ -28,7 +28,7 @@ class Notification
 
   # Validations
   validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
-  validates_presence_of :blood_type, if: :new_record?
+  validates_presence_of :blood_type, if: :blood_required
   validates_numericality_of :quantity
   validates_inclusion_of :situation, in: %w(urgent moderate)
 
@@ -40,6 +40,10 @@ class Notification
   after_create :send_sms, :send_email
 
   # Others
+  def blood_required
+    blood.blank? && new_record?
+  end
+
   def send_sms
     Resque.enqueue(Notifications::SMS, self.id)
   end

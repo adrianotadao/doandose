@@ -19,11 +19,31 @@ class Admin::NotificationsController < Admin::BaseController
   def create
     @notification = Notification.new params[:notification]
 
-    if @notification.save
-      redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
-    else
-      render action: 'new'
+    position = @notification.company.address.loc
+    blood_types = BloodMatch.receives @notification.blood.name
+
+    if blood_types
+      people = GMap.elements_by_distance(position, 40, 'Person').map(&:addressable)
+
+      for person in people
+        last_participation = person.alerts.participateds.last
+        next if last_participation && (last_participation.created_at + 3.months) > Time.now
+        if person.blood.name.in? blood_types
+          @notification.person_notifications.new person: person
+        end
+      end
     end
+
+    if @notification.valid?
+      if @notification.save
+        redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
+      else
+        render action: 'new'
+      end
+    else
+      render action: :new
+    end
+
   end
 
   def update
