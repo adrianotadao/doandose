@@ -45,8 +45,11 @@ end
 
 group :test do
   gem 'spork', '0.9.0'
-  gem 'database_cleaner', '0.7.1'
-  gem 'factory_girl', '~> 4.1.0'
+  gem 'database_cleaner', '0.8.0'
+  gem 'ffaker', '1.13.0'
+  gem 'factory_girl', '3.5.0'
+  gem 'capybara', '1.0.0'
+  gem 'capybara-webkit', '0.7.2'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'

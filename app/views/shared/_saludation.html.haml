@@ -1,4 +1,4 @@
 #saludation
-  %span.saludation Bem vindo! #{Person.find(current_user.authenticable_id).name}
+  %span.saludation Bem vindo! #{truncate(Person.find(current_user.authenticable_id).name, length: 10)}
 
   = link_to t('label.exit'), users_destroy_session_path, confirm: 'Deseja sair?', class: 'exit'
