@@ -1,13 +1,15 @@
 %h1= @person_notification.person.name
 
 #alert_details
-  %p
-    %strong Cancelado em:
-    = @person_notification.canceled_at
+  - if @person_notification.canceled_at
+    %p
+      %strong Cancelado em:
+      = @person_notification.canceled_at
 
-  %p
-    %strong Confirmado em:
-    = @person_notification.confirmed_at
+  - if @person_notification.confirmed_at
+    %p
+      %strong Confirmado em:
+      = @person_notification.confirmed_at
 
 #alert_show
   #email

@@ -57,7 +57,6 @@ class Alert
   end
 
   def source_counter(typo)
-    p typo
     alerted_with.map{ |r| r['date'] if r['source'] == typo }.compact.size
   end
 

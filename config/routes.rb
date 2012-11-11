@@ -1,5 +1,5 @@
 Doandose::Application.routes.draw do
-  mount Resque::Server.new, at: "/resque"
+  #mount Resque::Server.new, at: "/resque"
 
   root to: "application#after_sing_in"
 

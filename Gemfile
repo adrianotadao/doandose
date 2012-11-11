@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source :rubygems
 
 gem 'rails', '3.2.8'
 gem 'mongo', '1.6.2'
@@ -33,7 +33,6 @@ group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
   gem 'rvm-capistrano', '1.2.2'
-  gem 'rb-fsevent', :require => false
 end
 
 group :assets do
@@ -45,22 +44,16 @@ end
 
 group :test do
   gem 'spork', '0.9.0'
-  gem 'database_cleaner', '0.8.0'
-  gem 'ffaker', '1.13.0'
-  gem 'factory_girl', '3.5.0'
-  gem 'capybara', '1.0.0'
-  gem 'capybara-webkit', '0.7.2'
+  gem 'database_cleaner', '0.7.1'
+  gem 'ffaker', '1.12.1'
+  gem 'factory_girl', '~> 4.1.0'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-  if RUBY_PLATFORM.downcase.include?("darwin")
-    gem 'growl'
-    gem 'growl_notify'
-  end
+  gem 'rspec', '2.8'
 end
 
 group :development, :test do
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-livereload'
-  gem 'terminal-notifier-guard'
-  gem 'rspec-rails', '2.11.0'
 end
