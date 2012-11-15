@@ -1,12 +1,11 @@
 source :rubygems
 
 gem 'rails', '3.2.8'
-gem 'mongo', '1.6.2'
-gem 'mongoid', '2.4.11'
-gem 'bson_ext', '1.6.4'
+gem 'mongo', '1.7.0'
+gem 'mongoid', '3.0.13'
+gem 'bson_ext', '1.7.0'
 
 gem 'rqrcode', '0.4.2'
-
 gem 'jquery-rails', '1.0.19'
 gem 'haml', '3.1.6'
 gem 'simple_form', '1.5.2'
@@ -44,16 +43,24 @@ end
 
 group :test do
   gem 'spork', '0.9.0'
-  gem 'database_cleaner', '0.7.1'
+  gem 'database_cleaner', '0.8.0'
   gem 'ffaker', '1.12.1'
   gem 'factory_girl', '~> 4.1.0'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-  gem 'rspec', '2.8'
+  gem 'rb-inotify', '0.8.8'
+
+  if RUBY_PLATFORM.downcase.include?('darwin')
+    gem 'growl'
+    gem 'growl_notify'
+  end
+
 end
 
 group :development, :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
+  gem 'rspec-rails', '2.11.0'
 end

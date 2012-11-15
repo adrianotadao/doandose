@@ -29,8 +29,8 @@ class Address
     :complement, :lat, :lng, :loc
 
   # Scopes
-  scope :people, where: { addressable_type: 'Person' }
-  scope :companies, where: { addressable_type: 'Company' }
+  scope :people, where(addressable_type: 'Person')
+  scope :companies, where(addressable_type: 'Company')
 
   # Callbacks
   before_validation :parse_location

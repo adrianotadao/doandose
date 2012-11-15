@@ -38,8 +38,8 @@ class Person
   validates :weight, :height, numericality: true
 
   # Scopes
-  scope :actives, where: { active: true }
-  scope :donors, where: { donor: true }
+  scope :actives, where(active: true)
+  scope :donors, where(donor: true)
 
   # Others
   def blood_donors

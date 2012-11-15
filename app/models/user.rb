@@ -9,7 +9,7 @@ class User
   TOKEN = 'jadshA099y79GSHDJAHGSDJHhsg87565765DDas'
 
   # Fields
-  field :email, type: String, case_sensitive: false
+  field :email, type: String
   field :password_digest, type: String
   field :reset_password_token, type: String
   field :reset_password_sent_at, type: Time

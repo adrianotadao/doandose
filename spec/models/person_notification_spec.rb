@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PersonNotification do
   it 'Should have a valid person notifiation' do
-    FactoryGirl.build(:person_notification).should be_valid
+    FactoryGirl.create(:person_notification).should be_valid
   end
 
   it 'Should have a notification' do
