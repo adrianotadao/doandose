@@ -30,7 +30,7 @@ describe PersonCampaign do
       FactoryGirl.build(:person_campaign).should respond_to :send_email
     end
     it 'send_email_undo_confirm' do
-      FactoryGirl.build(:person_campaign).should respond_to :send_email_undo_confirm
+      FactoryGirl.build(:person_campaign).should respond_to :undo_confirmation
     end
     it 'non_canceled?' do
       FactoryGirl.build(:person_campaign).should respond_to :non_canceled?

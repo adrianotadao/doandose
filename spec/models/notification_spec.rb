@@ -6,7 +6,7 @@ describe Notification do
   end
 
   it 'Should have a blood type if new record' do
-    FactoryGirl.build(:notification, blood_type: nil).should_not be_valid
+    FactoryGirl.build(:notification, blood_type: nil).should be_valid
     notification = FactoryGirl.create(:notification)
     notification.blood_type = nil
     notification.should be_valid

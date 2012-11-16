@@ -1,3 +1,5 @@
+require "spec_helper"
+
 module SpecTestHelper
   def login(user)
     request.session[:user_id] = user.id
