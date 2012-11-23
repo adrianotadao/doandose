@@ -66,7 +66,7 @@ group :test do
   end
 
   if RUBY_PLATFORM.downcase.include?("linux")
-    gem 'rb-inotify', '0.8.6'
+    gem 'rb-inotify', '0.8.8'
     gem 'libnotify', '0.7.2'
   end
 end
