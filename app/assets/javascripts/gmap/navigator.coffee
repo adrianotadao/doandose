@@ -40,6 +40,7 @@ class window.Navigator
       slide: ( event, ui ) =>
         @distance = ui.value
         $('span.range_value').text("#{@distance} KM")
+
         GmapDrawCircle.changeRadius @distance * 1000
         clearInterval(@interval)
         @interval = window.setTimeout (=>
@@ -71,13 +72,14 @@ class window.Navigator
 
   mapEvents: ->
     google.maps.event.addListener Gmap.create(), 'click', (event) =>
-      @position = [event.latLng.Ya, event.latLng.Za]
+      @position = [event.latLng.$a, event.latLng.ab]
       Marker.centralizeUserMarker @position
       @refreshMap()
 
   markerEvents: ->
     google.maps.event.addListener Marker.userMarker(), 'dragend', (event) =>
-      @position = [event.latLng.Ya, event.latLng.Za]
+
+      @position = [event.latLng.$a, event.latLng.ab]
       @refreshMap()
 
   prepareAutocomplete: ->
@@ -88,7 +90,7 @@ class window.Navigator
       place = @autocomplete.getPlace()
       return unless place.geometry
 
-      @position = [place.geometry.location.Ya, place.geometry.location.Za]
+      @position = [place.geometry.location.$a, place.geometry.location.ab]
       Gmap.centralize @position
       Marker.centralizeUserMarker @position
       @refreshMap()
@@ -98,7 +100,7 @@ class window.Navigator
     @query = $.ajax
       url: 'find_elements_to_map'
       type: 'POST'
-      data: $.extend {position: {lat: @position[0], lng: @position[1]}}, @filters()
+      data: $.extend(@filters(), {position: {lat: @position[0], lng: @position[1]}})
       success: (data) => @onSuccess data
       error: (xhr, error)  -> console.log xhr, error
 

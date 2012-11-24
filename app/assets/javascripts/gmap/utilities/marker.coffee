@@ -16,12 +16,14 @@ class window.Marker
 
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition (position) =>
+
         marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
         Marker.markerControl(marker, options)
         Gmap.centralize [position.coords.latitude, position.coords.longitude]
 
         $.cookies.set 'lat', position.coords.latitude
         $.cookies.set 'lng', position.coords.longitude
+
 
         $(marker).trigger 'userPositionFound'
 

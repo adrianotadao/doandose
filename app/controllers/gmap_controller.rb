@@ -1,5 +1,6 @@
 class GmapController < ApplicationController
   def find_elements_to_map
+    p params
     position = [params[:position][:lat].to_f, params[:position][:lng].to_f]
     distance = params[:distance].to_i
     blood_types = params[:blood_types]
