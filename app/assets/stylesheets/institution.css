@@ -8,10 +8,12 @@
 
 //= require admin/menu
 //= require admin/button
-//= require admin/form
+
+
 //= require admin/index
 //= require admin/data_tables
 //= require admin/show
+//= require admin/form
 
 //= require institution/notification
 //= require institution/alert

@@ -1,4 +1,5 @@
 class Institution::NotificationsController < Institution::BaseController
+
   def index
     @notifications = current_user.authenticable.notifications
   end
