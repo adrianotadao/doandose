@@ -22,3 +22,4 @@
 //= require gmap/addressable_gmap
 
 //= require statistically/index
+//= require remove_from_errors

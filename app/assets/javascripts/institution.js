@@ -23,3 +23,4 @@
 
 //= require admin/tables
 //= require mask
+//= require remove_from_errors

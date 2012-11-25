@@ -1,11 +1,12 @@
 = simple_form_for [:admin, setup_person(@person)] do |f|
 
   .form
-    = f.label :donor, t('label.donor')
-    = f.check_box :donor
+    .outher
+      = f.label :donor, t('label.donor')
+      = f.check_box :donor
 
-    = f.label :blood_id, t('label.blood')
-    = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
+      = f.label :blood_id, t('label.blood')
+      = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
 
     = f.text_field :name, placeholder: t('label.name')
     = error_for(@person, :name)
@@ -42,3 +43,7 @@
 
   .actions
     = f.button :submit, t('buttons.save'), :class => 'button save'
+
+- content_for :javascript do
+  :javascript
+    new RemoveFromErrors()

@@ -1,16 +1,17 @@
 = simple_form_for [:admin, @campaign] do |f|
 
   .form
-    = f.label :active, t('label.active')
-    = f.check_box :active
+    .outher
+      = f.label :active, t('label.active')
+      = f.check_box :active
 
-    = f.label :blood_id, t('label.blood')
-    = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
-    = error_for(@campaign, :blood)
+      = f.label :blood_id, t('label.blood')
+      = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@campaign, :blood)
 
-    = f.label :company_id, t('label.company')
-    = f.select :company_id, Company.scoped.map{ |b| [b.name, b.id] }
-    = error_for(@campaign, :company)
+      = f.label :company_id, t('label.company')
+      = f.select :company_id, Company.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@campaign, :company)
 
     = f.text_field :title, placeholder: t('label.title')
     = error_for(@campaign, :title)
@@ -35,3 +36,4 @@
 - content_for :javascript do
   :javascript
     new Mask()
+    new RemoveFromErrors()

@@ -9,3 +9,7 @@
 
   - unless @blood.new_record?
     = link_to t('buttons.delete'), [:admin, @blood], method: :delete, confirm: t('flash.advertise'), class: 'button delete'
+
+- content_for :javascript do
+  :javascript
+    new RemoveFromErrors()

@@ -27,7 +27,7 @@ class Notification
     :blood_type, :distance, :person_notifications
 
   # Validations
-  validates_presence_of :company, :blood, :situation, :quantity, :person_notifications
+  validates_presence_of :company, :blood, :situation, :quantity, :person_notifications, :title
   validates_presence_of :blood_type, if: :blood_required
   validates_numericality_of :quantity
   validates_inclusion_of :situation, in: %w(urgent moderate)

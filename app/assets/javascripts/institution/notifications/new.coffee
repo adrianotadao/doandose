@@ -75,7 +75,7 @@ class window.NewNotification
     { blood: @blood.val(), distance: @distance.val() }
 
   onSuccess: (options) ->
-    html = "<table class='result'>"
+    html = "<table class='list'>"
     html += "<thead>
               <tr>
                 <th class='distance'>Distância</th>
@@ -99,6 +99,7 @@ class window.NewNotification
 
     html += '</tbody></table>'
     $('#result').html html
+    new Tables()
 
     @counter(options.counters)
 

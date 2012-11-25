@@ -28,3 +28,7 @@
       = link_to t('form.buttons.delete'), [:admin, @company], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
     = f.button :submit, t('buttons.save'), :class => 'button save'
+
+- content_for :javascript do
+  :javascript
+    new RemoveFromErrors()
