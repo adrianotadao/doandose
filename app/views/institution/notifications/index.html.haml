@@ -17,8 +17,8 @@
         - @notifications.each do |notification|
           %tr
             %td= label_boolean(notification.active)
-            %td= notification.quantity
             %td= notification.title
+            %td= notification.quantity
             %td= notification.situation
             %td
               = link_to t('buttons.show'), institution_notification_path(notification), class: 'link show'

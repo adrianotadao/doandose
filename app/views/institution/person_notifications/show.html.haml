@@ -17,14 +17,14 @@
     .counter= @person_notification.email_counter
     .list
       - for email in @person_notification.email_list.reverse
-        = email['date']
+        = parse_time(email['date'])
 
   #sms
     .title{class: "#{ 'disabled' if @person_notification.can_send_sms }"} SMS
     .counter= @person_notification.sms_counter
     .list
       - for sms in @person_notification.sms_list.reverse
-        = sms['date']
+        = parse_time(sms['date'])
 
 - content_for :javascript do
   :javascript

@@ -27,7 +27,6 @@ gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.1.1'
 gem 'dropbox-sdk', '1.5.1'
-gem 'whenever', '0.7.3'
 
 gem 'faker'
 gem 'twilio-ruby'

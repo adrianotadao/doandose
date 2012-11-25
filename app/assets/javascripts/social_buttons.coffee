@@ -1,5 +1,6 @@
 class window.SocialButtons
   constructor: ->
+    @count = 0
     @links = $('.social_links a')
 
     @links.mouseenter (event) =>
@@ -30,10 +31,11 @@ class window.SocialButtons
     $('#person_user_attributes_email').val attr.email if $('#person_user_attributes_email').val() == ''
     $('#person_name').val attr.username if $('#person_name').val() == ''
 
-    $('form#new_person .form.user').append("<input type='hidden' name='person[user_attributes][authentications_attributes][0][provider]' value='#{attr.authentication.provider}'>
-                              <input type='hidden' name='person[user_attributes][authentications_attributes][0][uid]' value='#{attr.authentication.uid}'>")
+    $('form#new_person .form.user').append("<input type='hidden' name='person[user_attributes][authentications_attributes][#{@count}][provider]' value='#{attr.authentication.provider}'>
+                              <input type='hidden' name='person[user_attributes][authentications_attributes][#{@count}][uid]' value='#{attr.authentication.uid}'>")
 
     @check(attr)
+    @count += 1
 
   check: (attr) ->
     attr = attr.authentication.provider if attr.authentication

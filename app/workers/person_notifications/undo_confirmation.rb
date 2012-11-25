@@ -3,7 +3,6 @@ class PersonNotifications::UndoConfirmation
 
   def self.perform(person_notification_id)
     return unless person_notification_id
-    p person_notification_id
     PersonNotificationMailer.undo_confirmation(person_notification_id).deliver
   end
 end

@@ -26,4 +26,8 @@ module NotificationsHelper
       ['Moderado', 'moderate']
     ]
   end
+
+  def parse_time(time)
+    time.strftime("%m de %b %Y - %H:%M h")
+  end
 end

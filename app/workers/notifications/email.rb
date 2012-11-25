@@ -10,6 +10,6 @@ class Notifications::Email
         person_notification.save
       end
     end
-    #PersonNotificationMailer.alerting(id).deliver
+    PersonNotificationMailer.alerting(notification_id).deliver
   end
 end
