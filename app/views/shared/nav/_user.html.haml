@@ -2,8 +2,6 @@
 
 = link_to t('nav.campaigns'), campaigns_path, class: "item #{menu_item_class campaigns_path}"
 
-= link_to t('nav.tips'), tips_path, class: " item #{ menu_item_class tips_path } "
-
 - if user_signed_in?
   = link_to t('nav.people_edit'), person_path(Person.find(current_user.authenticable_id)), :class => "item #{menu_item_class people_path}"
 

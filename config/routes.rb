@@ -65,8 +65,6 @@ Doandose::Application.routes.draw do
   resources :companies, only: [:index, :show]
   resources :informations, only: [:show]
 
-  get '/dicas/' => 'tips#index', as: :tips
-
   namespace :admin do
     root :to => 'companies#index'
     match '/sair/' => 'base#destroy', as: :destroy_session
