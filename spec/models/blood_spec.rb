@@ -9,6 +9,10 @@ describe Blood do
     it 'Should not be null' do
       FactoryGirl.build(:blood, name: nil).should_not be_valid
     end
+    it 'Should be unique' do
+      blood = FactoryGirl.create(:blood)
+      FactoryGirl.build(:blood, name: blood.name).should_not be_valid
+    end
     it 'Should be a string' do
       FactoryGirl.build(:blood).name.is_a?(String).should be_true
     end

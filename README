@@ -11,14 +11,18 @@
   --User position--
   Marker.userPosition(COORDINATE, OPTIONS)
 
-== Mongo
-
-* Indexes
-
-mongo
-use doandose_development
-db.addresses.ensureIndex( { loc : "2d" } )
+== Redis
+redis-server
 
 == Resque
-
 QUEUE=* rake resque:work
+
+== Populate
+rake development:populate:run
+
+== Mongo
+mongo doandose_development
+db.addresses.ensureIndex( { loc : "2d" } )
+
+== Test
+bundle exec guard start --no-interactions
