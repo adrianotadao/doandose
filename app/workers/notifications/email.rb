@@ -8,8 +8,11 @@ class Notifications::Email
       person_notifications.each do |person_notification|
         person_notification.alerted_with << { source: 'email', date: Time.now }
         person_notification.save
+
+        PersonNotificationMailer.alerting(person_notification.id).deliver
       end
     end
-    PersonNotificationMailer.alerting(notification_id).deliver
+
+
   end
 end

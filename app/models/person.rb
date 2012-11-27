@@ -46,6 +46,10 @@ class Person
     BloodMatch.donor(blood.name)
   end
 
+  def is_man?
+    self.sex == 'm'
+  end
+
   def birthdate=value
     super value
   rescue

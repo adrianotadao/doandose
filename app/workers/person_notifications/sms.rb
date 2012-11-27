@@ -1,3 +1,4 @@
+#encoding: utf-8
 class PersonNotifications::SMS
   @queue = "sms_person_notification_#{Rails.env}"
 
@@ -11,6 +12,6 @@ class PersonNotifications::SMS
 
     call_number = person_notification.person.contact.parse_to_twilio
 
-    #ContactTwilio.send_sms([call_number], 'Alguém precisa de voce!')
+    #ContactTwilio.send_sms([call_number], "Precisamos de sua doacao mais detalhes em #{Settings.domain}#{person_notification.notification.slug}")
   end
 end
