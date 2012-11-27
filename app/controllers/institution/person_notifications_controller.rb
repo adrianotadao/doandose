@@ -12,6 +12,9 @@ class Institution::PersonNotificationsController < Institution::BaseController
   def send_sms
     if @person_notification.can_send_sms
       Resque.enqueue(PersonNotifications::SMS, @person_notification.id)
+      flash[:notice] = 'email enviado com sucesso !!!'
+    else
+      flash[:notice] = 'Ja foi disparado um email para este usuario. Aguarde 1 hr.'
     end
     render nothing: true
   end
@@ -19,6 +22,9 @@ class Institution::PersonNotificationsController < Institution::BaseController
   def send_email
     if @person_notification.can_send_email
       Resque.enqueue(PersonNotifications::Email, @person_notification.id)
+      flash[:notice] = 'sms enviado com sucesso !!!'
+    else
+      flash[:notice] = 'Ja foi disparado um sms para este usuario. Aguarde 1 hr.'
     end
     render nothing: true
   end

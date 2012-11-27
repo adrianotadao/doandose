@@ -3,6 +3,7 @@ class PersonCampaigns::Confirmation
 
   def self.perform(person_campaign_id)
     return unless person_campaign_id
+    p person_campaign_id
     PersonCampaignMailer.confirm(person_campaign_id).deliver
   end
 end

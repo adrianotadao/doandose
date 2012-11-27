@@ -12,6 +12,8 @@
       = @person_notification.confirmed_at
 
 #alert_show
+  #notice= notice
+
   #email
     .title{class: "#{ 'disabled' if @person_notification.can_send_email }"} EMAIL
     .counter= @person_notification.email_counter

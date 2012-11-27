@@ -19,7 +19,8 @@
       %b= t('label.quantity')
 
     %p
-      = @notification.situation
+      - for situation in situations
+        = situation[0] if situation.include?(@notification.situation)
       %b= t('label.situation')
 
     %p

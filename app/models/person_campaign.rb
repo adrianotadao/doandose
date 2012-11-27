@@ -19,6 +19,7 @@ class PersonCampaign < Alert
   # Others
   def send_email
     if self.can_send_email
+      p id
       Resque.enqueue(PersonCampaigns::Confirmation, id)
       Resque.enqueue(PersonCampaigns::Confirm, id)
     end

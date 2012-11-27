@@ -11,3 +11,13 @@
     = f.submit t('label.confirm'), class: 'button red'
 
   .show_instruction= link_to t('label.getting?'), @notification, class: 'button gray'
+
+- content_for :javascript do
+  :javascript
+
+    Gmap.create({
+      zoom: 10,
+      center: new google.maps.LatLng(#{@notification.company.address.loc[0]}, #{@notification.company.address.loc[1]})
+    })
+
+    Marker.company(#{@notification.company.address.loc})
