@@ -73,7 +73,7 @@ Doandose::Application.routes.draw do
     resources :companies
     resources :bloods
     resources :notifications
-    resources :people
+    resources :people, except: [:new, :create]
     resources :informations
     resources :campaigns
     get '/estatisticas/' => 'statistics#index', as: :statistics

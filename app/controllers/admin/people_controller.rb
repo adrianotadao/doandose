@@ -3,27 +3,12 @@ class Admin::PeopleController < Admin::BaseController
     @people = Person.all
   end
 
-  def new
-    @person = Person.new
-  end
-
   def show
     @person = Person.find_by_slug params[:id]
   end
 
   def edit
     @person = Person.find_by_slug params[:id]
-  end
-
-  def create
-    @person = Person.new params[:person]
-
-    if @person.save
-      update_user_cookie @person.user
-      redirect_to([:admin, :people], :notice => t('flash.person.create.notice'))
-    else
-      render :action => "new"
-    end
   end
 
   def update
