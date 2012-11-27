@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   layout '/layouts/print', only: :print
-  before_filter :authenticate_user!, only: [:confirmed, :undo_confirm]
+  before_filter :authenticate_user!, only: [:confirmed, :undo_confirm, :show]
 
   def index
     if user_signed_in?

@@ -7,7 +7,7 @@
     %span.label= t('label.situation')
     %span.text
       - for situation in situations
-        = situation[0] if situation.include?(@notification.situation)
+        = situation[0] if situation.include?(notification.situation)
 
     %span.label= t('label.alerted_at')
     %span.text= formated_date(notification.created_at)
