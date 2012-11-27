@@ -74,7 +74,7 @@ class window.NewNotification
   filters: ->
     { blood: @blood.val(), distance: @distance.val() }
 
-  onSuccess: (options) ->
+  onSuccess: (options) =>
     html = "<table class='list'>"
     html += "<thead>
               <tr>
@@ -101,7 +101,23 @@ class window.NewNotification
     $('#result').html html
     new Tables()
 
+    @markerEvents()
     @counter(options.counters)
+
+  markerEvents: ->
+    infowindow = new google.maps.InfoWindow
+
+    $('#result table tbody tr').mouseover (e) =>
+      infowindow.close()
+      for person in PersonList.list()
+        if person.id == $(e.currentTarget).attr('id')
+          marker = person.marker
+          infowindow.setContent person.distance
+          break
+      infowindow.open(Gmap.create(), marker)
+
+    $('#result table tbody tr').mouseleave ->
+      infowindow.close()
 
   counter: (counters) ->
     $('#counter').empty()
