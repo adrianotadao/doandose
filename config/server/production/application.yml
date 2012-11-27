@@ -10,7 +10,7 @@ production:
       key: 197324647062694
       secret: 2691848d75f50949d8fce873cc6261d8
 
-  mandrill_api_key: 3e4b0875-73c5-40b7-b32f-3b7aefbd834a
+  mandrill_api_key: e0d7cc7e-dcb3-42ae-bfab-0577d7632b9b
   domain: 'http://www.doando.se/'
   mail:
     delivery_method: smtp

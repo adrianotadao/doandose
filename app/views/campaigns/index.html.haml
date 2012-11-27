@@ -3,9 +3,8 @@
 #campaigns
   - unless @campaigns.blank?
     - for campaign in @campaigns
-
       .content_campaigns
-        %h2= campaign.title
+        %h2= link_to campaign.title, campaign_path(campaign)
 
         %span.label= t('label.content')
         %span.text= campaign.content
