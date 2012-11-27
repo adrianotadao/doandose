@@ -1,44 +1,46 @@
 class User
+  # Includes
   include Mongoid::Document
   include Mongoid::Timestamps
   include OmniAuth::Identity::Models::Mongoid
 
+  # Constants
   has_secure_password
+  TOKEN = 'jadshA099y79GSHDJAHGSDJHhsg87565765DDas'
 
-  field :email, type: String, case_sensitive: false
+  # Fields
+  field :email, type: String
   field :password_digest, type: String
   field :reset_password_token, type: String
   field :reset_password_sent_at, type: Time
+
+  # Indexes
   index({ email: 1}, {unique: true})
 
-  #associations
+  # Relationships
   belongs_to :authenticable, polymorphic: true
   belongs_to :company
   belongs_to :people
-  has_many :authentications, dependent: :destroy, inverse_of: :user, autosave: true, class_name: 'Authentication'
+  has_many :authentications, dependent: :destroy, inverse_of: :user,
+    autosave: true, class_name: 'Authentication'
 
-  accepts_nested_attributes_for :authentications, :authenticable, allow_destroy: true
+  accepts_nested_attributes_for :authentications, :authenticable,
+    allow_destroy: true
 
-  #attributes
+  # Accessors
   attr_reader :password
 
-  #validates
+  # Validations
   validates_presence_of :email
   validates_associated :authentications, if: :authentications?
   validates_uniqueness_of :email, case_sensitive: false
-  validates_format_of :email, with: /^([^@\s]+[a-zA-Z0-9._-])@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+  validates_format_of :email,
+    with: /^([^@\s]+[a-zA-Z0-9._-])@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
-  # callbacks
+  # Callbacks
   after_save :build_identity
 
-  def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
-    end
-  end
-
+  # Others
   def build_identity
     return if password.blank?
     authentications.find_or_create_by(:provider => 'identity', :uid => id.to_s)
@@ -46,10 +48,6 @@ class User
 
   def authentications?
     authentications.to_a.present?
-  end
-
-  def self.locate(key)
-    self.any_of({ :username => key }, { :email => key }).first
   end
 
   def add_authentication(auth)
@@ -71,10 +69,23 @@ class User
     self.update_attributes(field => Digest::MD5.hexdigest("#{TOKEN}+#{Time.now.to_i}+#{email}"))
   end
 
-  TOKEN = 'jadshA099y79GSHDJAHGSDJHhsg87565765DDas'
+  def is_company?
+    authenticable_type == 'Company'
+  end
 
-  # static
   class << self
+    def locate(key)
+      self.any_of({ email: key }).first
+    end
+
+    def create_with_omniauth(auth)
+      create! do |user|
+        user.provider = auth["provider"]
+        user.uid = auth["uid"]
+        user.name = auth["info"]["name"]
+      end
+    end
+
     def parse_omniauth(oauth)
       {
         :state => :new,
@@ -96,9 +107,5 @@ class User
       return if oauth.extra.raw_info.gender.blank?
       oauth.extra.raw_info.gender.eql?('male') ? 'm' : 'f'
     end
-  end
-
-  def self.locate(key)
-    self.any_of({ email: key }).first
   end
 end

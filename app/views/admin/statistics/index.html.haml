@@ -1,24 +1,20 @@
-#index
-  %h2= t('views.statics.title_index')
+#statistically
+  %h2= t('views.statistics.title')
 
+  #tabs
+    %ul
+      %li= link_to t('views.statistics.tabs.subcribe_per_day'), '#tab-1'
+      %li= link_to t('views.statistics.tabs.type_of_blood'), '#tab-2'
+      %li= link_to t('views.statistics.tabs.sex'), '#tab-3'
+      %li= link_to t('views.statistics.tabs.age'), '#tab-4'
+      %li= link_to t('views.statistics.tabs.notification_confirmed'), '#tab-5'
 
-  %div#orders_chart{ style: "width: 560px; height: 300px;"} 
+    #tab-1= render 'total_per_blood'
+    #tab-2= render 'admin/statistics/percentages/blood_of_type'
+    #tab-3= render 'admin/statistics/percentages/gender'
+    #tab-4= render 'admin/statistics/percentages/age_group'
+    #tab-5= render 'admin/statistics/percentages/notification_confirmed'
 
 - content_for :javascript do
   :javascript
-    new MultiCharts({
-      pointStart: #{ 3.weeks.ago.at_midnight.to_i * 1000 },
-      pointInterval: #{ 1.day * 1000 },
-      data: [
-        ['A+', 'A-', 'O+', 'O-', 'AB+', 'AB-'],
-
-        [
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('A-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('O-', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB+', date).to_f }.inspect },
-          #{ (3.weeks.ago.to_date..Date.today).map { |date| Statistically.total_per_blood_type('AB-', date).to_f }.inspect }
-        ]
-      ]
-    })
+    new Menu("#tabs" )

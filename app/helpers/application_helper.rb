@@ -21,7 +21,7 @@ module ApplicationHelper
     unless record.errors[attribute].blank?
       message = record.errors[attribute].first
       if message
-        content_tag :span, class: "error" do
+        content_tag :span, class: "error #{attribute.to_s}" do
           message
         end
       end

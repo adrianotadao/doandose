@@ -15,7 +15,7 @@ gem 'settingslogic', '2.0.8'
 gem 'premailer-rails3', '1.3.1'
 
 gem 'paperclip', '2.7.0'
-gem 'mongoid-paperclip', '0.0.7', :require => "mongoid_paperclip"
+gem 'mongoid-paperclip', '0.0.7', require: "mongoid_paperclip"
 
 gem 'mongoid-slugify', '0.1.0'
 gem 'will_paginate', '3.0.3'
@@ -27,13 +27,13 @@ gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.1.1'
 gem 'dropbox-sdk', '1.5.1'
-gem 'whenever', '0.7.3'
 
 gem 'faker'
 gem 'twilio-ruby'
 gem 'resque', '1.23.0'
 
-gem 'rspec', '2.8', :group => [:test, :development]
+gem 'rspec', '2.12.0', group: [:test, :development]
+gem 'rspec-rails', '2.12.0', group: [:test, :development]
 
 group :development do
   gem 'capistrano', '2.12.0'
@@ -53,9 +53,11 @@ group :test do
   gem 'database_cleaner', '0.7.1'
   gem 'ffaker', '1.12.1'
   gem 'fabrication', '1.3.1'
+  gem 'factory_girl', '4.1.0'
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
+
 
   if RUBY_PLATFORM.downcase.include?("darwin")
     gem 'rb-fsevent', '0.9.0'
@@ -63,7 +65,7 @@ group :test do
   end
 
   if RUBY_PLATFORM.downcase.include?("linux")
-    gem 'rb-inotify', '0.8.6'
+    gem 'rb-inotify', '0.8.8'
     gem 'libnotify', '0.7.2'
   end
 end

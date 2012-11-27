@@ -1,8 +1,19 @@
-//= require ../../../vendor/assets/stylesheets/jquery-ui-1.9.1.custom.min
-//= require global
+//= require admin/global
 //= require typography
-//= require menu
-//= require button
-//= require footer
+
+//= require jquery.dataTables
+//= require ../../../vendor/assets/stylesheets/jquery-ui-1.9.1.custom.min
+//= require ../../../vendor/fonts/IconicFill/iconic_fill
+//= require jquery.dataTables_themeroller
+
+//= require admin/menu
+//= require admin/button
+
+
+//= require admin/index
+//= require admin/data_tables
+//= require admin/show
+//= require admin/form
 
 //= require institution/notification
+//= require institution/alert

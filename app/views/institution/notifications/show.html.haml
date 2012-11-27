@@ -19,7 +19,8 @@
       %b= t('label.quantity')
 
     %p
-      = @notification.situation
+      - for situation in situations
+        = situation[0] if situation.include?(@notification.situation)
       %b= t('label.situation')
 
     %p
@@ -30,13 +31,12 @@
       = @notification.company.name
       %b= t('label.company')
 
-    %h1 NOTIFICADOS
-    - for person_notification in @notification.person_notifications
-      %p= person_notification.person.name
-      %p= person_notification.canceled_at
-      %p= person_notification.alerted_at
-      %p= person_notification.confirmed_at
+  = render partial: 'institution/notifications/reported', locals: { notification: @notification }
 
   .actions
     = link_to t('buttons.back'), institution_notifications_path, :class => 'link back'
     = link_to t('buttons.delete'), [:institution, @notification], method: :delete, confirm: t('flash.advertise'), :class => "link delete"
+
+- content_for :javascript do
+  :javascript
+    new ShowNotification()

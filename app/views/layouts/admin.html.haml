@@ -3,7 +3,7 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", :lang => "pt-br"}
   %head
     = yield :stylesheet
-    = stylesheet_link_tag :admin
+    = stylesheet_link_tag 'admin'
     = csrf_meta_tag
 
     %title= page_title
@@ -11,7 +11,9 @@
   %body
     #root
       #menu
-        = render partial: 'shared/nav'
+        .bar
+          = link_to image_tag('logo.png'), admin_root_path, title: 'Doando.se', class: 'logo'
+          = render partial: 'shared/nav/admin'
 
       #content
         = render 'shared/flash_messages'

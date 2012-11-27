@@ -12,18 +12,21 @@ class window.Marker
     marker = new google.maps.Marker $.extend(Marker.base(coordinate), icon, options)
     Marker.markerControl(marker, options)
     marker
+    console.log marker
 
   @nonLoggedUserPosition: (options) ->
     marker = new google.maps.Marker $.extend(Marker.base([0,0]), options)
 
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition (position) =>
+
         marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
         Marker.markerControl(marker, options)
         Gmap.centralize [position.coords.latitude, position.coords.longitude]
 
         $.cookies.set 'lat', position.coords.latitude
         $.cookies.set 'lng', position.coords.longitude
+
 
         $(marker).trigger 'userPositionFound'
 

@@ -1,34 +1,39 @@
 @import mixings/content
+@import mixings/form
 
 .content_notifications
   width: 742px
-
-#notification_confirm, .content_notifications, #notification_show, #list_user
   +container
   .title
     +title
     .counter
       margin-top: 10px
       b
-        font-weight: boldS
+        font-weight: bold
         &.count, a
           color: #5A0505
-
+  #information_notification
+    width: 350px
   .mini_map
     +mini_map
-
   .social
     +social
-
   .action
+    display: inline-block
     float: left
-    width: 138px
-    margin-left: 24px
+    margin-left: 3px
+    width: 120px
     a
-      margin-top: 10px
+      margin: 5px 0
+
+.pagination
+  width: 792px
 
 #notification_confirm
+  +container
   display: inline-block
+  #information_notification
+    width: auto
   #gmap
     float: left
     margin-left: 40px
@@ -45,11 +50,21 @@
     width: 122px
     position: relative
     bottom: 22px
-    left: 632px
+    left: 550px
 
 #notification_show
+  +container
+  .qrcode
+    display: inline-block
+    float: left
+    padding: 10px
+    width: 296px
+    text-align: left
+    clear: both
   #gmap
-    width: 580px
+    width: 556px
+  .social
+    +social
   #directionPanelControl
     margin-left: 576px
     clear: both
@@ -65,6 +80,7 @@
     margin-left: 10px
 
 #list_user
+  +container
   width: 420px
   margin: 0 auto
   span.top
@@ -94,31 +110,18 @@
       padding: 3px
 
 #complete
-  +container
   .thank
     text-align: justify
     margin: 30px 0
     display: block
-  .qrcode
-    float: right
-    b
-      font-weight: bold
-      margin: 10px
-      display: block
-    .action
-      margin-top: 20px
-      clear: both
-      float: right
-      span
-        display: block
-        width: 350px
-        text-align: justify
-      a
-        clear: both
-        margin: 10px 0 0 218px
+  .action
+    margin: 30px 10px
+    display: inline-block
+    width: 900px
 
 #information_notification
   +information
+  margin-bottom: 30px
   span
     +span_position
   span.label
@@ -129,6 +132,13 @@
     display: inline-block
     clear: both
     margin-top: 20px
+    float: rigth
     h3
       width: 380px
       font-size: 24px
+  .information
+    float: left
+
+#indicate
+  width: 572px
+  +container

@@ -4,20 +4,19 @@ class PeopleController < ApplicationController
     c.send(:update_user_password_with_nested_fields, :person)
   end
 
-  before_filter :authenticate_user!, only: [:edit, :update]
+  before_filter :authenticate_user!, only: [:show, :edit, :update]
 
   def new
     if current_user
-      redirect_to edit_person_path(Person.find(current_user.authenticable_id))
+      redirect_to edit_person_path(current_user.authenticable)
     else
       @person = Person.new
-      @bloods = Blood.all
     end
   end
 
   def show
-    @person = Person.find_by_slug params[:id]
-    @person_notifications = @person.person_notifications.paginate( per_page: 3, page: params[:page])
+    @person = current_user.authenticable
+    @person_notifications = @person.person_notifications.non_canceleds.paginate( per_page: 3, page: params[:page])
   end
 
   def create
@@ -27,13 +26,12 @@ class PeopleController < ApplicationController
       login @person.user
       redirect_to root_path
     else
-      p @person.errors
-     #render action: 'new'
+     render action: 'new'
     end
   end
 
   def edit
-    @person = Person.find_by_slug params[:id]
+    @person = current_user.authenticable
     @user = current_user
     @authentications = User.social_networks(@user)
   end

@@ -1,4 +1,4 @@
-= render 'notifications/complete'
+= render partial: 'notifications/full_information', locals:{ notification: @notification }
 - content_for :javascript do
   :javascript
     $(document).ready(function(){

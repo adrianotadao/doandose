@@ -28,8 +28,6 @@ module PeopleHelper
 
   def formated_birthdate(birthdate)
     unless birthdate.blank?
-      p birthdate
-      p birthdate.strftime('%d/%m/%Y')
       birthdate.strftime('%d/%m/%Y')
     else
       ''

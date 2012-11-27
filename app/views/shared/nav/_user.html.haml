@@ -1,1 +1,10 @@
-= link_to t('nav.people_edit'), person_path(Person.find(current_user.authenticable_id)), :class => "item #{menu_item_class people_path}"
+= link_to t('nav.notifications'), notifications_path, class: "item #{menu_item_class notifications_path}"
+
+= link_to t('nav.campaigns'), campaigns_path, class: "item #{menu_item_class campaigns_path}"
+
+- if user_signed_in?
+  = link_to t('nav.people_edit'), person_path(Person.find(current_user.authenticable_id)), :class => "item #{menu_item_class people_path}"
+
+- else
+
+  = link_to t('nav.new_people'), new_person_path, class: "item #{menu_item_class new_person_path}"

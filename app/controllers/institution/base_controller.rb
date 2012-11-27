@@ -1,7 +1,4 @@
 class Institution::BaseController < ApplicationController
+  before_filter :authenticate_user!
   layout '/layouts/institution'
-
-  def destroy
-    logout_company
-  end
 end

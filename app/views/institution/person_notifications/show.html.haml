@@ -1,0 +1,33 @@
+%h1= @person_notification.person.name
+
+#alert_details
+  - if @person_notification.canceled_at
+    %p
+      %strong Cancelado em:
+      = @person_notification.canceled_at
+
+  - if @person_notification.confirmed_at
+    %p
+      %strong Confirmado em:
+      = @person_notification.confirmed_at
+
+#alert_show
+  #notice= notice
+
+  #email
+    .title{class: "#{ 'disabled' if @person_notification.can_send_email }"} EMAIL
+    .counter= @person_notification.email_counter
+    .list
+      - for email in @person_notification.email_list.reverse
+        = parse_time(email['date'])
+
+  #sms
+    .title{class: "#{ 'disabled' if @person_notification.can_send_sms }"} SMS
+    .counter= @person_notification.sms_counter
+    .list
+      - for sms in @person_notification.sms_list.reverse
+        = parse_time(sms['date'])
+
+- content_for :javascript do
+  :javascript
+    new ShowPersonNotifications('#{@person_notification.id}')

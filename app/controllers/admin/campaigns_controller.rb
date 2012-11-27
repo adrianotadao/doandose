@@ -9,36 +9,28 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def new
-      @campaign = Campaign.new
-      @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-      @companies = Company.scoped.map{ |b| [b.name, b.id] }
+    @campaign = Campaign.new
   end
 
   def create
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
-
     @campaign = Campaign.new params[:campaign]
+
     if @campaign.save
-      redirect_to admin_campaigns_path
+      redirect_to admin_campaigns_path, notice: t('flash.campaign.create.notice')
     else
       render 'new'
     end
   end
 
   def edit
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
     @campaign = Campaign.find_by_slug params[:id]
   end
 
   def update
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
     @campaign = Campaign.find_by_slug params[:id]
 
     if @campaign.update_attributes params[:campaign]
-      redirect_to admin_campaigns_path
+      redirect_to admin_campaigns_path, notice: t('flash.campaign.update.notice')
     else
       render 'edit'
     end
@@ -47,7 +39,7 @@ class Admin::CampaignsController < Admin::BaseController
   def destroy
       @campaign = Campaign.find_by_slug params[:id]
       if @campaign.destroy
-        redirect_to admin_campaigns_path
+        redirect_to admin_campaigns_path, notice: t('flash.campaign.delete.notice')
       end
   end
 end

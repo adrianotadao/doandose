@@ -17,9 +17,12 @@
         - @notifications.each do |notification|
           %tr
             %td= label_boolean(notification.active)
-            %td= notification.quantity
             %td= notification.title
-            %td= notification.situation
+            %td= notification.quantity
+            %td
+              - for situation in situations
+                = situation[0] if situation.include?(notification.situation)
+
             %td
               = link_to t('buttons.show'), institution_notification_path(notification), class: 'link show'
               = link_to t('form.buttons.delete'), [:institution, notification], confirm: t('flash.advertise'), method: :delete, class: 'link delete'

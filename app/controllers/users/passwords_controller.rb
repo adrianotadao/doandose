@@ -15,7 +15,6 @@ class Users::PasswordsController < ApplicationController
   end
 
   def edit
-
     if reset_password_token?
       logout
       @user = User.first(conditions: {reset_password_token: params[:token] })
@@ -26,8 +25,7 @@ class Users::PasswordsController < ApplicationController
 
   def update
     @user = User.first(conditions: {reset_password_token: params[:token] })
-
-    if @user && @user.update_attributes(password: params[:user][:password], password_confirmation: params[:user][:password_confirmation])
+    if @user && new_password_valid? && @user.update_attributes(password: params[:user][:password], password_confirmation: params[:user][:password_confirmation])
       @user.password_is_reseted!
       login @user
       redirect_to root_path
@@ -39,6 +37,11 @@ class Users::PasswordsController < ApplicationController
   private
     def reset_password_token?
       User.where(reset_password_token: params[:token]).exists?
+    end
+
+    def new_password_valid?
+      !params[:user][:password].blank? && !params[:user][:password_confirmation].blank? &&
+      params[:user][:password] == params[:user][:password_confirmation]
     end
 end
 

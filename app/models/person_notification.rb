@@ -1,38 +1,40 @@
-class PersonNotification
-  include Mongoid::Document
-
-  field :confirmed_at, type: Time
-  field :canceled_at, type: Time
-  field :alerted_at, type: Time
-  field :alerted_with, type: Array, default: []
-
-  #access control
-  attr_accessible :alerted_at, :canceled_at, :confirmed_at, :person_id,
-    :notification_id, :person, :notification
-
-  #relationship
-  belongs_to :person
+class PersonNotification < Alert
+  # Relationships
   belongs_to :notification
+  belongs_to :person
 
-  #validations
-  validates_presence_of :person, :notification
+  # Access control
+  attr_accessible :notification_id, :notification, :person_id, :person
 
-  #scope
-  scope :is_confimed, lambda { |person_id| where(person_id: person_id ) }
+  # Validations
+  validates_presence_of :notification
 
-  #callbacks
-  after_create :send_email_confirmation
-  after_destroy :send__email_undo_confirm
+  # Callbacks
+  after_create :send_email
+  after_update :undo_confirmation
 
-  def send__email_undo_confirm
-    return if self.notification.blank? && self.person.blank?
-    CompanyNotificationMailer.undo_confirmation(self.notification.id, self.person.id).deliver
+  # Scopes
+  scope :notification_contains,  lambda { |notification_id| where( notification_id: notification_id ) }
+
+  # Others
+  def send_email
+    if self.can_send_email
+      Resque.enqueue(PersonNotifications::Email, id)
+      Resque.enqueue(PersonNotifications::Confirmation, id)
+    end
   end
 
-  def send_email_confirmation
-    return if self.notification.blank?
-    CompanyNotificationMailer.confirmation(self.notification.id).deliver
+  def undo_confirmation
+    if self.canceled?
+      Resque.enqueue(PersonNotifications::UndoConfirmation, id)
+    end
   end
 
+  def non_canceled?
+    self.canceled_at.blank?
+  end
 
+  def canceled?
+    self.canceled_at.present?
+  end
 end

@@ -1,6 +1,5 @@
 .form
-  = f.label :name, t('label.name')
-  = f.text_field :name
+  = f.text_field :name, placeholder: t('label.name')
   = error_for(@blood, :name)
 
 = link_to t('buttons.back'), [:admin, :bloods], class: 'back_form'
@@ -10,3 +9,7 @@
 
   - unless @blood.new_record?
     = link_to t('buttons.delete'), [:admin, @blood], method: :delete, confirm: t('flash.advertise'), class: 'button delete'
+
+- content_for :javascript do
+  :javascript
+    new RemoveFromErrors()

@@ -1,0 +1,27 @@
+@import mixings/load
+
+#statistically
+  width: 100%
+  #tabs
+    border: 1px solid #ccc
+    ul
+      li
+        font-size: 11px
+        text-align: center
+        font-weight: bold
+        cursor: pointer
+
+    span.more, span.less, span.restore
+      border: 1px solid
+      font-size: 12px
+      color: #fff
+      padding: 6px 0
+      margin: 3px
+      display: inline-block
+      cursor: pointer
+      background: #505050
+      width: 100px
+      +border-radius(4px)
+      text-align: center
+      &:hover
+        color: #919191

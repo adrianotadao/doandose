@@ -10,7 +10,7 @@ class window.HomeGmap
     else
       marker = Marker.nonLoggedUserPosition({ draggable: true })
       $(marker).bind 'userPositionFound', =>
-        @navigator.position = [marker.getPosition().Ya, marker.getPosition().Za]
+        @navigator.position = [marker.getPosition().$a, marker.getPosition().ab]
         @initializeNavigator()
 
   initializeNavigator: ->
@@ -20,4 +20,4 @@ class window.HomeGmap
 
   initializeUserRadius: ->
     GmapDrawCircle.create({ marker: Marker.userMarker(), radius: 1000 })
-    GmapDrawCircle.centralize [Marker.userMarker().getPosition().Ya, Marker.userMarker().getPosition().Za]
+    GmapDrawCircle.centralize [Marker.userMarker().getPosition().$a, Marker.userMarker().getPosition().ab]

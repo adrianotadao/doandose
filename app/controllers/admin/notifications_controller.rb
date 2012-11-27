@@ -5,40 +5,51 @@ class Admin::NotificationsController < Admin::BaseController
 
   def new
     @notification = Notification.new
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
   end
 
   def show
-    @notification = Notification.find_by_slug(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def edit
     @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
-    @notification = Notification.find_by_slug(params[:id])
+    @notification = Notification.find_by_slug params[:id]
   end
 
   def create
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
+    @notification = Notification.new params[:notification]
 
-    @notification = Notification.new(params[:notification])
+    position = @notification.company.address.loc
+    blood_types = BloodMatch.receives @notification.blood.name
 
-    if @notification.save
-      redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
-    else
-      render action: 'new'
+    if blood_types
+      people = GMap.elements_by_distance(position, 40, 'Person').map(&:addressable)
+
+      for person in people
+        last_participation = person.alerts.participateds.last
+        next if last_participation && (last_participation.created_at + 3.months) > Time.now
+        if person.blood.name.in? blood_types
+          @notification.person_notifications.new person: person
+        end
+      end
     end
+
+    if @notification.valid?
+      if @notification.save
+        redirect_to([:admin, :notifications], :notice => t('flash.notification.create.notice'))
+      else
+        render action: 'new'
+      end
+    else
+      render action: :new
+    end
+
   end
 
   def update
-    @bloods = Blood.scoped.map{ |b| [b.name, b.id] }
-    @companies = Company.scoped.map{ |b| [b.name, b.id] }
+    @notification = Notification.find_by_slug params[:id]
 
-    @notification = Notification.find_by_slug(params[:id])
-
-    if @notification.update_attributes(params[:notification])
+    if @notification.update_attributes params[:notification]
       redirect_to([:admin, @notification], :notice => t('flash.notification.update.notice'))
     else
       render :action => "edit"

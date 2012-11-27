@@ -1,29 +1,30 @@
 = simple_form_for [:admin, @notification] do |f|
   .form
-    = f.label :active, t('label.active')
-    = f.check_box :active
+    .others
+      = f.label :active, t('label.active')
+      = f.check_box :active
 
-    = f.label :blood_id, t('label.blood')
-    = f.select :blood_id, @bloods
-    = error_for(@notification, :blood_id)
+      = f.label :blood_id, t('label.blood')
+      = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@notification, :blood_id)
 
-    = f.label :company_id, t('label.company')
-    = f.select :company_id, @companies
-    = error_for(@notification, :company_id)
+      = f.label :company_id, t('label.company')
+      = f.select :company_id, Company.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@notification, :company_id)
 
-    = f.label :title, t('label.title')
-    = f.text_field :title
+    = f.text_field :title, placeholder: t('label.title')
 
-    = f.label :quantity, t('label.quantity')
-    = f.text_field :quantity
+    = f.text_field :quantity, placeholder: t('label.quantity')
     = error_for(@notification, :quantity)
 
     = f.label :situation, t('label.situation')
-    = f.text_area :situation
-    = error_for(@notification, :situation)
+    = f.select :situation, situations
 
-    = f.label :observation, t('label.observation')
-    = f.text_area :observation
+    = f.text_area :observation, placeholder: t('label.observation')
+    = error_for(@notification, :observation)
+
+    = f.hidden_field :blood_type, class: 'blood'
+    = f.hidden_field :distance, class: 'distance'
 
   = link_to t('buttons.back'), [:admin, :notifications], :class => 'back_form'
   .actions
@@ -32,3 +33,8 @@
       = link_to t('form.buttons.delete'), [:admin, @notification], confirm: t('flash.advertise'), method: :delete, class: 'link delete'
 
     = f.button :submit, t('buttons.save'), :class => 'button save'
+
+- content_for :javascript do
+  :javascript
+    new Mask();
+    new RemoveFromErrors()

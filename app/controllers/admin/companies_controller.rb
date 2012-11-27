@@ -8,18 +8,18 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def show
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find_by_slug params[:id]
   end
 
   def edit
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find_by_slug params[:id]
   end
 
   def create
-    @company = Company.new(params[:company])
+    @company = Company.new params[:company]
 
     if @company.save
-      update_user_cookie(@company.user)
+      update_user_cookie @company.user
       redirect_to [:admin, @company], notice: t('flash.company.create.notice')
     else
       render action: "new"
@@ -27,10 +27,10 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def update
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find_by_slug params[:id]
 
-    if @company.update_attributes(params[:company])
-      update_user_cookie(@company.user)
+    if @company.update_attributes params[:company]
+      update_user_cookie @company.user
       redirect_to [:admin, @company], notice: t('flash.company.update.notice')
     else
       render action: "edit"
@@ -38,7 +38,7 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def destroy
-    @company = Company.find_by_slug(params[:id])
+    @company = Company.find_by_slug params[:id]
 
     if @company.destroy
       redirect_to [:admin, :companies], notice: t('flash.company.delete.notice')

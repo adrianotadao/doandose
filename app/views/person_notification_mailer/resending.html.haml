@@ -1,0 +1,13 @@
+%h2= t('mailer.salute')
+%p= t('mailer.confirmation_participation_title') #{@notification.title}
+
+Contamos com sua ajuda !
+
+Atualmente temos:
+
+.counter
+  %b.count
+    = @notification.person_notifications.non_canceleds.count
+  #{t('label.participant')} -
+  #{t('label.remaining')}
+  %b.remaining #{@notification.remaining}

@@ -1,3 +1,4 @@
 test:
   host: 127.0.0.1
   database: doandose_test
+  raise_not_found_error: false

@@ -1,5 +1,5 @@
-= link_to t('nav.page'), institution_pages_path, :class => "item #{menu_item_class institution_pages_path}"
+= link_to t('nav.notification'), institution_notifications_path, :class => "item #{menu_item_class institution_notifications_path}"
 
-= link_to t('nav.institution'), institution_notifications_path, :class => "item #{menu_item_class institution_notifications_path}"
+= link_to t('nav.campaigns'), institution_campaigns_path, :class => "item #{menu_item_class institution_campaigns_path}"
 
-= link_to t('nav.exit'), institution_destroy_company_session_path, :class => "item #{menu_item_class institution_destroy_company_session_path}"
+= link_to t('nav.exit'), institution_destroy_company_session_path, confirm: t('flash.exit'), :class => "item #{menu_item_class institution_destroy_company_session_path}"

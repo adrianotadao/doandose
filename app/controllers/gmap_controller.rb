@@ -30,12 +30,15 @@ class GmapController < ApplicationController
   def find_elements_to_notification
     position = [params[:position][:lat].to_f, params[:position][:lng].to_f]
     distance = params[:distance].to_i
-    blood_types = BloodMatch.matcher params[:blood]
+    blood_types = BloodMatch.receives params[:blood]
 
     @people = GMap.elements_by_distance(position, distance, 'Person')
 
     @collectedPeople = @people.map(&:addressable).map do |r|
       if blood_types
+        last_participation = r.alerts.participateds.last
+        next if last_participation && (last_participation.created_at + parse_time_by_gender(r)) > Time.now
+
         if r.blood.name.in? blood_types
           {
             id: r.id,
@@ -54,5 +57,10 @@ class GmapController < ApplicationController
       people: @collectedPeople.compact.sort_by{|r| r[:distance][2]},
       counters: @collectedPeople.compact.group_by{|r| r[:blood]}.map{|k,v| [k, v.length]}
     }
+  end
+
+  private
+  def parse_time_by_gender(person)
+    person.is_man? ? 2.months : 3.months
   end
 end

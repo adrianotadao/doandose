@@ -9,7 +9,6 @@ class window.BirthdateValidation extends BaseValidation
       @setStatus('valid')
 
   validationDate: ->
-    console.log @field.val().split('/')
     expReg = /^(([0-2]\d|[3][0-1])\/([0]\d|[1][0-2])\/[1-2][0-9]\d{2})$/
     arrayDate = @field.val().split('/')
     @currentDate = new Date

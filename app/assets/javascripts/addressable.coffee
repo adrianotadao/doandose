@@ -14,10 +14,12 @@ class window.Addressable
     @gmap = new AddressableGmap(userPosition)
 
     @postalCode.focusout =>
+      @clearFields()
       @getAddress()
       @number.focus()
 
-    @number.focusout => @gmap.searchMapCoordinates('number', @parseNumberAddress())
+    @number.focusout =>
+      @gmap.searchMapCoordinates('number', @parseNumberAddress())
 
     @callbacks()
 
@@ -27,10 +29,9 @@ class window.Addressable
     options = {}
     options.number = addressComponents[0].long_name if addressComponents[0]
     options.street = addressComponents[1].long_name if addressComponents[1]
-    options.neighborhood = addressComponents[2].long_name if addressComponents[2]
+    options.neighborhood = @neighborhoodVal if @neighborhoodVal
     options.city = addressComponents[3].long_name if addressComponents[3]
     options.state = addressComponents[4].long_name if addressComponents[4]
-    options.postalCode = addressComponents[6].long_name if addressComponents[6]
     options.lat = location.result.lat
     options.lng = location.result.lng
 
@@ -41,33 +42,29 @@ class window.Addressable
 
     options = {}
     options.street = addressComponents[0].long_name if addressComponents[0]
-    options.neighborhood = addressComponents[1].long_name if addressComponents[1]
-    options.city = addressComponents[2].long_name if addressComponents[2]
-    options.state = addressComponents[3].long_name if addressComponents[3]
-    options.postalCode = addressComponents[5].long_name if addressComponents[5]
+    options.neighborhood = @neighborhoodVal if @neighborhoodVal
+    options.city = addressComponents[1].long_name if addressComponents[1]
+    options.state = addressComponents[2].long_name if addressComponents[2]
     options.lat = location.result.lat
     options.lng = location.result.lng
 
     @setAddress(options)
 
   setAddress: (options) ->
-    if options.number
+    if options.number && @number.val() == ''
       @number.val(options.number)
 
-    if options.street
+    if options.street && @street.val() == ''
       @street.val(options.street)
 
-    if options.neighborhood
+    if options.neighborhood && @neighborhood.val() == ''
       @neighborhood.val(options.neighborhood)
 
-    if options.city
+    if options.city && @city.val() == ''
       @city.val(options.city)
 
-    if options.state
+    if options.state && @state.val() == ''
       @state.val(options.state)
-
-    if options.postalCode
-      @postalCode.val(options.postalCode)
 
     @lat.val("#{if options.lat then options.lat else ''}")
     @lng.val("#{if options.lng then options.lng else ''}")
@@ -80,36 +77,47 @@ class window.Addressable
       success: =>
         if resultadoCEP['resultado'] == '1'
           @gmap.searchMapCoordinates('postalCode', @parseCepAddress(resultadoCEP))
+          @neighborhoodVal = unescape(resultadoCEP.bairro)
         else
           @insertError()
       complete: => @removeLoading()
 
   parseCepAddress: (result) ->
-    "#{ unescape(result.tipo_logradouro) }: #{ unescape(result.logradouro) }, " +
-    "#{ unescape(result.bairro) }, " +
-    "#{ unescape(result.cidade) }, " +
+    "#{ unescape(result.tipo_logradouro) } #{ unescape(result.logradouro) }, " +
+    "#{ unescape(result.cidade) } - " +
     "#{ unescape(result.uf) }"
 
   parseNumberAddress: ->
-    "#{ @number.val() }, #{ @street.val() }, #{ @city.val().replace('Rua: ', '') }, #{ @state.val() }"
+    "#{ @street.val() } #{ @number.val() }, #{ @city.val() } - #{ @state.val() }"
 
   addLoading: =>
     @removeLoading()
-    @postalCode.after("<div class='loading' style='width: 32px; height: 32px; display: inline-block; margin: 6px; background: url('loading.gif')'></div>")
+    @postalCode.after("<div id='load' style='position: absolute; top: 1384px; left: 730px'>
+                        <img alt='Load' class='load' src='/assets/load.gif' style='width: 20px'>
+                      </div> ")
 
   removeLoading: ->
-    $('.loading').remove()
+    $('#load').remove()
 
   insertError: =>
     @removeError()
-    @postalCode.after("<div class='error_postal_code'>Cep incorreto.</div>")
-    @postalCode.focus()
+    @postalCode.after("<div id='tooltip' class='right invalid' style='position: absolute; height: 11px; top: 1384px; left: 580.5px;'>
+                      <div class='message'>Cep invalido</div>")
     @error = true
 
   removeError: =>
     if @error
       $('.error_postal_code').remove()
       @error = false
+
+  clearFields: ->
+    @street.val('')
+    @neighborhood.val('')
+    @city.val('')
+    @state.val('')
+    @number.val('')
+    @lat.val('')
+    @lng.val('')
 
   callbacks: ->
     $(@gmap).bind 'addressComplete', (e, location) =>

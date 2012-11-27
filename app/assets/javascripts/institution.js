@@ -4,6 +4,7 @@
 //= require jquery.cookies.2.2.0
 //= require jquery.maskedinput-1.3.js
 //= require jquery.dataTables.min.js
+//= require jquery.maskMoney
 
 //= require gmap/utilities/gmap
 //= require gmap/utilities/marker
@@ -16,6 +17,10 @@
 //= require users/user
 
 //= require gmap/person_list
-//= require institution/notification
+//= require institution/notifications/new
+//= require institution/notifications/show
+//= require institution/person_notifications/show
 
 //= require admin/tables
+//= require mask
+//= require remove_from_errors

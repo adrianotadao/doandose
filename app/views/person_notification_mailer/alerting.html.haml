@@ -1,0 +1,7 @@
+%h1 Precisamos de sua ajuda
+
+Estamos necessitando de #{ @person_notification.notification.quantity } bolsas de sangue. Contamos com sua ajuda !
+
+= link_to 'clique aqui para acessar mais informacao', notification_url(@person_notification.notification)
+
+= link_to 'clique aqui para cancelar', canceling_person_notification_url(@person_notification)

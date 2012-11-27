@@ -1,0 +1,14 @@
+#blood_of_type{ style: 'width: 460px; height: 300px '} 
+
+- content_for :javascript do
+  :javascript
+    new PieCharts(
+      {
+        element: 'blood_of_type',
+        titleText: 'Porcentagem de doadores por tipo sanguineo',
+      },
+      {
+        type: 'pie',
+        name: 'Porcentagem',
+        data: #{ Statistically.percentage_blood_type }
+    })

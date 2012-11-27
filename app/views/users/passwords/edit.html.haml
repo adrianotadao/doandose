@@ -8,11 +8,8 @@
           %li= error
 
   = form_for @user, :url => "/usuario/esqueci-minha-senha/#{@user.reset_password_token}", :html => {:class => 'forgot_password_edit'} do |f|
-    %dl.form
-      %dt Nova senha:
-      %dd= f.password_field :password
-
-      %dt Comfirmação da nova senha
-      %dd= f.password_field :password_confirmation
+    .form
+      = f.password_field :password, placeholder: 'Nova senha'
+      = f.password_field :password_confirmation, placeholder: 'Confirmação da nova senha'
 
     = submit_tag 'alterar senha', class: 'button red'

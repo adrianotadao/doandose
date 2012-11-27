@@ -1,31 +1,28 @@
 = simple_form_for [:admin, @campaign] do |f|
 
   .form
-    = f.label :active, t('label.active')
-    = f.check_box :active
+    .outher
+      = f.label :active, t('label.active')
+      = f.check_box :active
 
-    = f.label :blood_id, t('label.blood')
-    = f.select :blood_id, @bloods
-    = error_for(@campaign, :blood)
+      = f.label :blood_id, t('label.blood')
+      = f.select :blood_id, Blood.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@campaign, :blood)
 
-    = f.label :company_id, t('label.company')
-    = f.select :company_id, @companies
-    = error_for(@campaign, :company)
+      = f.label :company_id, t('label.company')
+      = f.select :company_id, Company.scoped.map{ |b| [b.name, b.id] }
+      = error_for(@campaign, :company)
 
-    = f.label :title, t('label.title')
-    = f.text_field :title
+    = f.text_field :title, placeholder: t('label.title')
     = error_for(@campaign, :title)
 
-    = f.label :content, t('label.content')
-    = f.text_field :content
+    = f.text_field :content, placeholder: t('label.content')
     = error_for(@campaign, :content)
 
-    = f.label :quantity, t('label.quantity')
-    = f.text_field :quantity
+    = f.text_field :quantity, placeholder: t('label.quantity')
     = error_for(@campaign, :quantity)
 
-    = f.label :expired_at, t('label.expired_at')
-    = f.text_field :expired_at, value: formated_date(@campaign.expired_at)
+    = f.text_field :expired_at, value: "#{ formated_date(f.object.expired_at) }", placeholder: t('label.expired_at')
     = error_for(@campaign, :expired_at)
 
   = link_to t('buttons.back'), [:admin, :campaigns], class: 'back_form'
@@ -35,3 +32,8 @@
       = link_to t('buttons.delete'), [:admin, @campaign], method: :delete, confirm: t('flash.advertise'), class: "link delete"
 
     = f.button :submit, t('buttons.save'), class: 'button save'
+
+- content_for :javascript do
+  :javascript
+    new Mask()
+    new RemoveFromErrors()

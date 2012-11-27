@@ -1,0 +1,37 @@
+#campaign_show
+  - if current_user && @campaign.will_participate( current_user.authenticable ).present? && @campaign.will_participate( current_user.authenticable ).non_canceled?
+    = render partial: 'full_information', locals: { campaign: @campaign}
+  - else
+    .title
+      %h2= @campaign.title
+
+    = render partial: 'information', locals: { campaign: @campaign }
+
+    - if current_user
+      = simple_form_for  @person_campaign, :url => [:confirmed, @campaign] do |f|
+        = f.hidden_field :person_id, value: current_user.authenticable.id
+        = f.hidden_field :campaign_id, value: @campaign.id
+        = f.submit t('label.confirm'), class: 'button red'
+
+  %span.qrcode
+    %span
+      %b Acesse pelo celular.
+    - qr_code(@qr_code)
+
+  #gmap
+
+  .social
+    .fb_share
+      = facebook_share 'Compartilhe!', @campaign.slug
+    .twitter_share
+      - twitter_like notification_url(@campaign.slug), campaign_twitt_label(true, @campaign), :hash_tags => ["doandose", @campaign.blood.name]
+
+  = render partial: '/shared/button_direction'
+  #routePanel
+
+
+
+- content_for :javascript do
+  :javascript
+    UserDirection.direction({ painel: 'routePanel' ,
+                            destination: [#{@campaign.company.address.loc[0]}, #{@campaign.company.address.loc[1]}]})

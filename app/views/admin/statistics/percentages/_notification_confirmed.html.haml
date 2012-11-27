@@ -1,0 +1,21 @@
+#notification_chart{ style: 'width: 560px; height: 300px;' } 
+
+- content_for :javascript do
+  :javascript
+    new BarCharts({
+      element: 'notification_chart',
+      categories: #{  Statistically.joined_by_blood_type[:title] },
+      title: "5 ultimas notificacoes",
+      subtitle: "Total / Porcentagem restante / Porcentagem confirmada",
+
+      series: [
+        {
+          name: 'Confirmados',
+          data: #{ Statistically.joined_by_blood_type[:confirmed] }
+        },
+        {
+          name: 'Nao Confirmados',
+          data: #{ Statistically.joined_by_blood_type[:not_confirmed] }
+        }
+      ]
+    })

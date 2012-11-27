@@ -1,0 +1,30 @@
+#index
+  %h2= t('views.campaign.title_index')
+  = link_to t('buttons.new'), new_institution_campaign_path, class: 'button new'
+
+  - unless @campaigns.blank?
+    %table.list
+      %thead
+        %tr
+          %th= t('label.active')
+          %th= t('label.title')
+          %th= t('label.expired_at')
+          %th= t('label.actions')
+
+      %tbody
+        - for campaign in @campaigns
+          %tr
+            %td= label_boolean(campaign.active)
+            %td= campaign.title
+            %td= formated_date(campaign.expired_at)
+            %td
+              = link_to t('buttons.show'), [:institution, campaign], class: 'link show'
+
+              = link_to t('buttons.edit'), [:edit, :institution, campaign], :class => "link edit"
+
+  - else
+    .empty= t('label.empty')
+
+- content_for :javascript do
+  :javascript
+    new Tables()

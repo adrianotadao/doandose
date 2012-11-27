@@ -11,14 +11,14 @@
   %body
     #root
       #top
-        = render partial: 'shared/social_networks'
         #menu
-          = render partial: 'shared/nav'
+          .bar
+            = link_to image_tag('logo.png'), institution_root_path, title: 'Doando.se', class: 'logo'
+            = render partial: 'shared/nav/institution'
 
         #content= yield
 
       #root_footer
-        =# render partial: 'shared/circles_footer'
     #footer
 
     = javascript_include_tag "institution"

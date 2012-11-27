@@ -1,7 +1,6 @@
 #encoding: utf-8
-
 20.times do
-  Campaign.create({
+  campaign = Campaign.create({
     active: [true, false].sample,
     title: "campanha de doacao",
     content: "Teste teste teste",
@@ -10,4 +9,6 @@
     blood: Blood.all.to_a.sample,
     expired_at: Time.now + rand(9).hours
   })
+
+  Status.errors(campaign)
 end

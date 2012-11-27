@@ -1,22 +1,26 @@
 require 'spec_helper'
 
-describe 'Blood' do
-  it 'Should make a valid blood' do
-    Fabricate(:blood).should be_valid
+describe Blood do
+  it 'Should have a valid blood' do
+    FactoryGirl.build(:blood).should be_valid
   end
-  
+
   context 'Name' do
-    it 'should not be null' do
-      Fabricate.build(:blood, :name => nil).should_not be_valid
+    it 'Should not be null' do
+      FactoryGirl.build(:blood, name: nil).should_not be_valid
     end
-  
-    it 'should have a uniqueness' do
-      blood = Fabricate(:blood)
-      Fabricate.build(:blood, :name => blood.name).should_not be_valid
+    it 'Should be a string' do
+      FactoryGirl.build(:blood).name.is_a?(String).should be_true
     end
   end
-  
-  it 'people is not required' do
-    Fabricate.build(:blood, :peolpe => nil).should be_valid
+
+  context 'Relationships' do
+    it 'should relate to people' do
+      FactoryGirl.build(:blood).should respond_to(:people)
+    end
+
+    it 'should relate to notifications' do
+      FactoryGirl.build(:blood).should respond_to(:notifications)
+    end
   end
 end

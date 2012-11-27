@@ -1,0 +1,14 @@
+#gender{ style: 'width: 460px; height: 300px '} 
+
+- content_for :javascript do
+  :javascript
+    new PieCharts(
+      {
+        element: 'gender',
+        titleText: 'Porcentagem de doadores por sexo',
+      },
+      {
+        type: 'pie',
+        name: 'Porcentagem',
+        data: #{  Statistically.percentage_gender }
+    })
