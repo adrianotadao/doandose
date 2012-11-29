@@ -26,3 +26,10 @@ db.addresses.ensureIndex( { loc : "2d" } )
 
 == Test
 bundle exec guard start --no-interactions
+
+
+ssh voraz.myhosting
+kill -9 $(pidof nginx)
+nginx
+
+EARTH_RADIUS = 6371 KM
