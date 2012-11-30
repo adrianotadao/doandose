@@ -16,7 +16,6 @@ set :deploy_via, :remote_cache
 set :keep_releases, 10
 
 # rvm
-set :rvm_ruby_string, "ruby-1.9.2-p290@doandose_#{Rails.env}"
 set :rvm_type, :system
 require 'rvm/capistrano'
 
