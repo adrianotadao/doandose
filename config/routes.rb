@@ -1,7 +1,7 @@
 Doandose::Application.routes.draw do
   mount Resque::Server.new, at: "/resque"
 
-  root to: "application#after_sing_in"
+  root to: 'pages#index'
 
   match "/auth/:provider/callback" => "users/sessions#create"
   match '/auth/failure/' => 'users/sessions#failure'
@@ -29,13 +29,13 @@ Doandose::Application.routes.draw do
   post '/find_elements_to_map/' => 'gmap#find_elements_to_map'
   post '/find_elements_to_notification/' => 'gmap#find_elements_to_notification'
 
-  resources :people do
+  resources :people, path: 'usuario' do
     get ':id/page/:page', action: :show, on: :collection
   end
 
   resources :pages, only: [:index, :show]
 
-  resources :notifications, only: [:index, :show] do
+  resources :notifications, only: [:index, :show], path: 'notificacoes' do
     get 'page/:page', action: :index, on: :collection
     get :list_user
     get :print
@@ -48,7 +48,7 @@ Doandose::Application.routes.draw do
     end
   end
 
-  resources :campaigns, only: [:index, :show] do
+  resources :campaigns, only: [:index, :show], path: 'campanhas' do
     get 'page/:page', action: :index, on: :collection
     get :print
     member do

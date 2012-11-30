@@ -1,26 +1,20 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
   include Users::Session
-  helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout,
-    :company_signed_in?
+  helper_method :user_signed_in?, :current_user, :admin_signed_in?, :logout
+
+  before_filter :check_root_path
+
+  def check_root_path
+    if current_user && request.path == '/'
+      redirect_to(institution_root_path) if current_user.authenticable_type == 'Company'
+    end
+  end
 
   def destroy
     logout
     redirect_to root_path
   end
-
-  def after_sing_in
-    case
-    when admin_signed_in? then redirect_path(admin_root_path)
-    when current_user && current_user.is_company? then redirect_path(institution_root_path)
-    else redirect_path(pages_path)
-    end
-  end
-
-  private
-    def redirect_path(path)
-      redirect_to path
-    end
 
   protected
     def update_user_password_with_nested_fields(type)

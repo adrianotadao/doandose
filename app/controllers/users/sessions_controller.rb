@@ -7,7 +7,6 @@ class Users::SessionsController < ApplicationController
   def create
     @authentication = Authentication.where(:provider => auth_hash.provider, :uid => auth_hash.uid).first
 
-    p @authentication, auth_hash.provider, auth_hash.uid
     case
       when @authentication then sign_in
       when current_user then add_new_authentication
@@ -41,7 +40,7 @@ class Users::SessionsController < ApplicationController
 
     def sign_in
       login @authentication.user
-      p 'passou pelo singin'
+
       if @authentication.user.authenticable_type == 'Company'
         redirect_to institution_root_path
       else
