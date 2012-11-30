@@ -10,13 +10,13 @@ role :app, 'doandose'
 role :db,  'doandose', :primary => true
 
 # repository
-set :repository, 'git@github.com:adrianotadao/doando.se.git'
+set :repository, 'git@codebasehq.com:voraz/personal/doandose.git'
 set :scm, :git
 set :deploy_via, :remote_cache
 set :keep_releases, 10
 
 # rvm
-set :rvm_ruby_string, 'ruby-1.9.2-p290@doandose'
+set :rvm_ruby_string, "ruby-1.9.2-p290@doandose_#{Rails.env}"
 set :rvm_type, :system
 require 'rvm/capistrano'
 
@@ -43,7 +43,7 @@ namespace :assets do
     run "cp #{release_path}/config/server/#{rails_env}/application.yml #{release_path}/config/application.yml"
     run "cp #{release_path}/config/server/#{rails_env}/mongoid.yml #{release_path}/config/mongoid.yml"
     run "cp #{release_path}/config/server/#{rails_env}/resque.yml #{release_path}/config/resque.yml"
-    run "cp #{release_path}/config/server/rvmrc #{release_path}/.rvmrc"
+    run "cp #{release_path}/config/server/#{rails_env}/rvmrc #{release_path}/.rvmrc"
   end
 
   task :bundle do
