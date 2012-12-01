@@ -26,7 +26,6 @@ gem 'omniauth-facebook', '1.4.1'
 gem 'omniauth-google-oauth2', '0.1.13'
 gem 'omniauth-identity', '1.0.0'
 gem 'omniauth', '1.1.1'
-gem 'dropbox-sdk', '1.5.1'
 
 gem 'faker'
 gem 'twilio-ruby'
@@ -57,7 +56,6 @@ group :test do
   gem 'guard-rspec', '0.6.0'
   gem 'guard-bundler', '0.1.3'
   gem 'guard-spork', '0.5.2'
-
 
   if RUBY_PLATFORM.downcase.include?("darwin")
     gem 'rb-fsevent', '0.9.1'
