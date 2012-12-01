@@ -1,7 +1,25 @@
-%h1 Precisamos de sua ajuda
+.description
+  %h1 Precisamos de sua ajuda
 
-Estamos necessitando de #{ @person_notification.notification.quantity } bolsas de sangue. Contamos com sua ajuda !
+  .body
+    Estamos necessitando urgente de sua doacao.
+    %br
+    Contamos com sua ajuda !
+    %br
+    = link_to 'clique aqui para acessar mais informacao', notification_url(@person_notification.notification)
+    %br
+    = link_to 'clique aqui para cancelar', canceling_person_notification_url(@person_notification)
 
-= link_to 'clique aqui para acessar mais informacao', notification_url(@person_notification.notification)
 
-= link_to 'clique aqui para cancelar', canceling_person_notification_url(@person_notification)
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @notification.quantity
+    .blood_type= @notification.blood.name
+
+  .counter
+    %span Participantes:
+    .count= @notification.person_notifications.count
+
+  .social
+    %span Compartilhe:

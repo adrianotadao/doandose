@@ -12,7 +12,7 @@ gem 'haml', '3.1.6'
 gem 'simple_form', '1.5.2'
 gem 'awesome_nested_fields', '0.6.0'
 gem 'settingslogic', '2.0.8'
-gem 'premailer-rails3', '1.3.1'
+gem 'roadie', '2.3.4'
 
 gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', require: "mongoid_paperclip"
@@ -43,6 +43,7 @@ end
 group :assets do
   gem 'compass-rails', '1.0.1'
   gem 'sass-rails', '3.2.5'
+  gem 'sass', '3.2.3'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.6'
 end
