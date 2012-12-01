@@ -34,6 +34,8 @@ gem 'resque', '1.23.0'
 gem 'rspec', '2.12.0', group: [:test, :development]
 gem 'rspec-rails', '2.12.0', group: [:test, :development]
 
+gem 'exception_notification', '2.6.1', group: [:production, :staging]
+
 group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
