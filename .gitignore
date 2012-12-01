@@ -7,7 +7,6 @@ public/stylesheets/compiled
 public/javascripts/compiled
 public/system/
 
-config/dropbox.yml
 config/mongoid.yml
 config/resque.yml
 config/application.yml
