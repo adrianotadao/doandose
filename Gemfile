@@ -8,11 +8,11 @@ gem 'bson_ext', '1.6.4'
 gem 'rqrcode', '0.4.2'
 
 gem 'jquery-rails', '1.0.19'
-gem 'haml', '3.1.6'
+gem 'haml', '3.1.7'
 gem 'simple_form', '1.5.2'
 gem 'awesome_nested_fields', '0.6.0'
 gem 'settingslogic', '2.0.8'
-gem 'premailer-rails3', '1.3.1'
+gem 'roadie', '2.3.4'
 
 gem 'paperclip', '2.7.0'
 gem 'mongoid-paperclip', '0.0.7', require: "mongoid_paperclip"
@@ -30,6 +30,7 @@ gem 'omniauth', '1.1.1'
 gem 'faker'
 gem 'twilio-ruby'
 gem 'resque', '1.23.0'
+gem 'rufus-scheduler', '2.0.17'
 
 gem 'rspec', '2.12.0', group: [:test, :development]
 gem 'rspec-rails', '2.12.0', group: [:test, :development]
@@ -45,6 +46,7 @@ end
 group :assets do
   gem 'compass-rails', '1.0.1'
   gem 'sass-rails', '3.2.5'
+  gem 'sass', '3.2.3'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.6'
 end

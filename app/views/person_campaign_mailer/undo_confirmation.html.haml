@@ -1,1 +1,22 @@
-Uma presenca cancelada na campanha #{@person_campaign.campaign.title} !
+.description
+  %h1 Pessima noticia :(
+
+  .body
+    Um voluntario acabou de cancelar
+    %br
+    a presenca na campanha.
+    %br
+    = link_to "#{@person_campaign.campaign.title}", campaign_url(@person_campaign.campaign)
+
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @person_campaign.campaign.quantity
+    .blood_type= @person_campaign.campaign.blood.name
+
+  .counter
+    %span Participantes:
+    .count= campaign_counter(@person_campaign.campaign)
+  .social
+    %span Compartilhe:
+    = render 'shared/shared_mailer'

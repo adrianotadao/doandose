@@ -1,3 +1,25 @@
-+ 1 voluntario confirmou !
-%b
-  = @person_notification.notification.title
+.description
+  %h1 Muito bom !!!
+
+  .body
+    Mais um voluntario foi incluido na notificacao.
+    %br
+    Continue divulgando para obter melhores resultados.
+    %br
+    = link_to "#{@person_notification.notification.title}", notification_url(@person_notification.notification)
+    %br
+    A equipe doando.se esta disponivel a ajudar!!!
+
+
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @person_notification.notification.quantity
+    .blood_type= @person_notification.notification.blood.name
+
+  .counter
+    %span Participantes:
+    .count= link_to notification_counter(@person_notification.notification), notification_list_user_url(@person_notification.notification)
+  .social
+    %span Compartilhe:
+    = render 'shared/shared_mailer'

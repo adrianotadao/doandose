@@ -6,5 +6,10 @@
     = stylesheet_link_tag 'mailer'
 
   %body
-    = link_to image_tag('logo.png'), root_path, title: 'Doando.se', class: 'logo'
-    = yield
+    .logo
+      = link_to image_tag("#{Settings.host_image}logo.png"), root_url, title: 'Doando.se'
+
+    #content= yield
+
+    #footer
+      = link_to 'Visite nosso aplicativo.', 'www.doando.se'

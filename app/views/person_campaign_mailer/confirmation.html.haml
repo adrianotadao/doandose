@@ -1,4 +1,25 @@
-%h2= t('mailer.salute')
-%p= t('mailer.confirmation_participation_title') #{@person_campaign.campaign.title}
+.description
+  %h1 Muito bom !!!
 
-mais um parcipante desta campanha.
+  .body
+    Mais um voluntario foi incluido na campanha.
+    %br
+    Continue divulgando para obter melhores resultados.
+    %br
+    = link_to "#{@person_campaign.campaign.title}", campaign_url(@person_campaign.campaign)
+    %br
+    A equipe doando.se esta disponivel a ajudar!!!
+
+
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @person_campaign.campaign.quantity
+    .blood_type= @person_campaign.campaign.blood.name
+
+  .counter
+    %span Participantes:
+    .count= campaign_counter(@person_campaign.campaign)
+  .social
+    %span Compartilhe:
+    = render 'shared/shared_mailer'
