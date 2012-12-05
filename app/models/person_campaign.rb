@@ -11,6 +11,7 @@ class PersonCampaign < Alert
 
   # Scopes
   scope :campaign_contains,  lambda { |campaign_id| where( campaign_id: campaign_id ) }
+  scope :person_campaign_count, lambda{ |campaign_id| where(campaign_id: campaign_id, canceled_at: '') }
 
   # Callbacks
   after_save :send_email

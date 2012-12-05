@@ -1,1 +1,27 @@
-Uma presenca foi cancelada da notificacacao #{ @person_notification.notification.title } !
+.description
+  %h1 Que pena voce cancelou :(
+
+  .body
+    Ola notamos que voce recusou
+    %br
+    a participar da notificacao:
+    %br
+    #{@person_notification.notification.title}
+    %br
+    Se possivel nos ajude, pois ela e indispensavel!
+    %br
+    = link_to 'clique aqui para acessar mais informacao', notification_url(@person_notification.notification)
+
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @person_notification.notification.quantity
+    .blood_type= @person_notification.notification.blood.name
+
+  .counter
+    %span Participantes:
+    .count
+      = link_to notification_counter(@person_notification.notification), notification_list_user_url(@person_notification.notification)
+  .social
+    %span Compartilhe:
+    = render 'shared/shared_mailer'

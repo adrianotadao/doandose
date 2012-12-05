@@ -19,7 +19,7 @@
 
   .counter
     %span Participantes:
-    .count= @notification.person_notifications.count
-
+    .count= link_to notification_counter(@notification), notification_list_user_url(@notification)
   .social
     %span Compartilhe:
+    = render 'shared/shared_mailer'

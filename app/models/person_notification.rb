@@ -15,6 +15,7 @@ class PersonNotification < Alert
 
   # Scopes
   scope :notification_contains,  lambda { |notification_id| where( notification_id: notification_id ) }
+  scope :person_notification_count, lambda{ |notification_id| where(notification_id: notification_id, canceled_at: '') }
 
   # Others
   def send_email

@@ -1,12 +1,13 @@
 # encoding: utf-8
 class Mailer < ActionMailer::Base
-  layout 'mailer'
-  include MandrillMailer
+  layout false
 
+  include MandrillMailer
   default from: 'suporte@doando.se'
+
   def contact(contact)
     @contact = contact
-    mail subject: contact.subject, to: Settings.contact_email, reply_to: contact.email
+    mail subject: "Contato Doando.se - #{contact.subject}", to: Settings.contact_email, reply_to: contact.email
   end
 
   def reset_password_instructions(user_id)

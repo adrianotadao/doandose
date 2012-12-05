@@ -1,1 +1,25 @@
-Obrigado por participar da campanha #{@person_campaign.campaign.title}
+.description
+  %h1 Precisamos de sua ajuda
+
+  .body
+    Estamos necessitando urgente de sua doacao.
+    %br
+    Contamos com sua ajuda nessa campanha!
+    %br
+    #{@person_campaign.campaign.title}
+    %br
+    = link_to 'clique aqui para acessar mais informacao', campaign_url(@person_campaign.campaign)
+
+
+.painel
+  .blood
+    %span Precisamos de:
+    .quantity= @person_campaign.campaign.quantity
+    .blood_type= @person_campaign.campaign.blood.name
+
+  .counter
+    %span Participantes:
+    .count= campaign_counter(@person_campaign.campaign)
+  .social
+    %span Compartilhe:
+    = render 'shared/shared_mailer'
