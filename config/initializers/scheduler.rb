@@ -15,3 +15,7 @@ end
 scheduler.cron '0 23 * * 1-5' do
   system('rake alert:campaign:week')
 end
+
+scheduler.every '1m' do
+  p 'teste do initializer ok'
+end
