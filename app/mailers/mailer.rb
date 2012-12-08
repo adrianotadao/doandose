@@ -20,4 +20,8 @@ class Mailer < ActionMailer::Base
     @friend = friend
     mail subject: friend.subject, to: friend.sender, reply_to: friend.email
   end
+
+  def job_scheduller
+    mail subject: 'cron recuperada em 1 min', to: Settings.contact_email
+  end
 end

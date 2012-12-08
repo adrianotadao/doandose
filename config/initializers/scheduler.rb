@@ -17,5 +17,5 @@ scheduler.cron '0 23 * * 1-5' do
 end
 
 scheduler.every '1m' do
-  p 'teste do initializer ok'
+  Mailer.job_scheduller.deliver
 end
