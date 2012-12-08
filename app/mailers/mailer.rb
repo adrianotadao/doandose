@@ -21,7 +21,7 @@ class Mailer < ActionMailer::Base
     mail subject: friend.subject, to: friend.sender, reply_to: friend.email
   end
 
-  def job_scheduller
-    mail subject: 'cron recuperada em 1 min', to: Settings.contact_email
+  def job_scheduller(type)
+    mail subject: "tarefa cron #{type} executada com sucesso !!!", to: Settings.contact_email
   end
 end
