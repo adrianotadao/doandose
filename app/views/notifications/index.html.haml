@@ -14,11 +14,6 @@
             #{t('label.remaining')}
             %b.remaining #{notification.remaining}
 
-        .social
-          .fb_share
-            = facebook_share 'Compartilhe!', notification.slug
-          .twitter_share
-            - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
 
         = render partial: 'information', locals: { notification: notification}
 
@@ -28,6 +23,11 @@
           = participate_button(notification)
           = link_to t('buttons.show'), notification, class: 'button gray'
           = link_to t('label.indicate'), indication_friend_notification_path(notification), class: 'button gray'
+        .social
+          .fb_share
+            = facebook_share 'Compartilhe!', notification.slug
+          .twitter_share
+            - twitter_like notification_url(notification.slug), notification_twitt_label(true, notification), :hash_tags => ["doandose", notification.blood.name]
 
     = will_paginate @notifications
 

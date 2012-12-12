@@ -2,27 +2,39 @@
 @import mixings/form
 
 .content_notifications
-  width: 742px
+  width: 95%
   +container
   .title
     +title
+    h2
+      font-size: 14pt
     .counter
-      margin-top: 10px
-      b
+      margin: 26px auto
+      width: 256px
+      font-size: 12pt
+      b.count
         font-weight: bold
-        &.count, a
+        float: left
+        & a
           color: #5A0505
   #information_notification
-    width: 350px
+    width: 338px
+    margin-top: 25px
+    .information
+      width: 410px
+    span.label
+      width: 146px
   .mini_map
     +mini_map
+    margin-top: 25px
   .social
     +social
   .action
     display: inline-block
     float: left
-    margin-left: 3px
+    margin-left: 96px
     width: 120px
+    margin-top: 25px
     a
       margin: 5px 0
 
