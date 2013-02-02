@@ -13,10 +13,10 @@
 #circle_three
   %h2 Contatos
   .form
-    %input.name{ placeholder: t('label.name') }
-    %input.email{ placeholder: t('label.email') }
-    %input.subject{ placeholder: t('label.subject') }
-    %textarea.message{ placeholder: t('label.message') }
+    %input{ class: 'name', placeholder: t('label.name'), type: 'text' }
+    %input{ class: 'email', placeholder: t('label.email'), type: 'text' }
+    %input{ class: 'subject', placeholder: t('label.subject'), type: 'text' }
+    %textarea{ class: 'message', placeholder: t('label.message') }
 
     %input{ type: 'submit', class: 'submit button red', value: t('label.send') }
 
