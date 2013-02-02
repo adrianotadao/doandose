@@ -37,10 +37,13 @@ gem 'rspec-rails', '2.12.0', group: [:test, :development]
 
 gem 'exception_notification', '2.6.1', group: [:production, :staging]
 
+gem 'brakeman'
+
 group :development do
   gem 'capistrano', '2.12.0'
   gem 'capistrano-ext', '1.2.1'
   gem 'rvm-capistrano', '1.2.2'
+  gem 'meta_request', '0.2.1'
 end
 
 group :assets do
