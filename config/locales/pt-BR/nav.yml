@@ -1,5 +1,6 @@
 pt-BR:
   nav:
+    about: 'Quem somos'
     root: 'Home'
     people: 'Perfil'
     new_people: 'Cadastre-se'

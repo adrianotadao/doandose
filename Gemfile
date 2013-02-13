@@ -44,6 +44,7 @@ group :development do
   gem 'capistrano-ext', '1.2.1'
   gem 'rvm-capistrano', '1.2.2'
   gem 'meta_request', '0.2.1'
+  gem 'passenger', '3.0.19'
 end
 
 group :assets do
