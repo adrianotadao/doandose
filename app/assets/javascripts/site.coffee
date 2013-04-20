@@ -1,7 +1,5 @@
 class window.Site
   constructor: ->
-
-
     $('.about_us').click => @openIframe('quem_somos')
 
   iframeDefault: ->
